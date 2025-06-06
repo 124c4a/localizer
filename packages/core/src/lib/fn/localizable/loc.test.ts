@@ -1,6 +1,6 @@
 import { loc } from './loc.js';
 
-describe('L', () => {
+describe('loc', () => {
   it('returns LocalizableValue for function input', () => {
     const result = loc((locale) => `value for ${locale}`);
     expect(result.localize('en-US')).toBe('value for en-US');

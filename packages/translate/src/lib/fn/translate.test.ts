@@ -1,4 +1,4 @@
-import { L } from '@localizer/core';
+import { loc } from '@localizer/core';
 import { translate } from './translate.js';
 
 const staticTranslation = translate({
@@ -8,9 +8,9 @@ const staticTranslation = translate({
 });
 
 const staticTranslationWithLocalizables = translate({
-  en: L`Hello`,
-  fi: L`Hei`,
-  sv: L`Hej`,
+  en: loc`Hello`,
+  fi: loc`Hei`,
+  sv: loc`Hej`,
 });
 
 const dynamicTranslation = translate((value: string) => ({

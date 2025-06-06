@@ -5,13 +5,13 @@ import {
   NoValue,
   DefaultValue,
 } from './lookupFormatter.js';
-import { L } from '@localizer/core';
+import { loc } from '@localizer/core';
 
 describe('lookUpFormatter', () => {
   it('returns the correct formatter for a matching value', () => {
     const formatter = lookupFormatter<number>({
-      1: L`One`,
-      2: L`Two`,
+      1: loc`One`,
+      2: loc`Two`,
     });
     const result = formatter(1).localize('en-US');
     expect(result).toBe('One');
@@ -19,7 +19,7 @@ describe('lookUpFormatter', () => {
 
   it('returns the formatter for UndefinedValue when value is undefined', () => {
     const formatter = lookupFormatter({
-      [UndefinedValue]: L`Undefined`,
+      [UndefinedValue]: loc`Undefined`,
     });
     const result = formatter(undefined).localize('en-US');
     expect(result).toBe('Undefined');
@@ -27,7 +27,7 @@ describe('lookUpFormatter', () => {
 
   it('returns the formatter for NullValue when value is null', () => {
     const formatter = lookupFormatter({
-      [NullValue]: L`Null`,
+      [NullValue]: loc`Null`,
     });
     const result = formatter(null).localize('en-US');
     expect(result).toBe('Null');
@@ -35,7 +35,7 @@ describe('lookUpFormatter', () => {
 
   it('returns the formatter for NoValue when value is undefined or null', () => {
     const formatter = lookupFormatter({
-      [NoValue]: L`No Value`,
+      [NoValue]: loc`No Value`,
     });
     const resultUndefined = formatter(undefined).localize('en-US');
     const resultNull = formatter(null).localize('en-US');
@@ -45,7 +45,7 @@ describe('lookUpFormatter', () => {
 
   it('returns the default formatter when no specific match is found', () => {
     const formatter = lookupFormatter({
-      [DefaultValue]: L`Default`,
+      [DefaultValue]: loc`Default`,
     });
     const result = formatter(3).localize('en-US');
     expect(result).toBe('Default');
@@ -53,7 +53,7 @@ describe('lookUpFormatter', () => {
 
   it('throws an error when no match or default formatter is found', () => {
     const formatter = lookupFormatter<number>({
-      1: L`One`,
+      1: loc`One`,
     });
     expect(() => formatter(2).localize('en-US')).toThrowError(
       'Value 2 is not represented in [1], but no default value is specified'
@@ -62,7 +62,7 @@ describe('lookUpFormatter', () => {
 
   it('applies a value formatter function when provided', () => {
     const formatter = lookupFormatter<number>({
-      1: (value: number) => L`Value is ${L(() => '' + value)}`,
+      1: (value: number) => loc`Value is ${loc(() => '' + value)}`,
     });
     const result = formatter(1).localize('en-US');
     expect(result).toBe('Value is 1');
