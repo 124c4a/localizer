@@ -36,7 +36,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx affected --excludeTaskDependencies --target=lint --output-file=eslint-report.json --format=json
+      - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json
         continue-on-error: true
 
       - name: Annotate Code Linting Results
