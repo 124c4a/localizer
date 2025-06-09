@@ -67,7 +67,7 @@ export const DateRangeSeparator = dateTimeRangeFormatter({
  * Represents a thin space en dash thin space separator.
  *
  * @example
- * console.log(GenericRangeSeparator.localize('en')); // Output: " – "
+ * console.log(GenericRangeSeparator.localize('en')); // Output: " – "
  *
  * @public
  */
