@@ -59,5 +59,5 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: Test Results # Name of the check run which will be created
-          path: reports/jest-*.xml # Path to test results
+          path: packages/**/jest-junit.xml # Path to test results
           reporter: jest-junit # Format of test results
