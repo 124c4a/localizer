@@ -1,0 +1,71 @@
+{
+  "name": "@localizer/locale-list",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "tools/data-gen/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "tools/data-gen/src/main.ts",
+          "tsConfig": "tools/data-gen/tsconfig.app.json",
+          "assets": [],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@localizer/data-gen:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@localizer/data-gen:build:development"
+          },
+          "production": {
+            "buildTarget": "@localizer/data-gen:build:production"
+          }
+        }
+      }
+    },
+    "name": "@localizer/data-gen"
+  },
+  "dependencies": {
+    "listr2": "^8.3.3",
+    "undici": "^7.10.0",
+    "xlsx": "file:vendor/xlsx-0.20.3.tgz",
+    "yaml": "^2.8.0"
+  }
+}

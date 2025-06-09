@@ -1,0 +1,4 @@
+{
+    "nxConsole.generateAiAgentRules": true,
+    "typescript.tsdk": "node_modules\\typescript\\lib"
+}

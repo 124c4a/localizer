@@ -1,0 +1,40 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/transform"
+    },
+    {
+      "path": "./packages/translate"
+    },
+    {
+      "path": "./packages/format"
+    },
+    {
+      "path": "./tools/data-gen"
+    },
+    {
+      "path": "./packages/format-number"
+    },
+    {
+      "path": "./packages/format-displayname"
+    },
+    {
+      "path": "./packages/format-datetime"
+    },
+    {
+      "path": "./packages/format-list"
+    },
+    {
+      "path": "./packages/format-relativetime"
+    },
+    {
+      "path": "./packages/format-lookup"
+    }
+  ]
+}

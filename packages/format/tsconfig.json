@@ -1,0 +1,34 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../format-list"
+    },
+    {
+      "path": "../format-relativetime"
+    },
+    {
+      "path": "../format-datetime"
+    },
+    {
+      "path": "../format-displayname"
+    },
+    {
+      "path": "../format-number"
+    },
+    {
+      "path": "../transform"
+    },
+    {
+      "path": "../core"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
