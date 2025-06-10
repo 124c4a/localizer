@@ -1,12 +1,13 @@
 name: CI
 
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
 permissions:
   actions: read
   contents: read
-  pull-requests: read
   checks: write
 
 jobs:
@@ -23,10 +24,7 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: npm ci --legacy-peer-deps
-      - uses: nrwl/nx-set-shas@v4
-
-      - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json
+      - run: npx nx run-many --target=lint --output-file=eslint-report.json --format=json
         continue-on-error: true
 
       - name: Annotate code linting results
@@ -39,10 +37,10 @@ jobs:
           check-name: 'ESLint results'
 
       - name: Build
-        run: npx nx affected -t build
+        run: npx nx run-many -t build
 
       - name: Test
-        run: npx nx affected -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
+        run: npx nx run-many -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
 
       - name: SonarQube scan
         uses: SonarSource/sonarqube-scan-action@v5
