@@ -40,7 +40,7 @@ export function getLocalizer(locale: LocaleCode): Localizer {
       return (...args: A) =>
         (localizable as (...args: A) => Localizable<T>)(...args).localize(
           locale
-        ) as T;
+        );
     }
   };
 

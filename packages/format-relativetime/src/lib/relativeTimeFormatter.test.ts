@@ -20,7 +20,7 @@ describe('relativeTimeFormatter', () => {
   });
 
   it('handles undefined options by falling back to default behavior', () => {
-    const formatter = relativeTimeFormatter(undefined);
+    const formatter = relativeTimeFormatter();
     const result = formatter(
       new Date('2023-01-01'),
       new Date('2023-01-02')

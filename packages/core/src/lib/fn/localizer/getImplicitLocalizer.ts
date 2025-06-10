@@ -29,7 +29,7 @@ export function getImplicitLocalizer(): Localizer {
       return (...args: A) =>
         (localizable as (...args: A) => Localizable<T>)(...args).localize(
           locale
-        ) as T;
+        );
     }
   };
 

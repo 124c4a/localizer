@@ -123,7 +123,7 @@ function convertNominatimData(ctx: Context) {
 
   ctx.countries.forEach((country) => {
     const countryData = ctx.countrySettings[country.toLowerCase()];
-    const countryLanguages = ((countryData.languages as string) || '')
+    const countryLanguages = (countryData.languages || '')
       .split(',')
       .map((it) => it.trim());
     if (countryLanguages.length > 0) {
