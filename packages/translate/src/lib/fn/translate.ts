@@ -1,5 +1,5 @@
-import { LocaleCode } from '@localizer/core';
 import {
+  LocaleCode,
   Localizable,
   loc,
   getLocaleChain,

@@ -46,18 +46,14 @@ export function autoFormatRecordDeep<V extends Record<string, unknown>>(
     .filter(([, value]) => typeof value === 'object')
     .forEach(([key, value]) => {
       preparedValue[key] = autoFormatRecordDeep(
-        value as unknown as Record<string, unknown>,
+        value as Record<string, unknown>,
         autoFormattedParameters,
         (prefix ?? '') + key + '.'
       );
     });
 
   Object.entries(preparedValue)
-    .filter(
-      ([key]) =>
-        autoFormattedParameters &&
-        autoFormattedParameters.includes((prefix ?? '') + key)
-    )
+    .filter(([key]) => autoFormattedParameters?.includes((prefix ?? '') + key))
     .forEach(([key, value]) => {
       preparedValue[key] = autoFormat(value);
     });

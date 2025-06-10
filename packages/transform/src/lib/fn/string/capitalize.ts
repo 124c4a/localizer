@@ -19,7 +19,7 @@ export function capitalize(value: Localizable): Localizable {
     value
       .localize(locale)
       .replace(/^\p{CWU}/u, (char) =>
-        char.toLocaleUpperCase(locale === null ? undefined : locale)
+        char.toLocaleUpperCase(locale ?? undefined)
       )
   );
 }

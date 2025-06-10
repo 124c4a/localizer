@@ -1,5 +1,4 @@
-import { loc } from '@localizer/core';
-import { ValueFormatter } from '@localizer/core';
+import { ValueFormatter, loc } from '@localizer/core';
 
 import { buildUnitFormatter } from './build.js';
 import { CurrencyCode } from './currency.js';
