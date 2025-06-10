@@ -1,5 +1,5 @@
-import { toPrimitiveValue } from './toPrimitiveValue.js';
 import { Localizable } from '../../types/localizable.js';
+import { toPrimitiveValue } from './toPrimitiveValue.js';
 
 /**
  * Represents a value that cannot be localized.

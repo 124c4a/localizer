@@ -1,5 +1,5 @@
-import { coreOptions } from '../locale/options.js';
 import { LocaleCode } from '../../consts/locale.js';
+import { coreOptions } from '../locale/options.js';
 
 /**
  * Ensures that implicit localization is enabled and an active locale is set.

@@ -1,10 +1,11 @@
-import { transform } from '@localizer/transform';
 import {
   Localizable,
   ValueFormatter,
   loc,
   localizeArray,
 } from '@localizer/core';
+import { transform } from '@localizer/transform';
+
 import { ListFormatOptions } from './options.js';
 
 /**

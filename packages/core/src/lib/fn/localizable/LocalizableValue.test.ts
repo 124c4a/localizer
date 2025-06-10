@@ -1,5 +1,5 @@
-import { LocalizableValue } from './LocalizableValue.js';
 import { coreOptions } from '../locale/options.js';
+import { LocalizableValue } from './LocalizableValue.js';
 
 describe('LocalizableValue', () => {
   it('returns localized value for a valid locale', () => {

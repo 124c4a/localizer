@@ -3,12 +3,12 @@ import { UnlocalizableValue } from './UnlocalizableValue.js';
 describe('Unlocalizable', () => {
   it('returns the value when localize is called', () => {
     const result = new UnlocalizableValue('test value');
-    expect(result.localize('en')).toBe('test value');
+    expect(result.localize()).toBe('test value');
   });
 
   it('handles non-string values correctly', () => {
     const result = new UnlocalizableValue(123);
-    expect(result.localize('en')).toBe(123);
+    expect(result.localize()).toBe(123);
   });
 
   it('uses Symbol.toPrimitive to return the primitive value', () => {
@@ -24,11 +24,11 @@ describe('Unlocalizable', () => {
 
   it('handles null values gracefully', () => {
     const result = new UnlocalizableValue(null);
-    expect(result.localize('en')).toBe(null);
+    expect(result.localize()).toBe(null);
   });
 
   it('handles undefined values gracefully', () => {
     const result = new UnlocalizableValue(undefined);
-    expect(result.localize('en')).toBe(undefined);
+    expect(result.localize()).toBe(undefined);
   });
 });

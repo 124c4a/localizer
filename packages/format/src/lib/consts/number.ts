@@ -1,3 +1,4 @@
+import { Configuration } from '@localizer/core';
 import {
   currencyFormatter,
   decimalFormatter,
@@ -9,7 +10,6 @@ import {
   relativePercentFormatter,
   unitFormatter,
 } from '@localizer/format-number';
-import { Configuration } from '@localizer/core';
 
 const defaultDecimalFormatOptions: NumberFormatOptions = {};
 const defaultPercentFormatOptions: NumberFormatOptions = {};

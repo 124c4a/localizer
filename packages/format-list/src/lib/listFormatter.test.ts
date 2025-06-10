@@ -1,6 +1,7 @@
 import { loc } from '@localizer/core';
-import { listFormatter } from './listFormatter.js';
 import { upperCase } from '@localizer/transform';
+
+import { listFormatter } from './listFormatter.js';
 
 describe('listFormatter', () => {
   it('formats a list with a custom delimiter for a given locale', () => {
