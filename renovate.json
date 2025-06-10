@@ -2,11 +2,10 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:js-lib",
-    "schedule:daily",
+    "schedule:houry",
     ":automergePatch",
     ":automergePr",
-    ":automergeRequireAllStatusChecks",
-    ":disableRateLimiting"
+    ":automergeRequireAllStatusChecks"
   ],
   "packageRules": [
     {
