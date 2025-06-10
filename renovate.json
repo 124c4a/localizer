@@ -4,7 +4,8 @@
     "config:js-lib",
     ":automergePatch",
     ":automergePr",
-    ":automergeRequireAllStatusChecks"
+    ":automergeRequireAllStatusChecks",
+    "schedule:daily"
   ],
   "packageRules": [
     {
