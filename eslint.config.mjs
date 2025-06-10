@@ -1,5 +1,4 @@
 import nx from '@nx/eslint-plugin';
-import { plugins } from '@swc/core';
 import perfectionist from 'eslint-plugin-perfectionist';
 
 export default [
