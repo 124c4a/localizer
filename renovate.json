@@ -14,5 +14,5 @@
       "enabled": false
     }
   ],
-  "labels": ["dependency"]
+  "labels": ["dependencies"]
 }
