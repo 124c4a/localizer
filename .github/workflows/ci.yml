@@ -40,24 +40,27 @@ jobs:
       - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json
         continue-on-error: true
 
-      - name: Annotate Code Linting Results
+      - name: Annotate code linting results
         uses: ataylorme/eslint-annotate-action@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           report-json: 'packages/**/eslint-report.json'
           markdown-report-on-step-summary: true
           fail-on-error: true
-          check-name: 'ESLint Results'
+          check-name: 'ESLint results'
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-      - run: npx nx affected -t test build
+      - name: Build and test
+        run: npx nx affected -t test build
 
       - name: Test Report
         uses: dorny/test-reporter@v2
         if: ${{ !cancelled() }}
         with:
-          name: Test Results # Name of the check run which will be created
-          path: packages/**/jest-junit.xml # Path to test results
+          name: Test results # Name of the check run which will be created
+          path: packages/*/jest-junit.xml # Path to test results
           reporter: jest-junit # Format of test results
+          list-tests: failed
+          use-actions-summary: false

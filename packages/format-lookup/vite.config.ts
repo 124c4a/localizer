@@ -13,10 +13,19 @@ export default defineConfig(() => ({
     globals: true,
     environment: 'node',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    reporters: ['junit', 'default'],
+    reporters: [
+      [
+        'junit',
+        {
+          suiteName: '@localizer/format-lookup',
+        },
+      ] as ['junit', { suiteName?: string }],
+      'default',
+    ],
     outputFile: {
-      junit: './test-output/vitest/jest-junit.xml',
+      junit: 'jest-junit.xml',
     },
+
     coverage: {
       reportsDirectory: './test-output/vitest/coverage',
       provider: 'v8' as const,
