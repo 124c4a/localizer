@@ -4,7 +4,7 @@
 dist/
 tmp/
 out-tsc/
-test-output/
+coverage/
 
 # dependencies
 node_modules
@@ -49,4 +49,3 @@ vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
 eslint-report.json
-jest-junit.xml
