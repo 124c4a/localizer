@@ -1,6 +1,7 @@
 import { loc, RelativeValueFormatter } from '@localizer/core';
-import { computeRelativeTime } from './computeRelativeTime.js';
 import { transform } from '@localizer/transform';
+
+import { computeRelativeTime } from './computeRelativeTime.js';
 import { RelativeTimeFormatOptions } from './options.js';
 
 /**

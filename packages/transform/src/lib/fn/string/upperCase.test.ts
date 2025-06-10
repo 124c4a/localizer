@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { upperCase } from './upperCase.js';
 
 describe('upperCase', () => {

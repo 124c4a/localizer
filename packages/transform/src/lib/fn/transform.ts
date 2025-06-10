@@ -1,4 +1,5 @@
 import { Localizable } from '@localizer/core';
+
 import { Transformer } from '../types/transform.js';
 
 /**

@@ -1,7 +1,8 @@
-import { buildUnitFormatter } from './build.js';
-import { NumberFormatOptions } from './options.js';
 import { UnitValueFormatter } from '@localizer/core';
+
+import { buildUnitFormatter } from './build.js';
 import { CurrencyCode } from './currency.js';
+import { NumberFormatOptions } from './options.js';
 
 /**
  * Creates a formatter for localized currency values.

@@ -1,6 +1,6 @@
 import { Listr } from 'listr2';
-import { fetch } from 'undici';
 import { writeFile } from 'node:fs/promises';
+import { fetch } from 'undici';
 import { read, utils } from 'xlsx';
 
 //----------------------------------------------------------------------------------------------------------------------

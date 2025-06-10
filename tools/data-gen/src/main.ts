@@ -1,7 +1,8 @@
 import { Listr } from 'listr2';
+
+import { currencyTasks } from './currency';
 import { localeTasks } from './locale';
 import { writeUnitTs } from './unit';
-import { currencyTasks } from './currency';
 
 /**
  * Main entry point for the data generation tool.

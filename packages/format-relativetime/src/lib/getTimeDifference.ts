@@ -1,9 +1,9 @@
+import { differenceInDays } from 'date-fns/differenceInDays';
 import { differenceInHours } from 'date-fns/differenceInHours';
 import { differenceInMinutes } from 'date-fns/differenceInMinutes';
-import { differenceInSeconds } from 'date-fns/differenceInSeconds';
-import { differenceInDays } from 'date-fns/differenceInDays';
 import { differenceInMonths } from 'date-fns/differenceInMonths';
 import { differenceInQuarters } from 'date-fns/differenceInQuarters';
+import { differenceInSeconds } from 'date-fns/differenceInSeconds';
 import { differenceInYears } from 'date-fns/differenceInYears';
 
 type TimeDifference = {
