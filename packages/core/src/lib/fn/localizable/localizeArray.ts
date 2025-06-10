@@ -1,6 +1,6 @@
+import { LocaleCode } from '../../consts/locale.js';
 import { Localized } from '../../types/localizable.js';
 import { isLocalizable } from './isLocalizable.js';
-import { LocaleCode } from '../../consts/locale.js';
 
 /**
  * Localizes an array of values based on the provided locale.

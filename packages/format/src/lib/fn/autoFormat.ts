@@ -1,7 +1,8 @@
 import { Empty, isLocalizable, Localizable } from '@localizer/core';
-import { decimal } from '../consts/number.js';
+
 import { date } from '../consts/datetime.js';
 import { list } from '../consts/list.js';
+import { decimal } from '../consts/number.js';
 import { stringify } from './stringify.js';
 
 /**

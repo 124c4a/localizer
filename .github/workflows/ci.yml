@@ -14,11 +14,11 @@ permissions:
 
 jobs:
   main:
+    name: Build and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          filter: tree:0
           fetch-depth: 0
 
       # This enables task distribution via Nx Cloud
@@ -36,16 +36,25 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx affected --ta
+      - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json
         continue-on-error: true
 
-      - name: Annotate Code Linting Results
+      - name: Annotate code linting results
         uses: ataylorme/eslint-annotate-action@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          report-json: '**/eslint_report.json'
+          report-json: 'packages/**/eslint-report.json'
+          markdown-report-on-step-summary: true
+          fail-on-error: true
+          check-name: 'ESLint results'
 
-      # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
-      # - run: npx nx-cloud record -- echo Hello World
-      # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
-      - run: npx nx affected -t test build
+      - name: Build
+        run: npx nx affected -t build
+
+      - name: Test
+        run: npx nx affected -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
+
+      - name: SonarQube scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

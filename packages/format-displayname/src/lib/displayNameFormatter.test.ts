@@ -1,4 +1,5 @@
 import { upperCase } from '@localizer/transform';
+
 import { displayNameFormatter } from './displayNameFormatter.js';
 
 describe('displayNameFormatter', () => {

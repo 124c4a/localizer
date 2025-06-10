@@ -1,4 +1,3 @@
-import { Localizable } from './localizable.js';
 import { LocaleCode } from '../consts/locale.js';
 import {
   RelativeValueFormatter,
@@ -6,6 +5,7 @@ import {
   ValueFormatter,
   ValueRangeFormatter,
 } from './formatter.js';
+import { Localizable } from './localizable.js';
 
 /**
  * Represents a localizer interface that provides methods for formatting and localizing values.

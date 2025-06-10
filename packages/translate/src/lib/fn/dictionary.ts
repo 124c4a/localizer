@@ -1,4 +1,5 @@
 import { Localizable, ValueFormatter } from '@localizer/core';
+
 import { translate, TranslationMap } from './translate.js';
 
 /**

@@ -1,8 +1,8 @@
+import { LocaleCode } from '../../consts/locale.js';
 import { Localizable } from '../../types/localizable.js';
 import { LocalizableValue } from './LocalizableValue.js';
-import { UnlocalizableValue } from './UnlocalizableValue.js';
 import { localizeArray } from './localizeArray.js';
-import { LocaleCode } from '../../consts/locale.js';
+import { UnlocalizableValue } from './UnlocalizableValue.js';
 
 /**
  * Creates a `Localizable` instance based on the provided localization function.

@@ -1,10 +1,11 @@
+import { loc, Configuration, ValueRangeFormatter } from '@localizer/core';
 import {
   DateTimeFormatOptions,
   dateTimeFormatter,
   dateTimeRangeFormatter,
 } from '@localizer/format-datetime';
+
 import { GenericRangeSeparator } from './generic.js';
-import { loc, Configuration, ValueRangeFormatter } from '@localizer/core';
 
 const defaultDateFormatOptions: DateTimeFormatOptions = {
   day: 'numeric',

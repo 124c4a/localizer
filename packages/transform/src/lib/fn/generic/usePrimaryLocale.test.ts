@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { usePrimaryLocale } from './usePrimaryLocale.js';
 
 describe('usePrimaryLocale', () => {

@@ -1,7 +1,7 @@
-import { Localizable } from 'src/lib/types/localizable.js';
-import { toPrimitiveValue } from './toPrimitiveValue.js';
 import { LocaleCode } from '../../consts/locale.js';
+import { Localizable } from '../../types/localizable.js';
 import { ensureImplicitLocalization } from '../localizer/ensureImplicitLocalization.js';
+import { toPrimitiveValue } from './toPrimitiveValue.js';
 
 /**
  * Represents a value that can be localized based on a given locale.

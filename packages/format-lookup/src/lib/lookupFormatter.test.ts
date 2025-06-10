@@ -1,11 +1,12 @@
+import { loc } from '@localizer/core';
+
 import {
-  lookupFormatter,
   UndefinedValue,
+  lookupFormatter,
   NullValue,
   NoValue,
   DefaultValue,
 } from './lookupFormatter.js';
-import { loc } from '@localizer/core';
 
 describe('lookUpFormatter', () => {
   it('returns the correct formatter for a matching value', () => {

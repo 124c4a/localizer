@@ -1,5 +1,5 @@
-import { getLocalizer } from './getLocalizer.js';
 import { loc } from '../localizable/loc.js';
+import { getLocalizer } from './getLocalizer.js';
 
 describe('getLocalizer', () => {
   it('should localize', () => {

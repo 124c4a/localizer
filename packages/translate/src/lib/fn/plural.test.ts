@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { plural, one, other } from './plural.js';
 
 describe('plural function', () => {

@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { capitalize } from './capitalize.js';
 
 describe('capitalize', () => {

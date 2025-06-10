@@ -1,4 +1,5 @@
 import { upperCase } from '@localizer/transform';
+
 import { buildFormatter, buildRangeFormatter } from './build.js';
 
 describe('buildFormatter', () => {

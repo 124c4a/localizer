@@ -1,7 +1,7 @@
 import { Listr } from 'listr2';
-import { parse } from 'yaml';
-import { fetch } from 'undici';
 import { writeFile } from 'node:fs/promises';
+import { fetch } from 'undici';
+import { parse } from 'yaml';
 
 //----------------------------------------------------------------------------------------------------------------------
 // Fetches country and language information from Nominatim and generates a `locale.ts` file

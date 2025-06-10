@@ -1,5 +1,5 @@
-import { configure } from './configure.js';
 import { Configuration } from '../types/configuration.js';
+import { configure } from './configure.js';
 
 type ConfigOptions = {
   property1?: string;

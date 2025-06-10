@@ -1,6 +1,6 @@
-import { isLocalizable } from './isLocalizable.js';
-import { Localized } from '../../types/localizable.js';
 import { LocaleCode } from '../../consts/locale.js';
+import { Localized } from '../../types/localizable.js';
+import { isLocalizable } from './isLocalizable.js';
 
 /**
  * Localizes the properties of an object by resolving `Localizable` values to their localized representations.

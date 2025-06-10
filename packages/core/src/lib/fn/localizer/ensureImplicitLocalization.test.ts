@@ -1,5 +1,5 @@
-import { ensureImplicitLocalization } from './ensureImplicitLocalization.js';
 import { coreOptions } from '../locale/options.js';
+import { ensureImplicitLocalization } from './ensureImplicitLocalization.js';
 
 describe('ensureImplicitLocalization', () => {
   it('throws an error when implicit localization is disabled', () => {
