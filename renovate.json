@@ -6,7 +6,7 @@
     ":automergeTypes",
     ":automergePr",
     ":automergeRequireAllStatusChecks",
-    ":npm:unpublishSafe",
+    "npm:unpublishSafe",
     "schedule:daily",
     ":widenPeerDependencies"
   ],
