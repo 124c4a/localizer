@@ -52,22 +52,18 @@ export async function prepareChangelog(ctx: Context) {
         changeLogLines.push(`### \`${moduleName}\` (${level})`);
         changeLogLines.push('');
         if (moduleChanges[moduleName].some((it) => it.type === 'feature')) {
-          changeLogLines.push(`#### New features`);
-          changeLogLines.push('');
           changeLogLines.push(
             ...moduleChanges[moduleName]
               .filter((it) => it.type === 'feature')
-              .map((change) => `- ${change.description} (${change.hash})`),
+              .map((change) => `- ✨ ${change.description} (${change.hash})`),
           );
           changeLogLines.push('');
         }
         if (moduleChanges[moduleName].some((it) => it.type === 'fix')) {
-          changeLogLines.push(`#### Fixes`);
-          changeLogLines.push('');
           changeLogLines.push(
             ...moduleChanges[moduleName]
               .filter((it) => it.type === 'fix')
-              .map((change) => `- ${change.description} (${change.hash})`),
+              .map((change) => `- 🐛 ${change.description} (${change.hash})`),
           );
           changeLogLines.push('');
         }
