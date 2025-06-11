@@ -3,6 +3,7 @@
   "extends": [
     "config:js-lib",
     ":automergePatch",
+    ":automergeTypes",
     ":automergePr",
     ":automergeRequireAllStatusChecks",
     "schedule:daily"
@@ -12,6 +13,15 @@
       "matchManagers": ["npm"],
       "matchPackageNames": ["@localizer/**"],
       "enabled": false
+    },
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true
     }
   ],
   "labels": ["dependencies"]
