@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { translate } from './translate.js';
 
 const staticTranslation = translate({

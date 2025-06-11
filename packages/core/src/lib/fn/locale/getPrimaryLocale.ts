@@ -1,5 +1,5 @@
-import { parseLocaleCode } from './parseLocaleCode.js';
 import { LocaleCode, primaryLocales } from '../../consts/locale.js';
+import { parseLocaleCode } from './parseLocaleCode.js';
 
 /**
  * Retrieves the primary locale for a given country.

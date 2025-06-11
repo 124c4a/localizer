@@ -1,6 +1,7 @@
+import { UnitValueFormatter } from '@localizer/core';
+
 import { buildUnitFormatter } from './build.js';
 import { NumberFormatOptions } from './options.js';
-import { UnitValueFormatter } from '@localizer/core';
 import { Unit } from './unit.js';
 
 /**

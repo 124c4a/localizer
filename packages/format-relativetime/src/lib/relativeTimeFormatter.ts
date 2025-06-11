@@ -1,4 +1,5 @@
 import { RelativeValueFormatter } from '@localizer/core';
+
 import { buildFormatter } from './build.js';
 import { RelativeTimeFormatOptions } from './options.js';
 

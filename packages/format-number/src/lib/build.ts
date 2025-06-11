@@ -1,11 +1,12 @@
-import { transform } from '@localizer/transform';
-import { NumberFormatOptions } from './options.js';
 import {
   UnitValueFormatter,
   ValueFormatter,
   ValueRangeFormatter,
   loc,
 } from '@localizer/core';
+import { transform } from '@localizer/transform';
+
+import { NumberFormatOptions } from './options.js';
 
 /**
  * Builds a formatter for localized number values based on the provided options.

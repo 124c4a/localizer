@@ -1,7 +1,7 @@
 import { Listr } from 'listr2';
-import { parse } from 'yaml';
-import { fetch } from 'undici';
 import { writeFile } from 'node:fs/promises';
+import { fetch } from 'undici';
+import { parse } from 'yaml';
 
 //----------------------------------------------------------------------------------------------------------------------
 // Fetches country and language information from Nominatim and generates a `locale.ts` file
@@ -123,7 +123,7 @@ function convertNominatimData(ctx: Context) {
 
   ctx.countries.forEach((country) => {
     const countryData = ctx.countrySettings[country.toLowerCase()];
-    const countryLanguages = ((countryData.languages as string) || '')
+    const countryLanguages = (countryData.languages || '')
       .split(',')
       .map((it) => it.trim());
     if (countryLanguages.length > 0) {

@@ -1,5 +1,5 @@
-import { coreOptions } from './options.js';
 import { LocaleCode } from '../../consts/locale.js';
+import { coreOptions } from './options.js';
 
 const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
 

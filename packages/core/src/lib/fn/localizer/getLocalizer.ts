@@ -1,6 +1,6 @@
-import { Localizer } from '../../types/localizer.js';
-import { Localizable } from '../../types/localizable.js';
 import { LocaleCode } from '../../consts/locale.js';
+import { Localizable } from '../../types/localizable.js';
+import { Localizer } from '../../types/localizer.js';
 import { isLocalizable } from '../localizable/isLocalizable.js';
 
 /**
@@ -40,7 +40,7 @@ export function getLocalizer(locale: LocaleCode): Localizer {
       return (...args: A) =>
         (localizable as (...args: A) => Localizable<T>)(...args).localize(
           locale
-        ) as T;
+        );
     }
   };
 

@@ -1,5 +1,5 @@
-import { Localizer } from '../../types/localizer.js';
 import { Localizable } from '../../types/localizable.js';
+import { Localizer } from '../../types/localizer.js';
 import { isLocalizable } from '../localizable/isLocalizable.js';
 import { ensureImplicitLocalization } from './ensureImplicitLocalization.js';
 
@@ -29,7 +29,7 @@ export function getImplicitLocalizer(): Localizer {
       return (...args: A) =>
         (localizable as (...args: A) => Localizable<T>)(...args).localize(
           locale
-        ) as T;
+        );
     }
   };
 

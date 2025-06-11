@@ -1,4 +1,5 @@
 import { loc, Localizable } from '@localizer/core';
+
 import { transform } from './transform.js';
 
 describe('transform', () => {

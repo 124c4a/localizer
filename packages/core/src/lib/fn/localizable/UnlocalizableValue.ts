@@ -1,6 +1,5 @@
-import { toPrimitiveValue } from './toPrimitiveValue.js';
 import { Localizable } from '../../types/localizable.js';
-import { LocaleCode } from '../../consts/locale.js';
+import { toPrimitiveValue } from './toPrimitiveValue.js';
 
 /**
  * Represents a value that cannot be localized.
@@ -67,7 +66,7 @@ export class UnlocalizableValue<T = string> implements Localizable<T> {
    *
    * @internal
    */
-  localize(locale: LocaleCode | null): T {
+  localize(): T {
     return this.value;
   }
 }

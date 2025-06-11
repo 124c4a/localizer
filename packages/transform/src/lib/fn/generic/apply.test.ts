@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { apply } from './apply.js';
 
 describe('apply', () => {

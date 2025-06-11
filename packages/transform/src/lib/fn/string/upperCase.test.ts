@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { upperCase } from './upperCase.js';
 
 describe('upperCase', () => {
@@ -27,7 +28,7 @@ describe('upperCase', () => {
   });
 
   it('converts strings correctly for different locales', () => {
-    const value = loc((locale) => (locale === 'tr' ? 'istanbul' : 'istanbul'));
+    const value = loc`istanbul`;
     const result = upperCase(value);
     expect(result.localize('tr')).toBe('İSTANBUL');
     expect(result.localize('en')).toBe('ISTANBUL');

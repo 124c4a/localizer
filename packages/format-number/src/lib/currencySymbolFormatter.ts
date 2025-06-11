@@ -1,8 +1,8 @@
+import { ValueFormatter, loc } from '@localizer/core';
+
 import { buildUnitFormatter } from './build.js';
-import { loc } from '@localizer/core';
-import { NumberFormatOptions } from './options.js';
-import { ValueFormatter } from '@localizer/core';
 import { CurrencyCode } from './currency.js';
+import { NumberFormatOptions } from './options.js';
 
 /**
  * Creates a formatter for extracting the currency symbol from a currency code.

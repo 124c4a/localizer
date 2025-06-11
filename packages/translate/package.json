@@ -21,6 +21,7 @@
   "dependencies": {
     "@localizer/core": "*",
     "@localizer/format": "*",
+    "@localizer/transform": "*",
     "tslib": "^2.3.0"
   },
   "nx": {

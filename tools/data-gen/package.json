@@ -47,20 +47,20 @@
           "build"
         ],
         "options": {
-          "buildTarget": "@localizer/data-gen:build",
+          "buildTarget": "data-gen:build",
           "runBuildTargetDependencies": false
         },
         "configurations": {
           "development": {
-            "buildTarget": "@localizer/data-gen:build:development"
+            "buildTarget": "data-gen:build:development"
           },
           "production": {
-            "buildTarget": "@localizer/data-gen:build:production"
+            "buildTarget": "data-gen:build:production"
           }
         }
       }
     },
-    "name": "@localizer/data-gen"
+    "name": "data-gen"
   },
   "dependencies": {
     "listr2": "^8.3.3",

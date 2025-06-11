@@ -16,8 +16,6 @@ import { Localizable, loc } from '@localizer/core';
  */
 export function lowerCase(value: Localizable): Localizable {
   return loc((locale) =>
-    value
-      .localize(locale)
-      .toLocaleLowerCase(locale === null ? undefined : locale)
+    value.localize(locale).toLocaleLowerCase(locale ?? undefined)
   );
 }

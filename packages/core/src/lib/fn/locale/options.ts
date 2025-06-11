@@ -1,5 +1,5 @@
-import { Configuration } from '../../types/configuration.js';
 import { LocaleCode } from '../../consts/locale.js';
+import { Configuration } from '../../types/configuration.js';
 
 /**
  * Represents the core options for localization configuration.

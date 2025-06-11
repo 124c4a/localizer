@@ -1,4 +1,5 @@
 import { loc } from '@localizer/core';
+
 import { capitalize } from './capitalize.js';
 
 describe('capitalize', () => {
@@ -27,7 +28,7 @@ describe('capitalize', () => {
   });
 
   it('capitalizes strings correctly for different locales', () => {
-    const value = loc((locale) => (locale === 'tr' ? 'istanbul' : 'istanbul'));
+    const value = loc`istanbul`;
     const result = capitalize(value);
     expect(result.localize('tr')).toBe('İstanbul');
     expect(result.localize('en')).toBe('Istanbul');

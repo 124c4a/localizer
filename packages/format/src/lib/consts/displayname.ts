@@ -1,6 +1,6 @@
+import { CountryCode, loc, LocaleCode, ValueFormatter } from '@localizer/core';
 import { displayNameFormatter } from '@localizer/format-displayname';
 import { CurrencyCode, currencyFormatter } from '@localizer/format-number';
-import { CountryCode, loc, LocaleCode, ValueFormatter } from '@localizer/core';
 
 const currencySymbolFormatter = currencyFormatter({
   currencyDisplay: 'symbol',

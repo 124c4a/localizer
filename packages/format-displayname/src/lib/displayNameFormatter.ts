@@ -1,5 +1,6 @@
-import { transform } from '@localizer/transform';
 import { ValueFormatter, loc } from '@localizer/core';
+import { transform } from '@localizer/transform';
+
 import { DisplayNameFormatOptions } from './options.js';
 
 /**

@@ -12,7 +12,8 @@ describe('loc', () => {
   });
 
   it('returns LocalizableValue for template literal with expressions', () => {
-    const result = loc`Value: ${loc((locale) => `dynamic ${locale}`)}`;
+    const nested = loc((locale) => `dynamic ${locale}`);
+    const result = loc`Value: ${nested}`;
     expect(result.localize('en-US')).toBe('Value: dynamic en-US');
   });
 

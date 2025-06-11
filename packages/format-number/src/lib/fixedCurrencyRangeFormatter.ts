@@ -1,7 +1,8 @@
-import { buildRangeFormatter } from './build.js';
-import { NumberFormatOptions } from './options.js';
 import { ValueRangeFormatter } from '@localizer/core';
+
+import { buildRangeFormatter } from './build.js';
 import { CurrencyCode } from './currency.js';
+import { NumberFormatOptions } from './options.js';
 
 /**
  * Creates a formatter for localized fixed currency ranges.
