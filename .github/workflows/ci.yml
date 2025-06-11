@@ -6,7 +6,7 @@ on:
 permissions:
   actions: read
   contents: read
-  pull-requests: read
+  pull-requests: write
   checks: write
 
 jobs:
@@ -48,3 +48,12 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Prepare changelog
+        run: node tools/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
+
+      - name: Create changelog comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: tmp/CHANGELOG.md
+          recreate: true
