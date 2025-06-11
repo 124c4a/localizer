@@ -6,17 +6,15 @@
     ":automergeTypes",
     ":automergePr",
     ":automergeRequireAllStatusChecks",
-    "schedule:daily"
+    ":npm:unpublishSafe",
+    "schedule:daily",
+    ":widenPeerDependencies"
   ],
   "packageRules": [
     {
       "matchManagers": ["npm"],
       "matchPackageNames": ["@localizer/**"],
       "enabled": false
-    },
-    {
-      "matchDatasources": ["npm"],
-      "minimumReleaseAge": "3 days"
     },
     {
       "matchDepTypes": ["devDependencies"],
