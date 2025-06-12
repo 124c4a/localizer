@@ -1,6 +1,6 @@
 import { execa } from 'execa';
 
-import { Change, Context } from './common';
+import { Change, ChangeType, Context } from './common';
 import { getModuleName } from './resolveModuleNames';
 
 function getFilenames(path: string): [oldName: string, newName: string] {
@@ -17,6 +17,17 @@ function getFilenames(path: string): [oldName: string, newName: string] {
     parts[0] + pathParts[0] + parts[2],
     parts[0] + pathParts[1] + parts[2],
   ];
+}
+
+function parseCommitType(type?: string): ChangeType {
+  switch (true) {
+    case type?.trim().startsWith('feat'):
+      return 'feature';
+    case type?.trim().startsWith('fix'):
+      return 'fix';
+    default:
+      return 'other'; // Default type for unrecognized types
+  }
 }
 
 export async function fetchDiff(
@@ -66,16 +77,7 @@ export async function fetchDiff(
       if (match) {
         const [_, hash, type, message] = match;
         currentChange.hash = hash;
-        switch (true) {
-          case type?.trim().startsWith('feat'):
-            currentChange.type = 'feature';
-            break;
-          case type?.trim().startsWith('fix'):
-            currentChange.type = 'fix';
-            break;
-          default:
-            currentChange.type = 'other'; // Default type for unrecognized types
-        }
+        currentChange.type = parseCommitType(type);
         currentChange.description = message.trim();
       }
     } else {
