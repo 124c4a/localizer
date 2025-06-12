@@ -1,8 +1,6 @@
 import { readFile } from 'node:fs/promises';
 
-import { Context } from './common';
-
-async function getModuleName(
+export async function getModuleName(
   filePath: string,
   map: Record<string, string>,
 ): Promise<string> {
@@ -10,6 +8,10 @@ async function getModuleName(
     return map[filePath];
   }
   // Test if `package.json` exists in the directory of the file and read it
+  if (!filePath || !filePath.includes('/')) {
+    map[filePath] = 'unknown';
+    return 'unknown';
+  }
   const packageJsonPath = filePath.replace(/\/[^/]+$/, '/package.json');
   try {
     // Read package.json file as string and parse it as JSON
@@ -21,7 +23,9 @@ async function getModuleName(
     // parse the content as JSON
     const packageJson = JSON.parse(content.toString());
 
-    if (packageJson.name) {
+    console.log(packageJsonPath, packageJson.name, packageJson.private);
+
+    if (packageJson.name && !packageJson.private) {
       map[filePath] = packageJson.name;
       return packageJson.name;
     } else {
@@ -38,13 +42,4 @@ async function getModuleName(
   }
   map[filePath] = 'unknown';
   return 'unknown';
-}
-
-export async function resolveModuleNames(ctx: Context) {
-  ctx.fileChanges = ctx.fileChanges ?? {};
-  ctx.moduleNames = ctx.moduleNames ?? {};
-  const files = Object.keys(ctx.fileChanges);
-  for (const file of files) {
-    await getModuleName(file, ctx.moduleNames);
-  }
 }

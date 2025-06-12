@@ -55,5 +55,5 @@ jobs:
       - name: Create changelog comment
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          path: tmp/CHANGELOG.md
+          path: tmp/CHANGESET.md
           recreate: true

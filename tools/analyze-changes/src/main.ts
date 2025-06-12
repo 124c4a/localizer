@@ -3,9 +3,8 @@ import { parseArgs } from 'node:util';
 
 import { Context } from './common';
 import { fetchDiff } from './fetchDiff';
-import { prepareChangelog } from './prepareChangelog';
-import { resolveChanges } from './resolveChanges';
-import { resolveModuleNames } from './resolveModuleNames';
+import { writeChangelevel } from './writeChangelevel';
+import { writeChangeset } from './writeChangeset';
 
 const options = {
   baseRef: {
@@ -44,24 +43,19 @@ const tasks = new Listr<Context>(
         fetchDiff(ctx, args.baseRef as string, args.headRef as string),
     },
     {
-      title: 'Resolving changes',
-      task: (ctx) =>
-        resolveChanges(ctx, args.baseRef as string, args.headRef as string),
+      title: 'Write change level',
+      task: writeChangelevel,
     },
     {
-      title: 'Resolving module names',
-      task: (ctx) => resolveModuleNames(ctx),
-    },
-    {
-      title: 'Prepare changelogs',
-      task: (ctx) => prepareChangelog(ctx),
+      title: 'Write change set',
+      task: writeChangeset,
     },
     // {
     //   title: '[DEBUG] Printing context',
     //   task: (ctx) => printContext(ctx),
     // },
   ],
-  { concurrent: false },
+  { concurrent: false, ctx: { changes: [], moduleMap: {} } as Context },
 );
 
 tasks

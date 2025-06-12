@@ -1,17 +1,15 @@
 export type Change = {
-  type: 'feature' | 'fix';
+  type: ChangeType;
   hash: string;
   description: string;
+  changeLevel: Record<string, ChangeLevel>;
 };
+
+export type ChangeType = 'feature' | 'fix' | 'other';
 
 export type ChangeLevel = 'major' | 'minor' | 'patch';
 
 export type Context = {
-  majorChanges?: string[];
-  minorChanges?: string[];
-
-  moduleNames?: Record<string, string>;
-  fileChanges?: Record<string, Change[]>;
-  moduleChanges?: Record<string, Change[]>;
-  moduleLevels?: Record<string, ChangeLevel>;
+  changes: Change[];
+  moduleMap: Record<string, string>;
 };
