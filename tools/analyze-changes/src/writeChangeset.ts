@@ -50,7 +50,7 @@ export async function writeChangeset(ctx: Context) {
   const lines: string[] = [];
 
   if (modules.length === 0) {
-    lines.push('### No significant changes detected');
+    lines.push('### No notable changes detected');
     lines.push('');
   } else {
     lines.push('### Overview of changes');
