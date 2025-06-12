@@ -44,10 +44,10 @@ describe('translate function', () => {
 
   it('returns fallback for empty translation map', () => {
     expect(emptyTranslationWithKey.localize('en')).toBe(
-      'emptyTranslationWithKey'
+      'emptyTranslationWithKey',
     );
     expect(emptyTranslationWithoutKey.localize('en')).toBe(
-      '[anonymous translation]'
+      '[anonymous translation]',
     );
   });
 });

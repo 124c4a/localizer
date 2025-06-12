@@ -35,6 +35,9 @@
     },
     {
       "path": "./packages/format-lookup"
+    },
+    {
+      "path": "./tools/analyze-changes"
     }
   ]
 }

@@ -6,7 +6,7 @@ on:
 permissions:
   actions: read
   contents: read
-  pull-requests: read
+  pull-requests: write
   checks: write
 
 jobs:
@@ -48,3 +48,56 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Prepare changelog
+        run: node tools/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
+
+      - name: Create changelog comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          path: tmp/CHANGESET.md
+          recreate: true
+
+      # Read tmp/CHANGELABEL and update PR labels
+      - name: Read change level label
+        run: |
+          if [ -f tmp/CHANGELEVEL ]; then
+            CHANGELEVEL=$(cat tmp/CHANGELEVEL)
+            echo "CHANGELEVEL=semver:$CHANGELEVEL" >> $GITHUB_ENV
+          else
+            echo "No changelog label found."
+          fi
+      - name: Set PR label
+        if: env.CHANGELEVEL != ''
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const label = process.env.CHANGELEVEL;
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            // Remove old labels if needed
+            const existingLabels = pullRequest.labels.map(l => l.name);
+            for (const existingLabel of existingLabels) {
+              if (existingLabel.startsWith('semver:') && existingLabel !== label) {
+                await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: existingLabel,
+                });
+              }
+            }
+
+            // Add the new label if not already present
+            if (!existingLabels.includes(label)) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: [label],
+              });
+            }

@@ -50,3 +50,5 @@ vitest.config.*.timestamp*
 
 eslint-report.json
 sonar-report.xml
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
