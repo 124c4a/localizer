@@ -47,10 +47,12 @@ export async function fetchDiff(
     changeLevel: {},
   };
 
+  const commitRegex = /^([a-f0-9]+) ([a-z()!]+:)?(.*)$/;
+
   for (const line of stdout.split('\n').filter(Boolean)) {
     if (!line.includes('\t')) {
       if (currentChange.hash) {
-        ctx.changes.push(currentChange as Change);
+        ctx.changes.push(currentChange);
       }
       currentChange = {
         type: 'other',
@@ -60,7 +62,7 @@ export async function fetchDiff(
       };
 
       // Parse commit line
-      const match = line.match(/^([a-f0-9]+) ([a-z()!]+:)?(.*)$/);
+      const match = commitRegex.exec(line);
       if (match) {
         const [_, hash, type, message] = match;
         currentChange.hash = hash;
@@ -83,28 +85,37 @@ export async function fetchDiff(
       const moduleName = await getModuleName(newName, ctx.moduleMap);
 
       if (newName.includes('.spec.')) {
-        switch (true) {
-          case +deleted > 0:
-            currentChange.changeLevel[moduleName] = 'major';
-            break;
-          case +added > 0 && currentChange.changeLevel[moduleName] !== 'major':
-            currentChange.changeLevel[moduleName] = 'minor';
-            break;
-          case !oldName.includes('.spec.') &&
-            currentChange.changeLevel[moduleName] !== 'major':
-            currentChange.changeLevel[moduleName] = 'minor';
-            break;
-          default:
-            if (!currentChange.changeLevel[moduleName]) {
-              currentChange.changeLevel[moduleName] = 'patch';
-            }
-        }
+        classifyChangeLevel(added, deleted, oldName, moduleName, currentChange);
       } else if (!currentChange.changeLevel[moduleName]) {
         currentChange.changeLevel[moduleName] = 'patch';
       }
     }
   }
   if (currentChange.hash) {
-    ctx.changes.push(currentChange as Change);
+    ctx.changes.push(currentChange);
+  }
+}
+function classifyChangeLevel(
+  added: string,
+  deleted: string,
+  oldName: string,
+  moduleName: string,
+  currentChange: Change,
+) {
+  switch (true) {
+    case +deleted > 0:
+      currentChange.changeLevel[moduleName] = 'major';
+      break;
+    case +added > 0 && currentChange.changeLevel[moduleName] !== 'major':
+      currentChange.changeLevel[moduleName] = 'minor';
+      break;
+    case !oldName.includes('.spec.') &&
+      currentChange.changeLevel[moduleName] !== 'major':
+      currentChange.changeLevel[moduleName] = 'minor';
+      break;
+    default:
+      if (!currentChange.changeLevel[moduleName]) {
+        currentChange.changeLevel[moduleName] = 'patch';
+      }
   }
 }

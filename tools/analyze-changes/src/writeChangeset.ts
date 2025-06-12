@@ -42,7 +42,7 @@ function collectModules(changes: Change[]): string[] {
     });
   });
 
-  return Array.from(modules).sort();
+  return Array.from(modules).sort((a, b) => a.localeCompare(b));
 }
 
 export async function writeChangeset(ctx: Context) {
@@ -82,15 +82,20 @@ function writeModuleChanges(
 ) {
   const maxLevel: ChangeLevel = changes.reduce((max, change) => {
     const level = change.changeLevel[module];
-    return level && (max === 'major' || level === 'major')
-      ? 'major'
-      : level && (max === 'minor' || level === 'minor')
-        ? 'minor'
-        : max;
+    if (level) {
+      if (max === 'major' || level === 'major') {
+        return 'major';
+      } else if (max === 'minor' || level === 'minor') {
+        return 'minor';
+      }
+    }
+    return max;
   }, 'patch' as ChangeLevel);
 
-  lines.push(`\`${module}\` (${getChangeLevelIcon(maxLevel)})`);
-  lines.push('');
+  lines.push(
+    `<details><summary>${module} (${getChangeLevelIcon(maxLevel)})</summary>`,
+    ``,
+  );
 
   const moduleChanges: Change[] = changes
     .filter((change) => Object.keys(change.changeLevel).includes(module))
@@ -115,6 +120,6 @@ function writeModuleChanges(
       .forEach((change) => writeChange(change, module, '', lines));
   }
 
-  lines.push('');
+  lines.push('', '</details>');
   lines.push('');
 }
