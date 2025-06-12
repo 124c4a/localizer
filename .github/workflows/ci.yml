@@ -61,18 +61,18 @@ jobs:
       # Read tmp/CHANGELABEL and update PR labels
       - name: Update PR labels
         run: |
-          if [ -f tmp/CHANGELABEL ]; then
-            CHANGELABEL=$(cat tmp/CHANGELABEL)
-            echo "LABEL=semver:$CHANGELABEL" >> $GITHUB_ENV
+          if [ -f tmp/CHANGELEVEL ]; then
+            CHANGELEVEL=$(cat tmp/CHANGELEVEL)
+            echo "LABEL=semver:$CHANGELEVEL" >> $GITHUB_ENV
           else
             echo "No changelog label found."
           fi
       - name: Set PR label
-        if: env.CHANGELABEL != ''
+        if: env.CHANGELEVEL != ''
         uses: actions/github-script@v6
         with:
           script: |
-            const label = process.env.CHANGELABEL;
+            const label = process.env.CHANGELEVEL;
             const { data: pullRequest } = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
