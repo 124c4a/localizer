@@ -25,8 +25,6 @@ export async function getModuleName(
     // parse the content as JSON
     const packageJson = JSON.parse(content.toString());
 
-    console.log(packageJsonPath, packageJson.name, packageJson.private);
-
     if (packageJson.name && !packageJson.private) {
       map[filePath] = packageJson.name;
       return packageJson.name;
