@@ -59,11 +59,11 @@ jobs:
           recreate: true
 
       # Read tmp/CHANGELABEL and update PR labels
-      - name: Update PR labels
+      - name: Read change level label
         run: |
           if [ -f tmp/CHANGELEVEL ]; then
             CHANGELEVEL=$(cat tmp/CHANGELEVEL)
-            echo "LABEL=semver:$CHANGELEVEL" >> $GITHUB_ENV
+            echo "CHANGELEVEL=semver:$CHANGELEVEL" >> $GITHUB_ENV
           else
             echo "No changelog label found."
           fi
