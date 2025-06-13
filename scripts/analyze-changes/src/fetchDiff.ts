@@ -81,7 +81,7 @@ export async function fetchDiff(
         // Remove PR number from message if present
         currentChange.description = message
           .replace(/\(#\d+\)$/g, '')
-          .replace(/^\s+|\s+$/g, ''); // Trim whitespace
+          .trim();
       }
     } else {
       const [added, deleted, filePath] = line.split('\t');
