@@ -63,7 +63,7 @@ jobs:
         run: |
           if [ -f tmp/CHANGELEVEL ]; then
             echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
-            echo "MODULES=semver:$(cat tmp/MODULES)" >> $GITHUB_ENV
+            echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
           else
             echo "No changelog label found."
           fi
@@ -107,7 +107,7 @@ jobs:
 
             let metadata;
 
-            const match = message.match(ConventionalCommitRegex);
+            const match = github.context.payload.pull_request.title.match(ConventionalCommitRegex);
 
             if (!match) {
               metadata = {
