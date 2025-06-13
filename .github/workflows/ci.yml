@@ -107,7 +107,7 @@ jobs:
 
             let metadata;
 
-            const message = github.context.payload.pull_request.title;
+            const message = context.payload.pull_request.title;
             const match = message.match(ConventionalCommitRegex);
 
             if (!match) {
