@@ -1,6 +1,28 @@
 {
   "name": "@localizer/format-datetime",
   "version": "0.0.1",
+  "description": "Format library for Localizer, providing utilities for formatting dates, numbers, and other data types in a locale-aware manner.",
+  "keywords": [
+    "localization",
+    "globalization",
+    "i18n",
+    "l10n",
+    "internationalization",
+    "localizer",
+    "formatting",
+    "date formatting",
+    "number formatting"
+  ],
+  "license": "Apache-2.0",
+  "author": "Artem Godin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/124c4a/localizer.git",
+    "directory": "packages/format-datetime"
+  },
+  "bugs": {
+    "url": "https://github.com/124c4a/localizer/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
