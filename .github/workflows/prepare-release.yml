@@ -42,7 +42,7 @@ jobs:
         run: |
           if [ -f tmp/CHANGELEVEL ]; then
             echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
-            echo "MODULES=semver:$(cat tmp/MODULES)" >> $GITHUB_ENV
+            echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
           else
             echo "No changelog label found."
           fi
