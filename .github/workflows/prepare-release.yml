@@ -1,0 +1,63 @@
+name: Prepare release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: write
+
+jobs:
+  main:
+    name: Prepare release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci --legacy-peer-deps
+      - uses: nrwl/nx-set-shas@v4
+
+      - run: npx nx affected -t lint
+
+      - name: Build and test
+        run: npx nx affected -t build,test --parallel --maxParallel=4
+
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: latest-tag
+        with:
+          initial_version: 'HEAD'
+
+      - name: Prepare changelog
+        run: node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag }} --headRef=HEAD --plan
+
+      - name: Read change level label
+        run: |
+          if [ -f tmp/CHANGELEVEL ]; then
+                  CHANGELEVEL=$(cat tmp/CHANGELEVEL)
+                  echo "CHANGELEVEL=semver:$CHANGELEVEL" >> $GITHUB_ENV
+              else
+                  echo "No changelog label found."
+              fi
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: Prepare release'
+          title: 'Release next ${{ env.CHANGELEVEL }} version'
+          body-path: .nx/version-plans/next.md
+          branch: 'release'
+          delete-branch: true
+          labels: 'release'
+          add-paths: .nx/version-plans/*.md
+          sign-commits: true
+          assignees: 124c4a
+          reviewers: 124c4a

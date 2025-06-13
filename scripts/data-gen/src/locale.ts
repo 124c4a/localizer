@@ -50,12 +50,12 @@ async function fetchAndParseNominatimData(url: string) {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch Nominatim data from ${url}: ${response.statusText}`
+      `Failed to fetch Nominatim data from ${url}: ${response.statusText}`,
     );
   }
 
   return parse(
-    (await response.text()).split('!include').join('ignore include')
+    (await response.text()).split('!include').join('ignore include'),
   );
 }
 
@@ -67,10 +67,10 @@ async function fetchAndParseNominatimData(url: string) {
 async function fetchNominatimData(ctx: Context) {
   ctx.countrySettings = {
     ...(await fetchAndParseNominatimData(
-      'https://raw.githubusercontent.com/osm-search/Nominatim/refs/tags/v4.1.0/settings/country_settings.yaml'
+      'https://raw.githubusercontent.com/osm-search/Nominatim/refs/tags/v4.1.0/settings/country_settings.yaml',
     )),
     ...(await fetchAndParseNominatimData(
-      'https://raw.githubusercontent.com/osm-search/Nominatim/refs/heads/master/settings/country_settings.yaml'
+      'https://raw.githubusercontent.com/osm-search/Nominatim/refs/heads/master/settings/country_settings.yaml',
     )),
   };
 }
@@ -82,11 +82,11 @@ async function fetchNominatimData(ctx: Context) {
  */
 async function fetchIanaLanguageRegistry(ctx: Context) {
   const response = await fetch(
-    'https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry'
+    'https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry',
   );
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch IANA language registry: ${response.statusText}`
+      `Failed to fetch IANA language registry: ${response.statusText}`,
     );
   }
 
@@ -117,7 +117,7 @@ async function fetchIanaLanguageRegistry(ctx: Context) {
  */
 function convertNominatimData(ctx: Context) {
   ctx.countries = Object.keys(ctx.countrySettings).map((it) =>
-    it.toUpperCase()
+    it.toUpperCase(),
   );
   ctx.primaryLocales = {};
 

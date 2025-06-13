@@ -46,14 +46,14 @@ async function fetchAndParseData(url: string, sheet: string) {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch SIX Group data from ${url}: ${response.statusText}`
+      `Failed to fetch SIX Group data from ${url}: ${response.statusText}`,
     );
   }
 
   const excelData = read(Buffer.from(await response.arrayBuffer()));
   const data: Record<string, string>[] = utils.sheet_to_json(
     excelData.Sheets[sheet],
-    { range: 3 }
+    { range: 3 },
   );
 
   if (data.length === 0 || !data[0]['Alphabetic Code']) {
@@ -62,8 +62,8 @@ async function fetchAndParseData(url: string, sheet: string) {
 
   return Array.from(
     new Set(
-      data.map((it) => it['Alphabetic Code']).filter((it) => it !== undefined)
-    )
+      data.map((it) => it['Alphabetic Code']).filter((it) => it !== undefined),
+    ),
   ).sort((a, b) => a.localeCompare(b));
 }
 
@@ -75,7 +75,7 @@ async function fetchAndParseData(url: string, sheet: string) {
 async function fetchActualCodes(ctx: Context) {
   ctx.actual = await fetchAndParseData(
     'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xls',
-    'Active'
+    'Active',
   );
 }
 
@@ -87,7 +87,7 @@ async function fetchActualCodes(ctx: Context) {
 async function fetchHistoricalCodes(ctx: Context) {
   ctx.historical = await fetchAndParseData(
     'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-three.xls',
-    'Historic'
+    'Historic',
   );
 }
 

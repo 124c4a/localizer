@@ -26,7 +26,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json
+      - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json --parallel --maxParallel=4
         continue-on-error: true
 
       - name: Annotate code linting results
@@ -39,7 +39,7 @@ jobs:
           check-name: 'ESLint results'
 
       - name: Build
-        run: npx nx affected -t build
+        run: npx nx affected -t build --parallel --maxParallel=4
 
       - name: Test
         run: npx nx affected -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
@@ -50,7 +50,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Prepare changelog
-        run: node tools/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
+        run: node scripts/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
 
       - name: Create changelog comment
         uses: marocchino/sticky-pull-request-comment@v2

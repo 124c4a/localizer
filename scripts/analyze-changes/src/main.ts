@@ -3,14 +3,17 @@ import { parseArgs } from 'node:util';
 
 import { Context } from './common';
 import { fetchDiff } from './fetchDiff';
-import { writeChangelevel } from './writeChangelevel';
-import { writeChangeset } from './writeChangeset';
+import {
+  writeChangeset,
+  writeChangelevel,
+  writeVersionPlan,
+} from './writeChangeset';
 
 const options = {
   baseRef: {
     type: 'string',
     short: 'b',
-    default: '',
+    default: '5742dd1231e343378b037136d5e4f3453c3e7895',
     help: 'Base reference.',
   },
   headRef: {
@@ -18,6 +21,12 @@ const options = {
     short: 'h',
     default: 'HEAD',
     help: 'Head reference.',
+  },
+  plan: {
+    type: 'boolean',
+    short: 'p',
+    default: true,
+    help: 'Create a plan for the changes.',
   },
 } as const;
 
@@ -49,6 +58,11 @@ const tasks = new Listr<Context>(
     {
       title: 'Write change set',
       task: writeChangeset,
+    },
+    {
+      title: 'Generate version bump plan',
+      task: writeVersionPlan,
+      enabled: Boolean(args.plan),
     },
     // {
     //   title: '[DEBUG] Printing context',
