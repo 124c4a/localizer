@@ -88,7 +88,7 @@ export async function writeChangelevel(ctx: Context) {
   ).sort((a, b) => a.localeCompare(b));
 
   let preparedModules;
-  if (modules.length > 0 && modules.length < 5) {
+  if (modules.length > 0 && modules.length < 4) {
     preparedModules = modules.join(',');
   } else {
     preparedModules = '';
