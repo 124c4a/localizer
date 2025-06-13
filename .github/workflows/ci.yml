@@ -107,7 +107,8 @@ jobs:
 
             let metadata;
 
-            const match = context.payload.pull_request.title.match(ConventionalCommitRegex);
+            const message = github.context.payload.pull_request.title;
+            const match = message.match(ConventionalCommitRegex);
 
             if (!match) {
               metadata = {
@@ -130,7 +131,7 @@ jobs:
 
             const newTitle = `${metadata.type}${metadata.scope ? `(${metadata.scope})` : ''}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
 
-            if (newTitle !== context.payload.pull_request.title) {
+            if (newTitle !== message) {
               await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
