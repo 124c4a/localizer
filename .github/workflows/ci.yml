@@ -126,8 +126,8 @@ jobs:
               };
             }
 
-            metadata.scope = process.env.MODULES || metadata.scope;
-            metadata.breaking = metadata.breaking || (process.env.CHANGELEVEL === 'major');
+            metadata.scope = process.env.MODULES;
+            metadata.breaking = (process.env.CHANGELEVEL === 'major');
 
             const newTitle = `${metadata.type}${metadata.scope ? `(${metadata.scope})` : ''}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
 
