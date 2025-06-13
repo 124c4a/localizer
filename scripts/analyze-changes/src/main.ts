@@ -3,14 +3,13 @@ import { parseArgs } from 'node:util';
 
 import { Context } from './common';
 import { fetchDiff } from './fetchDiff';
-import { writeChangelevel } from './writeChangelevel';
-import { writeChangeset } from './writeChangeset';
+import { writeChangeset, writeChangelevel } from './writeChangeset';
 
 const options = {
   baseRef: {
     type: 'string',
     short: 'b',
-    default: '',
+    default: '5742dd1231e343378b037136d5e4f3453c3e7895',
     help: 'Base reference.',
   },
   headRef: {
@@ -50,10 +49,6 @@ const tasks = new Listr<Context>(
       title: 'Write change set',
       task: writeChangeset,
     },
-    // {
-    //   title: '[DEBUG] Printing context',
-    //   task: (ctx) => printContext(ctx),
-    // },
   ],
   { concurrent: false, ctx: { changes: [], moduleMap: {} } as Context },
 );

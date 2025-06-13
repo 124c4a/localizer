@@ -26,7 +26,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json
+      - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json --parallel --maxParallel=4
         continue-on-error: true
 
       - name: Annotate code linting results
@@ -39,7 +39,7 @@ jobs:
           check-name: 'ESLint results'
 
       - name: Build
-        run: npx nx affected -t build
+        run: npx nx affected -t build --parallel --maxParallel=4
 
       - name: Test
         run: npx nx affected -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
@@ -50,7 +50,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Prepare changelog
-        run: node tools/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
+        run: node scripts/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
 
       - name: Create changelog comment
         uses: marocchino/sticky-pull-request-comment@v2
@@ -62,12 +62,12 @@ jobs:
       - name: Read change level label
         run: |
           if [ -f tmp/CHANGELEVEL ]; then
-            CHANGELEVEL=$(cat tmp/CHANGELEVEL)
-            echo "CHANGELEVEL=semver:$CHANGELEVEL" >> $GITHUB_ENV
+            echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
+            echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
           else
             echo "No changelog label found."
           fi
-      - name: Set PR label
+      - name: Update PR
         if: env.CHANGELEVEL != ''
         uses: actions/github-script@v6
         with:
@@ -99,5 +99,43 @@ jobs:
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
                 labels: [label],
+              });
+            }
+
+            const ConventionalCommitRegex =
+              /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?: (?<description>.+)/i;
+
+            let metadata;
+
+            const message = context.payload.pull_request.title;
+            const match = message.match(ConventionalCommitRegex);
+
+            if (!match) {
+              metadata = {
+                type: 'chore',
+                scope: '',
+                description: message,
+                breaking: false,
+              };
+            } else {
+              metadata = {
+                type: match.groups.type || 'chore',
+                scope: match.groups.scope || '',
+                description: match.groups.description || '',
+                breaking: !!match.groups.breaking,
+              };
+            }
+
+            metadata.scope = process.env.MODULES;
+            metadata.breaking = (process.env.CHANGELEVEL === 'major');
+
+            const newTitle = `${metadata.type}${metadata.scope ? `(${metadata.scope})` : ''}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
+
+            if (newTitle !== message) {
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                title: newTitle,
               });
             }

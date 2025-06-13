@@ -1,90 +1,119 @@
-# ProcountorLocalizer
+# `@localizer`: Type-safe localization, formatting and translation library
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/124c4a/localizer/ci-full.yml)
+![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/124c4a_localizer?server=https%3A%2F%2Fsonarcloud.io)
+![Sonar Coverage](https://img.shields.io/sonar/coverage/124c4a_localizer?server=https%3A%2F%2Fsonarcloud.io)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/124c4a/localizer)
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## About the Project
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+`@localizer` is a powerful and flexible library designed to simplify localization, formatting, and translation in your applications. It provides a type-safe approach to managing localized content, ensuring consistency and reducing runtime errors. With `@localizer`, you can easily handle multiple languages, date and number formatting, and dynamic translations, all while maintaining clean and maintainable code.
 
-## Finish your CI setup
+## Highlights
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/SlHes2ZWkj)
+- **Type-safe Localization**: Ensures compile-time safety for translations and reduces runtime errors.
+- **Flexible Formatting**: Supports date, number, and custom formatting for various locales.
+- **Dynamic Translations**: Easily handle runtime language switching and dynamic content.
+- **Multi-language Support**: Simplifies managing multiple languages in your application.
+- **Clean API**: Provides an intuitive and maintainable API for developers.
+- **Lightweight and Performant**: Optimized for performance without adding unnecessary overhead.
+- **Extensible**: Easily extendable to meet custom localization needs.
 
+## Modules
 
-## Generate a library
+`@localizer` is organized into several modules to provide a modular and flexible approach to localization and formatting:
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
-```
+### Core Modules
 
-## Run tasks
+- **`@localizer/core`**: The foundation of the library, providing essential utilities for localization.
+- **`@localizer/transform`**: Provides locale-dependent transformations of translations and formatted values.
 
-To build the library use:
+### Formatters
 
-```sh
-npx nx build pkg1
-```
+- **`@localizer/format`**: Provides built-in formatting for dates, numbers, and other custom formats across different locales.
+- **`@localizer/format-datetime`**: Formatters for dates, times and their ranges.
+- **`@localizer/format-displayname`**: Formatters for display names (languages, countries, currencies).
+- **`@localizer/format-list`**: Formatters for lists of items.
+- **`@localizer/format-lookup`**: Formatters based on look-up tables.
+- **`@localizer/format-number`**: Formatters for numbers, measurements and monetary amounts.
+- **`@localizer/format-relativetime`**: Formatters for relative time.
 
-To run any task with Nx use:
+### Translation support
 
-```sh
-npx nx <target> <project-name>
-```
+- **`@localizer/translate`**: TypeScript-native translation library.
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+These modules can be used independently or together, depending on your application's requirements.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Versioning
 
-## Versioning and releasing
+`@localizer` follows [Semantic Versioning](https://semver.org/) to ensure clarity and predictability in version updates. The version numbers are structured as `MAJOR.MINOR.PATCH`, where:
 
-To version and release the library use
+- **MAJOR**: Increments when there are incompatible API changes.
+- **MINOR**: Increments when new features are added in a backward-compatible manner.
+- **PATCH**: Increments when backward-compatible bug fixes are introduced.
 
-```
-npx nx release
-```
+### Release Process
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+1. **Development**: All changes are made in feature branches and merged into the `main` branch after review.
+2. **Pre-release Testing**: Each release undergoes thorough testing to ensure stability and compatibility.
+3. **Version Tagging**: Once a release is ready, it is tagged with the appropriate version number.
+4. **Publishing**: The release is published to npm and other relevant platforms.
 
-[Learn more about Nx release &raquo;](hhttps://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Compatibility
 
-## Keep TypeScript project references up to date
+We strive to maintain backward compatibility within the same major version. Breaking changes will be clearly documented in the release notes.
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
+For detailed information about changes in each release, refer to the [Changelog](CHANGELOG.md).
 
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
+## Contribution Guide
 
-```sh
-npx nx sync
-```
+We welcome contributions to `@localizer`! Whether you're fixing bugs, adding new features, or improving documentation, your help is greatly appreciated. Follow the steps below to get started:
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
+### Getting Started
 
-```sh
-npx nx sync:check
-```
+1. **Fork the Repository**: Click the "Fork" button on the GitHub repository to create your own copy.
+2. **Clone the Repository**: Clone your forked repository to your local machine:
+   ```bash
+   git clone https://github.com/<your-username>/localizer.git
+   ```
+3. **Install Dependencies**: Navigate to the project directory and install the required dependencies:
+   ```bash
+   cd localizer
+   npm install
+   ```
 
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+### Making Changes
 
+1. **Create a Branch**: Create a new branch for your changes:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+2. **Make Your Changes**: Implement your changes in the codebase.
+3. **Run Tests**: Ensure all tests pass before committing your changes:
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+   ```bash
+   npx nx test <module>
 
-## Install Nx Console
+   # for example:
+   npx nx test format-number
+   ```
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+4. **Commit Your Changes**: Write a clear and concise commit message:
+   ```bash
+   git commit -m "feat: Added new feature"
+   ```
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Submitting Your Changes
 
-## Useful links
+1. **Push Your Branch**: Push your changes to your forked repository:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+2. **Open a Pull Request**: Go to the original repository and open a pull request. Provide a detailed description of your changes.
 
-Learn more:
+### Need Help?
 
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+If you have any questions or need assistance, feel free to open an issue or reach out to the maintainers.
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Thank you for contributing to `@localizer`!
+...

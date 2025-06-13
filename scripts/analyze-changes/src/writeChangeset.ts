@@ -28,7 +28,9 @@ function writeChange(
   const capitalizedDescription =
     change.description.charAt(0).toUpperCase() + change.description.slice(1);
   const changeDescription = capitalizedDescription || 'No description provided';
-  lines.push(`- ${marker} ${icon}${changeDescription} (${change.hash})`);
+  lines.push(
+    `- ${marker} ${icon}${changeDescription} ([${change.hash}](https://github.com/124c4a/localizer/commit/${change.hash}))`,
+  );
 }
 
 function collectModules(changes: Change[]): string[] {
@@ -73,6 +75,39 @@ export async function writeChangeset(ctx: Context) {
   }
 
   await writeFile('tmp/CHANGESET.md', lines.join('\n'));
+}
+
+export async function writeChangelevel(ctx: Context) {
+  const changeLevel = getEffectiveChangeLevel(ctx.changes);
+  const modules = Array.from(
+    new Set(
+      collectModules(ctx.changes).map(
+        (module) => module.replace(/@localizer\//g, '').split('-')[0],
+      ),
+    ),
+  ).sort((a, b) => a.localeCompare(b));
+
+  let preparedModules;
+  if (modules.length > 0 && modules.length < 4) {
+    preparedModules = modules.join(',');
+  } else {
+    preparedModules = '';
+  }
+
+  await writeFile('tmp/CHANGELEVEL', changeLevel);
+  await writeFile('tmp/MODULES', preparedModules);
+}
+
+export function getEffectiveChangeLevel(changes: Change[]): ChangeLevel {
+  return changes.reduce((max, change) => {
+    const levels = Object.values(change.changeLevel);
+    if (levels.includes('major')) {
+      return 'major';
+    } else if (levels.includes('minor') && max !== 'major') {
+      return 'minor';
+    }
+    return max;
+  }, 'patch' as ChangeLevel);
 }
 
 function writeModuleChanges(

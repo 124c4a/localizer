@@ -1,0 +1,28 @@
+name: Update release plan
+
+on:
+  pull_request:
+    types: [edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  main:
+    name: Update release plan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - run: echo "${{ github.event.pull_request.body }}" > .nx/version-plans/next.md
+
+      - run: git add .nx/version-plans/next.md
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: Update release plan
+          add: .nx/version-plans/next.md
+          default_author: github_actions

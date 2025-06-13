@@ -22,7 +22,7 @@ const tasks = new Listr(
       task: writeUnitTs,
     },
   ],
-  { concurrent: true }
+  { concurrent: true },
 );
 
 tasks

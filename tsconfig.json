@@ -16,9 +16,6 @@
       "path": "./packages/format"
     },
     {
-      "path": "./tools/data-gen"
-    },
-    {
       "path": "./packages/format-number"
     },
     {
@@ -37,7 +34,10 @@
       "path": "./packages/format-lookup"
     },
     {
-      "path": "./tools/analyze-changes"
+      "path": "./scripts/analyze-changes"
+    },
+    {
+      "path": "./scripts/data-gen"
     }
   ]
 }

@@ -78,7 +78,10 @@ export async function fetchDiff(
         const [_, hash, type, message] = match;
         currentChange.hash = hash;
         currentChange.type = parseCommitType(type);
-        currentChange.description = message.trim();
+        // Remove PR number from message if present
+        currentChange.description = message
+          .replace(/\(#\d+\)$/g, '')
+          .trim();
       }
     } else {
       const [added, deleted, filePath] = line.split('\t');

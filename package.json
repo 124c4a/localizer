@@ -37,7 +37,8 @@
   },
   "workspaces": [
     "packages/*",
-    "tools/*"
+    "tools/*",
+    "scripts/*"
   ],
   "nx": {
     "includedScripts": [],
