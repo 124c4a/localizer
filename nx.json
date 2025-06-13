@@ -49,15 +49,7 @@
     }
   ],
   "release": {
-    "versionPlans": true,
-    "conventionalCommits": {
-      "enabled": false
-    },
-    "changelog": {
-      "enabled": false
-    },
     "version": {
-      "deleteVersionPlans": true,
       "preVersionCommand": "npx nx run-many -t build"
     }
   },

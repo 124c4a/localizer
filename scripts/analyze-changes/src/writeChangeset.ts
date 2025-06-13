@@ -1,4 +1,4 @@
-import { rm, mkdir, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 
 import { Change, ChangeLevel, Context } from './common';
 
@@ -79,46 +79,23 @@ export async function writeChangeset(ctx: Context) {
 
 export async function writeChangelevel(ctx: Context) {
   const changeLevel = getEffectiveChangeLevel(ctx.changes);
+  const modules = Array.from(
+    new Set(
+      collectModules(ctx.changes).map(
+        (module) => module.replace(/@localizer\//g, '').split('-')[0],
+      ),
+    ),
+  ).sort((a, b) => a.localeCompare(b));
 
-  await writeFile('tmp/CHANGELEVEL', changeLevel);
-}
-
-export async function writeVersionPlan(ctx: Context) {
-  await recreateVersionPlanDirectory();
-  const changeLevel = getEffectiveChangeLevel(ctx.changes);
-  const lines: string[] = [];
-  lines.push('---', `__default__: ${changeLevel}`, '---', '');
-  const modules = collectModules(ctx.changes);
-
-  const linesBefore = lines.length;
-
-  modules.forEach((module) => {
-    writeReleasePlan(ctx.changes, module, lines);
-  });
-
-  if (lines.length === linesBefore) {
-    lines.push(
-      'This is a maintenance release. It does not contain any notable changes.',
-    );
-    lines.push('');
+  let preparedModules;
+  if (modules.length > 0) {
+    preparedModules = modules.join(',');
   } else {
-    lines.push(
-      '---',
-      '',
-      'The change levels are indicated as follows:',
-      '',
-      '- 🔴 Breaking change',
-      '- 🟢 New feature',
-      '- 🔵 Insignificant change',
-    );
+    preparedModules = '';
   }
 
-  await writeFile('.nx/version-plans/next.md', lines.join('\n'));
-}
-
-async function recreateVersionPlanDirectory() {
-  await rm('.nx/version-plans', { recursive: true, force: true });
-  await mkdir('.nx/version-plans');
+  await writeFile('tmp/CHANGELEVEL', changeLevel);
+  await writeFile('tmp/MODULES', preparedModules);
 }
 
 export function getEffectiveChangeLevel(changes: Change[]): ChangeLevel {
@@ -180,35 +157,4 @@ function writeModuleChanges(
 
   lines.push('', '</details>');
   lines.push('');
-}
-
-function writeReleasePlan(changes: Change[], module: string, lines: string[]) {
-  const moduleChanges: Change[] = changes
-    .filter((change) => Object.keys(change.changeLevel).includes(module))
-    .map((change) => ({
-      ...change,
-      changeLevel: { [module]: change.changeLevel[module] },
-    }));
-
-  if (
-    moduleChanges.some(
-      (change) => change.type === 'feature' || change.type === 'fix',
-    )
-  ) {
-    lines.push(`### ${module}`, ``);
-
-    if (moduleChanges.some((change) => change.type === 'feature')) {
-      moduleChanges
-        .filter((change) => change.type === 'feature')
-        .forEach((change) => writeChange(change, module, '✨', lines));
-    }
-    if (moduleChanges.some((change) => change.type === 'fix')) {
-      moduleChanges
-        .filter((change) => change.type === 'fix')
-        .forEach((change) => writeChange(change, module, '🐛', lines));
-    }
-
-    lines.push('');
-    lines.push('');
-  }
 }

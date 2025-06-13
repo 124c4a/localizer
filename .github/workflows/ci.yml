@@ -62,12 +62,12 @@ jobs:
       - name: Read change level label
         run: |
           if [ -f tmp/CHANGELEVEL ]; then
-            CHANGELEVEL=$(cat tmp/CHANGELEVEL)
-            echo "CHANGELEVEL=semver:$CHANGELEVEL" >> $GITHUB_ENV
+            echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
+            echo "MODULES=semver:$(cat tmp/MODULES)" >> $GITHUB_ENV
           else
             echo "No changelog label found."
           fi
-      - name: Set PR label
+      - name: Update PR
         if: env.CHANGELEVEL != ''
         uses: actions/github-script@v6
         with:
@@ -99,5 +99,42 @@ jobs:
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
                 labels: [label],
+              });
+            }
+
+            const ConventionalCommitRegex =
+              /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?: (?<description>.+)/i;
+
+            let metadata;
+
+            const match = message.match(ConventionalCommitRegex);
+
+            if (!match) {
+              metadata = {
+                type: 'chore',
+                scope: '',
+                description: message,
+                breaking: false,
+              };
+            } else {
+              metadata = {
+                type: match.groups.type || 'chore',
+                scope: match.groups.scope || '',
+                description: match.groups.description || '',
+                breaking: !!match.groups.breaking,
+              };
+            }
+
+            metadata.scope = process.env.MODULES || metadata.scope;
+            metadata.breaking = metadata.breaking || (process.env.CHANGELEVEL === 'major');
+
+            const newTitle = `${metadata.type}${metadata.scope ? `(${metadata.scope})` : ''}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
+
+            if (newTitle !== github.context.payload.pull_request.title) {
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                title: newTitle,
               });
             }
