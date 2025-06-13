@@ -62,8 +62,8 @@ export default [
         {
           style: 'jsdoc',
           blockPrefix: '\n',
-          blockSuffix: '\n',
-          linePrefix: ' ',
+          blockSuffix: '\n ',
+          linePrefix: ' * ',
           source: 'string',
           content: `Copyright {year} {author}.
 
