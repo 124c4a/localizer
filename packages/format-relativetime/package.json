@@ -1,7 +1,7 @@
 {
   "name": "@localizer/format-relativetime",
   "version": "0.0.1",
-  "description": "Format library for Localizer, providing utilities for formatting relative time in a locale-aware manner.",
+  "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting relative time in a locale-aware manner.",
   "keywords": [
     "localization",
     "globalization",

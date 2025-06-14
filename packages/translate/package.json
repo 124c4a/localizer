@@ -1,7 +1,7 @@
 {
   "name": "@localizer/translate",
   "version": "0.0.1",
-  "description": "TypeScript-native translation library for Localizer, providing utilities for translating text in a locale-aware manner.",
+  "description": "Type-safe localization, formatting and translation library. Provides utilities for TypeScript-first translation dictionaries.",
   "keywords": [
     "localization",
     "globalization",

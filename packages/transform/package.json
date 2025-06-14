@@ -1,7 +1,7 @@
 {
   "name": "@localizer/transform",
   "version": "0.0.1",
-  "description": "Transforming library for Localizer, providing utilities for transforming and manipulating data in a locale-aware manner.",
+  "description": "Type-safe localization, formatting and translation library. Provides utilities for transforming text in a locale-aware manner.",
   "keywords": [
     "localization",
     "globalization",
