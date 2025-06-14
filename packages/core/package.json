@@ -1,7 +1,7 @@
 {
   "name": "@localizer/core",
   "version": "0.0.1",
-  "description": "Core library for Localizer, a powerful localization and internationalization framework.",
+  "description": "Type-safe localization, formatting and translation library. The foundation of the library, providing essential utilities for localization.",
   "keywords": [
     "localization",
     "globalization",

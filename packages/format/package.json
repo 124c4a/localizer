@@ -1,7 +1,7 @@
 {
   "name": "@localizer/format",
   "version": "0.0.1",
-  "description": "Format library for Localizer, providing utilities for formatting dates, numbers, and other data types in a locale-aware manner.",
+  "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting dates, numbers, lists, and display names in a locale-aware manner.",
   "keywords": [
     "localization",
     "globalization",
