@@ -58,7 +58,7 @@ export async function fetchDiff(
     '--ignore-space-change',
     '--ignore-blank-lines',
     '-I^import',
-    '-I^[ ][*][ ]',
+    '-I^[/ ][/*][* ]',
     '-I(describe|it)\\(',
     '-I[a-zA-Z0-9_]*,',
     '-I}$',
