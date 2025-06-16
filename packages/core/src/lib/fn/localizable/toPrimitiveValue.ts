@@ -21,7 +21,6 @@ export function toPrimitiveValue(value: unknown) {
     case 'boolean':
     case 'number':
     case 'string':
-    case 'undefined':
       return value;
     default:
       return Object.prototype.toString.call(value);
