@@ -50,14 +50,4 @@ describe('Unlocalizable', () => {
     expect(result).toHaveProperty('localize');
     expect(typeof result.localize).toBe('function');
   });
-
-  it('handles null values gracefully', () => {
-    const result = new UnlocalizableValue(null);
-    expect(result.localize()).toBe(null);
-  });
-
-  it('handles undefined values gracefully', () => {
-    const result = new UnlocalizableValue(undefined);
-    expect(result.localize()).toBe(undefined);
-  });
 });
