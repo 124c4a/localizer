@@ -52,7 +52,7 @@ export function buildFormatter<T extends number | bigint>(
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${style ?? 'decimal'}]`;
+        return `[${style}]`;
       }
 
       formatter[locale] ||= new Intl.NumberFormat(locale, {
@@ -104,7 +104,7 @@ export function buildRangeFormatter<T extends number | bigint>(
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${style ?? 'decimal'}Range]`;
+        return `[${style}Range]`;
       }
 
       formatter[locale] ||= new Intl.NumberFormat(locale, {
