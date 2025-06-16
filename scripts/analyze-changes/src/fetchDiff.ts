@@ -91,7 +91,7 @@ export async function fetchDiff(
       // Parse commit line
       const match = commitRegex.exec(line);
       if (match) {
-        const [_, hash, type, message] = match;
+        const [, hash, type, message] = match;
         currentChange.hash = hash;
         currentChange.type = parseCommitType(type);
         // Remove PR number from message if present
