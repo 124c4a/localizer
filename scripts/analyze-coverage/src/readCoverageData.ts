@@ -24,8 +24,13 @@ export async function readCoverageData(ctx: Context) {
   const packageMetas = packageDirs
     .filter((dir) => dir.isDirectory())
     .map((dir) => dir.name)
-    .filter((name) =>
-      existsSync(path.join('./packages', name, 'package.json')),
+    .filter(
+      (name) =>
+        existsSync(path.join('./packages', name, 'package.json')) &&
+        existsSync(
+          path.join('./packages', name, 'coverage/coverage-summary.json'),
+        ) &&
+        existsSync(path.join('./packages', name, 'coverage/coverage.txt')),
     );
 
   const packages = packageMetas.map((name) => {
