@@ -31,11 +31,11 @@ jobs:
       - name: Build
         run: npx nx run-many -t build
 
-      - name: Get latest tag
+      - name: Get tag from package.json
         id: latest-tag
-        shell: bash
         run: |
-          echo "tag=$(git rev-list --tags --max-count=1)" >> $GITHUB_OUTPUT
+          version=$(node -p "require('./package.json').version")
+          echo "tag=v$version" >> $GITHUB_OUTPUT
 
       - name: Release
         run: |
