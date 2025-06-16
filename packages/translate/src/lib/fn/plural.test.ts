@@ -22,6 +22,7 @@ describe('plural function', () => {
     const map = { 1: 'one', 2: 'two', other: 'other' };
     expect(plural(1, map).localize('en')).toBe('one');
     expect(plural(2, map).localize('en')).toBe('two');
+    expect(plural(2, map).localize(null)).toBe('[plural]');
   });
 
   it('returns the correct translation for plural categories', () => {
@@ -35,7 +36,7 @@ describe('plural function', () => {
   it('throws an error if no "other" category is defined', () => {
     const map = { [one]: 'one' };
     expect(() => plural(5, map).localize('en')).toThrow(
-      new RangeError(`No 'other' plural category defined`)
+      new RangeError(`No 'other' plural category defined`),
     );
   });
 
