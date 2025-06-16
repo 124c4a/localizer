@@ -39,7 +39,7 @@ jobs:
 
       - name: Release
         run: |
-          node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag }} --headRef=HEAD
+          node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag && steps.latest-tag.outputs.tag || 'HEAD' }} --headRef=HEAD
           echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
           echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
 
