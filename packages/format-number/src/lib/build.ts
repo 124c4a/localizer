@@ -52,7 +52,7 @@ export function buildFormatter<T extends number | bigint>(
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.style ?? style ?? 'decimal'}]`;
+        return `[${style ?? 'decimal'}]`;
       }
 
       formatter[locale] ||= new Intl.NumberFormat(locale, {
@@ -104,7 +104,7 @@ export function buildRangeFormatter<T extends number | bigint>(
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.style ?? style ?? 'decimal'}Range]`;
+        return `[${style ?? 'decimal'}Range]`;
       }
 
       formatter[locale] ||= new Intl.NumberFormat(locale, {
@@ -161,7 +161,7 @@ export function buildUnitFormatter<T extends number | bigint, U extends string>(
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.style ?? style}]`;
+        return `[${style}]`;
       }
 
       formatter[locale] ||= {};
