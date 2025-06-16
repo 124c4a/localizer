@@ -36,6 +36,9 @@ jobs:
       - name: Test
         run: npx nx affected -t test --coverage --changed ${{ github.event.pull_request.base.sha }}
 
+      - name: Build scripts
+        run: npx nx run-many -t build --projects=analyze-changes,analyze-coverage
+
       - name: Prepare changelog
         run: |
           node scripts/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
