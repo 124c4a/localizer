@@ -77,7 +77,7 @@ jobs:
         if: env.COVERAGESTATUS == '0'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
-          context: 'Test coverage results'
+          context: 'CI / Test coverage results (${{ github.event_name }})'
           description: 'Passed'
           state: 'success'
           sha: ${{github.event.pull_request.head.sha || github.sha}}
@@ -87,8 +87,8 @@ jobs:
         if: env.COVERAGESTATUS == '1'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
-          context: 'Test coverage results'
-          description: 'Insufficient coverage'
+          context: 'CI / Test coverage results (${{ github.event_name }})'
+          description: 'Some branches or functions are not covered with unit tests'
           state: 'failure'
           sha: ${{github.event.pull_request.head.sha || github.sha}}
 
