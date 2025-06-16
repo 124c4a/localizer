@@ -53,38 +53,38 @@ jobs:
       - name: Prepare coverage report
         run: |
           node scripts/analyze-coverage/dist/main.js
-          echo "COVERAGERESULT=$(cat tmp/COVERAGERESULT)" >> $GITHUB_ENV
+          echo "COVERAGESTATUS=$(cat tmp/COVERAGESTATUS)" >> $GITHUB_ENV
 
       - name: Create changelog comment
         uses: marocchino/sticky-pull-request-comment@v2
-        if: env.COVERAGERESULT == '0'
+        if: env.COVERAGESTATUS == '0'
         with:
           path: tmp/CHANGESET.md
           recreate: true
 
       - name: Create coverage report comment
         uses: marocchino/sticky-pull-request-comment@v2
-        if: env.COVERAGERESULT == '1'
+        if: env.COVERAGESTATUS == '1'
         with:
           path: tmp/COVERAGERESULT.md
           recreate: true
 
       - name: Run the action
         uses: guibranco/github-status-action-v2@v1.1.13
-        if: env.COVERAGERESULT == '0'
+        if: env.COVERAGESTATUS == '0'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
-          context: 'Test coverage'
+          context: 'Test coverage results'
           description: 'Passed'
           state: 'success'
           sha: ${{github.event.pull_request.head.sha || github.sha}}
 
       - name: Run the action
         uses: guibranco/github-status-action-v2@v1.1.13
-        if: env.COVERAGERESULT == '1'
+        if: env.COVERAGESTATUS == '1'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
-          context: 'Test coverage'
+          context: 'Test coverage results'
           description: 'Insufficient coverage'
           state: 'failure'
           sha: ${{github.event.pull_request.head.sha || github.sha}}

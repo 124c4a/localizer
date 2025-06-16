@@ -42,9 +42,4 @@ jobs:
         run: npx nx run-many -t build
 
       - name: Test
-        run: npx nx run-many -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
-
-      - name: SonarQube scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: npx nx run-many -t test
