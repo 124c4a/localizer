@@ -37,9 +37,12 @@ describe('Unlocalizable', () => {
     );
     expect(`${new UnlocalizableValue(12n)}`).toBe('12');
     expect(`${new UnlocalizableValue(12)}`).toBe('12');
-    expect(`${new UnlocalizableValue(Symbol('test'))}`).toBe('[Symbol test]');
+    expect(`${new UnlocalizableValue(Symbol('test'))}`).toBe('[object Symbol]');
+    expect(`${new UnlocalizableValue({})}`).toBe('[object Object]');
+    expect(`${new UnlocalizableValue([])}`).toBe('[]');
     expect(`${new UnlocalizableValue(false)}`).toBe('false');
     expect(`${new UnlocalizableValue(undefined)}`).toBe('undefined');
+    expect(`${new UnlocalizableValue(null)}`).toBe('null');
   });
 
   it('creates an instance of Localizable', () => {
