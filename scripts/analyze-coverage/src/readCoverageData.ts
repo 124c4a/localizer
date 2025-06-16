@@ -62,7 +62,7 @@ export async function readCoverageData(ctx: Context) {
           lineParts[0] = lineParts[0]
             .trimEnd()
             .replace(/^ /g, '')
-            .replace(/^ /g, '\u00b7\u2001');
+            .replace(/^ /g, '\u21e2\u00a0\u00a0\u00a0');
 
           reportLines[line] = lineParts.join(' | ');
           if (lineParts[2].trim() !== '100' || lineParts[3].trim() !== '100') {
