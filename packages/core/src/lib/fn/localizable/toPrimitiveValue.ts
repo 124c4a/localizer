@@ -1,30 +1,30 @@
-/**
- * Converts a value to its primitive representation.
+/*
+ * Copyright 2025 Artem Godin.
  *
- * The `toPrimitiveValue` function takes an input value and returns its primitive
- * representation based on its type. If the value is of a primitive type such as
- * `bigint`, `boolean`, `number`, `symbol`, `string`, or `undefined`, it is returned
- * as-is. For non-primitive types, the function returns the result of calling
- * `Object.prototype.toString` on the value.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * @param {unknown} value - The value to convert to a primitive representation.
- * @returns {unknown} The primitive representation of the input value.
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * @example
- * console.log(toPrimitiveValue(42)); // 42
- * console.log(toPrimitiveValue("hello")); // "hello"
- * console.log(toPrimitiveValue({})); // "[object Object]"
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
  * @internal
  */
 export function toPrimitiveValue(value: unknown) {
+  if (value === null || value === undefined) {
+    return value;
+  }
+
   switch (typeof value) {
     case 'bigint':
     case 'boolean':
     case 'number':
-    case 'symbol':
     case 'string':
-    case 'undefined':
       return value;
     default:
       return Object.prototype.toString.call(value);

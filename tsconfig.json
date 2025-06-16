@@ -38,6 +38,9 @@
     },
     {
       "path": "./scripts/data-gen"
+    },
+    {
+      "path": "./scripts/analyze-coverage"
     }
   ]
 }

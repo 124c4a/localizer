@@ -1,0 +1,30 @@
+{
+  "test": {
+    "watch": false,
+    "globals": true,
+    "environment": "node",
+    "include": ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+    "reporters": ["default"],
+    "coverage": {
+      "provider": "v8",
+      "reporter": [
+        "lcovonly",
+        [
+          "text",
+          {
+            "file": "coverage.txt",
+            "maxCols": 160,
+            "skipFull": true,
+            "skipEmpty": true
+          }
+        ],
+        [
+          "json-summary",
+          {
+            "file": "coverage-summary.json"
+          }
+        ]
+      ]
+    }
+  }
+}

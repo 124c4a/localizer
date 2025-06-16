@@ -29,22 +29,45 @@ jobs:
       - run: npx nx run-many --target=lint --output-file=eslint-report.json --format=json
         continue-on-error: true
 
-      - name: Annotate code linting results
-        uses: ataylorme/eslint-annotate-action@v3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          report-json: 'packages/**/eslint-report.json'
-          markdown-report-on-step-summary: true
-          fail-on-error: true
-          check-name: 'ESLint results'
-
       - name: Build
         run: npx nx run-many -t build
 
       - name: Test
-        run: npx nx run-many -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
+        run: npx nx run-many -t test --coverage
 
-      - name: SonarQube scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Prepare coverage report
+        run: |
+          node scripts/analyze-coverage/dist/main.js
+          echo "COVERAGESTATUS=$(cat tmp/COVERAGESTATUS)" >> $GITHUB_ENV
+
+      - name: Run the action
+        uses: guibranco/github-status-action-v2@v1.1.13
+        if: env.COVERAGESTATUS == '0'
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test coverage results'
+          description: 'Successful'
+          state: 'success'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
+
+      - name: Run the action
+        uses: guibranco/github-status-action-v2@v1.1.13
+        if: env.COVERAGESTATUS == '1'
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test coverage results'
+          description: 'Some branches or functions are not covered with unit tests'
+          state: 'failure'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
+
+      - name: Annotate code linting results
+        uses: ataylorme/eslint-annotate-action@v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          report-json: |
+            packages/**/eslint-report.json
+            scripts/**/eslint-report.json
+          markdown-report-on-step-summary: true
+          fail-on-error: true
+          fail-on-warning: true
+          check-name: 'ESLint results'

@@ -1,3 +1,18 @@
+/*
+ * Copyright 2025 Artem Godin.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import { execa } from 'execa';
 
 import { Change, ChangeType, Context } from './common';
@@ -43,6 +58,7 @@ export async function fetchDiff(
     '--ignore-space-change',
     '--ignore-blank-lines',
     '-I^import',
+    '-I^[/ ][/*][* ]',
     '-I(describe|it)\\(',
     '-I[a-zA-Z0-9_]*,',
     '-I}$',
@@ -75,13 +91,11 @@ export async function fetchDiff(
       // Parse commit line
       const match = commitRegex.exec(line);
       if (match) {
-        const [_, hash, type, message] = match;
+        const [, hash, type, message] = match;
         currentChange.hash = hash;
         currentChange.type = parseCommitType(type);
         // Remove PR number from message if present
-        currentChange.description = message
-          .replace(/\(#\d+\)$/g, '')
-          .trim();
+        currentChange.description = message.replace(/\(#\d+\)$/g, '').trim();
       }
     } else {
       const [added, deleted, filePath] = line.split('\t');

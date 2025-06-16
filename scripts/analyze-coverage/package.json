@@ -1,0 +1,70 @@
+{
+  "name": "@localizer/analyze-coverage",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "analyze-coverage",
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "scripts/analyze-coverage/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "scripts/analyze-coverage/src/main.ts",
+          "tsConfig": "scripts/analyze-coverage/tsconfig.app.json",
+          "assets": [
+            "scripts/analyze-coverage/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "analyze-coverage:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "analyze-coverage:build:development"
+          },
+          "production": {
+            "buildTarget": "analyze-coverage:build:production"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "listr2": "^8.3.3"
+  }
+}

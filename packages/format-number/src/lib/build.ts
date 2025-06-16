@@ -1,3 +1,18 @@
+/*
+ * Copyright 2025 Artem Godin.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 import {
   UnitValueFormatter,
   ValueFormatter,
@@ -29,17 +44,21 @@ import { NumberFormatOptions } from './options.js';
  * @see {@link NumberFormatOptions}, {@link ValueFormatter}, {@link Intl.NumberFormat}
  */
 export function buildFormatter<T extends number | bigint>(
-  options: NumberFormatOptions
+  options: NumberFormatOptions,
+  style: 'decimal' | 'currency' | 'percent' | 'unit' = 'decimal',
 ): ValueFormatter<T> {
   return (value) => {
     const formatter: Record<string, Intl.NumberFormat> = {};
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.style ?? 'decimal'}]`;
+        return `[${style}]`;
       }
 
-      formatter[locale] ||= new Intl.NumberFormat(locale, options);
+      formatter[locale] ||= new Intl.NumberFormat(locale, {
+        ...options,
+        style,
+      });
 
       return options.parts !== undefined
         ? formatter[locale]
@@ -77,17 +96,21 @@ export function buildFormatter<T extends number | bigint>(
  */
 export function buildRangeFormatter<T extends number | bigint>(
   options: NumberFormatOptions,
-  source?: 'startRange' | 'endRange' | 'shared'
+  style: 'decimal' | 'currency' | 'percent' | 'unit',
+  source?: 'startRange' | 'endRange' | 'shared',
 ): ValueRangeFormatter<T> {
   return (start, end) => {
     const formatter: Record<string, Intl.NumberFormat> = {};
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.style ?? 'decimal'}Range]`;
+        return `[${style}Range]`;
       }
 
-      formatter[locale] ||= new Intl.NumberFormat(locale, options);
+      formatter[locale] ||= new Intl.NumberFormat(locale, {
+        ...options,
+        style,
+      });
 
       return options.parts !== undefined
         ? formatter[locale]
@@ -95,7 +118,7 @@ export function buildRangeFormatter<T extends number | bigint>(
             .filter(
               (part) =>
                 options.parts?.includes(part.type) &&
-                (!source || part.source === source)
+                (!source || part.source === source),
             )
             .map((part) => part.value)
             .join('')
@@ -130,20 +153,22 @@ export function buildRangeFormatter<T extends number | bigint>(
  */
 export function buildUnitFormatter<T extends number | bigint, U extends string>(
   options: NumberFormatOptions,
-  unitKey: keyof NumberFormatOptions
+  style: 'unit' | 'currency',
+  unitKey: keyof NumberFormatOptions,
 ): UnitValueFormatter<T, U> {
   return (value, unit) => {
     const formatter: Record<string, Record<string, Intl.NumberFormat>> = {};
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.style ?? 'decimal'}]`;
+        return `[${style}]`;
       }
 
       formatter[locale] ||= {};
       formatter[locale][unit] ||= new Intl.NumberFormat(locale, {
         [unitKey]: unit,
         ...options,
+        style,
       });
 
       return options.parts !== undefined

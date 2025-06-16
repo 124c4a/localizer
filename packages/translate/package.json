@@ -1,6 +1,27 @@
 {
   "name": "@localizer/translate",
   "version": "0.0.1",
+  "description": "Type-safe localization, formatting and translation library. Provides utilities for TypeScript-first translation dictionaries.",
+  "keywords": [
+    "localization",
+    "globalization",
+    "i18n",
+    "l10n",
+    "internationalization",
+    "localizer",
+    "formatting",
+    "translation"
+  ],
+  "license": "Apache-2.0",
+  "author": "Artem Godin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/124c4a/localizer.git",
+    "directory": "packages/translate"
+  },
+  "bugs": {
+    "url": "https://github.com/124c4a/localizer/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -21,7 +42,6 @@
   "dependencies": {
     "@localizer/core": "*",
     "@localizer/format": "*",
-    "@localizer/transform": "*",
     "tslib": "^2.3.0"
   },
   "nx": {

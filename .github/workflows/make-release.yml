@@ -1,11 +1,7 @@
 name: Publish release
 
 on:
-  push:
-    branches:
-      - main
-    tags:
-      - 'v*.*.*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -30,4 +26,15 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx release publish --dry-run
+      - name: Build
+        run: npx nx run-many -t build
+
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: latest-tag
+        with:
+          initial_version: 'HEAD'
+
+      - name: Release
+        run: node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag }} --headRef=HEAD
+
+      - run: npx nx release ${{ env.CHANGELEVEL }} --dryRun
