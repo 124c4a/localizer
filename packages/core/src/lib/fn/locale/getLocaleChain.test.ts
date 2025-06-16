@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { configure } from '../configure.js';
 import { getLocaleChain } from './getLocaleChain.js';
+import { Core } from './options.js';
 
 describe('getLocaleChain', () => {
   it('returns the locale and fallback locales when no region is present', () => {
@@ -28,5 +30,10 @@ describe('getLocaleChain', () => {
     const result1 = getLocaleChain('fr-CA');
     const result2 = getLocaleChain('fr-CA');
     expect(result1).toBe(result2);
+  });
+
+  it('returns the locale and fallback locales when no region is present and fallback locale is configured', () => {
+    configure({ Core }, { Core: { fallbackLocales: ['en'] } });
+    expect(getLocaleChain('fi')).toEqual(['fi', 'en']);
   });
 });

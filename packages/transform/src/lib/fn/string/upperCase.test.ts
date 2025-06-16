@@ -49,4 +49,10 @@ describe('upperCase', () => {
     expect(result.localize('en')).toBe('ISTANBUL');
     expect(result.localize(null)).toBe('istanbul');
   });
+
+  it('returns an underlying value for an undefined locale', () => {
+    const value = loc`istanbul`;
+    const result = upperCase(value);
+    expect(result.localize(null)).toBe('istanbul');
+  });
 });

@@ -47,6 +47,11 @@ describe('lowerCase', () => {
     const result = lowerCase(value);
     expect(result.localize('tr')).toBe('istanbul');
     expect(result.localize('en')).toBe('istanbul');
+  });
+
+  it('returns an underlying value for an undefined locale', () => {
+    const value = loc`ISTANBUL`;
+    const result = lowerCase(value);
     expect(result.localize(null)).toBe('ISTANBUL');
   });
 });

@@ -22,6 +22,11 @@ describe('usePrimaryLocale', () => {
     const value = loc((locale) => `value for ${locale}`);
     const result = usePrimaryLocale(value);
     expect(result.localize('en-FI')).toBe('value for fi-FI');
+  });
+
+  it('propagates undefined locale as is', () => {
+    const value = loc((locale) => `value for ${locale}`);
+    const result = usePrimaryLocale(value);
     expect(result.localize(null)).toBe('value for null');
   });
 

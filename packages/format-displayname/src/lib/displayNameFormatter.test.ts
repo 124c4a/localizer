@@ -24,6 +24,21 @@ describe('displayNameFormatter', () => {
     expect(result).toBe('United States');
   });
 
+  it('returns a fallback value for unknown codes', () => {
+    const formatter = displayNameFormatter({ type: 'region' });
+    const result = formatter('ZL').localize('en-US');
+    expect(result).toBe('ZL');
+  });
+
+  it('returns an empty string value for unknown codes if fallback is set as `none`', () => {
+    const formatter = displayNameFormatter({
+      type: 'region',
+      fallback: 'none',
+    });
+    const result = formatter('ZL').localize('en-US');
+    expect(result).toBe('');
+  });
+
   it('returns a placeholder when locale is undefined', () => {
     const formatter = displayNameFormatter({ type: 'region' });
     const result = formatter('US').localize(null);

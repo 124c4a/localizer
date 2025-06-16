@@ -41,6 +41,6 @@ export function getPrimaryLocale(locale: LocaleCode): LocaleCode {
   if (!country) {
     return locale;
   } else {
-    return primaryLocales[country] ?? locale;
+    return primaryLocales[country] as LocaleCode;
   }
 }

@@ -39,19 +39,21 @@ import { DisplayNameFormatOptions } from './options.js';
  * @see {@link ValueFormatter}, {@link DisplayNameFormatOptions}, {@link Intl.DisplayNames}
  */
 export function displayNameFormatter<T extends string>(
-  options: DisplayNameFormatOptions
+  options: DisplayNameFormatOptions,
 ): ValueFormatter<T> {
   return (value) => {
     const formatter: Record<string, Intl.DisplayNames> = {};
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.type ?? 'displayName'}]`;
+        return `[${options.type}]`;
       }
 
-      formatter[locale] ||= new Intl.DisplayNames(locale, options);
+      formatter[locale] ||= new Intl.DisplayNames(locale, {
+        ...options,
+      });
 
-      return formatter[locale].of(value) ?? value;
+      return formatter[locale].of(value) ?? '';
     });
 
     return options.transform ? transform(result, options.transform) : result;

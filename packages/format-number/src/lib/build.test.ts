@@ -28,6 +28,12 @@ describe('buildFormatter', () => {
     expect(result).toBe('1,234.56');
   });
 
+  it('formats a number correctly for a given locale and extracts parts', () => {
+    const formatter = buildFormatter({ style: 'decimal', parts: ['integer'] });
+    const result = formatter(1234.56).localize('en-US');
+    expect(result).toBe('1234');
+  });
+
   it('returns a placeholder for undefined locale', () => {
     const formatter = buildFormatter({ style: 'decimal' });
     const result = formatter(1234.56).localize(null);
@@ -60,7 +66,7 @@ describe('buildRangeFormatter', () => {
   it('filters parts based on source if provided', () => {
     const formatter = buildRangeFormatter(
       { style: 'decimal', parts: ['integer'] },
-      'startRange'
+      'startRange',
     );
     const result = formatter(1000, 2000).localize('en-US');
     expect(result).toBe('1000');
@@ -83,7 +89,7 @@ describe('buildUnitFormatter', () => {
   it('applies transform function if provided', () => {
     const formatter = buildUnitFormatter(
       { style: 'unit', transform: [upperCase] },
-      'unit'
+      'unit',
     );
     const result = formatter(100, 'kilometer').localize('en-US');
     expect(result).toBe('100 km'.toUpperCase());

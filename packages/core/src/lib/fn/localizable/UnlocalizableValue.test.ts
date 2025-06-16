@@ -21,14 +21,25 @@ describe('Unlocalizable', () => {
     expect(result.localize()).toBe('test value');
   });
 
+  it('returns the value when toLocaleString is called', () => {
+    const result = new UnlocalizableValue('test value');
+    expect(result.toLocaleString()).toBe('test value');
+  });
+
   it('handles non-string values correctly', () => {
     const result = new UnlocalizableValue(123);
     expect(result.localize()).toBe(123);
   });
 
   it('uses Symbol.toPrimitive to return the primitive value', () => {
-    const result = new UnlocalizableValue('primitive value');
-    expect(`${result}`).toBe('primitive value');
+    expect(`${new UnlocalizableValue('primitive value')}`).toBe(
+      'primitive value',
+    );
+    expect(`${new UnlocalizableValue(12n)}`).toBe('12');
+    expect(`${new UnlocalizableValue(12)}`).toBe('12');
+    expect(`${new UnlocalizableValue(Symbol('test'))}`).toBe('[Symbol test]');
+    expect(`${new UnlocalizableValue(false)}`).toBe('false');
+    expect(`${new UnlocalizableValue(undefined)}`).toBe('undefined');
   });
 
   it('creates an instance of Localizable', () => {

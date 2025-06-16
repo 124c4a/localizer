@@ -18,7 +18,7 @@ import { Localizable, loc } from '@localizer/core';
 /**
  * Converts the localized value to lowercase for a given locale.
  *
- * @param value - A Localizable object containing the value to be transformed.
+ * @param value - A Localizable object containing the value to be transformed. Transformation is a no-op when the result is localized to a `null` locale.
  * @returns A new Localizable object with the value converted to lowercase for the specified locale.
  *
  * @example
