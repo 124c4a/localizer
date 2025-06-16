@@ -66,7 +66,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: env.COVERAGESTATUS == '1'
         with:
-          path: tmp/COVERAGERESULT.md
+          path: tmp/COVERAGEREPORT.md
           recreate: true
 
       - name: Run the action
