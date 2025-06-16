@@ -8,6 +8,7 @@ permissions:
   contents: read
   pull-requests: write
   checks: write
+  statuses: write
 
 jobs:
   main:
@@ -33,7 +34,7 @@ jobs:
         uses: ataylorme/eslint-annotate-action@v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          report-json: 'packages/**/eslint-report.json'
+          report-json: './**/eslint-report.json'
           markdown-report-on-step-summary: true
           fail-on-error: true
           check-name: 'ESLint results'
