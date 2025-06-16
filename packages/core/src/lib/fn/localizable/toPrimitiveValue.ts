@@ -16,11 +16,14 @@
  * @internal
  */
 export function toPrimitiveValue(value: unknown) {
+  if (value === null || value === undefined) {
+    return value;
+  }
+
   switch (typeof value) {
     case 'bigint':
     case 'boolean':
     case 'number':
-    case 'undefined':
     case 'string':
       return value;
     default:
