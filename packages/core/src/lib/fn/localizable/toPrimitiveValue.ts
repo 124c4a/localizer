@@ -20,7 +20,6 @@ export function toPrimitiveValue(value: unknown) {
     case 'bigint':
     case 'boolean':
     case 'number':
-    case 'symbol':
     case 'string':
     case 'undefined':
       return value;
