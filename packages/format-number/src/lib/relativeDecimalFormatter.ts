@@ -39,13 +39,15 @@ import { NumberFormatOptions } from './options.js';
  * @see {@link RelativeValueFormatter}, {@link NumberFormatOptions}, {@link Intl.NumberFormat}
  */
 export function relativeDecimalFormatter<T extends number | bigint>(
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): RelativeValueFormatter<T> {
-  const innerFormatter = buildFormatter({
-    ...(options ?? {}),
-    style: 'decimal',
-    signDisplay: 'exceptZero',
-  });
+  const innerFormatter = buildFormatter(
+    {
+      ...(options ?? {}),
+      signDisplay: 'exceptZero',
+    },
+    'decimal',
+  );
 
   return (value, reference) => innerFormatter(value - reference);
 }

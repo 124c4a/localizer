@@ -44,7 +44,7 @@ import { ListFormatOptions } from './options.js';
  * @see {@link Localizable}, {@link ValueFormatter}, {@link ListFormatOptions}, {@link Intl.ListFormat}
  */
 export function listFormatter<T extends Localizable[]>(
-  options: ListFormatOptions
+  options: ListFormatOptions,
 ): ValueFormatter<T> {
   if ('delimiter' in options) {
     return (value) => {
@@ -71,7 +71,7 @@ export function listFormatter<T extends Localizable[]>(
 
         formatter[locale] ||= new Intl.ListFormat(locale, options);
 
-        return formatter[locale].format(localizeArray(value, locale)) ?? value;
+        return formatter[locale].format(localizeArray(value, locale));
       });
 
       return options.transform ? transform(result, options.transform) : result;

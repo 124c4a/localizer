@@ -39,7 +39,7 @@ import { Unit } from './unit.js';
  * @see {@link UnitValueFormatter}, {@link NumberFormatOptions}, {@link Intl.NumberFormat}
  */
 export function unitFormatter<T extends number | bigint>(
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): UnitValueFormatter<T, Unit> {
-  return buildUnitFormatter({ ...(options ?? {}), style: 'unit' }, 'unit');
+  return buildUnitFormatter(options ?? {}, 'unit', 'unit');
 }

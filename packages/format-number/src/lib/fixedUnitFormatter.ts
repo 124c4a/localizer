@@ -41,7 +41,7 @@ import { Unit } from './unit.js';
  */
 export function fixedUnitFormatter<T extends number | bigint>(
   unit: Unit,
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): ValueFormatter<T> {
-  return buildFormatter({ ...(options ?? {}), style: 'unit', unit });
+  return buildFormatter({ ...(options ?? {}), unit }, 'unit');
 }

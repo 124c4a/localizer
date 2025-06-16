@@ -41,11 +41,13 @@ import { NumberFormatOptions } from './options.js';
  */
 export function fixedCurrencyRangeFormatter<T extends number | bigint>(
   currency: CurrencyCode,
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): ValueRangeFormatter<T> {
-  return buildRangeFormatter({
-    ...(options ?? {}),
-    style: 'currency',
-    currency,
-  });
+  return buildRangeFormatter(
+    {
+      ...(options ?? {}),
+      currency,
+    },
+    'currency',
+  );
 }

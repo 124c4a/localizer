@@ -38,7 +38,7 @@ import { NumberFormatOptions } from './options.js';
  * @see {@link ValueRangeFormatter}, {@link NumberFormatOptions}, {@link Intl.NumberFormat}
  */
 export function percentRangeFormatter<T extends number | bigint>(
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): ValueRangeFormatter<T> {
-  return buildRangeFormatter({ ...(options ?? {}), style: 'percent' });
+  return buildRangeFormatter(options ?? {}, 'percent');
 }

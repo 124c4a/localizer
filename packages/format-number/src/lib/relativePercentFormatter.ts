@@ -42,13 +42,15 @@ import { NumberFormatOptions } from './options.js';
  * @see {@link RelativeValueFormatter}, {@link NumberFormatOptions}, {@link Intl.NumberFormat}
  */
 export function relativePercentFormatter<T extends number | bigint>(
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): RelativeValueFormatter<T> {
-  const innerFormatter = buildFormatter({
-    ...(options ?? {}),
-    style: 'percent',
-    signDisplay: 'exceptZero',
-  });
+  const innerFormatter = buildFormatter(
+    {
+      ...(options ?? {}),
+      signDisplay: 'exceptZero',
+    },
+    'percent',
+  );
 
   return (value, reference) => {
     if (reference == 0) {

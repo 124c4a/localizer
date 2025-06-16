@@ -37,7 +37,7 @@ import { NumberFormatOptions } from './options.js';
  * @see {@link ValueRangeFormatter}, {@link NumberFormatOptions}, {@link Intl.NumberFormat}
  */
 export function decimalRangeFormatter<T extends number | bigint>(
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): ValueRangeFormatter<T> {
-  return buildRangeFormatter({ ...(options ?? {}), style: 'decimal' });
+  return buildRangeFormatter(options ?? {}, 'decimal');
 }

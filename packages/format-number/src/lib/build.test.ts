@@ -40,6 +40,12 @@ describe('buildFormatter', () => {
     expect(result).toBe('[decimal]');
   });
 
+  it('returns a placeholder for undefined locale when style is not set explicitly', () => {
+    const formatter = buildFormatter({});
+    const result = formatter(1234.56).localize(null);
+    expect(result).toBe('[decimal]');
+  });
+
   it('applies transform function if provided', () => {
     const formatter = buildFormatter({
       style: 'decimal',
@@ -52,13 +58,19 @@ describe('buildFormatter', () => {
 
 describe('buildRangeFormatter', () => {
   it('formats a range of numbers correctly for a given locale', () => {
-    const formatter = buildRangeFormatter({ style: 'decimal' });
+    const formatter = buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize('en-US');
     expect(result).toBe('1,000–2,000');
   });
 
   it('returns a placeholder for undefined locale', () => {
-    const formatter = buildRangeFormatter({ style: 'decimal' });
+    const formatter = buildRangeFormatter({}, 'decimal');
+    const result = formatter(1000, 2000).localize(null);
+    expect(result).toBe('[decimalRange]');
+  });
+
+  it('returns a placeholder for undefined locale when style is not set explicitly', () => {
+    const formatter = buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize(null);
     expect(result).toBe('[decimalRange]');
   });
@@ -66,22 +78,36 @@ describe('buildRangeFormatter', () => {
   it('filters parts based on source if provided', () => {
     const formatter = buildRangeFormatter(
       { style: 'decimal', parts: ['integer'] },
+      'decimal',
       'startRange',
     );
     const result = formatter(1000, 2000).localize('en-US');
     expect(result).toBe('1000');
   });
+
+  it('applies transformation', () => {
+    const formatter = buildRangeFormatter(
+      {
+        style: 'unit',
+        unit: 'kilometer',
+        transform: [upperCase],
+      },
+      'unit',
+    );
+    const result = formatter(1000, 2000).localize('en-US');
+    expect(result).toBe('1,000–2,000 KM');
+  });
 });
 
 describe('buildUnitFormatter', () => {
   it('formats a number with a unit correctly for a given locale', () => {
-    const formatter = buildUnitFormatter({ style: 'unit' }, 'unit');
+    const formatter = buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
     const result = formatter(100, 'kilometer').localize('en-US');
     expect(result).toBe('100 km');
   });
 
   it('returns a placeholder for undefined locale', () => {
-    const formatter = buildUnitFormatter({ style: 'unit' }, 'unit');
+    const formatter = buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
     const result = formatter(100, 'kilometer').localize(null);
     expect(result).toBe('[unit]');
   });
@@ -90,8 +116,9 @@ describe('buildUnitFormatter', () => {
     const formatter = buildUnitFormatter(
       { style: 'unit', transform: [upperCase] },
       'unit',
+      'unit',
     );
     const result = formatter(100, 'kilometer').localize('en-US');
-    expect(result).toBe('100 km'.toUpperCase());
+    expect(result).toBe('100 KM');
   });
 });

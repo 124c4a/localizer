@@ -37,10 +37,7 @@ import { NumberFormatOptions } from './options.js';
  * @see {@link NumberFormatOptions}, {@link UnitValueFormatter}, {@link Intl.NumberFormat}
  */
 export function currencyFormatter<T extends number | bigint>(
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): UnitValueFormatter<T, CurrencyCode> {
-  return buildUnitFormatter(
-    { ...(options ?? {}), style: 'currency' },
-    'currency'
-  );
+  return buildUnitFormatter(options ?? {}, 'currency', 'currency');
 }

@@ -42,14 +42,16 @@ import { NumberFormatOptions } from './options.js';
  */
 export function relativeCurrencyFormatter<T extends number | bigint>(
   currency: CurrencyCode,
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): RelativeValueFormatter<T> {
-  const innerFormatter = buildFormatter({
-    ...(options ?? {}),
-    style: 'currency',
-    currency,
-    signDisplay: 'exceptZero',
-  });
+  const innerFormatter = buildFormatter(
+    {
+      ...(options ?? {}),
+      currency,
+      signDisplay: 'exceptZero',
+    },
+    'currency',
+  );
 
   return (value, reference) => innerFormatter(value - reference);
 }

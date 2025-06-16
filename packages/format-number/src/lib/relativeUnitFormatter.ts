@@ -42,14 +42,16 @@ import { Unit } from './unit.js';
  */
 export function relativeUnitFormatter<T extends number | bigint>(
   unit: Unit,
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): RelativeValueFormatter<T> {
-  const innerFormatter = buildFormatter({
-    ...(options ?? {}),
-    style: 'unit',
-    unit,
-    signDisplay: 'exceptZero',
-  });
+  const innerFormatter = buildFormatter(
+    {
+      ...(options ?? {}),
+      unit,
+      signDisplay: 'exceptZero',
+    },
+    'unit',
+  );
 
   return (value, reference) => innerFormatter(value - reference);
 }

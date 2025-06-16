@@ -43,5 +43,5 @@ export function fixedCurrencyFormatter<T extends number | bigint>(
   currency: CurrencyCode,
   options?: NumberFormatOptions
 ): ValueFormatter<T> {
-  return buildFormatter({ ...(options ?? {}), style: 'currency', currency });
+  return buildFormatter({ ...(options ?? {}), currency }, 'currency');
 }

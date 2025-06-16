@@ -54,6 +54,18 @@ describe('listFormatter', () => {
     expect(result).toBe('apple, banana, and cherry');
   });
 
+  it('formats a list using Intl.ListFormat for a given locale and applies transformation', () => {
+    const formatter = listFormatter({
+      style: 'long',
+      type: 'conjunction',
+      transform: [upperCase],
+    });
+    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
+      'en-US',
+    );
+    expect(result).toBe('APPLE, BANANA, AND CHERRY');
+  });
+
   it('returns a placeholder when formatting list using Intl.ListFormat for an undefined locale', () => {
     const formatter = listFormatter({ style: 'long', type: 'conjunction' });
     const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(

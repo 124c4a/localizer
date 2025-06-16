@@ -41,11 +41,13 @@ import { Unit } from './unit.js';
  */
 export function fixedUnitRangeFormatter<T extends number | bigint>(
   unit: Unit,
-  options?: NumberFormatOptions
+  options?: NumberFormatOptions,
 ): ValueRangeFormatter<T> {
-  return buildRangeFormatter({
-    ...(options ?? {}),
-    style: 'unit',
-    unit,
-  });
+  return buildRangeFormatter(
+    {
+      ...(options ?? {}),
+      unit,
+    },
+    'unit',
+  );
 }

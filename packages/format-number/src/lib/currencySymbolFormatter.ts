@@ -44,7 +44,8 @@ export function currencySymbolFormatter<T extends CurrencyCode>(
   options?: NumberFormatOptions
 ): ValueFormatter<T> {
   const innerFormatter = buildUnitFormatter<number, CurrencyCode>(
-    { ...(options ?? {}), style: 'currency', parts: ['currency'] },
+    { ...(options ?? {}), parts: ['currency'] },
+    'currency',
     'currency'
   );
 
