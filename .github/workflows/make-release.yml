@@ -31,13 +31,23 @@ jobs:
       - name: Build
         run: npx nx run-many -t build
 
-      - uses: actions-ecosystem/action-get-latest-tag@v1
+      - name: Get latest tag
         id: latest-tag
-        with:
-          initial_version: 'HEAD'
+        shell: bash
+        run: |
+          LATEST_TAG=$(git rev-list --tags --max-count=1 || true)
+          FIRST_COMMIT=$(git rev-list --max-parents=0 HEAD || true)
+          if [ -z "${LATEST_TAG}" ]; then
+              echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          else
+              echo "tag=$FIRST_COMMIT" >> $GITHUB_OUTPUT
+          fi
 
       - name: Release
-        run: node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag }} --headRef=HEAD
+        run: |
+          node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag }} --headRef=HEAD
+          echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
+          echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
 
       - run: npx nx release ${{ env.CHANGELEVEL }} --dryRun
         env:
