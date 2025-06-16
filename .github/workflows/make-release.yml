@@ -43,7 +43,7 @@ jobs:
           echo "CHANGELEVEL=$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
           echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
 
-      - run: npx nx release ${{ env.CHANGELEVEL }} --dryRun
+      - run: npx nx release ${{ env.CHANGELEVEL }} ${{ steps.latest-tag.outputs.tag && '' || '--first-release' }} --dryRun
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
