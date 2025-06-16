@@ -39,103 +39,60 @@ jobs:
           check-name: 'ESLint results'
 
       - name: Build
-        run: npx nx affected -t build --parallel --maxParallel=4
+        run: npx nx affected -t build
 
       - name: Test
-        run: npx nx affected -t test --reporter=default --reporter=vitest-sonar-reporter --output-file=sonar-report.xml --coverage
-
-      - name: SonarQube scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: npx nx affected -t test --coverage --changed ${{ github.event.pull_request.base.sha }}
 
       - name: Prepare changelog
-        run: node scripts/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
+        run: |
+          node scripts/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
+          echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
+          echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
+
+      - name: Prepare coverage report
+        run: |
+          node scripts/analyze-coverage/dist/main.js
+          echo "COVERAGERESULT=$(cat tmp/COVERAGERESULT)" >> $GITHUB_ENV
 
       - name: Create changelog comment
         uses: marocchino/sticky-pull-request-comment@v2
+        if: env.COVERAGERESULT == '0'
         with:
           path: tmp/CHANGESET.md
           recreate: true
 
-      # Read tmp/CHANGELABEL and update PR labels
-      - name: Read change level label
-        run: |
-          if [ -f tmp/CHANGELEVEL ]; then
-            echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
-            echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
-          else
-            echo "No changelog label found."
-          fi
+      - name: Create coverage report comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: env.COVERAGERESULT == '1'
+        with:
+          path: tmp/COVERAGERESULT.md
+          recreate: true
+
+      - name: Run the action
+        uses: guibranco/github-status-action-v2@v1.1.13
+        if: env.COVERAGERESULT == '0'
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test coverage'
+          description: 'Passed'
+          state: 'success'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
+
+      - name: Run the action
+        uses: guibranco/github-status-action-v2@v1.1.13
+        if: env.COVERAGERESULT == '1'
+        with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test coverage'
+          description: 'Insufficient coverage'
+          state: 'failure'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
+
       - name: Update PR
         if: env.CHANGELEVEL != ''
         uses: actions/github-script@v6
         with:
           script: |
-            const label = process.env.CHANGELEVEL;
-            const { data: pullRequest } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-            });
-
-            // Remove old labels if needed
-            const existingLabels = pullRequest.labels.map(l => l.name);
-            for (const existingLabel of existingLabels) {
-              if (existingLabel.startsWith('semver:') && existingLabel !== label) {
-                await github.rest.issues.removeLabel({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              name: existingLabel,
-                });
-              }
-            }
-
-            // Add the new label if not already present
-            if (!existingLabels.includes(label)) {
-              await github.rest.issues.addLabels({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                labels: [label],
-              });
-            }
-
-            const ConventionalCommitRegex =
-              /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?: (?<description>.+)/i;
-
-            let metadata;
-
-            const message = context.payload.pull_request.title;
-            const match = message.match(ConventionalCommitRegex);
-
-            if (!match) {
-              metadata = {
-                type: 'chore',
-                scope: '',
-                description: message,
-                breaking: false,
-              };
-            } else {
-              metadata = {
-                type: match.groups.type || 'chore',
-                scope: match.groups.scope || '',
-                description: match.groups.description || '',
-                breaking: !!match.groups.breaking,
-              };
-            }
-
-            metadata.scope = process.env.MODULES;
-            metadata.breaking = (process.env.CHANGELEVEL === 'major');
-
-            const newTitle = `${metadata.type}${metadata.scope ? `(${metadata.scope})` : ''}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
-
-            if (newTitle !== message) {
-              await github.rest.pulls.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number,
-                title: newTitle,
-              });
-            }
+            const { default: updatePr } = await import('${{ github.workspace }}/scripts/update-pr.js')
+            await updatePr({ github, context })

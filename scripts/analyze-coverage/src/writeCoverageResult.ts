@@ -13,16 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { readFileSync } from 'node:fs';
-import { defineConfig } from 'vite';
+import { writeFile } from 'node:fs/promises';
 
-export default defineConfig(() => ({
-  root: __dirname,
-  cacheDir: '../../node_modules/.vite/packages/translate',
-  plugins: [],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-  ...JSON.parse(readFileSync(__dirname + '/../../vitest.config.json', 'utf-8')),
-}));
+import { Context } from './common';
+export async function writeCoverageResult(ctx: Context) {
+  if (ctx.coveredModules.length === 0) {
+    await writeFile('./tmp/COVERAGESTATUS', '0');
+    return;
+  } else {
+    await writeFile('./tmp/COVERAGESTATUS', '1');
+  }
+}

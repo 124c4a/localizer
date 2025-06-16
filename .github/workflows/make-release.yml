@@ -26,19 +26,15 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx release publish --dry-run
-
-      - run: npx nx affected -t lint
-
-      - name: Build and test
-        run: npx nx affected -t build,test --parallel --maxParallel=4
+      - name: Build
+        run: npx nx run-many -t build
 
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: latest-tag
         with:
           initial_version: 'HEAD'
 
-      - name: Prepare changelog
+      - name: Release
         run: node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag }} --headRef=HEAD
 
       - run: npx nx release ${{ env.CHANGELEVEL }} --dryRun

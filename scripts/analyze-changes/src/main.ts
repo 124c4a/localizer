@@ -24,7 +24,7 @@ const options = {
   baseRef: {
     type: 'string',
     short: 'b',
-    default: '5742dd1231e343378b037136d5e4f3453c3e7895',
+    default: '',
     help: 'Base reference.',
   },
   headRef: {

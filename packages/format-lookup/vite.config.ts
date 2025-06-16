@@ -13,25 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { readFileSync } from 'node:fs';
 import { defineConfig } from 'vite';
 
 export default defineConfig(() => ({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/packages/core',
+  cacheDir: '../../node_modules/.vite/packages/format-lookup',
   plugins: [],
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
-  test: {
-    watch: false,
-    globals: true,
-    environment: 'node',
-    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    reporters: ['default'],
-    coverage: {
-      provider: 'v8' as const,
-      reporter: ['lcovonly'],
-    },
-  },
+  ...JSON.parse(readFileSync(__dirname + '/../../vitest.config.json', 'utf-8')),
 }));

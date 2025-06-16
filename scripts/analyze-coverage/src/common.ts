@@ -13,16 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { readFileSync } from 'node:fs';
-import { defineConfig } from 'vite';
-
-export default defineConfig(() => ({
-  root: __dirname,
-  cacheDir: '../../node_modules/.vite/packages/translate',
-  plugins: [],
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
-  ...JSON.parse(readFileSync(__dirname + '/../../vitest.config.json', 'utf-8')),
-}));
+export type Context = {
+  coveredModules: string[];
+  coverageReports: Record<string, string>;
+};
