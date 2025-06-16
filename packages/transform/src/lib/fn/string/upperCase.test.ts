@@ -47,5 +47,6 @@ describe('upperCase', () => {
     const result = upperCase(value);
     expect(result.localize('tr')).toBe('İSTANBUL');
     expect(result.localize('en')).toBe('ISTANBUL');
+    expect(result.localize(null)).toBe('istanbul');
   });
 });

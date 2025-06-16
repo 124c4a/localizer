@@ -64,5 +64,11 @@ describe('translate function', () => {
     expect(emptyTranslationWithoutKey.localize('en')).toBe(
       '[anonymous translation]',
     );
+    expect(emptyTranslationWithKey.localize(null)).toBe(
+      'emptyTranslationWithKey',
+    );
+    expect(emptyTranslationWithoutKey.localize(null)).toBe(
+      '[anonymous translation]',
+    );
   });
 });

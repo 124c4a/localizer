@@ -31,6 +31,8 @@ import { Localizable, loc } from '@localizer/core';
  */
 export function upperCase(value: Localizable): Localizable {
   return loc((locale) =>
-    value.localize(locale).toLocaleUpperCase(locale ?? undefined)
+    locale === null
+      ? value.localize(locale)
+      : value.localize(locale).toLocaleUpperCase(locale),
   );
 }

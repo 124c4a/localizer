@@ -47,5 +47,6 @@ describe('capitalize', () => {
     const result = capitalize(value);
     expect(result.localize('tr')).toBe('İstanbul');
     expect(result.localize('en')).toBe('Istanbul');
+    expect(result.localize(null)).toBe('istanbul');
   });
 });
