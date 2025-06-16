@@ -35,13 +35,7 @@ jobs:
         id: latest-tag
         shell: bash
         run: |
-          LATEST_TAG=$(git rev-list --tags --max-count=1 || true)
-          FIRST_COMMIT=$(git rev-list --max-parents=0 HEAD || true)
-          if [ -z "${LATEST_TAG}" ]; then
-              echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
-          else
-              echo "tag=$FIRST_COMMIT" >> $GITHUB_OUTPUT
-          fi
+          echo "tag=$(git rev-list --tags --max-count=1)" >> $GITHUB_OUTPUT
 
       - name: Release
         run: |
