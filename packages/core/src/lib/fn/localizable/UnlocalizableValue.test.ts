@@ -37,17 +37,28 @@ describe('Unlocalizable', () => {
     );
     expect(`${new UnlocalizableValue(12n)}`).toBe('12');
     expect(`${new UnlocalizableValue(12)}`).toBe('12');
-    expect(`${new UnlocalizableValue(Symbol('test'))}`).toBe('[object Symbol]');
-    expect(`${new UnlocalizableValue({})}`).toBe('[object Object]');
-    expect(`${new UnlocalizableValue([])}`).toBe('[]');
     expect(`${new UnlocalizableValue(false)}`).toBe('false');
     expect(`${new UnlocalizableValue(undefined)}`).toBe('undefined');
     expect(`${new UnlocalizableValue(null)}`).toBe('null');
+    expect(`${new UnlocalizableValue(Symbol('test'))}`).toBe('[object Symbol]');
+    expect(`${new UnlocalizableValue({})}`).toBe('[object Object]');
+    expect(`${new UnlocalizableValue([])}`).toBe('[object Array]');
+    expect(`${new UnlocalizableValue(() => void 0)}`).toBe('[object Function]');
   });
 
   it('creates an instance of Localizable', () => {
     const result = new UnlocalizableValue('value');
     expect(result).toHaveProperty('localize');
     expect(typeof result.localize).toBe('function');
+  });
+
+  it('handles null values gracefully', () => {
+    const result = new UnlocalizableValue(null);
+    expect(result.localize()).toBe(null);
+  });
+
+  it('handles undefined values gracefully', () => {
+    const result = new UnlocalizableValue(undefined);
+    expect(result.localize()).toBe(undefined);
   });
 });
