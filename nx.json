@@ -51,6 +51,7 @@
   "release": {
     "projects": ["packages/*"],
     "changelog": {
+      "automaticFromRef": true,
       "workspaceChangelog": {
         "createRelease": "github"
       }
@@ -58,7 +59,7 @@
     "version": {
       "conventionalCommits": true,
       "fallbackCurrentVersionResolver": "disk",
-      "preVersionCommand": "npx nx run-many -t build"
+      "preVersionCommand": "npx nx run-many -t build && find packages -maxdepth 1 -type d -not -name '.*' -exec cp README.md {}/ \\;"
     }
   },
   "targetDefaults": {
