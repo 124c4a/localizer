@@ -47,7 +47,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override }} ${{ github.event.inputs.dry-run == 'true' && '--dryRun' }}
+          npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override }} ${{ github.event.inputs.dry-run == 'true' && '--dryRun' || '--yes' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
