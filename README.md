@@ -1,7 +1,12 @@
 # `@localizer`: Type-safe localization, formatting and translation library
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/124c4a/localizer/ci-full.yml)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/124c4a/localizer/ci-main.yml)
+![NPM Last Update](https://img.shields.io/npm/last-update/%40localizer%2Fall)
+![NPM Version](https://img.shields.io/npm/v/%40localizer%2Fall)
+![npm bundle size](https://img.shields.io/bundlephobia/min/%40localizer%2Fall)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/124c4a/localizer)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/124c4a/localizer)
+![NPM License](https://img.shields.io/npm/l/%40localizer%2Fall)
 
 ## About the Project
 
