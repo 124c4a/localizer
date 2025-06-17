@@ -1,0 +1,47 @@
+{
+  "name": "@localizer/format-number",
+  "version": "0.0.1",
+  "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting numbers in a locale-aware manner.",
+  "keywords": [
+    "localization",
+    "globalization",
+    "i18n",
+    "l10n",
+    "internationalization",
+    "localizer",
+    "formatting",
+    "number formatting"
+  ],
+  "license": "Apache-2.0",
+  "author": "Artem Godin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/124c4a/localizer.git",
+    "directory": "packages/format-number"
+  },
+  "bugs": {
+    "url": "https://github.com/124c4a/localizer/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {
+    "@localizer/core": "*",
+    "@localizer/transform": "*",
+    "tslib": "^2.3.0"
+  }
+}

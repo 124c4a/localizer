@@ -1,0 +1,43 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../translate"
+    },
+    {
+      "path": "../transform"
+    },
+    {
+      "path": "../format-relativetime"
+    },
+    {
+      "path": "../format-number"
+    },
+    {
+      "path": "../format-lookup"
+    },
+    {
+      "path": "../format-list"
+    },
+    {
+      "path": "../format-displayname"
+    },
+    {
+      "path": "../format-datetime"
+    },
+    {
+      "path": "../format"
+    },
+    {
+      "path": "../core"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
