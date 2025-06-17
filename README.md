@@ -1,14 +1,14 @@
 # `@localizer`: Type-safe localization, formatting and translation library
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/124c4a/localizer/ci-main.yml)
-![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/124c4a/localizer)
 ![NPM Last Update](https://img.shields.io/npm/last-update/%40localizer%2Fall)
 ![NPM Version](https://img.shields.io/npm/v/%40localizer%2Fall)
-![NPM Downloads](https://img.shields.io/npm/dm/%40localizer%2Fcore)
+![NPM Downloads](https://img.shields.io/npm/dw/%40localizer%2Fcore)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/%40localizer%2Fall)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/124c4a/localizer)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/124c4a/localizer)
 ![NPM License](https://img.shields.io/npm/l/%40localizer%2Fall)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10752/badge)](https://www.bestpractices.dev/projects/10752)
 
 ## About the Project
 
