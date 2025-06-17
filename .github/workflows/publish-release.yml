@@ -41,7 +41,12 @@ jobs:
       - name: Build
         run: npx nx run-many -t build
 
-      - run: npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override }} ${{ github.event.inputs.dry-run == 'true' && '--dryRun' }}
+      - run: |
+          # Set git user details
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override }} ${{ github.event.inputs.dry-run == 'true' && '--dryRun' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
