@@ -57,6 +57,7 @@
     },
     "version": {
       "conventionalCommits": true,
+      "fallbackCurrentVersionResolver": "disk",
       "preVersionCommand": "npx nx run-many -t build"
     }
   },
