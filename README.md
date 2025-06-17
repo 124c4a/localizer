@@ -9,6 +9,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/124c4a/localizer)
 ![NPM License](https://img.shields.io/npm/l/%40localizer%2Fall)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10752/badge)](https://www.bestpractices.dev/projects/10752)
+![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/124c4a/localizer?label=openssf%20scorecard)
 
 ## About the Project
 
