@@ -3,10 +3,15 @@ name: Publish release
 on:
   workflow_dispatch:
     inputs:
-      dryRun:
+      dry-run:
+        type: boolean
         description: 'Run the release in dry run mode'
         required: false
-        default: 'true'
+        default: true
+      version-override:
+        type: string
+        description: 'Override the release version'
+        required: false
 
 permissions:
   contents: write
@@ -43,7 +48,7 @@ jobs:
       - name: Get tag from package.json
         id: latest-tag
         run: |
-          version=$(node -p "require('./package.json').version")
+          version=$(node -p "require('./packages/all/package.json').version")
           echo "tag=v$version" >> $GITHUB_OUTPUT
 
       - name: Release
@@ -51,8 +56,9 @@ jobs:
           node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag && steps.latest-tag.outputs.tag || 'HEAD' }} --headRef=HEAD
           echo "CHANGELEVEL=$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
           echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
+          cat tmp/CHANGESET.md >> $GITHUB_STEP_SUMMARY
 
-      - run: npx nx release ${{ env.CHANGELEVEL }} ${{ steps.latest-tag.outputs.tag && '' || '--first-release' }} ${{ github.event.inputs.dryRun == 'true' && '--dryRun' }}
+      - run: npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override || env.CHANGELEVEL }} --first-release ${{ github.event.inputs.dry-run == 'true' && '--dryRun' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
