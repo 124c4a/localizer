@@ -5,13 +5,13 @@ on:
     branches:
       - main
 
-permissions:
-  actions: read
-  contents: read
-  checks: write
+permissions: read-all
 
 jobs:
   main:
+    permissions:
+      checks: write
+
     name: Build and test
     runs-on: ubuntu-latest
     steps:

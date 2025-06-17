@@ -3,15 +3,15 @@ name: CI (Pull Request)
 on:
   pull_request:
 
-permissions:
-  actions: read
-  contents: read
-  pull-requests: write
-  checks: write
-  statuses: write
+permissions: read-all
 
 jobs:
   main:
+    permissions:
+      pull-requests: write
+      checks: write
+      statuses: write
+
     name: Build and test
     runs-on: ubuntu-latest
     steps:

@@ -18,9 +18,9 @@ permissions: read-all
 jobs:
   main:
     permissions:
-      contents: write
       pull-requests: write
       id-token: write
+
     environment: npm
 
     name: Release version

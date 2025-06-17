@@ -8,7 +8,8 @@
     ":automergeRequireAllStatusChecks",
     "npm:unpublishSafe",
     "schedule:daily",
-    ":widenPeerDependencies"
+    ":widenPeerDependencies",
+    "helpers:pinGitHubActionDigests"
   ],
   "packageRules": [
     {
