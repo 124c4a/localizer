@@ -1,6 +1,6 @@
 {
   "name": "@localizer/format-relativetime",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting relative time in a locale-aware manner.",
   "keywords": [
     "localization",
@@ -40,8 +40,8 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "*",
-    "@localizer/transform": "*",
+    "@localizer/core": "1.0.0",
+    "@localizer/transform": "1.0.0",
     "date-fns": "^4.1.0",
     "tslib": "^2.3.0"
   }

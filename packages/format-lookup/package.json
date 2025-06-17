@@ -1,6 +1,6 @@
 {
   "name": "@localizer/format-lookup",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting values using look-up tables in a locale-aware manner.",
   "keywords": [
     "localization",
@@ -40,7 +40,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "*",
+    "@localizer/core": "1.0.0",
     "tslib": "^2.3.0"
   }
 }
