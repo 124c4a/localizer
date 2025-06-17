@@ -45,20 +45,7 @@ jobs:
       - name: Build
         run: npx nx run-many -t build
 
-      - name: Get tag from package.json
-        id: latest-tag
-        run: |
-          version=$(node -p "require('./packages/all/package.json').version")
-          echo "tag=v$version" >> $GITHUB_OUTPUT
-
-      - name: Release
-        run: |
-          node scripts/analyze-changes/dist/main.js --baseRef=${{ steps.latest-tag.outputs.tag && steps.latest-tag.outputs.tag || 'HEAD' }} --headRef=HEAD
-          echo "CHANGELEVEL=$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
-          echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
-          cat tmp/CHANGESET.md >> $GITHUB_STEP_SUMMARY
-
-      - run: npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override || env.CHANGELEVEL }} --first-release ${{ github.event.inputs.dry-run == 'true' && '--dryRun' }}
+      - run: npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override }} ${{ github.event.inputs.dry-run == 'true' && '--dryRun' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
