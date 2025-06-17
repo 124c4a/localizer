@@ -4,6 +4,7 @@
 ![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/124c4a/localizer)
 ![NPM Last Update](https://img.shields.io/npm/last-update/%40localizer%2Fall)
 ![NPM Version](https://img.shields.io/npm/v/%40localizer%2Fall)
+![NPM Downloads](https://img.shields.io/npm/dm/%40localizer%2Fcore)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/%40localizer%2Fall)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/124c4a/localizer)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/124c4a/localizer)
