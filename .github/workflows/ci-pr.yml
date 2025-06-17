@@ -15,17 +15,17 @@ jobs:
     name: Build and test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 20
           cache: 'npm'
 
       - run: npm ci --legacy-peer-deps
-      - uses: nrwl/nx-set-shas@v4
+      - uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4
 
       - run: npx nx affected --target=lint --output-file=eslint-report.json --format=json --parallel --maxParallel=4
         continue-on-error: true
@@ -51,21 +51,21 @@ jobs:
           echo "COVERAGESTATUS=$(cat tmp/COVERAGESTATUS)" >> $GITHUB_ENV
 
       - name: Create changelog comment
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2
         if: env.COVERAGESTATUS == '0'
         with:
           path: tmp/CHANGESET.md
           recreate: true
 
       - name: Create coverage report comment
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2
         if: env.COVERAGESTATUS == '1'
         with:
           path: tmp/COVERAGEREPORT.md
           recreate: true
 
       - name: Run the action
-        uses: guibranco/github-status-action-v2@v1.1.13
+        uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
         if: env.COVERAGESTATUS == '0'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
@@ -75,7 +75,7 @@ jobs:
           sha: ${{github.event.pull_request.head.sha || github.sha}}
 
       - name: Run the action
-        uses: guibranco/github-status-action-v2@v1.1.13
+        uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
         if: env.COVERAGESTATUS == '1'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
@@ -86,7 +86,7 @@ jobs:
 
       - name: Update PR
         if: env.CHANGELEVEL != ''
-        uses: actions/github-script@v6
+        uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6
         with:
           script: |
             const { default: updatePr } = await import('${{ github.workspace }}/scripts/update-pr.js')
