@@ -53,7 +53,7 @@ const extractorConfig = ExtractorConfig.loadFileAndPrepare(
 const sarifBuilder = new SarifBuilder();
 // SARIF Run builder
 const sarifRunBuilder = new SarifRunBuilder().initSimple({
-  toolDriverName: Extractor.packageName, // Name of your analyzer tool
+  toolDriverName: 'API Extractor', // Name of your analyzer tool
   toolDriverVersion: Extractor.version, // Version of your analyzer tool
 });
 
