@@ -11,6 +11,7 @@ jobs:
   main:
     permissions:
       checks: write
+      security-events: write
 
     name: Build and test
     runs-on: ubuntu-latest
@@ -29,6 +30,8 @@ jobs:
       - name: Lint
         run: npx nx run-many --target=lint -f @microsoft/eslint-formatter-sarif -o results.sarif
         continue-on-error: true
+        env:
+          SARIF_ESLINT_IGNORE_SUPPRESSED: 'true'
 
       - name: Collect ESLint results
         run: npx @microsoft/sarif-multitool merge *.sarif --recurse true --output-directory=./tmp --output-file=eslint.sarif
