@@ -38,6 +38,10 @@
         "logLevel": "warning",
         "addToApiReportFile": false
       },
+      "ae-wrong-input-file-type": {
+        "logLevel": "none",
+        "addToApiReportFile": false
+      },
       "ae-forgotten-export": {
         "logLevel": "error",
         "addToApiReportFile": false
