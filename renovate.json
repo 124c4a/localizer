@@ -6,11 +6,11 @@
     ":automergeTypes",
     ":automergePr",
     ":automergeRequireAllStatusChecks",
-    "npm:unpublishSafe",
     "schedule:daily",
     ":widenPeerDependencies",
     "helpers:pinGitHubActionDigests"
   ],
+  "internalChecksFilter": "strict",
   "packageRules": [
     {
       "matchManagers": ["npm"],
@@ -21,6 +21,9 @@
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["patch", "minor"],
       "automerge": true
+    },
+    {
+      "minimumReleaseAge": "14 days"
     }
   ],
   "labels": ["dependencies"]
