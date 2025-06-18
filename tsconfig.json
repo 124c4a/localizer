@@ -44,9 +44,6 @@
     },
     {
       "path": "./packages/all"
-    },
-    {
-      "path": "./scripts/update-pr"
     }
   ]
 }

@@ -13,29 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import * as core from '@actions/core';
-import * as exec from '@actions/exec';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { Context } from '@actions/github/lib/context';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { GitHub } from '@actions/github/lib/utils';
-import * as glob from '@actions/glob';
-import * as io from '@actions/io';
-export declare type AsyncFunctionArguments = {
-  context: Context;
-  core: typeof core;
-  github: InstanceType<typeof GitHub>;
-  octokit: InstanceType<typeof GitHub>;
-  exec: typeof exec;
-  glob: typeof glob;
-  io: typeof io;
-};
-
-export default async function updatePr({
-  github,
-  context,
-}: AsyncFunctionArguments) {
+export default async function updatePr({ github, context }) {
   const label = process.env.CHANGELEVEL ?? 'patch';
   const { data: pullRequest } = await github.rest.pulls.get({
     owner: context.repo.owner,
@@ -67,7 +45,7 @@ export default async function updatePr({
   }
 
   const ConventionalCommitRegex =
-    /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?: (?<description>.+)/i;
+    /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?:\s*(?<description>.+)/i;
 
   let metadata;
 
@@ -106,7 +84,7 @@ export default async function updatePr({
   }
 }
 
-function capitalize(str: string): string {
+function capitalize(str) {
   const trimmedStr = str.trim();
   if (trimmedStr.length === 0) {
     return '';
