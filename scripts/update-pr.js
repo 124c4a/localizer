@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 export default async function updatePr({ github, context }) {
-  const label = process.env.CHANGELEVEL;
+  const label = process.env.CHANGELEVEL ?? 'patch';
   const { data: pullRequest } = await github.rest.pulls.get({
     owner: context.repo.owner,
     repo: context.repo.repo,
@@ -45,33 +45,34 @@ export default async function updatePr({ github, context }) {
   }
 
   const ConventionalCommitRegex =
-    /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?: (?<description>.+)/i;
+    /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?:\s*(?<description>.+)/i;
 
   let metadata;
 
-  const message = context.payload.pull_request.title;
+  const message = context.payload.pull_request?.title ?? 'Undefined PR title';
   const match = message.match(ConventionalCommitRegex);
 
   if (!match) {
     metadata = {
       type: 'chore',
       scope: '',
-      description: message,
+      description: capitalize(message),
       breaking: false,
     };
   } else {
     metadata = {
       type: match.groups.type || 'chore',
       scope: match.groups.scope || '',
-      description: match.groups.description || '',
+      description: capitalize(match.groups.description) || '',
       breaking: !!match.groups.breaking,
     };
   }
 
   metadata.scope = process.env.MODULES;
   metadata.breaking = process.env.CHANGELEVEL === 'major';
+  const scopePart = metadata.scope ? `(${metadata.scope})` : '';
 
-  const newTitle = `${metadata.type}${metadata.scope ? `(${metadata.scope})` : ''}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
+  const newTitle = `${metadata.type}${scopePart}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
 
   if (newTitle !== message) {
     await github.rest.pulls.update({
@@ -81,4 +82,12 @@ export default async function updatePr({ github, context }) {
       title: newTitle,
     });
   }
+}
+
+function capitalize(str) {
+  const trimmedStr = str.trim();
+  if (trimmedStr.length === 0) {
+    return '';
+  }
+  return trimmedStr.charAt(0).toUpperCase() + trimmedStr.slice(1);
 }

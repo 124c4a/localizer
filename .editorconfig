@@ -1,0 +1,24 @@
+# Stop the editor from looking for .editorconfig files in the parent directories
+root = true
+
+# Editor config is based on https://bitbucket.procountor.com/projects/PC/repos/main/browse/Docs/.editorconfig
+[*]
+charset = UTF-8
+insert_final_newline = false
+indent_style = space
+indent_size = 2
+
+[*.yaml]
+indent_size = 2
+
+[*.css]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+
+[*.ts]
+indent_size = 2
+
+[*.js]
+indent_size = 2

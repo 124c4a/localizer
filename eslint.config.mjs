@@ -16,14 +16,18 @@
 import nx from '@nx/eslint-plugin';
 import headers from 'eslint-plugin-headers';
 import perfectionist from 'eslint-plugin-perfectionist';
+import sonarjs from 'eslint-plugin-sonarjs';
 
 export default [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
+  sonarjs.configs.recommended,
   {
     ignores: [
+      'tsconfig.*.json',
       '**/dist',
+      '**/out-tsc',
       '**/vite.config.*.timestamp*',
       '**/vitest.config.*.timestamp*',
     ],

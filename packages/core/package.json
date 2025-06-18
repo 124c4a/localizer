@@ -41,5 +41,20 @@
   ],
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "nx": {
+    "targets": {
+      "api": {
+        "executor": "nx:run-commands",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "commands": [
+            "node ./scripts/analyze-api.js -p {projectRoot}"
+          ]
+        }
+      }
+    }
   }
 }

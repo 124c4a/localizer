@@ -53,3 +53,4 @@ eslint-report.json
 .github/instructions/nx.instructions.md
 
 packages/*/README.md
+*.sarif
