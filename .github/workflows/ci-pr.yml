@@ -112,5 +112,5 @@ jobs:
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         with:
           script: |
-            const { default: updatePr } = await import('${{ github.workspace }}/scripts/update-pr/dist/main.js')
+            const updatePr = require('./scripts/update-pr/dist/main.js')
             await updatePr({ github, context })
