@@ -40,7 +40,6 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "tslib": "^2.3.0",
     "@localizer/core": "1.0.0",
     "@localizer/format": "1.0.0",
     "@localizer/format-datetime": "1.0.0",
