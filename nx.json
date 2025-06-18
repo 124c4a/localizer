@@ -56,6 +56,14 @@
         "createRelease": "github"
       }
     },
+    "conventionalCommits": {
+      "types": {
+        "chore": {
+          "semverBump": "patch",
+          "changelog": false
+        }
+      }
+    },
     "version": {
       "conventionalCommits": true,
       "fallbackCurrentVersionResolver": "disk",
