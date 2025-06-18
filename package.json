@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "@eslint/js": "9.29.0",
+    "@microsoft/api-extractor": "^7.52.8",
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
     "@microsoft/sarif-multitool": "^4.5.4",
     "@nx/esbuild": "21.2.0",
@@ -28,6 +29,7 @@
     "eslint-plugin-sonarjs": "^3.0.3",
     "jiti": "2.4.2",
     "jsonc-eslint-parser": "2.4.0",
+    "node-sarif-builder": "^3.2.0",
     "nx": "21.2.0",
     "prettier": "3.5.3",
     "shallow-clone": "3.0.1",

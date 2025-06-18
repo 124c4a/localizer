@@ -45,6 +45,18 @@
     "tslib": "^2.3.0"
   },
   "nx": {
-    "name": "@localizer/translate"
+    "targets": {
+      "api": {
+        "executor": "nx:run-commands",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "commands": [
+            "node ./scripts/analyze-api.js -p {projectRoot}"
+          ]
+        }
+      }
+    }
   }
 }

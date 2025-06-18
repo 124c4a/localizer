@@ -34,25 +34,41 @@ jobs:
         uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4
 
       - name: Lint
-        run: npx nx affected --target=lint -f @microsoft/eslint-formatter-sarif -o results.sarif
+        run: npx nx affected --target=lint -f @microsoft/eslint-formatter-sarif -o eslint.sarif
         continue-on-error: true
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: 'true'
 
       - name: Collect ESLint results
-        run: npx @microsoft/sarif-multitool merge *.sarif --recurse true --output-directory=./tmp --output-file=eslint.sarif
+        run: npx @microsoft/sarif-multitool merge eslint.sarif --recurse true --output-directory=./tmp --output-file=eslint-merged.sarif
 
       - name: Upload ESLint results
         uses: github/codeql-action/upload-sarif@ce28f5bb42b7a9f2c824e633a3f6ee835bab6858 # v3.29.0
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: ./tmp/eslint.sarif
+          sarif_file: ./tmp/eslint-merged.sarif
           # Optional category for the results
           # Used to differentiate multiple results for one commit
           category: ESLint
 
       - name: Build
         run: npx nx affected -t build
+
+      - name: Analyze API
+        run: npx nx affected --target=api
+        continue-on-error: true
+
+      - name: Collect API results
+        run: npx @microsoft/sarif-multitool merge api-extractor.sarif --recurse true --output-directory=./tmp --output-file=api-merged.sarif
+
+      - name: Upload API results
+        uses: github/codeql-action/upload-sarif@ce28f5bb42b7a9f2c824e633a3f6ee835bab6858 # v3.29.0
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: ./tmp/api-merged.sarif
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: API
 
       - name: Test
         run: npx nx affected -t test --coverage --changed ${{ github.event.pull_request.base.sha }}

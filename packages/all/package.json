@@ -51,5 +51,20 @@
     "@localizer/format-relativetime": "1.0.0",
     "@localizer/transform": "1.0.0",
     "@localizer/translate": "1.0.0"
+  },
+  "nx": {
+    "targets": {
+      "api": {
+        "executor": "nx:run-commands",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "commands": [
+            "node ./scripts/analyze-api.js -p {projectRoot}"
+          ]
+        }
+      }
+    }
   }
 }

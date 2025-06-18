@@ -42,5 +42,20 @@
   "dependencies": {
     "@localizer/core": "1.0.0",
     "tslib": "^2.3.0"
+  },
+  "nx": {
+    "targets": {
+      "api": {
+        "executor": "nx:run-commands",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "commands": [
+            "node ./scripts/analyze-api.js -p {projectRoot}"
+          ]
+        }
+      }
+    }
   }
 }

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import { loc } from '../fn/localizable/loc.js';
+import { Localizable } from '../types/localizable.js';
 
 /**
  * Represents an empty localizable string.
@@ -22,4 +23,4 @@ import { loc } from '../fn/localizable/loc.js';
  *
  * @public
  */
-export const Empty = loc``;
+export const Empty: Localizable = loc``;

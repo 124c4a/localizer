@@ -56,7 +56,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
 
       - name: Build
-        run: npx nx run-many -t build
+        run: npx nx run-many -t build -t api
 
       - run: npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override }} ${{ github.event.inputs.dry-run == 'true' && '--dryRun' || '--yes' }}
         env:
