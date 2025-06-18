@@ -13,8 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default async function updatePr({ github, context }) {
-  const label = process.env.CHANGELEVEL;
+
+import * as core from '@actions/core';
+import * as exec from '@actions/exec';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { Context } from '@actions/github/lib/context';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { GitHub } from '@actions/github/lib/utils';
+import * as glob from '@actions/glob';
+import * as io from '@actions/io';
+export declare type AsyncFunctionArguments = {
+  context: Context;
+  core: typeof core;
+  github: InstanceType<typeof GitHub>;
+  octokit: InstanceType<typeof GitHub>;
+  exec: typeof exec;
+  glob: typeof glob;
+  io: typeof io;
+};
+
+export default async function updatePr({
+  github,
+  context,
+}: AsyncFunctionArguments) {
+  const label = process.env.CHANGELEVEL ?? 'patch';
   const { data: pullRequest } = await github.rest.pulls.get({
     owner: context.repo.owner,
     repo: context.repo.repo,
@@ -49,29 +71,30 @@ export default async function updatePr({ github, context }) {
 
   let metadata;
 
-  const message = context.payload.pull_request.title;
+  const message = context.payload.pull_request?.title ?? 'Undefined PR title';
   const match = message.match(ConventionalCommitRegex);
 
   if (!match) {
     metadata = {
       type: 'chore',
       scope: '',
-      description: message,
+      description: capitalize(message),
       breaking: false,
     };
   } else {
     metadata = {
       type: match.groups.type || 'chore',
       scope: match.groups.scope || '',
-      description: match.groups.description || '',
+      description: capitalize(match.groups.description) || '',
       breaking: !!match.groups.breaking,
     };
   }
 
   metadata.scope = process.env.MODULES;
   metadata.breaking = process.env.CHANGELEVEL === 'major';
+  const scopePart = metadata.scope ? `(${metadata.scope})` : '';
 
-  const newTitle = `${metadata.type}${metadata.scope ? `(${metadata.scope})` : ''}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
+  const newTitle = `${metadata.type}${scopePart}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
 
   if (newTitle !== message) {
     await github.rest.pulls.update({
@@ -81,4 +104,12 @@ export default async function updatePr({ github, context }) {
       title: newTitle,
     });
   }
+}
+
+function capitalize(str: string): string {
+  const trimmedStr = str.trim();
+  if (trimmedStr.length === 0) {
+    return '';
+  }
+  return trimmedStr.charAt(0).toUpperCase() + trimmedStr.slice(1);
 }

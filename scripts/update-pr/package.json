@@ -1,0 +1,70 @@
+{
+  "name": "update-pr",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "update-pr",
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "scripts/update-pr/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "scripts/update-pr/src/main.ts",
+          "tsConfig": "scripts/update-pr/tsconfig.app.json",
+          "assets": [
+            "scripts/update-pr/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "update-pr:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "update-pr:build:development"
+          },
+          "production": {
+            "buildTarget": "update-pr:build:production"
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/github-script": "github:actions/github-script"
+  }
+}
