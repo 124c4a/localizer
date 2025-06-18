@@ -34,7 +34,7 @@ jobs:
         uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4
 
       - name: Lint
-        run: npx nx affected --target=lint -f @microsoft/eslint-formatter-sarif -o eslint.sarif
+        run: npx nx run-many --target=lint -f @microsoft/eslint-formatter-sarif -o eslint.sarif
         continue-on-error: true
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: 'true'
@@ -52,10 +52,10 @@ jobs:
           category: ESLint
 
       - name: Build
-        run: npx nx affected -t build
+        run: npx nx run-many -t build
 
       - name: Analyze API
-        run: npx nx affected --target=api
+        run: npx nx run-many --target=api
         continue-on-error: true
 
       - name: Collect API results
