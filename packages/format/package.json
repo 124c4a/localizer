@@ -47,8 +47,7 @@
     "@localizer/format-displayname": "1.0.0",
     "@localizer/format-datetime": "1.0.0",
     "@localizer/format-relativetime": "1.0.0",
-    "@localizer/format-list": "1.0.0",
-    "tslib": "^2.3.0"
+    "@localizer/format-list": "1.0.0"
   },
   "nx": {
     "targets": {

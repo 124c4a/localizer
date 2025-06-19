@@ -45,6 +45,7 @@ export default async function updatePr({ github, context }) {
   }
 
   const ConventionalCommitRegex =
+    // eslint-disable-next-line sonarjs/slow-regex
     /(?<type>[a-z]+)(\((?<scope>.+)\))?(?<breaking>!)?:\s*(?<description>.+)/i;
 
   let metadata;
