@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 /**
  * ISO 4217 currency, fund and precious metal codes
- * 
+ *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Active_codes_(list_one)
  *
  * @public
@@ -204,7 +204,7 @@ export type ActiveCurrencyCode =
   | 'ZWG';
 
 /**
- * ISO 4217 codes for historic denominations of currencies and funds 
+ * ISO 4217 codes for historic denominations of currencies and funds
  *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Historical_codes
  *

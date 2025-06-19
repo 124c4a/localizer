@@ -13,12 +13,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { existsSync, readFileSync } from 'node:fs';
+import { Listr } from 'listr2';
+import { existsSync, readFileSync, mkdirSync } from 'node:fs';
 import { readdir } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import { Context } from './common.js';
-export async function readCoverageData(ctx: Context) {
+/**
+ * Main entry point for the analyzer tool.
+ */
+const tasks = new Listr(
+  [
+    {
+      title: 'Reading coverage data',
+      task: readCoverageData,
+    },
+    {
+      title: 'Exporting coverage report',
+      task: writeCoverageReport,
+    },
+    {
+      title: 'Exporting coverage result',
+      task: writeCoverageResult,
+    },
+  ],
+  {
+    concurrent: false,
+    ctx: { coveredModules: [], coverageReports: {} },
+  },
+);
+
+tasks
+  .run()
+  .then(async () => undefined)
+  .catch((err) => {
+    console.error(err);
+  });
+
+//===
+
+async function readCoverageData(ctx) {
   // Get all directories containing package.json files using node:fs
   const packageDirs = await readdir('./packages', { withFileTypes: true });
   const packageMetas = packageDirs
@@ -58,7 +92,7 @@ export async function readCoverageData(ctx: Context) {
       );
 
       const reportLines = report.split('\n').slice(1, -2);
-      const newLines: string[] = reportLines.slice(0, 2);
+      const newLines = reportLines.slice(0, 2);
 
       for (let line = 0; line < reportLines.length; line++) {
         if (reportLines[line].startsWith(' ')) {
@@ -80,4 +114,40 @@ export async function readCoverageData(ctx: Context) {
       ctx.coverageReports[pkg.name] = newLines.join('\n');
     }
   });
+}
+
+//===
+
+async function writeCoverageResult(ctx) {
+  await mkdirSync('./tmp', { recursive: true });
+  if (ctx.coveredModules.length === 0) {
+    await writeFile('./tmp/COVERAGESTATUS', '0');
+  } else {
+    await writeFile('./tmp/COVERAGESTATUS', '1');
+  }
+}
+
+//===
+
+async function writeCoverageReport(ctx) {
+  if (ctx.coveredModules.length === 0) {
+    await writeFile('./tmp/COVERAGEREPORT.md', '');
+  } else {
+    const lines = [];
+    const modules = ctx.coveredModules.sort((a, b) => a.localeCompare(b));
+
+    lines.push(
+      '### 🔴 Some branches or functions are not covered by unit tests',
+      '',
+    );
+
+    for (const module of modules) {
+      lines.push(`\`${module}\``, '', '');
+      lines.push(ctx.coverageReports[module]);
+      lines.push('');
+      lines.push('');
+    }
+
+    await writeFile('./tmp/COVERAGEREPORT.md', lines.join('\n'));
+  }
 }

@@ -16,7 +16,38 @@
 import { Listr } from 'listr2';
 import { writeFile } from 'node:fs/promises';
 import { fetch } from 'undici';
+import { read, utils } from 'xlsx';
 import { parse } from 'yaml';
+
+/**
+ * Main entry point for the data generation tool.
+ */
+const tasks = new Listr(
+  [
+    {
+      title: 'Generating locales',
+      task: () => localeTasks,
+    },
+    {
+      title: 'Generating currencies',
+      task: () => currencyTasks,
+    },
+    {
+      title: 'Generating units',
+      task: writeUnitTs,
+    },
+  ],
+  { concurrent: true },
+);
+
+tasks
+  .run()
+  .then(async () => undefined)
+  .catch((err) => {
+    console.error(err);
+  });
+
+//===
 
 //----------------------------------------------------------------------------------------------------------------------
 // Fetches country and language information from Nominatim and generates a `locale.ts` file
@@ -28,14 +59,7 @@ import { parse } from 'yaml';
 //   - https://raw.githubusercontent.com/osm-search/Nominatim/refs/tags/v4.1.0/settings/country_settings.yaml
 //----------------------------------------------------------------------------------------------------------------------
 
-type Context = {
-  countrySettings: Record<string, Record<string, string>>;
-  countries: string[];
-  languages: string[];
-  primaryLocales: Record<string, string>;
-};
-
-export const localeTasks = new Listr<Context>([
+export const localeTasks = new Listr([
   {
     title: 'Fetching Nominatim country settings',
     task: fetchNominatimData,
@@ -52,7 +76,7 @@ export const localeTasks = new Listr<Context>([
     title: 'Writing locale.ts',
     task: writeLocaleTs,
   },
-]) as Listr;
+]);
 
 //----------------------------------------------------------------------------------------------------------------------
 /**
@@ -61,7 +85,7 @@ export const localeTasks = new Listr<Context>([
  * @returns A promise that resolves to the parsed Nominatim data.
  * @internal
  */
-async function fetchAndParseNominatimData(url: string) {
+async function fetchAndParseNominatimData(url) {
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(
@@ -79,7 +103,7 @@ async function fetchAndParseNominatimData(url: string) {
  * @param ctx - The context object to store the fetched data.
  * @internal
  */
-async function fetchNominatimData(ctx: Context) {
+async function fetchNominatimData(ctx) {
   ctx.countrySettings = {
     ...(await fetchAndParseNominatimData(
       'https://raw.githubusercontent.com/osm-search/Nominatim/refs/tags/v4.1.0/settings/country_settings.yaml',
@@ -95,7 +119,7 @@ async function fetchNominatimData(ctx: Context) {
  * @param ctx - The context object to store the fetched languages.
  * @internal
  */
-async function fetchIanaLanguageRegistry(ctx: Context) {
+async function fetchIanaLanguageRegistry(ctx) {
   const response = await fetch(
     'https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry',
   );
@@ -130,7 +154,7 @@ async function fetchIanaLanguageRegistry(ctx: Context) {
  * @param ctx - The context object containing country settings and to be populated with languages and primary locales.
  * @internal
  */
-function convertNominatimData(ctx: Context) {
+function convertNominatimData(ctx) {
   ctx.countries = Object.keys(ctx.countrySettings).map((it) =>
     it.toUpperCase(),
   );
@@ -169,11 +193,11 @@ const languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
  * @param ctx - The context object containing languages, countries, and primary locales.
  * @internal
  */
-async function writeLocaleTs(ctx: Context) {
+async function writeLocaleTs(ctx) {
   const cwd = process.cwd();
   const targetFile = `${cwd}/packages/core/src/lib/consts/locale.ts`;
 
-  const content = `/* THIS FILE IS AUTO-GENERATED USING "tools/data-gen". DO NOT EDIT! */
+  const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
   
 /**
  * IETF BCP 47 language tag
@@ -219,6 +243,159 @@ ${Object.entries(ctx.primaryLocales)
   .map(([country, locale]) => `  '${country}': '${locale}-${country}',`)
   .join('\n')}
 } as const;
+`;
+
+  await writeFile(targetFile, content);
+}
+
+//---
+
+export const currencyTasks = new Listr([
+  {
+    title: 'Fetching actual currency codes',
+    task: fetchActualCodes,
+  },
+  {
+    title: 'Fetching historical currency codes',
+    task: fetchHistoricalCodes,
+  },
+  {
+    title: 'Writing currency.ts',
+    task: writeCurrencyTs,
+  },
+]);
+
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Fetches and parses currency data from a given URL and sheet name.
+ *
+ * @param url - The URL to fetch the Excel file from.
+ * @param sheet - The name of the sheet to parse from the Excel file.
+ * @return A promise that resolves to an array of unique currency codes sorted alphabetically.
+ * @internal
+ */
+async function fetchAndParseData(url, sheet) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch SIX Group data from ${url}: ${response.statusText}`,
+    );
+  }
+
+  const excelData = read(Buffer.from(await response.arrayBuffer()));
+  const data = utils.sheet_to_json(excelData.Sheets[sheet], { range: 3 });
+
+  if (data.length === 0 || !data[0]['Alphabetic Code']) {
+    throw new Error(`No valid data found in the sheet '${sheet}' from ${url}`);
+  }
+
+  return Array.from(
+    new Set(
+      data.map((it) => it['Alphabetic Code']).filter((it) => it !== undefined),
+    ),
+  ).sort((a, b) => a.localeCompare(b));
+}
+
+/**
+ * Fetches the actual currency codes from the SIX Group data center.
+ * @param ctx - The context object to store the fetched data.
+ * @internal
+ */
+async function fetchActualCodes(ctx) {
+  ctx.actual = await fetchAndParseData(
+    'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xls',
+    'Active',
+  );
+}
+
+/**
+ * Fetches the historical currency codes from the SIX Group data center.
+ * @param ctx - The context object to store the fetched data.
+ * @internal
+ */
+async function fetchHistoricalCodes(ctx) {
+  ctx.historical = await fetchAndParseData(
+    'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-three.xls',
+    'Historic',
+  );
+}
+
+/**
+ * Writes the currency types to a TypeScript file.
+ * @param ctx - The context object containing the actual and historical currency codes.
+ * @internal
+ */
+async function writeCurrencyTs(ctx) {
+  const cwd = process.cwd();
+  const targetFile = `${cwd}/packages/format-number/src/lib/currency.ts`;
+
+  const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
+
+/**
+ * ISO 4217 currency, fund and precious metal codes
+ *
+ * @see https://en.wikipedia.org/wiki/ISO_4217#Active_codes_(list_one)
+ *
+ * @public
+ */
+
+export type ActiveCurrencyCode =
+${ctx.actual.map((it) => `  | '${it}'`).join('\n')};
+
+/**
+ * ISO 4217 codes for historic denominations of currencies and funds 
+ *
+ * @see https://en.wikipedia.org/wiki/ISO_4217#Historical_codes
+ *
+ * @public
+ */
+export type HistoricCurrencyCode =
+${ctx.historical.map((it) => `  | '${it}'`).join('\n')};
+
+/**
+ * Supported currency codes, including both actual and historical
+ *
+ * @public
+ */
+export type CurrencyCode = ActiveCurrencyCode | HistoricCurrencyCode;
+`;
+
+  await writeFile(targetFile, content);
+}
+
+//---
+
+/**
+ * Generates the `unit.ts` file containing the supported units for unit formatting.
+ * The generated file exports types for singular units and a union type for all supported units.
+ * @returns A promise that resolves when the file has been written.
+ * @internal
+ */
+async function writeUnitTs() {
+  const cwd = process.cwd();
+  const targetFile = `${cwd}/packages/format-number/src/lib/unit.ts`;
+
+  const units = Intl.supportedValuesOf('unit');
+
+  const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
+  
+/**
+ * A subset of the CLDR units explicitly sanctioned by the ECMA-402 specification
+ * 
+ * @see https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers
+ *
+ * @public
+ */
+
+export type SingularUnit =
+${units.map((it) => `  | '${it}'`).join('\n')};
+
+/**
+ * Supported units for unit formatting
+ *
+ * @public
+ */
+export type Unit = SingularUnit | \`\${SingularUnit}-per-\${SingularUnit}\`;
 `;
 
   await writeFile(targetFile, content);
