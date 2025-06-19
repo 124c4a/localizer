@@ -34,15 +34,6 @@
       "path": "./packages/format-lookup"
     },
     {
-      "path": "./scripts/analyze-changes"
-    },
-    {
-      "path": "./scripts/data-gen"
-    },
-    {
-      "path": "./scripts/analyze-coverage"
-    },
-    {
       "path": "./packages/all"
     }
   ]
