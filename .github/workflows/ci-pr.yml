@@ -33,6 +33,9 @@ jobs:
       - name: Compute affected projects
         uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4
 
+      - name: Check TypeScript configuration
+        run: npx nx sync:check
+
       - name: Lint
         run: npx nx run-many --target=lint -f @microsoft/eslint-formatter-sarif -o eslint.sarif
         continue-on-error: true
