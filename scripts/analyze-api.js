@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const { Extractor, ExtractorConfig } = require('@microsoft/api-extractor');
-const {
+import { Extractor, ExtractorConfig } from '@microsoft/api-extractor';
+import {
   SarifBuilder,
   SarifRunBuilder,
   SarifResultBuilder,
-} = require('node-sarif-builder');
-const { writeFileSync } = require('node:fs');
-const path = require('node:path');
-const { pathToFileURL } = require('node:url');
-const { parseArgs } = require('node:util');
+} from 'node-sarif-builder';
+import { writeFileSync } from 'node:fs';
+import path from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { parseArgs } from 'node:util';
 
 const options = {
   project: {
