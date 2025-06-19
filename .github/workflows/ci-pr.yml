@@ -78,13 +78,13 @@ jobs:
 
       - name: Prepare changelog
         run: |
-          node scripts/analyze-changes/dist/main.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
+          node scripts/analyze-changes.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
           echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
           echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
 
       - name: Prepare coverage report
         run: |
-          node scripts/analyze-coverage/dist/main.js
+          node scripts/analyze-coverage.js
           echo "COVERAGESTATUS=$(cat tmp/COVERAGESTATUS)" >> $GITHUB_ENV
 
       - name: Create changelog comment
