@@ -1,9 +1,9 @@
 # Getting started
 
 <script setup>
-  import basicUsage from './_translation_basic';
-  import advancedUsage from './_translation_advanced';
-  import valueFormatting from './_value_formatting';
+  import basicUsage from './getting-started-basic';
+  import advancedUsage from './getting-started-advanced';
+  import valueFormatting from './getting-started-value-formatting';
 </script>
 
 This guide is designed to help you get up and running with the tool in no time. Whether you're a first-time user exploring its capabilities or a returning user looking for a refresher, this document provides all the essential information you need to start confidently.
@@ -56,13 +56,13 @@ In this example, we define and utilize a straightforward dictionary to manage tr
 
 Here’s how you can define a basic dictionary:
 
-<<< ./\_translation_basic.ts#dictionary{ts}
+<<< ./getting-started-basic.ts#dictionary{ts}
 
 The `dictionary()` function creates a strongly-typed object where each key represents a translatable string. This ensures that your translation keys are validated at compile time, reducing the risk of runtime errors caused by missing or misspelled keys.
 
 To use the translations in your application, you can simply pass the keys to `Localizer`:
 
-<<< ./\_translation_basic.ts#localizer{ts}
+<<< ./getting-started-basic.ts#localizer{ts}
 
 This will output the following to the console:
 
@@ -80,13 +80,13 @@ Quite often, translations need to include dynamic values that are determined at 
 
 Here’s an example of how you can define a dictionary with dynamic translations:
 
-<<< ./\_translation_advanced.ts#dictionary{ts}
+<<< ./getting-started-advanced.ts#dictionary{ts}
 
 In this example, the `dictionary()` function creates a strongly-typed object where each key represents a translatable string. However, unlike static translations, the values here are functions that take arguments and return a formatted string. This approach allows you to inject dynamic content into your translations seamlessly.
 
 To use these dynamic translations in your application, you can pass the result to the `Localizer`:
 
-<<< ./\_translation_advanced.ts#localizer{ts}
+<<< ./getting-started-advanced.ts#localizer{ts}
 
 This will produce the following output in the console:
 
@@ -104,7 +104,7 @@ For more advanced use cases, such as handling complex pluralization rules or int
 
 To format or localize different value types, `@localizer` provides a comprehensive set of utilities designed to handle various data formats, including dates, numbers, and currencies. These formatters ensure that your application can present data in a way that is both culturally appropriate and user-friendly, regardless of the target locale.
 
-<<< ./\_value_formatting.ts#example{ts}
+<<< ./getting-started-value-formatting.ts#example{ts}
 
 This will produce the following output in the console:
 
