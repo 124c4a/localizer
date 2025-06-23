@@ -15,12 +15,10 @@
  */
 import type { Theme } from 'vitepress';
 
-import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
 import DefaultTheme from 'vitepress/theme';
 import { h } from 'vue';
 
 import './style.css';
-import '@shikijs/vitepress-twoslash/style.css';
 
 export default {
   extends: DefaultTheme,
@@ -30,6 +28,6 @@ export default {
     });
   },
   enhanceApp({ app, router, siteData }) {
-    app.use(TwoslashFloatingVue);
+    // Configure theme
   },
 } satisfies Theme;
