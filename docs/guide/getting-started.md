@@ -41,12 +41,12 @@ bun add @localizer/all
 > [!TIP]
 > If you're unsure which package manager to use, you can stick with `npm`, as it comes pre-installed with Node.js. However, feel free to explore other options based on your workflow preferences.
 
-Once the installation is complete, you're ready to move on to the next steps. For more details about the individual components included in the `@localizer/all` package, refer to the [API Reference](../api-reference). This will provide you with a deeper understanding of the available modules and their capabilities.
+Once the installation is complete, you're ready to move on to the next steps. For more details about the individual components included in the `@localizer/all` package, refer to the [API Reference](../api-reference/index.md). This will provide you with a deeper understanding of the available modules and their capabilities.
 
 > [!NOTE]
 > The `@localizer/all` package is a meta-package that consolidates and re-exports symbols from all core components of the `@localizer` ecosystem. This means that by installing and using this single package, you gain access to a comprehensive suite of tools and utilities without needing to manage multiple dependencies individually. It simplifies the setup process and ensures compatibility across the various components of the ecosystem.
 >
-> For a detailed breakdown of the individual packages and modules included in `@localizer/all`, refer to the [API Reference](../api-reference). There, you'll find in-depth documentation on each component, including usage examples, configuration options, and best practices to help you make the most of the tool.
+> For a detailed breakdown of the individual packages and modules included in `@localizer/all`, refer to the [API Reference](../api-reference/index.md). There, you'll find in-depth documentation on each component, including usage examples, configuration options, and best practices to help you make the most of the tool.
 
 ## Translation (basic) <Badge type="warning" text="experimental" />
 
