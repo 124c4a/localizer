@@ -54,3 +54,8 @@ eslint-report.json
 
 packages/*/README.md
 *.sarif
+
+.vitepress/dist
+.vitepress/cache
+
+docs/api-reference
