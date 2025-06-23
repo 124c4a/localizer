@@ -1,6 +1,3 @@
 {
-  "extends": "../../api-extractor.json",
-  "docModel": {
-    "projectFolderUrl": "http://github.com/124c4a/localizer/packages/format-relativetime"
-  }
+  "extends": "../../api-extractor.json"
 }

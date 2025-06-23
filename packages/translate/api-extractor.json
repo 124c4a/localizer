@@ -1,6 +1,3 @@
 {
-  "extends": "../../api-extractor.json",
-  "docModel": {
-    "projectFolderUrl": "http://github.com/124c4a/localizer/packages/format-translate"
-  }
+  "extends": "../../api-extractor.json"
 }
