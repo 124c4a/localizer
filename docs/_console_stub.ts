@@ -13,23 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { Theme } from 'vitepress';
+import { ref } from 'vue';
 
-import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
-import DefaultTheme from 'vitepress/theme';
-import { h } from 'vue';
+class ConsoleStub {
+  messages: string[] = [];
 
-import './style.css';
-import '@shikijs/vitepress-twoslash/style.css';
+  log(arg: unknown) {
+    this.messages.push(`${arg}`);
+  }
 
-export default {
-  extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    });
-  },
-  enhanceApp({ app, router, siteData }) {
-    app.use(TwoslashFloatingVue);
-  },
-} satisfies Theme;
+  asRef() {
+    return ref(this.messages.join('\n'));
+  }
+}
+
+export { ConsoleStub };

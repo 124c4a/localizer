@@ -13,23 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { Theme } from 'vitepress';
+import { ConsoleStub } from '../_console_stub';
+const console = new ConsoleStub();
 
-import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
-import DefaultTheme from 'vitepress/theme';
-import { h } from 'vue';
+// #region example
+import { getLocalizer, dateTime } from '@localizer/all';
 
-import './style.css';
-import '@shikijs/vitepress-twoslash/style.css';
+const now = dateTime(new Date());
 
-export default {
-  extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    });
-  },
-  enhanceApp({ app, router, siteData }) {
-    app.use(TwoslashFloatingVue);
-  },
-} satisfies Theme;
+const englishLocalizer = getLocalizer('en-US');
+const swedishLocalizer = getLocalizer('sv-SE');
+
+console.log(englishLocalizer(now));
+console.log(swedishLocalizer(now));
+// #endregion example
+
+export default console.asRef();

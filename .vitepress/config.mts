@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { readFileSync } from 'node:fs';
-import { DefaultTheme, defineConfig, UserConfig } from 'vitepress';
+import { defineConfig, UserConfig } from 'vitepress';
 import { withSidebar } from 'vitepress-sidebar';
 import { SidebarItem } from 'vitepress-sidebar/types';
 
@@ -41,15 +41,16 @@ function readApiSidebar() {
   return JSON.parse(sidebarFile);
 }
 
-const config: Partial<UserConfig<DefaultTheme.Config>> = {
+const config: UserConfig = {
   title: '@localizer',
   description: 'Type-safe localization, formatting and translation library',
   base: '/localizer/',
   srcDir: 'docs',
+  markdown: {},
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Getting started', link: '/guide/getting-started' },
       { text: 'API reference', link: '/api-reference' },
     ],
 
@@ -108,7 +109,7 @@ const configWithSidebar = withSidebar(config, {
   // ============ [ STYLING MENU TITLE ] ============
   // hyphenToSpace: true,
   // underscoreToSpace: false,
-  // capitalizeFirst: false,
+  capitalizeFirst: true,
   // capitalizeEachWords: false,
   // keepMarkdownSyntaxFromTitle: false,
   // removePrefixAfterOrdering: false,

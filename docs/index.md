@@ -7,6 +7,9 @@ hero:
   text: 'Type-safe localization, formatting and translation library'
   tagline:
   actions:
+    - theme: brand
+      text: Getting started
+      link: /guide/getting-started
     - theme: alt
       text: API reference
       link: /api-reference

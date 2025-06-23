@@ -5,7 +5,6 @@
     "emitDeclarationOnly": true,
     "importHelpers": false,
     "downlevelIteration": false,
-    "stripInternal": true,
     "isolatedModules": true,
     "lib": ["esnext", "dom"],
     "module": "nodenext",
