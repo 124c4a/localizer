@@ -53,10 +53,10 @@ const translations = dictionary({
 const englishLocalizer = getLocalizer('en-US');
 const russianLocalizer = getLocalizer('ru-RU');
 
-const twentyOneFile = translations.files(21);
+const twentyOneFiles = translations.files(21);
 
-console.log(englishLocalizer(twentyOneFile));
-console.log(russianLocalizer(twentyOneFile));
+console.log(englishLocalizer(twentyOneFiles));
+console.log(russianLocalizer(twentyOneFiles));
 // #endregion localizer
 
 export default console.asRef();

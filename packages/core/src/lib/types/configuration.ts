@@ -12,12 +12,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @see {@link ConfigurationProperties}, {@link configure}
  */
-export type Configuration<V> = (value: V) => void;
+/**
+ * @public
+ *
+ * A consumer function that accepts a configuration properties.
+ *
+ * @see {@link ConfigurationProperties}
+ */
+export type Configuration<V> = (value: Partial<V>) => void;
 
 /**
+ * @public
+ *
  * Represents a mapped type that extracts configuration properties from a given type `T`.
  *
  * The `ConfigurationProperties` type maps over the keys of `T` and, for each key,
@@ -27,6 +34,7 @@ export type Configuration<V> = (value: V) => void;
  * @template T - The type containing configuration properties.
  *
  * @example
+ * ```typescript
  * type Configurable = {
  *   name: Configuration<string>;
  *   age: Configuration<number>;
@@ -37,10 +45,10 @@ export type Configuration<V> = (value: V) => void;
  * //   name?: string;
  * //   age?: number;
  * // }
+ * ```
  *
- * @public
- * @see {@link Configuration}, {@link configure}
+ * @see {@link Configuration}
  */
 export type ConfigurationProperties<T> = {
-  [K in keyof T]?: T[K] extends Configuration<infer V> ? V : never;
+  [K in keyof T]?: T[K] extends Configuration<infer V> ? Partial<V> : never;
 };

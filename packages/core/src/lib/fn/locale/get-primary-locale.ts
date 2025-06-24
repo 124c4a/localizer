@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 import { LocaleCode, primaryLocales } from '../../consts/locale.js';
-import { parseLocaleCode } from './parseLocaleCode.js';
+import { parseLocaleCode } from './parse-locale-code.js';
 
 /**
+ * @beta
+ *
  * Retrieves the primary locale for a given country.
  *
  * The `getPrimaryLocale` function determines the primary locale based on the provided
@@ -24,17 +26,8 @@ import { parseLocaleCode } from './parseLocaleCode.js';
  * corresponding primary locale for that country in the `primaryLocales` map. If no
  * country component is present or no primary locale is found, the original locale is returned.
  *
- * @param {LocaleCode} locale - The locale code to process.
- * @returns {LocaleCode} The primary locale associated with the given locale code, or the original locale if no mapping exists.
- *
- * @example
- * const primaryLocale = getPrimaryLocale('sv-FI');
- * console.log(primaryLocale); // 'fi-FI'
- *
- * const primaryLocaleWithoutCountry = getPrimaryLocale('en');
- * console.log(primaryLocaleWithoutCountry); // 'en'
- *
- * @internal
+ * @param locale - The locale code to process.
+ * @returns The primary locale associated with the given locale code, or the original locale if no mapping exists.
  */
 export function getPrimaryLocale(locale: LocaleCode): LocaleCode {
   const [, country] = parseLocaleCode(locale);

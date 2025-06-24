@@ -13,7 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default [
-  '**/vite.config.{mjs,js,ts,mts}',
-  '**/vitest.config.{mjs,js,ts,mts}',
-];
+import { ref, Ref } from 'vue';
+
+export function jsonStringify(value: unknown, initialIndent = 2): Ref<string> {
+  const jsonString = JSON.stringify(value, null, 2)
+    .split('\n')
+    .map((line, ix) => (ix === 0 ? line : ' '.repeat(initialIndent) + line))
+    .join('\n');
+  return ref(jsonString);
+}

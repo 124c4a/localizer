@@ -57,7 +57,7 @@ export type TranslationMap = {
  */
 export function translate<V>(
   map: (value: V) => TranslationMap,
-  translationKey?: string
+  translationKey?: string,
 ): ValueFormatter<V>;
 /**
  * Translation function for static maps.
@@ -78,7 +78,7 @@ export function translate<V>(
  */
 export function translate(
   map: TranslationMap,
-  translationKey?: string
+  translationKey?: string,
 ): Localizable;
 /**
  * Translation function that can handle both static and dynamic translation maps.
@@ -88,10 +88,10 @@ export function translate(
  */
 export function translate<V>(
   map: TranslationMap | ((value: V) => TranslationMap),
-  translationKey?: string
+  translationKey?: string,
 ): Localizable | ValueFormatter<V> {
   if (typeof map === 'function') {
-    return (value: V) => translate(map(value));
+    return (value: V) => translate(map(value), translationKey);
   } else {
     return loc((locale) => {
       if (!locale) {

@@ -16,40 +16,28 @@
 import { Localizable } from '../../types/localizable.js';
 import { Localizer } from '../../types/localizer.js';
 import { isLocalizable } from '../localizable/isLocalizable.js';
-import { ensureImplicitLocalization } from './ensureImplicitLocalization.js';
 
 /**
- * Creates an implicit localizer function that automatically determines the locale.
- *
- * The `getImplicitLocalizer` function generates a localizer that uses the locale
- * provided by the `ensureImplicitLocalization` function. It can localize values
- * or functions returning localizable values without explicitly specifying the locale.
- *
- * @returns {Localizer} A localizer function bound to the implicitly determined locale.
- *
- * @template T - The type of the localized value.
- * @template A - The type of the arguments for functions returning localizable values.
- *
  * @internal
+ *
+ * Creates an special localizer function that localizes values to a stable immutable identitfiers.
+ *
+ * @returns A localizer function that produces stable immutable identifiers.
  */
-export function getImplicitLocalizer(): Localizer {
+export function _getIdentityLocalizer(): Localizer {
   const fn = <T, A extends unknown[]>(
-    localizable: Localizable<T> | ((...args: A) => Localizable<T>)
+    localizable: Localizable<T> | ((...args: A) => Localizable<T>),
   ): T | ((...args: A) => T) => {
-    const locale = ensureImplicitLocalization();
-
     if (isLocalizable(localizable)) {
-      return localizable.localize(locale) as T;
+      return localizable.localize(null) as T;
     } else {
       return (...args: A) =>
-        (localizable as (...args: A) => Localizable<T>)(...args).localize(
-          locale
-        );
+        (localizable as (...args: A) => Localizable<T>)(...args).localize(null);
     }
   };
 
   Object.defineProperty(fn, 'locale', {
-    get: () => ensureImplicitLocalization(),
+    get: () => null,
     enumerable: true,
     configurable: true,
   });

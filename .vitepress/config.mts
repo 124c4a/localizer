@@ -51,7 +51,7 @@ const config: UserConfig = {
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Getting started', link: '/guide/getting-started' },
+      { text: 'Getting started', link: '/basics/getting-started' },
       { text: 'API reference', link: '/api-reference' },
     ],
 
@@ -121,7 +121,7 @@ const configWithSidebar = withSidebar(config, {
   // sortFolderTo: null,
   // sortMenusByName: false,
   // sortMenusByFileDatePrefix: false,
-  sortMenusByFrontmatterOrder: false,
+  sortMenusByFrontmatterOrder: true,
   frontmatterOrderDefaultValue: 0,
   // sortMenusByFrontmatterDate: false,
   // sortMenusOrderByDescending: false,

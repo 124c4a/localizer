@@ -19,6 +19,8 @@ import { coreOptions } from './options.js';
 const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
 
 /**
+ * @internal
+ *
  * Generates a chain of locale codes based on the provided locale.
  *
  * The `getLocaleChain` function creates a list of locale codes starting with the
@@ -26,18 +28,8 @@ const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
  * locales defined in the `coreOptions`. The result is cached for subsequent calls
  * to improve performance.
  *
- * @param {LocaleCode} locale - The locale code to generate the chain for.
- * @returns {LocaleCode[]} An array of locale codes representing the chain.
- *
- * @example
- * const localeChain = getLocaleChain('sv-FI');
- * console.log(localeChain); // ['sv-FI', 'sv', 'en']
- *
- * const localeChainSingle = getLocaleChain('en');
- * console.log(localeChainSingle); // ['en', 'en']
- *
- * @internal
- * @see {@link CoreOptions}
+ * @param locale - The locale code to generate the chain for.
+ * @returns An array of locale codes representing the chain.
  */
 export function getLocaleChain(locale: LocaleCode): LocaleCode[] {
   const fallbackLocales = coreOptions.fallbackLocales ?? ['en'];

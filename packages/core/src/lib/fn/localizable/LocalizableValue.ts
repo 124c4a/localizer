@@ -15,7 +15,7 @@
  */
 import { LocaleCode } from '../../consts/locale.js';
 import { Localizable } from '../../types/localizable.js';
-import { ensureImplicitLocalization } from '../localizer/ensureImplicitLocalization.js';
+import { _ensureImplicitLocalization } from '../localizer/ensure-implicit-localization.js';
 import { toPrimitiveValue } from './toPrimitiveValue.js';
 
 /**
@@ -60,7 +60,7 @@ export class LocalizableValue<T = string> implements Localizable<T> {
    * @internal
    */
   [Symbol.toPrimitive]() {
-    const localizedValue = this.localize(ensureImplicitLocalization());
+    const localizedValue = this.localize(_ensureImplicitLocalization());
 
     return toPrimitiveValue(localizedValue);
   }
@@ -83,7 +83,7 @@ export class LocalizableValue<T = string> implements Localizable<T> {
     } else if (typeof locale === 'string') {
       return this.localize(locale);
     } else {
-      return this.localize(ensureImplicitLocalization());
+      return this.localize(_ensureImplicitLocalization());
     }
   }
 }

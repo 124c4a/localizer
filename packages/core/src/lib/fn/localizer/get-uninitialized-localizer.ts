@@ -20,16 +20,15 @@ const _uninitializedLocalizer = ((): never => {
 }) as unknown as Localizer;
 
 /**
+ * @internal
  * Retrieves the uninitialized `Localizer`.
  *
  * The `getUninitializedLocalizer` function returns the singleton localizer instance,
  * which throws an error when used. This function is useful for scenarios where
  * a `Localizer` is required but has not yet been initialized.
  *
- * @returns {Localizer} The uninitialized `Localizer` that throws an error when invoked.
- *
- * @internal
+ * @returns The uninitialized `Localizer` that throws an error when invoked.
  */
-export function getUninitializedLocalizer(): Localizer {
+export function _getUninitializedLocalizer(): Localizer {
   return _uninitializedLocalizer;
 }

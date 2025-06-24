@@ -25,7 +25,7 @@ const sources = await readdir('./tmp/api-reference', {
 });
 
 // Recreate the output directory
-//await rm(outputFile, { recursive: true, force: true });
+await rm(outputFile, { recursive: true, force: true });
 await mkdir(outputFile, { recursive: true });
 
 for (const source of sources) {

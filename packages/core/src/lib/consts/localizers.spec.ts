@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Empty } from './../../consts/Empty.js';
-import { getUninitializedLocalizer } from './getUninitializedLocalizer.js';
+import { Empty } from './empty.js';
+import { UninitializedLocalizer } from './localizers.js';
 
-describe('getUninitializedLocalizer', () => {
+describe('UninitializedLocalizer', () => {
   it('should throw error when used', () => {
-    const localizer = getUninitializedLocalizer();
-    expect(() => localizer(Empty)).toThrow(TypeError);
+    expect(() => UninitializedLocalizer(Empty)).toThrow(TypeError);
   });
 });
