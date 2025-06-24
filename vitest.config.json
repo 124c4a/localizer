@@ -1,5 +1,6 @@
 {
   "test": {
+    "projects": ["**/vitest.config.{mjs,js,ts,mts}"],
     "watch": false,
     "globals": true,
     "environment": "node",

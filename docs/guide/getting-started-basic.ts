@@ -33,6 +33,12 @@ const translations = dictionary({
     de: 'Nein',
   },
 });
+
+// Type of translations is:
+// {
+//   yes: Localizable;
+//   no: Localizable;
+// }
 // #endregion dictionary
 
 // #region localizer

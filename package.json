@@ -62,7 +62,11 @@
         "executor": "nx:run-commands",
         "cache": true,
         "options": {
-          "command": "typedoc"
+          "commands": [
+            "typedoc",
+            "node scripts/reprocess-api-reference.js"
+          ],
+          "parallel": false
         },
         "dependsOn": [
           "^build"

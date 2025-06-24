@@ -7,6 +7,6 @@
     "entryPoints": ["src/index.ts"]
   },
   "exclude": ["packages/all"],
-  "out": "./docs/api-reference",
+  "out": "./tmp/api-reference",
   "name": "API reference"
 }

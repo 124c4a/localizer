@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/* eslint-disable sonarjs/publicly-writable-directories */
 import { readFileSync } from 'node:fs';
 import { defineConfig, UserConfig } from 'vitepress';
 import { withSidebar } from 'vitepress-sidebar';
 import { SidebarItem } from 'vitepress-sidebar/types';
 
 function patchSidebar(entry: SidebarItem): SidebarItem {
-  if (entry.link && entry.link.startsWith('/docs/')) {
-    entry.link = entry.link.replace('/docs/', '/');
+  if (entry.link && entry.link.startsWith('/tmp/')) {
+    entry.link = entry.link.replace('/tmp/', '/');
   }
   if (entry.text && entry.text.startsWith('@localizer/')) {
     entry.text = entry.text.replace('@localizer/', '');
