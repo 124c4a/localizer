@@ -13,51 +13,51 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { LocaleCode } from '../../consts/locale.js';
-import { Localizable } from '../../types/localizable.js';
-import { _ensureImplicitLocalization } from '../localizer/ensure-implicit-localization.js';
-import { toPrimitiveValue } from './toPrimitiveValue.js';
+import { LocaleCode } from '../../../consts/locale.js';
+import { Localizable } from '../../../types/localizable.js';
+import { _ensureImplicitLocalization } from '../../localizer/_/ensure-implicit-localization.js';
+import { _toPrimitiveValue } from './to-primitive-value.js';
 
 /**
+ * @internal
+ *
  * Represents a value that can be localized based on a given locale.
  *
  * The `LocalizableValue` class implements the `Localizable` interface and provides
  * functionality to localize a value using a provided localization function. It also
  * supports conversion to primitive values and locale-specific string representations.
  *
- * @template T - The type of the localized value.
- *
- * @internal
+ * @typeParam T - The type of the localized value.
  */
 export class LocalizableValue<T = string> implements Localizable<T> {
   /**
-   * A function that localizes the value based on the provided locale.
-   * @type {(locale: LocaleCode | null) => T}
-   *
    * @internal
+   *
+   * A function that localizes the value based on the provided locale.
    */
   readonly localize: (locale: LocaleCode | null) => T;
 
   /**
+   * @internal
+   *
    * Creates an instance of `LocalizableValue`.
    *
-   * @param {(locale: LocaleCode | null) => T} localizeFn - The function used to localize the value.
-   *
-   * @internal
+   * @param localizeFn - The function used to localize the value.
    */
   constructor(localizeFn: (locale: LocaleCode | null) => T) {
     this.localize = localizeFn;
   }
 
   /**
+   * @internal
+   *
    * Converts the localized value to a primitive representation.
    *
    * This method is invoked when the object is used in a primitive context,
    * such as string concatenation or numeric operations.
    *
-   * @returns {*} The primitive representation of the localized value.
+   * @returns The primitive representation of the localized value.
    *
-   * @internal
    */
   [Symbol.toPrimitive]() {
     const localizedValue = this.localize(_ensureImplicitLocalization());
@@ -66,16 +66,16 @@ export class LocalizableValue<T = string> implements Localizable<T> {
   }
 
   /**
+   * @internal
+   *
    * Returns the localized value as a locale-specific string.
    *
    * If an array of locales is provided, the first locale in the array is used.
    * If a single locale is provided, it is used directly. If no locale is provided,
    * the implicit localization is used.
    *
-   * @param {LocaleCode | LocaleCode[] | null} [locale] - The locale(s) to use for localization.
-   * @returns {T} The localized value.
-   *
-   * @internal
+   * @param locale - The locale(s) to use for localization.
+   * @returns The localized value.
    */
   toLocaleString(locale?: LocaleCode | LocaleCode[] | null): T {
     if (Array.isArray(locale) && locale.length > 0) {

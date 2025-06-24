@@ -15,9 +15,9 @@
  */
 import { LocaleCode } from '../../consts/locale.js';
 import { Localizable } from '../../types/localizable.js';
-import { LocalizableValue } from './LocalizableValue.js';
+import { LocalizableValue } from './_/localizable-value.js';
+import { UnlocalizableValue } from './_/unlocalizable-value.js';
 import { localizeArray } from './localizeArray.js';
-import { UnlocalizableValue } from './UnlocalizableValue.js';
 
 /**
  * Creates a `Localizable` instance based on the provided localization function.
@@ -36,7 +36,7 @@ import { UnlocalizableValue } from './UnlocalizableValue.js';
  * @see {@link Localizable}, {@link Localizer}
  */
 export function loc<T = string>(
-  localize: (locale: LocaleCode | null) => T
+  localize: (locale: LocaleCode | null) => T,
 ): Localizable<T>;
 /**
  * Creates a `Localizable` instance based on the provided localization template strings.
@@ -71,7 +71,7 @@ export function loc<T = string>(
     return new UnlocalizableValue(stringsOrLocalize[0] as T) as Localizable<T>;
   } else {
     return new LocalizableValue((locale) =>
-      String.raw({ raw: stringsOrLocalize }, ...localizeArray(expr, locale))
+      String.raw({ raw: stringsOrLocalize }, ...localizeArray(expr, locale)),
     ) as unknown as Localizable<T>;
   }
 }

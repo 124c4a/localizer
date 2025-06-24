@@ -20,7 +20,7 @@
  *
  * @see {@link ConfigurationProperties}
  */
-export type Configuration<V> = (value: Partial<V>) => void;
+export type Configurer<V> = (value: Partial<V>) => void;
 
 /**
  * @public
@@ -50,5 +50,5 @@ export type Configuration<V> = (value: Partial<V>) => void;
  * @see {@link Configuration}
  */
 export type ConfigurationProperties<T> = {
-  [K in keyof T]?: T[K] extends Configuration<infer V> ? Partial<V> : never;
+  [K in keyof T]?: T[K] extends Configurer<infer V> ? Partial<V> : never;
 };

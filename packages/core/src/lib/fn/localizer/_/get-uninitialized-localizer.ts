@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizer } from '../../types/localizer.js';
+import { Localizer } from '../../../types/localizer.js';
 
 const _uninitializedLocalizer = ((): never => {
   throw new TypeError('Attempt to use Localizer before locale was set');

@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '../../types/localizable.js';
-import { Localizer } from '../../types/localizer.js';
-import { isLocalizable } from '../localizable/isLocalizable.js';
+import { Localizable } from '../../../types/localizable.js';
+import { Localizer } from '../../../types/localizer.js';
+import { isLocalizable } from '../../localizable/is-localizable.js';
 import { _ensureImplicitLocalization } from './ensure-implicit-localization.js';
 
 /**

@@ -19,7 +19,7 @@ import { coreOptions } from './options.js';
 const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
 
 /**
- * @internal
+ * @public
  *
  * Generates a chain of locale codes based on the provided locale.
  *
@@ -32,20 +32,20 @@ const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
  * @returns An array of locale codes representing the chain.
  */
 export function getLocaleChain(locale: LocaleCode): LocaleCode[] {
-  const fallbackLocales = coreOptions.fallbackLocales ?? ['en'];
+  const fallbackLocales = coreOptions.fallbackLocales;
   if (parentLocaleCache[locale]) {
     return parentLocaleCache[locale];
   }
 
   const parts = locale.split('-');
   if (parts.length < 2) {
-    parentLocaleCache[locale] = [locale, ...fallbackLocales];
+    parentLocaleCache[locale] = [locale, ...fallbackLocales].filter(
+      (value, index, array) => array.indexOf(value) === index,
+    );
   } else {
-    parentLocaleCache[locale] = [
-      locale,
-      parts[0],
-      ...fallbackLocales,
-    ] as LocaleCode[];
+    parentLocaleCache[locale] = [locale, parts[0], ...fallbackLocales].filter(
+      (value, index, array) => array.indexOf(value) === index,
+    ) as LocaleCode[];
   }
   return parentLocaleCache[locale];
 }

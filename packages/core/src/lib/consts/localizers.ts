@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { _getIdentityLocalizer } from '../fn/localizer/get-identity-localizer.js';
-import { _getImplicitLocalizer } from '../fn/localizer/get-implicit-localizer.js';
-import { _getUninitializedLocalizer } from '../fn/localizer/get-uninitialized-localizer.js';
+import { _getIdentityLocalizer } from '../fn/localizer/_/get-identity-localizer.js';
+import { _getImplicitLocalizer } from '../fn/localizer/_/get-implicit-localizer.js';
+import { _getUninitializedLocalizer } from '../fn/localizer/_/get-uninitialized-localizer.js';
 import { Localizer } from '../types/localizer.js';
 
 /**

@@ -13,10 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  Configuration,
-  ConfigurationProperties,
-} from '../types/configuration.js';
+import { Configurer, ConfigurationProperties } from '../types/configuration.js';
 
 /**
  * @public
@@ -69,7 +66,7 @@ import {
  *
  * @see {@link Configuration}, {@link ConfigurationProperties}
  */
-export function configure<T extends Record<string, Configuration<object>>>(
+export function configure<T extends Record<string, Configurer<object>>>(
   arg: T,
   values: ConfigurationProperties<T>,
 ) {

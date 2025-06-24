@@ -33,7 +33,7 @@ export * from './lib/fn/locale/parse-locale-code.js';
 export * from './lib/fn/localizable/loc.js';
 export * from './lib/fn/localizable/localizeArray.js';
 export * from './lib/fn/localizable/localizeObject.js';
-export * from './lib/fn/localizable/isLocalizable.js';
+export * from './lib/fn/localizable/is-localizable.js';
 
 export * from './lib/fn/localizer/get-localizer.js';
 
