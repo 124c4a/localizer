@@ -42,6 +42,11 @@ const translations = dictionary({
     }),
   }),
 });
+
+// Type of translations is:
+// {
+//   files: (count: number) => Localizable;
+// }
 // #endregion dictionary
 
 // #region localizer
