@@ -62,7 +62,7 @@ export class LocalizableValue<T = string> implements Localizable<T> {
   [Symbol.toPrimitive]() {
     const localizedValue = this.localize(_ensureImplicitLocalization());
 
-    return toPrimitiveValue(localizedValue);
+    return _toPrimitiveValue(localizedValue);
   }
 
   /**

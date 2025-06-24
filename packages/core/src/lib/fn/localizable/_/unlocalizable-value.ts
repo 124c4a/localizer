@@ -59,7 +59,7 @@ export class UnlocalizableValue<T = string> implements Localizable<T> {
    * @returns The primitive representation of the value.
    */
   [Symbol.toPrimitive]() {
-    return toPrimitiveValue(this.value);
+    return _toPrimitiveValue(this.value);
   }
 
   /**
