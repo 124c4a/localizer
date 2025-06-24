@@ -11,7 +11,7 @@ order: 4
   import localizerIdentity from './localizer-identity';
 </script>
 
-Localizer is a utility function designed to apply a selected locale to [`Localizable`]() objects. The primary method to obtain an instance of a `Localizer` is by invoking the `getLocalizer()` function:
+Localizer is a utility function designed to apply a selected locale to [`Localizable`](./localizable.md) objects. The primary method to obtain an instance of a `Localizer` is by invoking the `getLocalizer()` function:
 
 <<< ./localizer-string.ts#example{ts}
 
