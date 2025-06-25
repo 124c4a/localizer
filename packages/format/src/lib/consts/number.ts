@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configuration } from '@localizer/core';
+import { Configurer } from '@localizer/core';
 import {
   currencyFormatter,
   decimalFormatter,
@@ -43,10 +43,9 @@ const defaultUnitFormatOptions: NumberFormatOptions = {};
  * );
  *
  * @public
- * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultDecimalFormat: Configuration<NumberFormatOptions> = (
-  config
+export const DefaultDecimalFormat: Configurer<NumberFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultDecimalFormatOptions, config);
 };
@@ -63,10 +62,9 @@ export const DefaultDecimalFormat: Configuration<NumberFormatOptions> = (
  * );
  *
  * @public
- * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultPercentFormat: Configuration<NumberFormatOptions> = (
-  config
+export const DefaultPercentFormat: Configurer<NumberFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultPercentFormatOptions, config);
 };
@@ -82,10 +80,9 @@ export const DefaultPercentFormat: Configuration<NumberFormatOptions> = (
  * );
  *
  * @public
- * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultCurrencyFormat: Configuration<NumberFormatOptions> = (
-  config
+export const DefaultCurrencyFormat: Configurer<NumberFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultCurrencyFormatOptions, config);
 };
@@ -101,11 +98,8 @@ export const DefaultCurrencyFormat: Configuration<NumberFormatOptions> = (
  * );
  *
  * @public
- * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultUnitFormat: Configuration<NumberFormatOptions> = (
-  config
-) => {
+export const DefaultUnitFormat: Configurer<NumberFormatOptions> = (config) => {
   Object.assign(defaultUnitFormatOptions, config);
 };
 
@@ -119,7 +113,7 @@ export const DefaultUnitFormat: Configuration<NumberFormatOptions> = (
  * console.log(formattedDecimal.localize('en'); // 1,234.56
  *
  * @public
- * @see {@link decimalFormatter}, {@link NumberFormatOptions}, {@link DefaultDecimalFormat}
+ * @see {@link DefaultDecimalFormat}
  */
 export const decimal = decimalFormatter(defaultDecimalFormatOptions);
 /**
@@ -132,7 +126,7 @@ export const decimal = decimalFormatter(defaultDecimalFormatOptions);
  * console.log(formattedRange.localize('en')); // 1,234.56–7,890.12
  *
  * @public
- * @see {@link decimalRangeFormatter}, {@link NumberFormatOptions}, {@link DefaultDecimalFormat}
+ * @see {@link DefaultDecimalFormat}
  */
 export const decimalRange = decimalRangeFormatter(defaultDecimalFormatOptions);
 /**
@@ -145,7 +139,7 @@ export const decimalRange = decimalRangeFormatter(defaultDecimalFormatOptions);
  * console.log(formattedPercent.localize('en')); // 75%
  *
  * @public
- * @see {@link percentFormatter}, {@link NumberFormatOptions}, {@link DefaultPercentFormat}
+ * @see {@link DefaultPercentFormat}
  */
 export const percent = percentFormatter(defaultPercentFormatOptions);
 /**
@@ -158,7 +152,7 @@ export const percent = percentFormatter(defaultPercentFormatOptions);
  * console.log(formattedRange.localize('en')); // 50–75%
  *
  * @public
- * @see {@link percentRangeFormatter}, {@link NumberFormatOptions}, {@link DefaultPercentFormat}
+ * @see {@link DefaultPercentFormat}
  */
 export const percentRange = percentRangeFormatter(defaultPercentFormatOptions);
 
@@ -172,7 +166,7 @@ export const percentRange = percentRangeFormatter(defaultPercentFormatOptions);
  * console.log(formattedCurrency.localize('en')); // $1,234.56
  *
  * @public
- * @see {@link currencyFormatter}, {@link NumberFormatOptions}, {@link DefaultCurrencyFormat}
+ * @see {@link DefaultCurrencyFormat}
  */
 export const currency = currencyFormatter(defaultCurrencyFormatOptions);
 /**
@@ -185,7 +179,7 @@ export const currency = currencyFormatter(defaultCurrencyFormatOptions);
  * console.log(formattedUnit.localize('en')); // 1,234.56 kg
  *
  * @public
- * @see {@link unitFormatter}, {@link NumberFormatOptions}, {@link DefaultUnitFormat}
+ * @see {@link DefaultUnitFormat}
  */
 export const unit = unitFormatter(defaultUnitFormatOptions);
 
@@ -199,10 +193,10 @@ export const unit = unitFormatter(defaultUnitFormatOptions);
  * console.log(formattedRelativeDecimal.localize('en')); // +234.56
  *
  * @public
- * @see {@link relativeDecimalFormatter}, {@link NumberFormatOptions}, {@link DefaultDecimalFormat}
+ * @see {@link DefaultDecimalFormat}
  */
 export const relativeDecimal = relativeDecimalFormatter(
-  defaultDecimalFormatOptions
+  defaultDecimalFormatOptions,
 );
 /**
  * Relative percent formatter instance.
@@ -214,8 +208,8 @@ export const relativeDecimal = relativeDecimalFormatter(
  * console.log(formattedRelativePercent.localize('en')); // -25%
  *
  * @public
- * @see {@link relativePercentFormatter}, {@link NumberFormatOptions}, {@link DefaultPercentFormat}
+ * @see {@link DefaultPercentFormat}
  */
 export const relativePercent = relativePercentFormatter(
-  defaultPercentFormatOptions
+  defaultPercentFormatOptions,
 );

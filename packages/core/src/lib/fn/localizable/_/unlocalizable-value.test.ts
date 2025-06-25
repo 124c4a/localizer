@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { UnlocalizableValue } from './UnlocalizableValue.js';
+import { UnlocalizableValue } from './unlocalizable-value.js';
 
 describe('Unlocalizable', () => {
   it('returns the value when localize is called', () => {

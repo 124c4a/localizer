@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { isLocalizable } from './isLocalizable.js';
+import { isLocalizable } from './is-localizable.js';
 
 describe('isLocalizable', () => {
   it('returns true for objects with a localize property', () => {

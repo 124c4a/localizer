@@ -12,21 +12,15 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @internal
  */
-export function toPrimitiveValue(value: unknown) {
-  if (value === null || value === undefined) {
-    return value;
-  }
+import { loc } from '../fn/localizable/loc.js';
+import { Localizable } from '../types/localizable.js';
 
-  switch (typeof value) {
-    case 'bigint':
-    case 'boolean':
-    case 'number':
-    case 'string':
-      return value;
-    default:
-      return Object.prototype.toString.call(value);
-  }
-}
+/**
+ * @public
+ *
+ * Represents an empty localizable string.
+ *
+ * This is useful for scenarios where an empty string needs to be explicitly treated as a localizable entity.
+ */
+export const Empty: Localizable = loc``;

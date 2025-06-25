@@ -13,12 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Empty } from './../../consts/Empty.js';
-import { getUninitializedLocalizer } from './getUninitializedLocalizer.js';
+/**
+ * @internal
+ *
+ * Convert value to primitive
+ *
+ * @param value - The value to convert
+ * @returns The primitive representation of the value
+ */
+export function _toPrimitiveValue(value: unknown) {
+  if (value === null || value === undefined) {
+    return value;
+  }
 
-describe('getUninitializedLocalizer', () => {
-  it('should throw error when used', () => {
-    const localizer = getUninitializedLocalizer();
-    expect(() => localizer(Empty)).toThrow(TypeError);
-  });
-});
+  switch (typeof value) {
+    case 'bigint':
+    case 'boolean':
+    case 'number':
+    case 'string':
+      return value;
+    default:
+      return Object.prototype.toString.call(value);
+  }
+}

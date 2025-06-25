@@ -35,10 +35,7 @@ function patchSidebar(entry: SidebarItem): SidebarItem {
 }
 
 function readApiSidebar() {
-  const sidebarFile = readFileSync(
-    'docs/api-reference/typedoc-sidebar.json',
-    'utf-8',
-  );
+  const sidebarFile = readFileSync('docs/api/typedoc-sidebar.json', 'utf-8');
   return JSON.parse(sidebarFile);
 }
 
@@ -51,8 +48,8 @@ const config: UserConfig = {
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Getting started', link: '/guide/getting-started' },
-      { text: 'API reference', link: '/api-reference' },
+      { text: 'Getting started', link: '/basics/getting-started' },
+      { text: 'API reference', link: '/api' },
     ],
 
     socialLinks: [
@@ -65,7 +62,7 @@ const config: UserConfig = {
         detailedView: true,
         async _render(src, env, md) {
           if (env.frontmatter?.search === false) return '';
-          if (env.relativePath.startsWith('api-reference/')) return '';
+          if (env.relativePath.startsWith('api/')) return '';
           return md.render(src, env);
         },
       },
@@ -100,7 +97,7 @@ const configWithSidebar = withSidebar(config, {
   // folderLinkNotIncludesFileName: true,
   //
   // ============ [ INCLUDE / EXCLUDE ] ============
-  excludePattern: ['api-reference'],
+  excludePattern: ['api'],
   // excludeFilesByFrontmatterFieldName: 'exclude',
   // includeDotFiles: false,
   // includeEmptyFolder: false,
@@ -121,7 +118,7 @@ const configWithSidebar = withSidebar(config, {
   // sortFolderTo: null,
   // sortMenusByName: false,
   // sortMenusByFileDatePrefix: false,
-  sortMenusByFrontmatterOrder: false,
+  sortMenusByFrontmatterOrder: true,
   frontmatterOrderDefaultValue: 0,
   // sortMenusByFrontmatterDate: false,
   // sortMenusOrderByDescending: false,
@@ -135,7 +132,7 @@ const configWithSidebar = withSidebar(config, {
 configWithSidebar.themeConfig.sidebar.push(
   patchSidebar({
     text: 'API reference',
-    link: '/api-reference/',
+    link: '/api/',
     items: readApiSidebar(),
   }),
 );

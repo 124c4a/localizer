@@ -15,17 +15,20 @@
  */
 import { LocaleCode } from '../../consts/locale.js';
 import { Localized } from '../../types/localizable.js';
-import { isLocalizable } from './isLocalizable.js';
+import { isLocalizable } from './is-localizable.js';
 
 /**
+ * @public
+ *
  * Localizes the properties of an object by resolving `Localizable` values to their localized representations.
  *
- * @template T - The type of the input object, where properties can be `Localizable` or other types.
- * @param {T} values - The object containing properties to be localized.
- * @param {LocaleCode | null} locale - The locale code used for localization. If `null`, a default or fallback value may be used.
- * @returns {Localized<T>} - A new object where all `Localizable` properties are replaced with their localized values.
+ * @typeParam T - The type of the input object, where properties can be `Localizable` or other types.
+ * @param values - The object containing properties to be localized.
+ * @param locale - The locale code used for localization. If `null`, a default or fallback value may be used.
+ * @returns A new object where all `Localizable` properties are replaced with their localized values.
  *
  * @example
+ * ```typescript
  * // Example with an object containing localizable properties
  * const values = {
  *   greeting: loc((locale) => locale === 'en' ? 'Hello' : 'Hola'),
@@ -34,8 +37,10 @@ import { isLocalizable } from './isLocalizable.js';
  * const localizedValues = localizeObject(values, 'en');
  * console.log(localizedValues);
  * // Output: { greeting: 'Hello', farewell: 'Goodbye' }
+ * ```
  *
  * @example
+ * ```typescript
  * // Example with mixed properties
  * const values = {
  *   greeting: loc((locale) => locale === 'en' ? 'Hello' : 'Hola'),
@@ -44,13 +49,13 @@ import { isLocalizable } from './isLocalizable.js';
  * const localizedValues = localizeObject(values, 'en');
  * console.log(localizedValues);
  * // Output: { greeting: 'Hello', age: 25 }
+ * ```
  *
- * @public
  * @see {@link Localizable}
  */
 export function localizeObject<T extends Record<string, unknown>>(
   values: T,
-  locale: LocaleCode | null
+  locale: LocaleCode | null,
 ): Localized<T> {
   const result: Partial<Record<string, unknown>> = { ...values };
   Object.entries(result).forEach(([key, value]) => {

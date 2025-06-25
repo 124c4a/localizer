@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { coreOptions } from '../locale/options.js';
-import { LocalizableValue } from './LocalizableValue.js';
+import { coreOptions } from '../../locale/options.js';
+import { LocalizableValue } from './localizable-value.js';
 
 describe('LocalizableValue', () => {
   it('returns localized value for a valid locale', () => {
@@ -23,7 +23,6 @@ describe('LocalizableValue', () => {
   });
 
   it('returns default value when locale is an empty array', () => {
-    coreOptions.implicitLocalization = true;
     coreOptions.activeLocale = 'en';
 
     const value = new LocalizableValue((locale) => `value for ${locale}`);
@@ -36,7 +35,6 @@ describe('LocalizableValue', () => {
   });
 
   it('handles Symbol.toPrimitive correctly', () => {
-    coreOptions.implicitLocalization = true;
     coreOptions.activeLocale = 'en';
 
     const value = new LocalizableValue((locale) => `value for ${locale}`);

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { loc } from '../localizable/loc.js';
-import { getLocalizer } from './getLocalizer.js';
+import { getLocalizer } from './get-localizer.js';
 
 describe('getLocalizer', () => {
   it('should localize', () => {

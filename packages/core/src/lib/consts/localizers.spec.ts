@@ -13,14 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { loc } from '../fn/localizable/loc.js';
-import { Localizable } from '../types/localizable.js';
+import { Empty } from './empty.js';
+import { UninitializedLocalizer } from './localizers.js';
 
-/**
- * Represents an empty localizable string.
- *
- * This is useful for scenarios where an empty string needs to be explicitly treated as a localizable entity.
- *
- * @public
- */
-export const Empty: Localizable = loc``;
+describe('UninitializedLocalizer', () => {
+  it('should throw error when used', () => {
+    expect(() => UninitializedLocalizer(Empty)).toThrow(TypeError);
+  });
+});

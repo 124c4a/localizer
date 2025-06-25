@@ -16,16 +16,19 @@
 import { LocaleCode } from '../consts/locale.js';
 
 /**
+ * @public
+ *
  * Represents a type that can be localized based on a given locale.
  *
  * The `Localizable` type is used to define objects or values that can be localized
  * to different languages or regions. It provides a `localize` method that takes a
  * locale code and returns the localized value.
  *
- * @template T - The type of the localized value. Defaults to `string`.
+ * @typeParam T - The type of the localized value. Defaults to `string`.
  *
  * @example
- * // Example of a Localizable string
+ * Example of a Localizable string
+ * ```typescript
  * const localizableString: Localizable<string> = loc((locale) => {
  *     switch (locale) {
  *       case 'en': return 'Hello';
@@ -36,31 +39,39 @@ import { LocaleCode } from '../consts/locale.js';
  *   }
  * );
  * console.log(localizableString.localize('es')); // Output: Hola
+ * ```
  *
  * @example
- * // Example of a Localizable object
+ * Example of a Localizable object
+ * ```typescript
  * const localizableObject: Localizable<{ greeting: string }> = loc((locale) => ({
  *     greeting: locale === 'en' ? 'Hello' : 'Hola',
  *   })
  * );
  * console.log(localizableObject.localize('en')); // Output: { greeting: 'Hello' }
+ * ```
  *
  * @example
- * // Locale-independent string
+ * Locale-independent string
+ * ```typescript
  * const localizableConstant = loc`Locale-independent string value`;
  * console.log(localizer(localizableConstant)); // Output: Locale-independent string value
+ * ```
  *
  * @example
- * // Custom localizable function
+ * Custom localizable function
+ * ```typescript
  * const customLocalizable = loc((locale) => `Current locale: ${locale}`);
  * console.log(localizer(customLocalizable)); // Output: Current locale: en
+ * ```
  *
  * @example
- * // Localizable object with dynamic properties
+ * Localizable object with dynamic properties
+ * ```typescript
  * const dynamicLocalizableObject = loc((locale) => ({ locale, greeting: `Hello in ${locale}` }));
  * console.log(localizer(dynamicLocalizableObject)); // Output: { locale: 'en', greeting: 'Hello in en' }
+ * ```
  *
- * @public
  * @see {@link Localizer}, {@link LocaleCode}, {@link loc}
  */
 export type Localizable<T = string> = {
@@ -68,15 +79,18 @@ export type Localizable<T = string> = {
 };
 
 /**
+ * @public
+ *
  * Represents a type that maps localized values to their resolved types.
  *
  * The `Localized` type is used to transform a structure containing `Localizable` values
  * into a structure where those values are resolved to their localized types.
  *
- * @template T - The type of the original structure containing `Localizable` values.
+ * @typeParam T - The type of the original structure containing `Localizable` values.
  *
  * @example
- * // Example of transforming a Localizable structure
+ * Example of transforming a Localizable structure
+ * ```typescript
  * type Original = {
  *   greeting: Localizable<string>;
  *   info: Localizable<{ details: string }>;
@@ -87,8 +101,8 @@ export type Localizable<T = string> = {
  * //   greeting: string;
  * //   info: { details: string };
  * // }
+ * ```
  *
- * @public
  * @see {@link Localizable}, {@link localizeObject}, {@link localizeArray}
  */
 export type Localized<T> = {

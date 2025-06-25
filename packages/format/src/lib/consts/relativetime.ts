@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configuration } from '@localizer/core';
+import { Configurer } from '@localizer/core';
 import {
   RelativeTimeFormatOptions,
   relativeTimeFormatter,
@@ -38,9 +38,8 @@ const defaultRelativeTimeFormatOptions: RelativeTimeFormatOptions = {
  * );
  *
  * @public
- * @see {@link RelativeTimeFormatOptions}, {@link configure}
  */
-export const DefaultRelativeTimeFormat: Configuration<
+export const DefaultRelativeTimeFormat: Configurer<
   RelativeTimeFormatOptions
 > = (config) => {
   Object.assign(defaultRelativeTimeFormatOptions, config);
@@ -57,8 +56,8 @@ export const DefaultRelativeTimeFormat: Configuration<
  * console.log(formattedTime.localize('en')); // Output: "1 day ago"
  *
  * @public
- * @see {@link RelativeTimeFormatOptions}, {@link relativeTimeFormatter}, {@link DefaultRelativeTimeFormat}
+ * @see {@link DefaultRelativeTimeFormat}
  */
 export const relativeTime = relativeTimeFormatter(
-  defaultRelativeTimeFormatOptions
+  defaultRelativeTimeFormatOptions,
 );

@@ -15,11 +15,11 @@
  */
 
 /**
+ * @public
+ *
  * IETF BCP 47 language tag
  *
  * @see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
- *
- * @public
  */
 
 export type LanguageCode =
@@ -407,11 +407,11 @@ export type LanguageCode =
   | 'sf';
 
 /**
+ * @public
+ *
  * ISO 3166-1 alpha-2 country codes
  *
  * @see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
- *
- * @public
  */
 export type CountryCode =
   /** Andorra */
@@ -918,18 +918,18 @@ export type CountryCode =
   | 'ZW';
 
 /**
- * Supported locale codes
- *
  * @public
+ *
+ * Supported locale codes
  */
 export type LocaleCode = LanguageCode | `${LanguageCode}-${CountryCode}`;
 
 /**
+ * @public
+ *
  * Primary locales for each country
  *
  * @see https://github.com/osm-search/Nominatim/blob/master/settings/country_settings.yaml
- *
- * @internal
  */
 export const primaryLocales: Record<CountryCode, LocaleCode> = {
   AD: 'ca-AD',

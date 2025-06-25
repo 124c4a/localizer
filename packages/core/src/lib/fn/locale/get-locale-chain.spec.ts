@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { configure } from '../configure.js';
-import { getLocaleChain } from './getLocaleChain.js';
+import { getLocaleChain } from './get-locale-chain.js';
 import { Core } from './options.js';
 
 describe('getLocaleChain', () => {

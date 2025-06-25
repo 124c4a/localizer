@@ -58,4 +58,4 @@ packages/*/README.md
 .vitepress/dist
 .vitepress/cache
 
-docs/api-reference
+docs/api

@@ -13,73 +13,73 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '../../types/localizable.js';
-import { toPrimitiveValue } from './toPrimitiveValue.js';
+import { Localizable } from '../../../types/localizable.js';
+import { _toPrimitiveValue } from './to-primitive-value.js';
 
 /**
+ * @internal
+ *
  * Represents a value that cannot be localized.
  *
  * The `UnlocalizableValue` class implements the `Localizable` interface but always
  * returns the same value regardless of the locale. It is useful for values that
  * do not require localization.
  *
- * @template T - The type of the unlocalizable value.
+ * @typeParam T - The type of the unlocalizable value.
  *
- * @internal
  * @see {@link Localizable}
  */
 export class UnlocalizableValue<T = string> implements Localizable<T> {
   /**
-   * The unlocalizable value.
-   * @type {T}
-   *
    * @internal
+   *
+   * The unlocalizable value.
    */
   readonly value: T;
 
   /**
+   * @internal
+   *
    * Creates an instance of `UnlocalizableValue`.
    *
-   * @param {T} value - The value that cannot be localized.
-   *
-   * @internal
+   * @param value - The value that cannot be localized.
    */
   constructor(value: T) {
     this.value = value;
   }
 
   /**
+   * @internal
+   *
    * Converts the value to a primitive representation.
    *
    * This method is invoked when the object is used in a primitive context,
    * such as string concatenation or numeric operations.
    *
-   * @returns {*} The primitive representation of the value.
-   *
-   * @internal
+   * @returns The primitive representation of the value.
    */
   [Symbol.toPrimitive]() {
-    return toPrimitiveValue(this.value);
+    return _toPrimitiveValue(this.value);
   }
 
   /**
+   * @internal
+   *
    * Returns the value as a locale-specific string.
    *
-   * @returns {T} The unlocalizable value.
-   *
-   * @internal
+   * @returns The unlocalizable value.
    */
   toLocaleString(): T {
     return this.value;
   }
 
   /**
+   * @internal
+   *
    * Returns the value without applying localization.
    *
-   * @param {LocaleCode | null} locale - The locale code (ignored).
-   * @returns {T} The unlocalizable value.
-   *
-   * @internal
+   * @param locale - The locale code (ignored).
+   * @returns The unlocalizable value.
    */
   localize(): T {
     return this.value;

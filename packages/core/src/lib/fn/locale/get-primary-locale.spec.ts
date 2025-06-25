@@ -13,14 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { parseLocaleCode } from './parseLocaleCode.js';
+import { getPrimaryLocale } from './get-primary-locale.js';
 
-describe('parseLocaleCode', () => {
-  it('returns language and country when locale includes both', () => {
-    expect(parseLocaleCode('en-US')).toEqual(['en', 'US']);
+describe('getPrimaryLocale', () => {
+  it('returns the same locale when no country is present', () => {
+    expect(getPrimaryLocale('en')).toBe('en');
   });
 
-  it('returns language and undefined when locale includes only language', () => {
-    expect(parseLocaleCode('en')).toEqual(['en', undefined]);
+  it('returns the primary locale for a country when available', () => {
+    expect(getPrimaryLocale('sv-FI')).toBe('fi-FI');
+  });
+
+  it('returns the same locale when no primary locale is defined for the country', () => {
+    expect(getPrimaryLocale('fi-FI')).toBe('fi-FI');
   });
 });

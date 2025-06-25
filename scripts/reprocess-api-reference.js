@@ -17,7 +17,7 @@ import { readdir, readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { relative, resolve } from 'node:path';
 
 const inputDir = './tmp/api-reference';
-const outputFile = './docs/api-reference';
+const outputFile = './docs/api';
 
 const sources = await readdir('./tmp/api-reference', {
   withFileTypes: true,
@@ -25,7 +25,7 @@ const sources = await readdir('./tmp/api-reference', {
 });
 
 // Recreate the output directory
-//await rm(outputFile, { recursive: true, force: true });
+await rm(outputFile, { recursive: true, force: true });
 await mkdir(outputFile, { recursive: true });
 
 for (const source of sources) {
