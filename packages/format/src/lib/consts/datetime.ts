@@ -53,7 +53,7 @@ const defaultDateTimeFormatOptions: DateTimeFormatOptions = {
  * );
  *
  * @public
- * @see {@link DateTimeFormatOptions}, {@link configure}, {@link date}, {@link dateRange}
+ * @see {@link date}, {@link dateRange}
  */
 export const DefaultDateFormat: Configurer<DateTimeFormatOptions> = (
   config,
@@ -74,7 +74,7 @@ export const DefaultDateFormat: Configurer<DateTimeFormatOptions> = (
  * );
  *
  * @public
- * @see {@link DateTimeFormatOptions}, {@link configure}, {@link time}
+ * @see {@link time}
  */
 export const DefaultTimeFormat: Configurer<DateTimeFormatOptions> = (
   config,
@@ -95,7 +95,7 @@ export const DefaultTimeFormat: Configurer<DateTimeFormatOptions> = (
  * );
  *
  * @public
- * @see {@link DateTimeFormatOptions}, {@link configure}, {@link dateTime}, {@link dateTimeRange}
+ * @see {@link dateTime}, {@link dateTimeRange}
  */
 export const DefaultDateTimeFormat: Configurer<DateTimeFormatOptions> = (
   config,
@@ -113,7 +113,7 @@ export const DefaultDateTimeFormat: Configurer<DateTimeFormatOptions> = (
  * console.log(formattedDate.localize('en')); // Output: 10/1/2023
  *
  * @public
- * @see {@link dateTimeFormatter}, {@link DefaultDateFormat}, {@link dateRange}, {@link dateTimeRange}
+ * @see {@link DefaultDateFormat}, {@link dateRange}, {@link dateTimeRange}
  */
 export const date = dateTimeFormatter(defaultDateFormatOptions);
 /**
@@ -126,7 +126,7 @@ export const date = dateTimeFormatter(defaultDateFormatOptions);
  * console.log(formattedTime.localize('en')); // Output: 12:34:56 PM
  *
  * @public
- * @see {@link dateTimeFormatter}, {@link DefaultTimeFormat}, {@link date}
+ * @see {@link DefaultTimeFormat}, {@link date}
  */
 export const time = dateTimeFormatter(defaultTimeFormatOptions);
 /**
@@ -139,7 +139,7 @@ export const time = dateTimeFormatter(defaultTimeFormatOptions);
  * console.log(formattedDateTime.localize('en')); // Output: 10/1/2023, 12:34:56 PM
  *
  * @public
- * @see {@link dateTimeFormatter}, {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateRange}, {@link dateTimeRange}
+ * @see {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateRange}, {@link dateTimeRange}
  */
 export const dateTime = dateTimeFormatter(defaultDateTimeFormatOptions);
 
@@ -153,7 +153,7 @@ export const dateTime = dateTimeFormatter(defaultDateTimeFormatOptions);
  * console.log(formattedRange.localize('en')); // Output: 1/1/2023 – 12/31/2023
  *
  * @public
- * @see {@link dateTimeRangeFormatter}, {@link DefaultDateFormat}, {@link date}, {@link time}, {@link dateTime}
+ * @see {@link DefaultDateFormat}, {@link date}, {@link time}, {@link dateTime}
  */
 export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
   loc`${date(start)}${GenericRangeSeparator}${date(end)}`;
@@ -167,7 +167,7 @@ export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
  * console.log(formattedRange.localize('en')); // Output: January 1 – 2, 2023
  *
  * @public
- * @see {@link dateTimeRangeFormatter}, {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateTime}, {@link dateRange}
+ * @see {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateTime}, {@link dateRange}
  */
 export const dateTimeRange = dateTimeRangeFormatter(
   defaultDateTimeFormatOptions,

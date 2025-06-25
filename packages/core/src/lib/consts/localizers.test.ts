@@ -15,15 +15,9 @@
  */
 import { coreOptions, setActiveLocale } from '../fn/locale/options.js';
 import { loc } from '../fn/localizable/loc.js';
-import { ImplicitLocalizer, UninitializedLocalizer } from './localizers.js';
+import { ImplicitLocalizer, IdentityLocalizer } from './localizers.js';
 
 const localizable = loc((loc) => loc);
-
-describe('UninitializedLocalizer', () => {
-  it('should throw error when used', () => {
-    expect(() => UninitializedLocalizer(localizable)).toThrow(TypeError);
-  });
-});
 
 describe('ImplicitLocalizer', () => {
   it('throws an error when implicit localization is disabled', () => {
@@ -40,14 +34,38 @@ describe('ImplicitLocalizer', () => {
     );
   });
 
-  it('returns the active locale when implicit localization is enabled and active locale is set', () => {
+  it('uses the active locale when implicit localization is enabled and active locale is set', () => {
     coreOptions.activeLocale = 'en';
     expect(`${localizable}`).toBe('en');
     expect(ImplicitLocalizer(localizable)).toBe('en');
   });
 
-  it('returns the active locale when implicit localization is enabled via setActiveLocale', () => {
+  it('uses the active locale when implicit localization is enabled via setActiveLocale', () => {
     setActiveLocale('fi');
     expect(ImplicitLocalizer(localizable)).toBe('fi');
+  });
+
+  it('localizes function using the active locale when implicit localization is enabled and active locale is set', () => {
+    coreOptions.activeLocale = 'en';
+
+    const fn = (value: number) =>
+      loc((locale) => `Value: ${value} (${locale})`);
+
+    expect(ImplicitLocalizer(fn)(5)).toBe('Value: 5 (en)');
+  });
+});
+
+describe('IdentityLocalizer', () => {
+  it('passes `null` as a locale to localizable', () => {
+    expect(IdentityLocalizer(localizable)).toBe(null);
+  });
+
+  it('passes `null` as a locale to localizable function', () => {
+    coreOptions.activeLocale = 'en';
+
+    const fn = (value: number) =>
+      loc((locale) => `Value: ${value} (${locale})`);
+
+    expect(IdentityLocalizer(fn)(5)).toBe('Value: 5 (null)');
   });
 });

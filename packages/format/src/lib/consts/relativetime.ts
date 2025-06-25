@@ -38,7 +38,6 @@ const defaultRelativeTimeFormatOptions: RelativeTimeFormatOptions = {
  * );
  *
  * @public
- * @see {@link RelativeTimeFormatOptions}, {@link configure}
  */
 export const DefaultRelativeTimeFormat: Configurer<
   RelativeTimeFormatOptions
@@ -57,7 +56,7 @@ export const DefaultRelativeTimeFormat: Configurer<
  * console.log(formattedTime.localize('en')); // Output: "1 day ago"
  *
  * @public
- * @see {@link RelativeTimeFormatOptions}, {@link relativeTimeFormatter}, {@link DefaultRelativeTimeFormat}
+ * @see {@link DefaultRelativeTimeFormat}
  */
 export const relativeTime = relativeTimeFormatter(
   defaultRelativeTimeFormatOptions,

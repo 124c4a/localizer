@@ -64,7 +64,7 @@ import { Configurer, ConfigurationProperties } from '../types/configuration.js';
  * });
  * ```
  *
- * @see {@link Configuration}, {@link ConfigurationProperties}
+ * @see {@link Configure}, {@link ConfigurationProperties}
  */
 export function configure<T extends Record<string, Configurer<object>>>(
   arg: T,
