@@ -53,6 +53,11 @@ describe('ImplicitLocalizer', () => {
 
     expect(ImplicitLocalizer(fn)(5)).toBe('Value: 5 (en)');
   });
+
+  it('returns current active locale', () => {
+    coreOptions.activeLocale = 'en';
+    expect(ImplicitLocalizer.locale).toBe('fi');
+  });
 });
 
 describe('IdentityLocalizer', () => {
@@ -67,5 +72,9 @@ describe('IdentityLocalizer', () => {
       loc((locale) => `Value: ${value} (${locale})`);
 
     expect(IdentityLocalizer(fn)(5)).toBe('Value: 5 (null)');
+  });
+
+  it('returns current `null` locale', () => {
+    expect(IdentityLocalizer.locale).toBe(null);
   });
 });
