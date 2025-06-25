@@ -26,53 +26,7 @@ import { LocaleCode } from '../consts/locale.js';
  *
  * @typeParam T - The type of the localized value. Defaults to `string`.
  *
- * @example
- * Example of a Localizable string
- * ```typescript
- * const localizableString: Localizable<string> = loc((locale) => {
- *     switch (locale) {
- *       case 'en': return 'Hello';
- *       case 'es': return 'Hola';
- *       case 'fr': return 'Bonjour';
- *       default: return 'Hello';
- *     }
- *   }
- * );
- * console.log(localizableString.localize('es')); // Output: Hola
- * ```
- *
- * @example
- * Example of a Localizable object
- * ```typescript
- * const localizableObject: Localizable<{ greeting: string }> = loc((locale) => ({
- *     greeting: locale === 'en' ? 'Hello' : 'Hola',
- *   })
- * );
- * console.log(localizableObject.localize('en')); // Output: { greeting: 'Hello' }
- * ```
- *
- * @example
- * Locale-independent string
- * ```typescript
- * const localizableConstant = loc`Locale-independent string value`;
- * console.log(localizer(localizableConstant)); // Output: Locale-independent string value
- * ```
- *
- * @example
- * Custom localizable function
- * ```typescript
- * const customLocalizable = loc((locale) => `Current locale: ${locale}`);
- * console.log(localizer(customLocalizable)); // Output: Current locale: en
- * ```
- *
- * @example
- * Localizable object with dynamic properties
- * ```typescript
- * const dynamicLocalizableObject = loc((locale) => ({ locale, greeting: `Hello in ${locale}` }));
- * console.log(localizer(dynamicLocalizableObject)); // Output: { locale: 'en', greeting: 'Hello in en' }
- * ```
- *
- * @see {@link Localizer}, {@link LocaleCode}, {@link loc}
+ * @see {@link Localizer}, {@link LocaleCode}
  */
 export type Localizable<T = string> = {
   readonly localize: (locale: LocaleCode | null) => T;
@@ -87,21 +41,6 @@ export type Localizable<T = string> = {
  * into a structure where those values are resolved to their localized types.
  *
  * @typeParam T - The type of the original structure containing `Localizable` values.
- *
- * @example
- * Example of transforming a Localizable structure
- * ```typescript
- * type Original = {
- *   greeting: Localizable<string>;
- *   info: Localizable<{ details: string }>;
- * };
- * type Resolved = Localized<Original>;
- * // Resolved is equivalent to:
- * // {
- * //   greeting: string;
- * //   info: { details: string };
- * // }
- * ```
  *
  * @see {@link Localizable}, {@link localizeObject}, {@link localizeArray}
  */

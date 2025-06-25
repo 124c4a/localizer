@@ -11,7 +11,7 @@ order: 4
   import localizerIdentity from './localizer-identity';
 </script>
 
-Localizer is a utility function designed to apply a selected locale to [`Localizable`](./localizable.md) objects. The primary method to obtain an instance of a `Localizer` is by invoking the `getLocalizer()` function:
+Localizer is a utility function designed to apply a selected locale to [`Localizable`](../api/_localizer/core/Localizable/index.md) objects. The primary method to obtain an instance of a `Localizer` is by invoking the [`getLocalizer()`](../api/_localizer/core/getLocalizer/index.md) function:
 
 <<< ./localizer-string.ts#example{ts}
 
@@ -49,7 +49,7 @@ This fallback mechanism ensures that translations are as complete as possible, e
 
 ## Implicit localization <Badge type="warning" text="experimental" />
 
-In scenarios where strict typing becomes cumbersome, such as during the development of _throw-away_ prototypes, explicitly applying `Localizer` functions to localizable objects may feel overly burdensome. To streamline such workflows, the library offers an _implicit_ localization feature. This feature can be enabled either through the [`activeLocale`](./configuration.md#activelocale) configuration property or by using the `setActiveLocale()` function, allowing for a more lightweight approach to localization during rapid prototyping.
+In scenarios where strict typing becomes cumbersome, such as during the development of _throw-away_ prototypes, explicitly applying `Localizer` functions to localizable objects may feel overly burdensome. To streamline such workflows, the library offers an _implicit_ localization feature. This feature can be enabled either through the [`activeLocale`](./configuration.md#activelocale) configuration property or by using the [`setActiveLocale()`](../api/_localizer/core/setActiveLocale/index.md) function, allowing for a more lightweight approach to localization during rapid prototyping.
 
 <<< ./localizer-implicit.ts#example{ts}
 

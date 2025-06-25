@@ -27,15 +27,6 @@ import { Localizer } from '../types/localizer.js';
  * It binds localization functionality to the implicitly determined locale, enabling seamless
  * localization without explicitly specifying the locale.
  *
- * @example
- * ```typescript
- * // Enable implicit localization and set the active locale
- * setActiveLocale('en');
- *
- * const localizable = loc((locale) => `Hello, ${locale}!`);
- * console.log(ImplicitLocalizer(localizable)); // Output: Hello, en!
- * ```
- *
  * @see {@link Localizer}, {@link Core}
  */
 export const ImplicitLocalizer: Localizer = _getImplicitLocalizer();
@@ -52,12 +43,5 @@ export const UninitializedLocalizer: Localizer = _getUninitializedLocalizer();
  *
  * Special Localizer instance that produces stable identifiers instead of localized strings.
  * It is useful for cases where you need a unique identifier that does not change with locale or value.
- *
- * @example
- * ```typescript
- * const dateValue = dateTime(new Date());
- * const identifier = IdentityLocalizer(dateValue);
- * console.log(identifier); // Output: "[dateTime]"
- * ```
  */
 export const IdentityLocalizer: Localizer = _getIdentityLocalizer();

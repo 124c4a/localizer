@@ -25,14 +25,6 @@ import { Localizable } from './localizable.js';
  *
  * @typeParam T - The type of the value to be formatted.
  *
- * @example
- * ```typescript
- * const formatValue: ValueFormatter<number> = (value) => ({
- *   localize: (locale) => `Value: ${value} in ${locale}`,
- * });
- * console.log(formatValue(42).localize('en')); // Output: Value: 42 in en
- * ```
- *
  * @see {@link Localizable}
  */
 export type ValueFormatter<T> = (value: T) => Localizable;
@@ -48,14 +40,6 @@ export type ValueFormatter<T> = (value: T) => Localizable;
  * @typeParam T - The type of the value to be formatted.
  * @typeParam U - The type of the unit associated with the value.
  *
- * @example
- * ```typescript
- * const formatUnitValue: UnitValueFormatter<number, string> = (value, unit) => ({
- *   localize: (locale) => `${value} ${unit} in ${locale}`,
- * });
- * console.log(formatUnitValue(42, 'kg').localize('en')); // Output: 42 kg in en
- * ```
- *
  * @see {@link Localizable}
  */
 export type UnitValueFormatter<T, U> = (value: T, unit: U) => Localizable;
@@ -70,14 +54,6 @@ export type UnitValueFormatter<T, U> = (value: T, unit: U) => Localizable;
  *
  * @typeParam T - The type of the values in the range.
  *
- * @example
- * ```typescript
- * const formatValueRange: ValueRangeFormatter<number> = (start, end) => ({
- *   localize: (locale) => `Range: ${start} to ${end} in ${locale}`,
- * });
- * console.log(formatValueRange(10, 20).localize('en')); // Output: Range: 10 to 20 in en
- * ```
- *
  * @see {@link Localizable}
  */
 export type ValueRangeFormatter<T> = (start: T, end: T) => Localizable;
@@ -91,14 +67,6 @@ export type ValueRangeFormatter<T> = (start: T, end: T) => Localizable;
  * value of type `T`, and return a localized representation of the relative value.
  *
  * @typeParam T - The type of the value and reference value.
- *
- * @example
- * ```typescript
- * const formatRelativeValue: RelativeValueFormatter<number> = (value, reference) => ({
- *   localize: (locale) => `Value: ${value}, Reference: ${reference} in ${locale}`,
- * });
- * console.log(formatRelativeValue(42, 100).localize('en')); // Output: Value: 42, Reference: 100 in en
- * ```
  *
  * @see {@link Localizable}
  */

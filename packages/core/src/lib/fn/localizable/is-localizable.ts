@@ -23,15 +23,6 @@ import { Localizable } from '../../types/localizable.js';
  * @param x - The value to check.
  * @returns `true` if the value implements the `Localizable` interface, otherwise `false`.
  *
- * @example
- * ```typescript
- * const localizableValue = loc((locale) => `Hello, ${locale}`);
- * console.log(isLocalizable(localizableValue)); // true
- *
- * const nonLocalizableValue = 'string value';
- * console.log(isLocalizable(nonLocalizableValue)); // false
- * ```
- *
  * @see {@link Localizable}
  */
 export function isLocalizable(x: unknown): x is Localizable {

@@ -58,19 +58,6 @@ export const coreOptions: CoreOptions = {
  * @public
  *
  * Configures the core localization options.
- *
- * @param config - An object containing the core options to be set.
- *
- * @example
- * Configure the core localization options
- * ```typescript
- * configure({ Core }, {
- *   Core: {
- *     fallbackLocales: ['en-US', 'fr-FR'],
- *     activeLocale: 'en-US',
- *   }
- * });
- * ```
  */
 export const Core: Configurer<CoreOptions> = (config) => {
   Object.assign(coreOptions, config);
@@ -82,14 +69,6 @@ export const Core: Configurer<CoreOptions> = (config) => {
  * Sets the active locale and enables implicit localization.
  *
  * @param locale - The locale code to set as the active locale.
- *
- * @example
- * ```typescript
- * const localizable: Localizable = ...; // Your localizable object
- * setActiveLocale('en-US');
- *
- * console.log(localizable); // Outputs the localizable object with 'en-US' as the active locale
- * ```
  */
 export function setActiveLocale(locale: LocaleCode) {
   coreOptions.activeLocale = locale;

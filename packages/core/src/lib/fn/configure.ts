@@ -30,40 +30,6 @@ import { Configurer, ConfigurationProperties } from '../types/configuration.js';
  * @param arg - An object containing configuration functions for each property.
  * @param values - An object containing values to be passed to the configuration functions.
  *
- * @example
- * ```typescript
- * import { configure } from '@localizer/core';
- *
- * const configurations = {
- *   name: (value) => console.log(`Configuring name: ${value}`),
- *   age: (value) => console.log(`Configuring age: ${value}`),
- * };
- * const values = { name: "John", age: 30 };
- * configure(configurations, values);
- * // Output:
- * // Configuring name: John
- * // Configuring age: 30
- * ```
- *
- * @example
- * ```typescript
- * import { configure, Core } from '@localizer/core';
- * import { DefaultDecimalFormat } from '@localizer/format';
- *
- * // Configure the core and default decimal format
- * configure({ Core, DefaultDecimalFormat }, {
- *   Core: {
- *     implicitLocalization: true,
- *     activeLocale: 'en',
- *   },
- *   DefaultDecimalFormat: {
- *     style: 'decimal',
- *     minimumFractionDigits: 2,
- *     maximumFractionDigits: 2,
- *   },
- * });
- * ```
- *
  * @see {@link Configurer}, {@link ConfigurationProperties}
  */
 export function configure<T extends Record<string, Configurer<object>>>(

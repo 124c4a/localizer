@@ -31,23 +31,9 @@ export type Configurer<V> = (value: Partial<V>) => void;
  * determines the type of the value that can be configured if the corresponding property
  * is a `Configuration` type.
  *
- * @template T - The type containing configuration properties.
+ * @typeParam T - The type containing configuration properties.
  *
- * @example
- * ```typescript
- * type Configurable = {
- *   name: Configuration<string>;
- *   age: Configuration<number>;
- * };
- * type Properties = ConfigurationProperties<Configurable>;
- * // Properties is equivalent to:
- * // {
- * //   name?: string;
- * //   age?: number;
- * // }
- * ```
- *
- * @see {@link Configuration}
+ * @see {@link Configurer}
  */
 export type ConfigurationProperties<T> = {
   [K in keyof T]?: T[K] extends Configurer<infer V> ? Partial<V> : never;

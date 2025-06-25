@@ -29,22 +29,6 @@ import { isLocalizable } from '../localizable/is-localizable.js';
  * @param locale - The locale code to use for localization.
  * @returns A localizer function bound to the specified locale.
  *
- * @example
- * ```typescript
- * const localizer = getLocalizer('en');
- * const localizedValue = localizer(loc((locale) => locale === 'en' ? 'Hello' : 'Hola' ));
- * console.log(localizedValue); // Output: Hello
- * ```
- *
- * @example
- * ```typescript
- * const localizer = getLocalizer('en');
- * const localizedFunction = localizer((name) =>
- *   loc((locale) => locale === 'en' ? `Hello, ${name}` : `Hola, ${name}`)
- * );
- * console.log(localizedFunction('John')); // Output: Hello, John
- * ```
- *
  * @see {@link Localizer}, {@link Localizable}, {@link LocaleCode}
  */
 export function getLocalizer(locale: LocaleCode): Localizer {

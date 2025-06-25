@@ -47,5 +47,9 @@ export * from './lib/fn/localizable/is-localizable.js';
 export * from './lib/fn/localizer/get-localizer.js';
 
 export * from './lib/consts/empty.js';
-export * from './lib/consts/locale.js';
+export {
+  type LanguageCode,
+  type CountryCode,
+  type LocaleCode,
+} from './lib/consts/locale.js';
 export * from './lib/consts/localizers.js';
