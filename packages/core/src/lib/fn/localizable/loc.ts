@@ -20,38 +20,44 @@ import { UnlocalizableValue } from './_/unlocalizable-value.js';
 import { localizeArray } from './localizeArray.js';
 
 /**
+ * @public
+ *
  * Creates a `Localizable` instance based on the provided localization function.
  *
- * @template T - The type of the localized value.
+ * @typeParam T - The type of the localized value.
  *
- * @param {(locale: LocaleCode | null) => T} localize - A function that takes a locale code and returns a localized value.
- * @returns {Localizable<T>} A `Localizable` instance representing the localized value.
+ * @param localize - A function that takes a locale code and returns a localized value.
+ * @returns A `Localizable` instance representing the localized value.
  *
  * @example
- * // Using a localization function
+ * Using a localization function
+ * ```typescript
  * const localizedValue = loc((locale) => locale === 'en' ? 'Hello' : 'Hola');
  * console.log(localizedValue.localize('en')); // 'Hello'
+ * ```
  *
- * @public
  * @see {@link Localizable}, {@link Localizer}
  */
 export function loc<T = string>(
   localize: (locale: LocaleCode | null) => T,
 ): Localizable<T>;
 /**
+ * @public
+ *
  * Creates a `Localizable` instance based on the provided localization template strings.
  *
- * @param {TemplateStringsArray} strings - Template strings.
- * @param {...Localizable[]} expr - The expressions to interpolate into the template strings.
- * @returns {Localizable} A `Localizable` instance representing the localized value.
+ * @param strings - Template strings.
+ * @param expr - The expressions to interpolate into the template strings.
+ * @returns A `Localizable` instance representing the localized value.
  *
  * @example
- * // Using template strings
+ * Using template strings
+ * ```typescript
  * const name = loc`John`;
  * const greeting = loc`Hello, ${name}!`;
  * console.log(greeting.localize('en')); // 'Hello, John!'
+ * ```
  *
- * @public
  * @see {@link Localizable}, {@link Localizer}
  */
 export function loc(

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configuration } from '@localizer/core';
+import { Configurer } from '@localizer/core';
 import {
   RelativeTimeFormatOptions,
   relativeTimeFormatter,
@@ -40,7 +40,7 @@ const defaultRelativeTimeFormatOptions: RelativeTimeFormatOptions = {
  * @public
  * @see {@link RelativeTimeFormatOptions}, {@link configure}
  */
-export const DefaultRelativeTimeFormat: Configuration<
+export const DefaultRelativeTimeFormat: Configurer<
   RelativeTimeFormatOptions
 > = (config) => {
   Object.assign(defaultRelativeTimeFormatOptions, config);
@@ -60,5 +60,5 @@ export const DefaultRelativeTimeFormat: Configuration<
  * @see {@link RelativeTimeFormatOptions}, {@link relativeTimeFormatter}, {@link DefaultRelativeTimeFormat}
  */
 export const relativeTime = relativeTimeFormatter(
-  defaultRelativeTimeFormatOptions
+  defaultRelativeTimeFormatOptions,
 );

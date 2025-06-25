@@ -14,75 +14,88 @@
  * limitations under the License.
  */
 import { LocaleCode } from '../consts/locale.js';
-import {
-  RelativeValueFormatter,
-  UnitValueFormatter,
-  ValueFormatter,
-  ValueRangeFormatter,
-} from './formatter.js';
 import { Localizable } from './localizable.js';
 
 /**
+ * @public
+ *
  * Represents a localizer interface that provides methods for formatting and localizing values.
  * The `Localizer` interface supports various types of formatters and localizable objects.
  *
- * @public
- * @interface Localizer
- *
- * @template T - The type of the value to be localized.
- * @template U - The type of the unit for unit-based formatting.
- *
- * @example
- * // Example usage of a Localizable object
- * const localizable = translate({
- *   en: 'Hello',
- *   es: 'Hola',
- *   fr: 'Bonjour',
- * });
- * const localizer = getLocalizer('es');
- * console.log(localizer(localizable)); // Output: Hola
- *
- * @example
- * // Example usage of a ValueFormatter
- * const numberFormatter = decimal;
- * const localizedNumberFormatter = localizer(numberFormatter);
- * console.log(localizedNumberFormatter(1234.56)); // Output: 1,234.56
- *
- * @example
- * // Example usage of a UnitValueFormatter
- * const unitFormatter = unit;
- * const localizedUnitFormatter = localizer(unitFormatter);
- * console.log(localizedUnitFormatter(5, 'meter')); // Output: 5 m
- *
- * @example
- * // Example usage of a ValueRangeFormatter
- * const rangeFormatter = decimalRange;
- * const localizedRangeFormatter = localizer(rangeFormatter);
- * console.log(localizedRangeFormatter(10, 20)); // Output: 10 - 20
- *
- * @example
- * // Example usage of a RelativeValueFormatter
- * const relativeFormatter = relativePercent;
- * const localizedRelativeFormatter = localizer(relativeFormatter);
- * console.log(localizedRelativeFormatter(0.2, 0.1)); // Output: +10%
- *
- * @example
- * // Accessing the locale property
- * const locale = localizer.locale; // Returns the selected locale code
- *
- * @see {@link Localizable}, {@link ValueFormatter}, {@link UnitValueFormatter}, {@link ValueRangeFormatter}, {@link RelativeValueFormatter}
+ * @see {@link Localizable}
  */
 export interface Localizer {
-  <T>(formatter: ValueFormatter<T>): (value: T) => string;
-  <T, U>(formatter: UnitValueFormatter<T, U>): (value: T, unit: U) => string;
-  <T>(formatter: ValueRangeFormatter<T>): (start: T, end: T) => string;
-  <T>(formatter: RelativeValueFormatter<T>): (value: T, reference: T) => string;
+  /**
+   * @public
+   *
+   * Localizes a value based on the selected locale.
+   *
+   * @typeParam T - The type of the localized value.
+   * @param localizable - A `Localizable` object.
+   *
+   * @returns The localized value of type `T`.
+   *
+   * @example
+   * Example usage of a Localizable object
+   * ```typescript
+   * const localizable = translate({
+   *   en: 'Hello',
+   *   es: 'Hola',
+   *   fr: 'Bonjour',
+   * });
+   * const localizer = getLocalizer('es');
+   * console.log(localizer(localizable)); // Output: Hola
+   * ```
+   */
   <T>(localizable: Localizable<T>): T;
+  /**
+   * @public
+   *
+   * Localizes a function returning a localizable value based on the selected locale.
+   *
+   * @typeParam T - The type of the localized value.
+   * @typeParam A - The type of the arguments for the function.
+   * @param formatter - A function that takes arguments of type `A` and returns a `Localizable<T>`.
+   * @returns A function that takes arguments of type `A` and returns a localized value of type `T`.
+   *
+   * @example
+   * Example usage of a ValueFormatter
+   * ```typescript
+   * const numberFormatter = decimal;
+   * const localizedNumberFormatter = localizer(numberFormatter);
+   * console.log(localizedNumberFormatter(1234.56)); // Output: 1,234.56
+   * ```
+   *
+   * @example
+   * Example usage of a UnitValueFormatter
+   * ```typescript
+   * const unitFormatter = unit;
+   * const localizedUnitFormatter = localizer(unitFormatter);
+   * console.log(localizedUnitFormatter(5, 'meter')); // Output: 5 m
+   * ```
+   *
+   * @example
+   * Example usage of a ValueRangeFormatter
+   * ```typescript
+   * const rangeFormatter = decimalRange;
+   * const localizedRangeFormatter = localizer(rangeFormatter);
+   * console.log(localizedRangeFormatter(10, 20)); // Output: 10 - 20
+   * ```
+   *
+   * @example
+   * Example usage of a RelativeValueFormatter
+   * ```typescript
+   * const relativeFormatter = relativePercent;
+   * const localizedRelativeFormatter = localizer(relativeFormatter);
+   * console.log(localizedRelativeFormatter(0.2, 0.1)); // Output: +10%
+   * ```
+   */
+  <A extends unknown[], T>(
+    formatter: (...args: A) => Localizable<T>,
+  ): (...args: A) => T;
 
   /**
    * The selected locale code.
-   *
-   * @type {LocaleCode}
    */
   readonly locale: LocaleCode;
 }

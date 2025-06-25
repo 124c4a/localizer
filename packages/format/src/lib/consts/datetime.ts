@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { loc, Configuration, ValueRangeFormatter } from '@localizer/core';
+import { loc, Configurer, ValueRangeFormatter } from '@localizer/core';
 import {
   DateTimeFormatOptions,
   dateTimeFormatter,
@@ -55,8 +55,8 @@ const defaultDateTimeFormatOptions: DateTimeFormatOptions = {
  * @public
  * @see {@link DateTimeFormatOptions}, {@link configure}, {@link date}, {@link dateRange}
  */
-export const DefaultDateFormat: Configuration<DateTimeFormatOptions> = (
-  config
+export const DefaultDateFormat: Configurer<DateTimeFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultDateFormatOptions, config);
 };
@@ -76,8 +76,8 @@ export const DefaultDateFormat: Configuration<DateTimeFormatOptions> = (
  * @public
  * @see {@link DateTimeFormatOptions}, {@link configure}, {@link time}
  */
-export const DefaultTimeFormat: Configuration<DateTimeFormatOptions> = (
-  config
+export const DefaultTimeFormat: Configurer<DateTimeFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultTimeFormatOptions, config);
 };
@@ -97,8 +97,8 @@ export const DefaultTimeFormat: Configuration<DateTimeFormatOptions> = (
  * @public
  * @see {@link DateTimeFormatOptions}, {@link configure}, {@link dateTime}, {@link dateTimeRange}
  */
-export const DefaultDateTimeFormat: Configuration<DateTimeFormatOptions> = (
-  config
+export const DefaultDateTimeFormat: Configurer<DateTimeFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultDateTimeFormatOptions, config);
 };
@@ -170,5 +170,5 @@ export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
  * @see {@link dateTimeRangeFormatter}, {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateTime}, {@link dateRange}
  */
 export const dateTimeRange = dateTimeRangeFormatter(
-  defaultDateTimeFormatOptions
+  defaultDateTimeFormatOptions,
 );

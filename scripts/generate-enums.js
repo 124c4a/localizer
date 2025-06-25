@@ -200,11 +200,11 @@ async function writeLocaleTs(ctx) {
   const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
   
 /**
+ * @public
+ * 
  * IETF BCP 47 language tag
  * 
  * @see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
- *
- * @public
  */
 
 export type LanguageCode =
@@ -213,11 +213,11 @@ ${ctx.languages
   .join('\n')};
 
 /**
+ * @public
+ * 
  * ISO 3166-1 alpha-2 country codes
  *
  * @see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
- *
- * @public
  */
 export type CountryCode =
 ${ctx.countries
@@ -225,19 +225,19 @@ ${ctx.countries
   .join('\n')};
 
 /**
- * Supported locale codes
- *
  * @public
+ * 
+ * Supported locale codes
  */
 export type LocaleCode = LanguageCode | \`\${LanguageCode}-\${CountryCode}\`;
 
-/**  
+/**
+ * @public
+ * 
  * Primary locales for each country
  *
  * @see https://github.com/osm-search/Nominatim/blob/master/settings/country_settings.yaml
- *
- * @internal
-  */
+ */
 export const primaryLocales: Record<CountryCode, LocaleCode> = {
 ${Object.entries(ctx.primaryLocales)
   .map(([country, locale]) => `  '${country}': '${locale}-${country}',`)
@@ -332,30 +332,30 @@ async function writeCurrencyTs(ctx) {
   const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
 
 /**
+ * @public
+ * 
  * ISO 4217 currency, fund and precious metal codes
  *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Active_codes_(list_one)
- *
- * @public
  */
 
 export type ActiveCurrencyCode =
 ${ctx.actual.map((it) => `  | '${it}'`).join('\n')};
 
 /**
+ * @public
+ * 
  * ISO 4217 codes for historic denominations of currencies and funds 
  *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Historical_codes
- *
- * @public
  */
 export type HistoricCurrencyCode =
 ${ctx.historical.map((it) => `  | '${it}'`).join('\n')};
 
 /**
- * Supported currency codes, including both actual and historical
- *
  * @public
+ * 
+ * Supported currency codes, including both actual and historical
  */
 export type CurrencyCode = ActiveCurrencyCode | HistoricCurrencyCode;
 `;
@@ -380,20 +380,20 @@ async function writeUnitTs() {
   const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
   
 /**
+ * @public
+ * 
  * A subset of the CLDR units explicitly sanctioned by the ECMA-402 specification
  * 
  * @see https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers
- *
- * @public
  */
 
 export type SingularUnit =
 ${units.map((it) => `  | '${it}'`).join('\n')};
 
 /**
- * Supported units for unit formatting
- *
  * @public
+ * 
+ * Supported units for unit formatting
  */
 export type Unit = SingularUnit | \`\${SingularUnit}-per-\${SingularUnit}\`;
 `;

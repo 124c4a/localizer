@@ -15,11 +15,11 @@
  */
 
 /**
+ * @public
+ *
  * ISO 4217 currency, fund and precious metal codes
  *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Active_codes_(list_one)
- *
- * @public
  */
 
 export type ActiveCurrencyCode =
@@ -204,11 +204,11 @@ export type ActiveCurrencyCode =
   | 'ZWG';
 
 /**
+ * @public
+ *
  * ISO 4217 codes for historic denominations of currencies and funds
  *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Historical_codes
- *
- * @public
  */
 export type HistoricCurrencyCode =
   | 'ADP'
@@ -349,8 +349,8 @@ export type HistoricCurrencyCode =
   | 'ZWR';
 
 /**
- * Supported currency codes, including both actual and historical
- *
  * @public
+ *
+ * Supported currency codes, including both actual and historical
  */
 export type CurrencyCode = ActiveCurrencyCode | HistoricCurrencyCode;

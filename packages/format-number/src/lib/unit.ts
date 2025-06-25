@@ -15,11 +15,11 @@
  */
 
 /**
+ * @public
+ *
  * A subset of the CLDR units explicitly sanctioned by the ECMA-402 specification
  *
  * @see https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers
- *
- * @public
  */
 
 export type SingularUnit =
@@ -70,8 +70,8 @@ export type SingularUnit =
   | 'year';
 
 /**
- * Supported units for unit formatting
- *
  * @public
+ *
+ * Supported units for unit formatting
  */
 export type Unit = SingularUnit | `${SingularUnit}-per-${SingularUnit}`;

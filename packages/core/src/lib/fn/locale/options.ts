@@ -62,12 +62,11 @@ export const coreOptions: CoreOptions = {
  * @param config - An object containing the core options to be set.
  *
  * @example
+ * Configure the core localization options
  * ```typescript
- * // Configure the core localization options
  * configure({ Core }, {
  *   Core: {
  *     fallbackLocales: ['en-US', 'fr-FR'],
- *     implicitLocalization: true,
  *     activeLocale: 'en-US',
  *   }
  * });

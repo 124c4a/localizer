@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configuration } from '@localizer/core';
+import { Configurer } from '@localizer/core';
 import {
   currencyFormatter,
   decimalFormatter,
@@ -45,8 +45,8 @@ const defaultUnitFormatOptions: NumberFormatOptions = {};
  * @public
  * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultDecimalFormat: Configuration<NumberFormatOptions> = (
-  config
+export const DefaultDecimalFormat: Configurer<NumberFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultDecimalFormatOptions, config);
 };
@@ -65,8 +65,8 @@ export const DefaultDecimalFormat: Configuration<NumberFormatOptions> = (
  * @public
  * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultPercentFormat: Configuration<NumberFormatOptions> = (
-  config
+export const DefaultPercentFormat: Configurer<NumberFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultPercentFormatOptions, config);
 };
@@ -84,8 +84,8 @@ export const DefaultPercentFormat: Configuration<NumberFormatOptions> = (
  * @public
  * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultCurrencyFormat: Configuration<NumberFormatOptions> = (
-  config
+export const DefaultCurrencyFormat: Configurer<NumberFormatOptions> = (
+  config,
 ) => {
   Object.assign(defaultCurrencyFormatOptions, config);
 };
@@ -103,9 +103,7 @@ export const DefaultCurrencyFormat: Configuration<NumberFormatOptions> = (
  * @public
  * @see {@link NumberFormatOptions}, {@link configure}
  */
-export const DefaultUnitFormat: Configuration<NumberFormatOptions> = (
-  config
-) => {
+export const DefaultUnitFormat: Configurer<NumberFormatOptions> = (config) => {
   Object.assign(defaultUnitFormatOptions, config);
 };
 
@@ -202,7 +200,7 @@ export const unit = unitFormatter(defaultUnitFormatOptions);
  * @see {@link relativeDecimalFormatter}, {@link NumberFormatOptions}, {@link DefaultDecimalFormat}
  */
 export const relativeDecimal = relativeDecimalFormatter(
-  defaultDecimalFormatOptions
+  defaultDecimalFormatOptions,
 );
 /**
  * Relative percent formatter instance.
@@ -217,5 +215,5 @@ export const relativeDecimal = relativeDecimalFormatter(
  * @see {@link relativePercentFormatter}, {@link NumberFormatOptions}, {@link DefaultPercentFormat}
  */
 export const relativePercent = relativePercentFormatter(
-  defaultPercentFormatOptions
+  defaultPercentFormatOptions,
 );

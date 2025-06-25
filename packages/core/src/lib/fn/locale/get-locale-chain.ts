@@ -15,8 +15,21 @@
  */
 import { LocaleCode } from '../../consts/locale.js';
 import { coreOptions } from './options.js';
+import { parseLocaleCode } from './parse-locale-code.js';
 
 const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
+
+/**
+ * @internal
+ *
+ * Retains only distinct locale codes from the provided array.
+ *
+ * @param arr - An array of locale codes.
+ * @returns A new array containing only distinct locale codes from the input array.
+ */
+function distinct(arr: LocaleCode[]): LocaleCode[] {
+  return arr.filter((value, index, self) => self.indexOf(value) === index);
+}
 
 /**
  * @public
@@ -37,15 +50,15 @@ export function getLocaleChain(locale: LocaleCode): LocaleCode[] {
     return parentLocaleCache[locale];
   }
 
-  const parts = locale.split('-');
-  if (parts.length < 2) {
-    parentLocaleCache[locale] = [locale, ...fallbackLocales].filter(
-      (value, index, array) => array.indexOf(value) === index,
-    );
+  const [language, country] = parseLocaleCode(locale);
+  if (!country) {
+    parentLocaleCache[locale] = distinct([locale, ...fallbackLocales]);
   } else {
-    parentLocaleCache[locale] = [locale, parts[0], ...fallbackLocales].filter(
-      (value, index, array) => array.indexOf(value) === index,
-    ) as LocaleCode[];
+    parentLocaleCache[locale] = distinct([
+      locale,
+      language,
+      ...fallbackLocales,
+    ]);
   }
   return parentLocaleCache[locale];
 }
