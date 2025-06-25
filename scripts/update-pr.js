@@ -70,7 +70,7 @@ export default async function updatePr({ github, context }) {
   }
 
   metadata.scope = process.env.MODULES;
-  metadata.breaking = process.env.CHANGELEVEL === 'major';
+  metadata.breaking = process.env.CHANGELEVEL === 'semver:major';
   const scopePart = metadata.scope ? `(${metadata.scope})` : '';
 
   const newTitle = `${metadata.type}${scopePart}${metadata.breaking ? '!' : ''}: ${metadata.description}`;
