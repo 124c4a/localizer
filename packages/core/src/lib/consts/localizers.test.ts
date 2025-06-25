@@ -56,7 +56,7 @@ describe('ImplicitLocalizer', () => {
 
   it('returns current active locale', () => {
     coreOptions.activeLocale = 'en';
-    expect(ImplicitLocalizer.locale).toBe('fi');
+    expect(ImplicitLocalizer.locale).toBe('en');
   });
 });
 
