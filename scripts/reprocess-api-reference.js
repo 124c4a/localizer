@@ -16,10 +16,10 @@
 import { readdir, readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { relative, resolve } from 'node:path';
 
-const inputDir = './tmp/api-reference';
+const inputDir = './tmp/api';
 const outputFile = './docs/api';
 
-const sources = await readdir('./tmp/api-reference', {
+const sources = await readdir('./tmp/api', {
   withFileTypes: true,
   recursive: true,
 });
