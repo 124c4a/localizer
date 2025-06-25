@@ -25,7 +25,7 @@ import { Configurer, ConfigurationProperties } from '../types/configuration.js';
  * object to these functions. If a value exists for a key in `values`, the corresponding
  * configuration function in `arg` is invoked with that value.
  *
- * @template T - A record type where the keys are strings and the values are `Configuration` functions.
+ * @typeParam T - A record type where the keys are strings and the values are `Configuration` functions.
  *
  * @param arg - An object containing configuration functions for each property.
  * @param values - An object containing values to be passed to the configuration functions.
