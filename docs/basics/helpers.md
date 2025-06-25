@@ -6,7 +6,7 @@ order: 5
 
 ## Testing if value is `Localizable`
 
-When developing a custom library that integrates with `@localizer`, you may need to determine whether a given value is [`Localizable`](../api/_localizer/core/Localizable/index.md). This can be achieved using the [`isLocalizable()`](../api/_localizer/core/isLocalizable/index.md) function:
+When developing a custom library that integrates with **@localizer**, you may need to determine whether a given value is [`Localizable`](../api/_localizer/core/Localizable/index.md). This can be achieved using the [`isLocalizable()`](../api/_localizer/core/isLocalizable/index.md) function:
 
 ```typescript
 import { isLocalizable, Localizable, getLocalizer } from '@localizer/core';
@@ -64,7 +64,7 @@ const localizedActionTuple = localizeArray(actionTuple, 'ru-RU');
 
 ## Parsing locale code
 
-Locale codes in the `@localizer` library follow the IETF BCP 47 standard, representing either a standalone language tag or a combination of a language tag and an ISO 3166-1 alpha-2 country code. The [`parseLocaleCode()`](../api/_localizer/core/parseLocaleCode/index.md) function splits a locale code into its components, returning a tuple with the language tag and, if present, the country code.
+Locale codes in the **@localizer** library follow the IETF BCP 47 standard, representing either a standalone language tag or a combination of a language tag and an ISO 3166-1 alpha-2 country code. The [`parseLocaleCode()`](../api/_localizer/core/parseLocaleCode/index.md) function splits a locale code into its components, returning a tuple with the language tag and, if present, the country code.
 
 ```typescript
 import { parseLocaleCode } from '@localizer/core';

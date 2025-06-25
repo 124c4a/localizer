@@ -79,7 +79,7 @@ const configWithSidebar = withSidebar(config, {
   //
   // ============ [ GROUPING ] ============
   collapsed: true,
-  collapseDepth: 2,
+  // collapseDepth: 2,
   // rootGroupText: 'Contents',
   // rootGroupLink: 'https://github.com/jooy2',
   // rootGroupCollapsed: false,
@@ -134,6 +134,7 @@ configWithSidebar.themeConfig.sidebar.push(
     text: 'API reference',
     link: '/api/',
     items: readApiSidebar(),
+    collapsed: true,
   }),
 );
 

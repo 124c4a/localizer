@@ -12,5 +12,5 @@ hero:
       link: /basics/getting-started
     - theme: alt
       text: API reference
-      link: /api-reference
+      link: /api
 ---

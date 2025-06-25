@@ -4,7 +4,7 @@ order: 3
 
 # Localizable <Badge type="info" text="@localizer/core" />
 
-Localizable is the core primitive of the `@localizer` library. It encapsulates values that can adapt their output based on the locale. Examples include translations, formatted data, locale-aware comparators, and other objects or values that depend on regional settings.
+Localizable is the core primitive of the **@localizer** library. It encapsulates values that can adapt their output based on the locale. Examples include translations, formatted data, locale-aware comparators, and other objects or values that depend on regional settings.
 
 ## String constants
 

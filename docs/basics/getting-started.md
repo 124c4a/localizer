@@ -18,7 +18,7 @@ If you're new to the tool, we recommend starting with the installation instructi
 
 ## Installation
 
-To begin using the tool, the first step is to install the `@localizer/all` package. This package serves as a convenient meta-package that consolidates and re-exports symbols from all the core components of the `@localizer` ecosystem. By installing this package, you'll have access to all the essential functionality needed to get started.
+To begin using the tool, the first step is to install the `@localizer/all` package. This package serves as a convenient meta-package that consolidates and re-exports symbols from all the core components of the **@localizer** ecosystem. By installing this package, you'll have access to all the essential functionality needed to get started.
 
 Here are the installation commands for each package manager:
 
@@ -48,13 +48,13 @@ bun add @localizer/all
 Once the installation is complete, you're ready to move on to the next steps. For more details about the individual components included in the `@localizer/all` package, refer to the [API Reference](../api/index.md). This will provide you with a deeper understanding of the available modules and their capabilities.
 
 > [!NOTE]
-> The `@localizer/all` package is a meta-package that consolidates and re-exports symbols from all core components of the `@localizer` ecosystem. This means that by installing and using this single package, you gain access to a comprehensive suite of tools and utilities without needing to manage multiple dependencies individually. It simplifies the setup process and ensures compatibility across the various components of the ecosystem.
+> The `@localizer/all` package is a meta-package that consolidates and re-exports symbols from all core components of the **@localizer** ecosystem. This means that by installing and using this single package, you gain access to a comprehensive suite of tools and utilities without needing to manage multiple dependencies individually. It simplifies the setup process and ensures compatibility across the various components of the ecosystem.
 >
 > For a detailed breakdown of the individual packages and modules included in `@localizer/all`, refer to the [API Reference](../api/index.md). There, you'll find in-depth documentation on each component, including usage examples, configuration options, and best practices to help you make the most of the tool.
 
 ## Translation (basic) <Badge type="warning" text="experimental" />
 
-`@localizer` provides a vast set of utilities for localization, translation and data formatting. Below are examples for main functionality:
+**@localizer** provides a vast set of utilities for localization, translation and data formatting. Below are examples for main functionality:
 
 In this example, we define and utilize a straightforward dictionary to manage translations for various parts of the user interface. This dictionary serves as a centralized repository for all translation keys and their corresponding localized values, making it easier to maintain and extend as your application grows.
 
@@ -106,7 +106,7 @@ For more advanced use cases, such as handling complex pluralization rules or int
 
 ## Formatting of values
 
-To format or localize different value types, `@localizer` provides a comprehensive set of utilities designed to handle various data formats, including dates, numbers, and currencies. These formatters ensure that your application can present data in a way that is both culturally appropriate and user-friendly, regardless of the target locale.
+To format or localize different value types, **@localizer** provides a comprehensive set of utilities designed to handle various data formats, including dates, numbers, and currencies. These formatters ensure that your application can present data in a way that is both culturally appropriate and user-friendly, regardless of the target locale.
 
 <<< ./getting-started-value-formatting.ts#example{ts}
 

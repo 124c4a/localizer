@@ -4,7 +4,7 @@ order: 2
 
 # Configuration <Badge type="info" text="@localizer/core" />
 
-While most of the functionality in `@localizer` is stateless, certain aspects can be customized at runtime using the [`configure()`](../api/_localizer/core/configure/index.md) method. It is recommended to apply configuration changes as early as possible, ideally within the application shell, to ensure consistent behavior throughout the application lifecycle.
+While most of the functionality in **@localizer** is stateless, certain aspects can be customized at runtime using the [`configure()`](../api/_localizer/core/configure/index.md) method. It is recommended to apply configuration changes as early as possible, ideally within the application shell, to ensure consistent behavior throughout the application lifecycle.
 
 The `configure()` method takes two parameters: an array of configuration domains and a configuration object. The configuration domains specify which parts of the library you want to configure, while the configuration object provides the corresponding settings for those domains.
 
@@ -30,7 +30,7 @@ Each domain corresponds to a specific aspect of the library, enabling fine-grain
 
 ## [Core](../api/_localizer/core/CoreOptions/index.md) <Badge type="info" text="@localizer/core" />
 
-This is the basic configuration for `@localizer`. Below are the key configuration properties available:
+This is the basic configuration for **@localizer**. Below are the key configuration properties available:
 
 ```typescript
 configure([Core], {
