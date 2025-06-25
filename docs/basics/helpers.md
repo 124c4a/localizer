@@ -6,7 +6,7 @@ order: 5
 
 ## Testing if value is `Localizable`
 
-When developing a custom library that integrates with `@localizer`, you may need to determine whether a given value is `Localizable`. This can be achieved using the `isLocalizable()` function:
+When developing a custom library that integrates with `@localizer`, you may need to determine whether a given value is [`Localizable`](../api/_localizer/core/Localizable/index.md). This can be achieved using the [`isLocalizable()`](../api/_localizer/core/isLocalizable/index.md) function:
 
 ```typescript
 import { isLocalizable, Localizable, getLocalizer } from '@localizer/core';
@@ -24,7 +24,7 @@ export function maybeLocalize(value: string | Localizable): string {
 
 ## Localizing object properties
 
-When working with complex objects, you may need to localize all `Localizable` values while leaving other properties unchanged. This can be accomplished using the `localizeObject()` function:
+When working with complex objects, you may need to localize all [`Localizable`](../api/_localizer/core/Localizable/index.md) values while leaving other properties unchanged. This can be accomplished using the [`localizeObject()`](../api/_localizer/core/localizeObject/index.md) function:
 
 ```typescript
 import { localizeObject, Localizable } from '@localizer/core';
@@ -51,7 +51,7 @@ const localizedSubmitAction = localizeObject(submitAction, 'ru-RU');
 
 ## Localizing array items
 
-Similar to [localizing object properties](#localizing-object-properties), you can localize relevant entries in an array using the `localizeArray()` function. This function processes each item in the array, localizing only the values that are `Localizable` while leaving other items unchanged.
+Similar to [localizing object properties](#localizing-object-properties), you can localize relevant entries in an array using the [`localizeArray()`](../api/_localizer/core/localizeArray/index.md) function. This function processes each item in the array, localizing only the values that are [`Localizable`](../api/_localizer/core/Localizable/index.md) while leaving other items unchanged.
 
 ```typescript
 import { localizeArray, Localizable } from '@localizer/core';
@@ -64,7 +64,7 @@ const localizedActionTuple = localizeArray(actionTuple, 'ru-RU');
 
 ## Parsing locale code
 
-Locale codes in the `@localizer` library follow the IETF BCP 47 standard, representing either a standalone language tag or a combination of a language tag and an ISO 3166-1 alpha-2 country code. The `parseLocaleCode()` function splits a locale code into its components, returning a tuple with the language tag and, if present, the country code.
+Locale codes in the `@localizer` library follow the IETF BCP 47 standard, representing either a standalone language tag or a combination of a language tag and an ISO 3166-1 alpha-2 country code. The [`parseLocaleCode()`](../api/_localizer/core/parseLocaleCode/index.md) function splits a locale code into its components, returning a tuple with the language tag and, if present, the country code.
 
 ```typescript
 import { parseLocaleCode } from '@localizer/core';
@@ -78,7 +78,7 @@ const enUsLocale = parseLocaleCode('en-US');
 
 ## Getting primary locale <Badge type="tip" text="preview" />
 
-In some scenarios, you may need to determine the _primary_ locale associated with a given locale code. The `getPrimaryLocale()` function provides this capability:
+In some scenarios, you may need to determine the _primary_ locale associated with a given locale code. The [`getPrimaryLocale()`](../api/_localizer/core/getPrimaryLocale/index.md) function provides this capability:
 
 ```typescript
 import { getPrimaryLocale } from '@localizer/core';

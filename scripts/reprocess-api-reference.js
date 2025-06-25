@@ -16,10 +16,10 @@
 import { readdir, readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { relative, resolve } from 'node:path';
 
-const inputDir = './tmp/api-reference';
+const inputDir = './tmp/api';
 const outputFile = './docs/api';
 
-const sources = await readdir('./tmp/api-reference', {
+const sources = await readdir('./tmp/api', {
   withFileTypes: true,
   recursive: true,
 });
@@ -74,5 +74,11 @@ function reprocessContent(content) {
     lines.splice(betaIndex, 1);
   }
 
-  return lines.join('\n');
+  return lines
+    .map((line) =>
+      line
+        .replace('**`Alpha`**', '<Badge type="warning" text="experimental" />')
+        .replace('**`Beta`**', '<Badge type="tip" text="preview" />'),
+    )
+    .join('\n');
 }

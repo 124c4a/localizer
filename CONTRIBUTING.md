@@ -92,13 +92,13 @@ Please follow the following guidelines:
 The PR title should follow the following format:
 
 ```plain
-type(scope): Code change explained in past tense
+type(scope): Subject of change
 ```
 
 or
 
 ```plain
-type: Code change explained in past tense
+type: Subject of change
 ```
 
 ##### Type
@@ -123,14 +123,16 @@ The scope must be one of the following:
 
 ##### Subject and Body
 
-The subject must contain a description of the change voiced in past tense, and the body of the message contains any additional details to provide more context about the change.
+The subject must contain a description of the change, and the body of the message contains any additional details to provide more context about the change.
 
 Including the issue number that the PR relates to also helps with tracking.
+
+If the PR contains breaking changes, it is advisable to include explanation in the PR body, prefixed with `BREAKING CHANGE:`
 
 #### Example
 
 ```plain
-feat(format): Added support for time zones to date/time formatter
+feat(format): Time zone support in date/time formatter
 
 Date/time formatters now accept `TZDate` type from `@date-fns/tz`
 

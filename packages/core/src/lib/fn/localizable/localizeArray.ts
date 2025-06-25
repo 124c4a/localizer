@@ -27,13 +27,6 @@ import { isLocalizable } from './is-localizable.js';
  * @param locale - The locale code to use for localization, or `null` for no localization.
  * @returns - A localized version of the input array.
  *
- * @example
- * ```typescript
- * const values = [loc((locale) => `Localized: ${locale}`), "plain text"];
- * const localizedValues = localizeArray(values, "en-US");
- * console.log(localizedValues); // ["Localized: en-US", "plain text"]
- * ```
- *
  * @see {@link Localizable}
  */
 export function localizeArray<T extends unknown[]>(

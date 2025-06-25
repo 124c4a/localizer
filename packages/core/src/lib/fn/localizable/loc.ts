@@ -29,13 +29,6 @@ import { localizeArray } from './localizeArray.js';
  * @param localize - A function that takes a locale code and returns a localized value.
  * @returns A `Localizable` instance representing the localized value.
  *
- * @example
- * Using a localization function
- * ```typescript
- * const localizedValue = loc((locale) => locale === 'en' ? 'Hello' : 'Hola');
- * console.log(localizedValue.localize('en')); // 'Hello'
- * ```
- *
  * @see {@link Localizable}, {@link Localizer}
  */
 export function loc<T = string>(
@@ -50,23 +43,13 @@ export function loc<T = string>(
  * @param expr - The expressions to interpolate into the template strings.
  * @returns A `Localizable` instance representing the localized value.
  *
- * @example
- * Using template strings
- * ```typescript
- * const name = loc`John`;
- * const greeting = loc`Hello, ${name}!`;
- * console.log(greeting.localize('en')); // 'Hello, John!'
- * ```
- *
  * @see {@link Localizable}, {@link Localizer}
  */
 export function loc(
   strings: TemplateStringsArray,
   ...expr: Localizable[]
 ): Localizable;
-/**
- * @internal
- */
+
 export function loc<T = string>(
   stringsOrLocalize: TemplateStringsArray | ((locale: LocaleCode | null) => T),
   ...expr: Localizable[]

@@ -74,7 +74,7 @@ jobs:
           category: API
 
       - name: Test
-        run: npx nx affected -t test --coverage --changed ${{ github.event.pull_request.base.sha }}
+        run: npx nx affected -t test --coverage
 
       - name: Build scripts
         run: npx nx run-many -t build --projects=analyze-changes,analyze-coverage,update-pr

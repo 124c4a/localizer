@@ -28,20 +28,6 @@ import { CountryCode, LanguageCode, LocaleCode } from '../../consts/locale.js';
  * @param locale - The locale code to parse.
  * @returns A tuple containing the language code
  * and the optional country code.
- *
- * @example
- * ```typescript
- * const [language, country] = parseLocaleCode('en-US');
- * console.log(language); // 'en'
- * console.log(country); // 'US'
- * ```
- *
- * @example
- * ```typescript
- * const [language, country] = parseLocaleCode('en');
- * console.log(language); // 'en'
- * console.log(country); // undefined
- * ```
  */
 export function parseLocaleCode(
   locale: LocaleCode,

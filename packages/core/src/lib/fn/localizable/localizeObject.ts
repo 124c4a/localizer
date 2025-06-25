@@ -27,30 +27,6 @@ import { isLocalizable } from './is-localizable.js';
  * @param locale - The locale code used for localization. If `null`, a default or fallback value may be used.
  * @returns A new object where all `Localizable` properties are replaced with their localized values.
  *
- * @example
- * ```typescript
- * // Example with an object containing localizable properties
- * const values = {
- *   greeting: loc((locale) => locale === 'en' ? 'Hello' : 'Hola'),
- *   farewell: loc((locale) => locale === 'en' ? 'Goodbye' : 'Adiós'),
- * };
- * const localizedValues = localizeObject(values, 'en');
- * console.log(localizedValues);
- * // Output: { greeting: 'Hello', farewell: 'Goodbye' }
- * ```
- *
- * @example
- * ```typescript
- * // Example with mixed properties
- * const values = {
- *   greeting: loc((locale) => locale === 'en' ? 'Hello' : 'Hola'),
- *   age: 25,
- * };
- * const localizedValues = localizeObject(values, 'en');
- * console.log(localizedValues);
- * // Output: { greeting: 'Hello', age: 25 }
- * ```
- *
  * @see {@link Localizable}
  */
 export function localizeObject<T extends Record<string, unknown>>(

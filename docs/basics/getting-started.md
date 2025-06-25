@@ -62,9 +62,9 @@ Here’s how you can define a basic dictionary:
 
 <<< ./getting-started-basic.ts#dictionary{ts}
 
-The `dictionary()` function creates a strongly-typed object where each key represents a translatable string. This ensures that your translation keys are validated at compile time, reducing the risk of runtime errors caused by missing or misspelled keys.
+The [`dictionary()`](../api/_localizer/translate/dictionary/index.md) function creates a strongly-typed object where each key represents a translatable string. This ensures that your translation keys are validated at compile time, reducing the risk of runtime errors caused by missing or misspelled keys.
 
-To use the translations in your application, you can simply pass the keys to `Localizer`:
+To use the translations in your application, you can simply pass the keys to [`Localizer`](./localizer.md):
 
 <<< ./getting-started-basic.ts#localizer{ts}
 
@@ -86,9 +86,9 @@ Here’s an example of how you can define a dictionary with dynamic translations
 
 <<< ./getting-started-advanced.ts#dictionary{ts}
 
-In this example, the `dictionary()` function creates a strongly-typed object where each key represents a translatable string. However, unlike static translations, the values here are functions that take arguments and return a formatted string. This approach allows you to inject dynamic content into your translations seamlessly.
+In this example, the [`dictionary()`](../api/_localizer/translate/dictionary/index.md) function creates a strongly-typed object where each key represents a translatable string. However, unlike static translations, the values here are functions that take arguments and return a formatted string. This approach allows you to inject dynamic content into your translations seamlessly.
 
-To use these dynamic translations in your application, you can pass the result to the `Localizer`:
+To use these dynamic translations in your application, you can pass the result to the [`Localizer`](./localizer.md):
 
 <<< ./getting-started-advanced.ts#localizer{ts}
 

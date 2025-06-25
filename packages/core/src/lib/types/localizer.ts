@@ -34,18 +34,6 @@ export interface Localizer {
    * @param localizable - A `Localizable` object.
    *
    * @returns The localized value of type `T`.
-   *
-   * @example
-   * Example usage of a Localizable object
-   * ```typescript
-   * const localizable = translate({
-   *   en: 'Hello',
-   *   es: 'Hola',
-   *   fr: 'Bonjour',
-   * });
-   * const localizer = getLocalizer('es');
-   * console.log(localizer(localizable)); // Output: Hola
-   * ```
    */
   <T>(localizable: Localizable<T>): T;
   /**
@@ -57,38 +45,6 @@ export interface Localizer {
    * @typeParam A - The type of the arguments for the function.
    * @param formatter - A function that takes arguments of type `A` and returns a `Localizable<T>`.
    * @returns A function that takes arguments of type `A` and returns a localized value of type `T`.
-   *
-   * @example
-   * Example usage of a ValueFormatter
-   * ```typescript
-   * const numberFormatter = decimal;
-   * const localizedNumberFormatter = localizer(numberFormatter);
-   * console.log(localizedNumberFormatter(1234.56)); // Output: 1,234.56
-   * ```
-   *
-   * @example
-   * Example usage of a UnitValueFormatter
-   * ```typescript
-   * const unitFormatter = unit;
-   * const localizedUnitFormatter = localizer(unitFormatter);
-   * console.log(localizedUnitFormatter(5, 'meter')); // Output: 5 m
-   * ```
-   *
-   * @example
-   * Example usage of a ValueRangeFormatter
-   * ```typescript
-   * const rangeFormatter = decimalRange;
-   * const localizedRangeFormatter = localizer(rangeFormatter);
-   * console.log(localizedRangeFormatter(10, 20)); // Output: 10 - 20
-   * ```
-   *
-   * @example
-   * Example usage of a RelativeValueFormatter
-   * ```typescript
-   * const relativeFormatter = relativePercent;
-   * const localizedRelativeFormatter = localizer(relativeFormatter);
-   * console.log(localizedRelativeFormatter(0.2, 0.1)); // Output: +10%
-   * ```
    */
   <A extends unknown[], T>(
     formatter: (...args: A) => Localizable<T>,
