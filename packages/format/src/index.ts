@@ -13,6 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @public
+ *
+ * A collection of predefined data formatters for dates, times, numbers, and other data types.
+ *
+ * @packageDocumentation
+ */
 export * from './lib/fn/stringify.js';
 export * from './lib/fn/autoFormat.js';
 

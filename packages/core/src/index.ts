@@ -21,7 +21,6 @@
  *
  * @packageDocumentation
  */
-
 export * from './lib/types/localizable.js';
 export * from './lib/types/localizer.js';
 export * from './lib/types/formatter.js';

@@ -40,19 +40,14 @@ const defaultDateTimeFormatOptions: DateTimeFormatOptions = {
 };
 
 /**
+ * @public
+ *
  * Default date format configuration.
  *
  * Allows overriding the default date format options by merging the provided configuration.
  *
  * @param config - Configuration options to override the defaults.
  *
- * @example
- * configure(
- *   { DefaultDateFormat },
- *   { day: '2-digit', month: '2-digit', year: '2-digit' }
- * );
- *
- * @public
  * @see {@link date}, {@link dateRange}
  */
 export const DefaultDateFormat: Configurer<DateTimeFormatOptions> = (
@@ -61,19 +56,14 @@ export const DefaultDateFormat: Configurer<DateTimeFormatOptions> = (
   Object.assign(defaultDateFormatOptions, config);
 };
 /**
+ * @public
+ *
  * Default time format configuration.
  *
  * Allows overriding the default time format options by merging the provided configuration.
  *
  * @param config - Configuration options to override the defaults.
  *
- * @example
- * configure(
- *   { DefaultTimeFormat },
- *   { hour: '2-digit', minute: '2-digit', second: '2-digit' }
- * );
- *
- * @public
  * @see {@link time}
  */
 export const DefaultTimeFormat: Configurer<DateTimeFormatOptions> = (
@@ -82,19 +72,14 @@ export const DefaultTimeFormat: Configurer<DateTimeFormatOptions> = (
   Object.assign(defaultTimeFormatOptions, config);
 };
 /**
+ * @public
+ *
  * Default date and time format configuration.
  *
  * Allows overriding the default date and time format options by merging the provided configuration.
  *
  * @param config - Configuration options to override the defaults.
  *
- * @example
- * configure(
- *   { DefaultDateTimeFormat },
- *   { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }
- * );
- *
- * @public
  * @see {@link dateTime}, {@link dateTimeRange}
  */
 export const DefaultDateTimeFormat: Configurer<DateTimeFormatOptions> = (
@@ -104,69 +89,54 @@ export const DefaultDateTimeFormat: Configurer<DateTimeFormatOptions> = (
 };
 
 /**
+ * @public
+ *
  * Date formatter instance.
  *
  * Formats dates using the default date format options.
  *
- * @example
- * const formattedDate = date(new Date('2023-10-01'));
- * console.log(formattedDate.localize('en')); // Output: 10/1/2023
- *
- * @public
  * @see {@link DefaultDateFormat}, {@link dateRange}, {@link dateTimeRange}
  */
 export const date = dateTimeFormatter(defaultDateFormatOptions);
 /**
+ * @public
+ *
  * Time formatter instance.
  *
  * Formats times using the default time format options.
  *
- * @example
- * const formattedTime = time(new Date('2023-10-01T12:34:56'));
- * console.log(formattedTime.localize('en')); // Output: 12:34:56 PM
- *
- * @public
  * @see {@link DefaultTimeFormat}, {@link date}
  */
 export const time = dateTimeFormatter(defaultTimeFormatOptions);
 /**
+ * @public
+ *
  * Date-time formatter instance.
  *
  * Formats date-time values using the default date-time format options.
  *
- * @example
- * const formattedDateTime = dateTime(new Date('2023-10-01T12:34:56'));
- * console.log(formattedDateTime.localize('en')); // Output: 10/1/2023, 12:34:56 PM
- *
- * @public
  * @see {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateRange}, {@link dateTimeRange}
  */
 export const dateTime = dateTimeFormatter(defaultDateTimeFormatOptions);
 
 /**
+ * @public
+ *
  * Date range formatter instance.
  *
  * Formats a range of dates using the default date format options and a generic range separator.
  *
- * @example
- * const formattedRange = dateRange(new Date(2023, 0, 1), new Date(2023, 11, 31));
- * console.log(formattedRange.localize('en')); // Output: 1/1/2023 – 12/31/2023
- *
- * @public
  * @see {@link DefaultDateFormat}, {@link date}, {@link time}, {@link dateTime}
  */
 export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
   loc`${date(start)}${GenericRangeSeparator}${date(end)}`;
 /**
+ * @public
+ *
  * Date-time range formatter instance.
  *
  * Formats a range of date-time values using the default date-time format options.
  *
- * @example
- * const formattedRange = dateTimeRange([new Date(2023, 0, 1), new Date(2023, 0, 2)]);
- * console.log(formattedRange.localize('en')); // Output: January 1 – 2, 2023
- *
- * @public
  * @see {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateTime}, {@link dateRange}
  */
 export const dateTimeRange = dateTimeRangeFormatter(

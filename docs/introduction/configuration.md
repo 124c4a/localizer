@@ -33,12 +33,15 @@ Each domain corresponds to a specific aspect of the library, enabling fine-grain
 This is the basic configuration for **@localizer**. Below are the key configuration properties available:
 
 ```typescript
-configure([Core], {
-  Core: {
-    fallbackLocales: ['en'],
-    activeLocale: undefined,
+configure(
+  { Core },
+  {
+    Core: {
+      fallbackLocales: ['en'],
+      activeLocale: undefined,
+    },
   },
-});
+);
 ```
 
 ---

@@ -21,6 +21,8 @@ import { decimal } from '../consts/number.js';
 import { stringify } from './stringify.js';
 
 /**
+ * @public
+ * 
  * Automatically formats a given value into a `Localizable` object based on its type.
  *
  * The function determines the type of the input value and applies the appropriate formatting:
@@ -35,24 +37,7 @@ import { stringify } from './stringify.js';
  * @param value - The value to be formatted. Can be of any type.
  * @returns A `Localizable` object representing the formatted value.
 
- * @example
- * const formattedNumber = autoFormat(123);
- * console.log(formattedNumber.localize('en')); // Output: '123'
- *
- * const formattedDate = autoFormat(new Date());
- * console.log(formattedDate.localize('en')); // Output: 'Oct 10, 2023'
- *
- * const formattedList = autoFormat([1, 2, 3]);
- * console.log(formattedList.localize('en')); // Output: '1, 2, and 3'
- *
- * const formattedUndefined = autoFormat(undefined);
- * console.log(formattedUndefined.localize('en')); // Output: ''
- *
- * const formattedString = autoFormat('hello');
- * console.log(formattedString.localize('en')); // Output: 'hello'
- *
- * @public
- * @see {@link Localizable}, {@link decimal}, {@link date}, {@link list}, {@link stringify}
+ * @see {@link decimal}, {@link date}, {@link list}, {@link stringify}
  */
 export function autoFormat(value: unknown): Localizable {
   if (['number', 'bigint'].includes(typeof value)) {

@@ -19,13 +19,13 @@ const console = new ConsoleStub();
 // #region dictionary
 import { getLocalizer, loc } from '@localizer/all';
 import { dictionary, plural } from '@localizer/all';
-import { zero, one, two, few, many, other } from '@localizer/all';
+import { one, two, few, many, other } from '@localizer/all';
 import { decimal } from '@localizer/all';
 
 const translations = dictionary({
   files: (count: number) => ({
     en: plural(count, {
-      [zero]: loc`No files`,
+      0: loc`No files`,
       [one]: loc`${decimal(count)} file`,
       [two]: loc`${decimal(count)} files`,
       [few]: loc`${decimal(count)} files`,
@@ -33,7 +33,7 @@ const translations = dictionary({
       [other]: loc`${decimal(count)} files`,
     }),
     ru: plural(count, {
-      [zero]: loc`Нет файлов`,
+      0: loc`Нет файлов`,
       [one]: loc`${decimal(count)} файл`,
       [two]: loc`${decimal(count)} файла`,
       [few]: loc`${decimal(count)} файлов`,

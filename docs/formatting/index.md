@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # Formatting
 
 Localization is more than just translating text; it involves adapting data formats to align with the user's locale. To ensure consistency and precision, **@localizer** provides a robust set of configurable data formatters designed for common scenarios, such as:

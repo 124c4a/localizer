@@ -14,38 +14,72 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <script setup lang="ts">
-import { LocaleCode, Localizable, stringify } from '@localizer/all';
+import { LocaleCode, Localizable } from '@localizer/all';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 
-defineProps<{
-  demo: {
+const { demo } = defineProps<{
+  demo: (
+    now: Date,
+    then: Date,
+  ) => {
     formatter: (...args: unknown[]) => Localizable;
     inputs: unknown[][];
     locales: LocaleCode[];
   };
 }>();
+
+const now = ref(new Date());
+const then = new Date();
+
+let intervalId: number;
+onMounted(() => {
+  intervalId = +setInterval(() => {
+    now.value = new Date();
+  }, 1000);
+});
+
+onUnmounted(() => clearInterval(intervalId));
+
+const data = computed(() => demo(now.value, then));
 </script>
 
 <template>
-  <table tabindex="0">
+  <table tabindex="0" v-if="data.locales.length === 0">
     <thead>
       <tr>
-        <th>Input</th>
-        <th v-for="locale in demo.locales">{{ locale }}</th>
-        <th v-if="demo.locales.length === 0">Formatted value</th>
+        <th>Input value</th>
+        <th>Formatted value</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(input, index) in demo.inputs" :key="index">
+      <tr v-for="(input, index) in data.inputs" :key="index">
         <td>
           <code>
             {{ input[0] }}
           </code>
         </td>
-        <td v-for="locale in demo.locales" :key="locale">
-          {{ demo.formatter(...input.slice(1)).localize(locale) }}
+        <td>
+          {{ data.formatter(...input.slice(1)).localize('en') }}
         </td>
-        <td v-if="demo.locales.length === 0">
-          {{ demo.formatter(...input.slice(1)).localize('en') }}
+      </tr>
+    </tbody>
+  </table>
+  <table tabindex="0" v-else>
+    <thead>
+      <tr>
+        <th></th>
+        <th v-for="input in data.inputs">
+          <code>{{ input[0] }}</code>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="locale in data.locales">
+        <th>
+          {{ locale.replace('-', '\u2011') }}
+        </th>
+        <td v-for="input in data.inputs">
+          {{ data.formatter(...input.slice(1)).localize(locale) }}
         </td>
       </tr>
     </tbody>
