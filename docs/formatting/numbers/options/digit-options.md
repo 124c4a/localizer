@@ -115,6 +115,30 @@ With values other than `auto`, the result is determined by [`maximumSignificantD
 
 <DemoValueFormatterOptions option="roundingPriority" :defaultOptions="{ minimumSignificantDigits: 3, maximumSignificantDigits: 6, minimumFractionDigits: 3 }" :values="['auto','morePrecision','lessPrecision']" :factory=decimalFormatter :inputs=digitInputs />
 
+## `roundingIncrement`
+
+Defines the step size for rounding, based on the calculated rounding magnitude. Supported values include `1`, `2`, `5`, `10`, `20`, `25`, `50`, `100`, `200`, `250`, `500`, `1000`, `2000`, `2500`, and `5000`. The default is `1`. This option is incompatible with significant-digits rounding or any `roundingPriority` setting other than `"auto"`.
+
+::: warning
+
+This option requires `maximumFractionDigits` set to `0`.
+
+:::
+
+**Examples:**
+
+::: details Formatter options used in this example
+
+```typescript
+{
+  minimumFractionDigits: 0;
+}
+```
+
+:::
+
+<DemoValueFormatterOptions option="roundingIncrement" :values="[1, 2, 5, 10,20,25,50,100,200,250,500,1000,2000,2500]" :defaultOptions="{maximumFractionDigits: 0}":factory=decimalFormatter :inputs=digitInputs />
+
 ## `roundingMode`
 
 How decimals are rounded. Possible values:

@@ -19,16 +19,16 @@ import { transform } from '@localizer/transform';
 import { DateTimeFormatOptions } from '../options.js';
 
 /**
- * @internal
- * Builds a formatter for localized date-time values based on the provided options.
+ * @public
+ * Creates a formatter for localized date-time values.
  *
- * @typeParam T - The type of the value to be formatted, either a number (timestamp) or a Date object.
- * @param options - An object specifying the formatting options for date-time values.
- * @returns A ValueFormatter function that formats a single date-time value into a localized string.
+ * @typeParam T - The type of the value to format, either a number (timestamp) or a Date object.
+ * @param options - Configuration for date-time formatting.
+ * @returns A function that formats a single date-time value as a localized string.
  *
- * The formatter uses the `Intl.DateTimeFormat` API to generate localized date-time strings.
- * If the `parts` option is provided, the formatter extracts and joins specific parts of the formatted output.
- * Additionally, a `transform` property can be provided to apply transformations to the formatted result.
+ * Uses `Intl.DateTimeFormat` for localization. Supports extracting specific parts
+ * of the formatted output via the `parts` option and applying transformations
+ * with the `transform` property.
  */
 export function _buildFormatter<T extends number | Date>(
   options: DateTimeFormatOptions,

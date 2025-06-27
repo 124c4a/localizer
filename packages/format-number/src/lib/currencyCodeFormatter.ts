@@ -21,15 +21,11 @@ import { NumberFormatOptions } from './options.js';
 
 /**
  * @public
+ * Creates a formatter to extract the currency symbol from a currency code.
  *
- * Creates a formatter for extracting the currency symbol from a currency code.
- *
- * @typeParam T - The type of the currency code to be formatted.
- * @param options - An optional object specifying the formatting options for currency values.
- * @returns A `ValueFormatter` function that formats a currency code into its corresponding symbol.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `currency` style and filters the `currency` part
- * to extract the symbol.
+ * @typeParam T - The currency code type.
+ * @param options - Optional formatting options.
+ * @returns A `ValueFormatter` that maps a currency code to its symbol.
  */
 export function currencyCodeFormatter<T extends CurrencyCode>(
   options?: NumberFormatOptions,

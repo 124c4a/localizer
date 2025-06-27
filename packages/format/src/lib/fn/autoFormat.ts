@@ -22,22 +22,18 @@ import { stringify } from './stringify.js';
 
 /**
  * @public
- * 
- * Automatically formats a given value into a `Localizable` object based on its type.
+ * Formats a value into a `Localizable` object based on its type.
  *
- * The function determines the type of the input value and applies the appropriate formatting:
- * - Numbers and bigints are formatted using the `decimal` formatter.
- * - `Number` objects are formatted using their primitive value.
- * - `Date` objects are formatted using the `date` formatter.
- * - Arrays are recursively formatted into a localized list.
- * - Values that implement the `Localizable` interface are returned as-is.
- * - `undefined` values are represented as `Empty`.
- * - All other values are converted to a localized string using the `stringify` function.
+ * - Numbers and bigints: formatted with `decimal`.
+ * - `Number` objects: formatted using their primitive value.
+ * - `Date` objects: formatted with `date`.
+ * - Arrays: recursively formatted into a localized list.
+ * - `Localizable` values: returned as-is.
+ * - `undefined`: represented as `Empty`.
+ * - Others: converted to a localized string with `stringify`.
  *
- * @param value - The value to be formatted. Can be of any type.
- * @returns A `Localizable` object representing the formatted value.
-
- * @see {@link decimal}, {@link date}, {@link list}, {@link stringify}
+ * @param value - The value to format.
+ * @returns A `Localizable` object.
  */
 export function autoFormat(value: unknown): Localizable {
   if (['number', 'bigint'].includes(typeof value)) {

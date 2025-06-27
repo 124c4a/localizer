@@ -16,8 +16,8 @@
 /**
  * @public
  *
- * A core functionality of `@localizer` library. Provides types and functions for localization,
- * localizable entities, and locale management.
+ * Core functionality of the `@localizer` library, offering types and utilities
+ * for localization, localizable entities, and locale management.
  *
  * @packageDocumentation
  */

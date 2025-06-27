@@ -21,16 +21,12 @@ import { NumberFormatOptions } from './options.js';
 
 /**
  * @public
+ * Formats values as fixed localized currency strings.
  *
- * Creates a formatter for localized fixed currency values.
- *
- * @typeParam T - The type of the value to be formatted, either a number or a bigint.
- * @param currency - The currency code to be used for formatting (e.g., 'USD', 'EUR').
- * @param options - An optional object specifying the formatting options for currency values.
- * @returns A `ValueFormatter` function that formats a number into a localized fixed currency string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `currency` style to generate localized currency strings.
- * It ensures the specified currency is fixed and consistent across all formatted values.
+ * @typeParam T - The value type, either `number` or `bigint`.
+ * @param currency - The currency code (e.g., 'USD', 'EUR').
+ * @param options - Optional formatting options.
+ * @returns A `ValueFormatter` for localized currency strings.
  */
 export function fixedCurrencyFormatter<T extends number | bigint>(
   currency: CurrencyCode,

@@ -34,23 +34,19 @@ type TimeDifference = {
 
 /**
  * @internal
+ * Computes the time difference between two dates or timestamps.
  *
- * Calculates the time difference between two values across multiple granularities.
- *
- * @param value - The target value to compare, either a number (timestamp) or a Date object.
- * @param reference - The reference value to compare against, either a number (timestamp) or a Date object.
- * @returns An object containing the time difference for each granularity:
- *   - `year`: Difference in years.
- *   - `quarter`: Difference in quarters.
- *   - `month`: Difference in months.
- *   - `week`: Difference in weeks (calculated as integer division of days by 7).
- *   - `day`: Difference in days.
- *   - `hour`: Difference in hours.
- *   - `minute`: Difference in minutes.
- *   - `second`: Difference in seconds.
- *
- * The function uses utilities from the `date-fns` library to compute differences for each granularity.
- * Weeks are derived by dividing the number of days by 7 and truncating the result to an integer.
+ * @param value - Target date or timestamp.
+ * @param reference - Reference date or timestamp.
+ * @returns Object with time differences:
+ * - `year`: Difference in years.
+ * - `quarter`: Difference in quarters.
+ * - `month`: Difference in months.
+ * - `week`: Difference in weeks (days divided by 7, truncated).
+ * - `day`: Difference in days.
+ * - `hour`: Difference in hours.
+ * - `minute`: Difference in minutes.
+ * - `second`: Difference in seconds.
  */
 export function _getTimeDifference(
   value: number | Date,

@@ -16,43 +16,45 @@
 import { isLocalizable, Localizable, ValueFormatter } from '@localizer/core';
 
 /**
- * This symbol can be used as a key in a lookup table to represent values that are `undefined`.
- *
  * @beta
+ * Key used in a lookup table to represent `undefined` values.
+ *
  * @see {@link LookupTable}, {@link lookupFormatter}
  */
 export const UndefinedValue: unique symbol = Symbol();
 /**
- * This symbol can be used as a key in a lookup table to represent values that are `null`.
- *
  * @beta
+ * Key used in a lookup table to represent `null` values.
+ *
  * @see {@link LookupTable}, {@link lookupFormatter}
  */
 export const NullValue: unique symbol = Symbol();
 
 /**
- * This symbol can be used as a key in a lookup table to represent values that are either `undefined` or `null`.
- *
  * @beta
+ * Symbol representing both `undefined` and `null` values in a lookup table.
+ *
  * @see {@link LookupTable}, {@link lookupFormatter}
  */
 export const NoValue: unique symbol = Symbol();
 /**
- * This symbol can be used as a key in a lookup table to specify a fallback value when no other key matches.
- *
  * @beta
+ * Symbol used as a fallback key in a lookup table when no other key matches.
+ *
  * @see {@link LookupTable}, {@link lookupFormatter}
  */
 export const DefaultValue: unique symbol = Symbol();
 
 /**
- * Type definition for a lookup table.
- *
- * A lookup table maps specific values or special symbols to either localizable values or value formatters.
- *
- * @template T - The type of values that the lookup table can handle.
  * @beta
- * @see {@link lookupFormatter}, {@link UndefinedValue}, {@link NullValue}, {@link NoValue}, {@link DefaultValue}
+ * Defines a lookup table for mapping values to localizable content or formatters.
+ *
+ * @typeParam T - The type of values the lookup table supports.
+ * @see {@link lookupFormatter}
+ * @see {@link UndefinedValue}
+ * @see {@link NullValue}
+ * @see {@link NoValue}
+ * @see {@link DefaultValue}
  */
 export type LookupTable<T> = {
   [K in T extends string | number ? T : never]?:
@@ -69,19 +71,15 @@ export type LookupTable<T> = {
 
 /**
  * @beta
+ * Creates a formatter that selects formatting logic based on the input value.
  *
- * Multivariant formatter depending on value.
+ * Special symbols (`NoValue`, `UndefinedValue`, `NullValue`, `DefaultValue`)
+ * handle cases like `undefined`, `null`, or fallback values.
  *
- * This function creates a value formatter that selects the appropriate formatting logic based on the input value.
- * It uses a lookup table (`lut`) to determine the formatter or localizable value to apply.
- *
- * Special symbols (`NoValue`, `UndefinedValue`, `NullValue`, `DefaultValue`) can be used in the lookup table
- * to handle specific cases such as `undefined`, `null`, or fallback values.
- *
- * @typeParam T - The type of values that the formatter can handle.
- * @param lut - The lookup table containing mappings of values to localizable values or formatters.
- * @returns A function that formats the input value based on the lookup table.
- * @throws {RangeError} If the input value is not represented in the lookup table and no default value is specified.
+ * @typeParam T - The type of values the formatter supports.
+ * @param lut - Lookup table mapping values to localizable content or formatters.
+ * @returns A function that formats the input value using the lookup table.
+ * @throws {RangeError} If the value is not in the lookup table and no default is specified.
  */
 export function lookupFormatter<T>(lut: LookupTable<T>): ValueFormatter<T> {
   return (value) => {

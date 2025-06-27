@@ -15,8 +15,7 @@
  */
 /**
  * @public
- *
- * Formatters for numbers, monetary values, percentages, and units.
+ * Provides utilities for formatting numbers, currencies, percentages, and units.
  *
  * @packageDocumentation
  */

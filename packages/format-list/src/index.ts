@@ -15,8 +15,7 @@
  */
 /**
  * @public
- *
- * Formatters for item lists.
+ * Provides utilities for formatting item lists.
  *
  * @packageDocumentation
  */

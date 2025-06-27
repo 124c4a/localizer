@@ -20,16 +20,11 @@ import { NumberFormatOptions } from './options.js';
 
 /**
  * @public
+ * Formats a value relative to a reference as a localized decimal string.
  *
- * Creates a formatter for localized relative decimal values.
- *
- * @typeParam T - The type of the values to be formatted, either numbers or bigints.
- * @param options - An optional object specifying the formatting options for relative decimal values.
- * @returns A `RelativeValueFormatter` function that formats a value relative to a reference value into a localized decimal string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `decimal` style and `signDisplay: 'exceptZero'`
- * to generate localized relative decimal strings. It calculates the difference between the value and the reference
- * before formatting.
+ * @typeParam T - The type of values, either `number` or `bigint`.
+ * @param options - Optional formatting options for relative decimal values.
+ * @returns A function that formats the difference between a value and a reference using `Intl.NumberFormat`.
  */
 export function relativeDecimalFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

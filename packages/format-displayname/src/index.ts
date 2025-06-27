@@ -15,8 +15,7 @@
  */
 /**
  * @public
- *
- * Formatters for language, country, currency and other names.
+ * Provides utilities for formatting names such as language, country, and currency.
  *
  * @packageDocumentation
  */

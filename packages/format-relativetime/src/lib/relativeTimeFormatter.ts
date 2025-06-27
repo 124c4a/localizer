@@ -20,14 +20,10 @@ import { RelativeTimeFormatOptions } from './options.js';
 
 /**
  * @public
+ * Generates a function to format relative time strings.
  *
- * Creates a relative time formatter function.
- *
- * This function generates a formatter for relative time strings based on the provided options.
- * If no options are specified, it defaults to using `{ numeric: 'auto' }`.
- *
- * @param options - Configuration options for the relative time formatter.
- * @returns A formatter function that formats relative time strings.
+ * @param options - Optional settings for the formatter. Defaults to `{ numeric: 'auto' }`.
+ * @returns A function to format relative time values.
  */
 export function relativeTimeFormatter(
   options?: RelativeTimeFormatOptions,

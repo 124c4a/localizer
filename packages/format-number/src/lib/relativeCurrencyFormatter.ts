@@ -21,17 +21,12 @@ import { NumberFormatOptions } from './options.js';
 
 /**
  * @public
+ * Formats values relative to a reference as localized currency strings.
  *
- * Creates a formatter for localized relative currency values.
- *
- * @typeParam T - The type of the values to be formatted, either numbers or bigints.
- * @param currency - The currency code to be used for formatting (e.g., 'USD', 'EUR').
- * @param options - An optional object specifying the formatting options for relative currency values.
- * @returns A `RelativeValueFormatter` function that formats a value relative to a reference value into a localized currency string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `currency` style and `signDisplay: 'exceptZero'`
- * to generate localized relative currency strings. It calculates the difference between the value and the reference
- * before formatting.
+ * @typeParam T - The numeric type, either `number` or `bigint`.
+ * @param currency - The currency code (e.g., 'USD', 'EUR').
+ * @param options - Optional formatting options.
+ * @returns A function to format a value relative to a reference.
  */
 export function relativeCurrencyFormatter<T extends number | bigint>(
   currency: CurrencyCode,

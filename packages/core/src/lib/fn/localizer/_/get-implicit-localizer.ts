@@ -21,13 +21,13 @@ import { _ensureImplicitLocalization } from './ensure-implicit-localization.js';
 /**
  * @internal
  *
- * Creates an implicit localizer function that automatically determines the locale.
+ * Creates a localizer function that uses the implicit locale.
  *
- * The `getImplicitLocalizer` function generates a localizer that uses the locale
- * provided by the `ensureImplicitLocalization` function. It can localize values
- * or functions returning localizable values without explicitly specifying the locale.
+ * This function generates a localizer bound to the locale provided by
+ * `ensureImplicitLocalization`. It can localize values or functions
+ * returning localizable values without explicitly specifying the locale.
  *
- * @returns A localizer function bound to the implicitly determined locale.
+ * @returns A localizer function bound to the implicit locale.
  */
 export function _getImplicitLocalizer(): Localizer {
   const fn = <T, A extends unknown[]>(

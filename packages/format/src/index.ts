@@ -16,7 +16,7 @@
 /**
  * @public
  *
- * A collection of predefined data formatters for dates, times, numbers, and other data types.
+ * Predefined formatters for dates, times, numbers, and other data types.
  *
  * @packageDocumentation
  */

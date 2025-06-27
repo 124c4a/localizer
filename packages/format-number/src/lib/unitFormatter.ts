@@ -21,15 +21,11 @@ import { Unit } from './unit.js';
 
 /**
  * @public
- *
  * Creates a formatter for localized unit values.
  *
- * @typeParam T - The type of the values to be formatted, either numbers or bigints.
- * @param options - An optional object specifying the formatting options for unit values.
- * @returns A `UnitValueFormatter` function that formats a value into a localized unit string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `unit` style to generate localized unit strings.
- * It ensures consistent formatting of unit values based on the provided options.
+ * @typeParam T - The type of values to format (number or bigint).
+ * @param options - Optional formatting options.
+ * @returns A `UnitValueFormatter` for localized unit strings.
  */
 export function unitFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

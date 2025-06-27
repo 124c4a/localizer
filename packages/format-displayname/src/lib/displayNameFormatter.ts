@@ -20,17 +20,12 @@ import { DisplayNameFormatOptions } from './options.js';
 
 /**
  * @public
+ * Creates a localized display name formatter.
  *
- * Creates a formatter for display names based on the provided options.
- *
- * @typeParam T - The type of the value to be formatted, typically a string.
- * @param type - The type of display name to format, such as "language", "region", "script", "calendar", "dateTimeField", "currency".
- * @param options - An object specifying the formatting options for display names.
- * @returns A ValueFormatter function that formats a string value into a localized display name.
- *
- * The formatter uses the `Intl.DisplayNames` API to generate localized display names.
- * If the locale is `null`, a fallback string is returned based on the `type` option.
- * Additionally, a `transform` property can be provided to apply transformations to the formatted display name.
+ * @typeParam T - The value type to format, typically a string.
+ * @param type - The display name type, e.g., "language", "region", "script", etc.
+ * @param options - Formatting options, including transformations.
+ * @returns A function to format values into localized display names.
  */
 export function displayNameFormatter<T extends string>(
   type:

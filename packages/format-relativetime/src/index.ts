@@ -15,10 +15,7 @@
  */
 /**
  * @public
- *
- * Formatters for relative dates and times.
- *
- * @packageDocumentation
+ * Provides utilities for formatting relative dates and times.
  */
 export * from './lib/options.js';
 export * from './lib/relativeTimeFormatter.js';

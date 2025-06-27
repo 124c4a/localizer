@@ -17,11 +17,10 @@ import { Localizable } from '../../types/localizable.js';
 
 /**
  * @public
+ * Checks if a value implements the `Localizable` interface.
  *
- * Determines whether a given value implements the `Localizable` interface.
- *
- * @param x - The value to check.
- * @returns `true` if the value implements the `Localizable` interface, otherwise `false`.
+ * @param x - Value to check.
+ * @returns `true` if the value is `Localizable`, otherwise `false`.
  *
  * @see {@link Localizable}
  */

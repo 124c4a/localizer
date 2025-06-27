@@ -26,15 +26,15 @@ import { ListFormatOptions } from './options.js';
 /**
  * @public
  *
- * Creates a formatter for lists based on the provided options.
+ * Creates a list formatter based on the given options.
  *
- * @typeParam T - The type of the array elements, which must be Localizable objects.
- * @param options - An object specifying the formatting options for the list.
- * @returns A ValueFormatter function that formats a list of Localizable objects according to the specified options.
+ * @typeParam T - Array elements, must be Localizable.
+ * @param options - Formatting options for the list.
+ * @returns A ValueFormatter that formats a list of Localizable objects.
  *
- * The formatter supports two modes:
- * - If the `delimiter` option is provided, the list is joined using the localized delimiter.
- * - Otherwise, the `Intl.ListFormat` API is used for formatting the list.
+ * Supports two modes:
+ * - Uses a localized delimiter if `delimiter` is provided.
+ * - Falls back to `Intl.ListFormat` for formatting otherwise.
  */
 export function listFormatter<T extends Localizable[]>(
   options: ListFormatOptions,

@@ -17,7 +17,6 @@ import {
   currencyFormatter,
   decimalFormatter,
   decimalRangeFormatter,
-  NumberFormatOptions,
   percentFormatter,
   percentRangeFormatter,
   relativeDecimalFormatter,
@@ -25,78 +24,45 @@ import {
   unitFormatter,
 } from '@localizer/format-number';
 
-const defaultDecimalFormatOptions: NumberFormatOptions = {};
-const defaultPercentFormatOptions: NumberFormatOptions = {};
-const defaultCurrencyFormatOptions: NumberFormatOptions = {};
-const defaultUnitFormatOptions: NumberFormatOptions = {};
+/**
+ * @public
+ * Formats numbers as decimals with default options.
+ */
+export const decimal = decimalFormatter({});
+/**
+ * @public
+ * Formats number ranges as decimals with default options.
+ */
+export const decimalRange = decimalRangeFormatter({});
+/**
+ * @public
+ * Formats numbers as percentages with default options.
+ */
+export const percent = percentFormatter({});
+/**
+ * @public
+ * Formats number ranges as percentages with default options.
+ */
+export const percentRange = percentRangeFormatter({});
 
 /**
  * @public
- *
- * Decimal formatter instance.
- *
- * Formats numbers as decimals using the default decimal format options.
+ * Formats numbers as currency using default options.
  */
-export const decimal = decimalFormatter(defaultDecimalFormatOptions);
+export const currency = currencyFormatter({});
 /**
  * @public
- *
- * Decimal range formatter instance.
- *
- * Formats ranges of numbers as decimals using the default decimal format options.
+ * Formats numbers as units with default options.
  */
-export const decimalRange = decimalRangeFormatter(defaultDecimalFormatOptions);
-/**
- * @public
- *
- * Percent formatter instance.
- *
- * Formats numbers as percentages using the default percent format options.
- */
-export const percent = percentFormatter(defaultPercentFormatOptions);
-/**
- * @public
- *
- * Percent range formatter instance.
- *
- * Formats ranges of numbers as percentages using the default percent format options.
- */
-export const percentRange = percentRangeFormatter(defaultPercentFormatOptions);
+export const unit = unitFormatter({});
 
 /**
  * @public
- *
- * Currency formatter instance.
- *
- * Formats numbers as currency values using the default currency format options.
+ * Formats numbers as relative decimals with default options.
  */
-export const currency = currencyFormatter(defaultCurrencyFormatOptions);
+export const relativeDecimal = relativeDecimalFormatter({});
 /**
  * @public
- *
- * Unit formatter instance.
- *
- * Formats numbers as units using the default unit format options.
+ * Formats numbers as relative percentages with default options.
  */
-export const unit = unitFormatter(defaultUnitFormatOptions);
-
-/**
- * @public
- *
- * Relative decimal formatter instance.
- *
- * Formats numbers as relative decimals using the default decimal format options.
- */
-export const relativeDecimal = relativeDecimalFormatter(
-  defaultDecimalFormatOptions,
-);
-/**
- * @public
- *
- * Relative percent formatter instance.
- *
- * Formats numbers as relative percentages using the default percent format options.
- */
-export const relativePercent = relativePercentFormatter(
-  defaultPercentFormatOptions,
-);
+export const relativePercent = relativePercentFormatter({});

@@ -20,14 +20,11 @@ import { NumberFormatOptions } from './options.js';
 
 /**
  * @public
- *
  * Creates a formatter for localized decimal ranges.
  *
- * @typeParam T - The type of the values to be formatted, either numbers or bigints.
- * @param options - An optional object specifying the formatting options for decimal ranges.
- * @returns A `ValueRangeFormatter` function that formats a range of numbers into a localized decimal string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `decimal` style to generate localized decimal range strings.
+ * @typeParam T - The numeric type, either `number` or `bigint`.
+ * @param options - Optional formatting options for decimal ranges.
+ * @returns A `ValueRangeFormatter` for localized decimal range strings.
  */
 export function decimalRangeFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

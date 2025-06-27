@@ -50,13 +50,10 @@ export class UnlocalizableValue<T = string> implements Localizable<T> {
 
   /**
    * @internal
+   * Converts the value to its primitive form.
+   * Used in contexts like string concatenation or numeric operations.
    *
-   * Converts the value to a primitive representation.
-   *
-   * This method is invoked when the object is used in a primitive context,
-   * such as string concatenation or numeric operations.
-   *
-   * @returns The primitive representation of the value.
+   * @returns The primitive value.
    */
   [Symbol.toPrimitive]() {
     return _toPrimitiveValue(this.value);
@@ -65,9 +62,9 @@ export class UnlocalizableValue<T = string> implements Localizable<T> {
   /**
    * @internal
    *
-   * Returns the value as a locale-specific string.
+   * Returns the value as a string formatted for the current locale.
    *
-   * @returns The unlocalizable value.
+   * @returns The value as a locale-specific string.
    */
   toLocaleString(): T {
     return this.value;
@@ -75,11 +72,10 @@ export class UnlocalizableValue<T = string> implements Localizable<T> {
 
   /**
    * @internal
+   * Returns the unlocalizable value.
    *
-   * Returns the value without applying localization.
-   *
-   * @param locale - The locale code (ignored).
-   * @returns The unlocalizable value.
+   * @param locale - Ignored.
+   * @returns The value.
    */
   localize(): T {
     return this.value;

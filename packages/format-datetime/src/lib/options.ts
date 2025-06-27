@@ -18,54 +18,72 @@ import { Transformer } from '@localizer/transform';
 
 /**
  * @public
+ * Options for customizing date and time formatting.
  *
- * Options for formatting date and time.
- *
- * This type defines the options that can be used to customize the formatting of date and time
- * using the `Intl.DateTimeFormat` API.
+ * Defines configuration options for the `Intl.DateTimeFormat` API.
  *
  * @see {@link Intl.DateTimeFormat}
  */
 export type DateTimeFormatOptions = {
   /**
-   * The locale to use for formatting the date and time.
-   * If not provided, the default locale will be used.
+   * Locale for formatting.
+   * Defaults to the system's locale if not specified.
+   *
+   * @public
    */
   localeMatcher?: 'best fit' | 'lookup';
   /**
-   * The format of the weekday.
+   * Specifies how the weekday should be displayed.
+   *
+   * @public
    */
   weekday?: 'long' | 'short' | 'narrow';
   /**
-   * This specifies how the era (e.g., AD, BC) should be displayed in the formatted date.
+   * Controls the display of the era (e.g., AD, BC) in the formatted date.
+   *
+   * @public
    */
   era?: 'long' | 'short' | 'narrow';
   /**
-   * The format of the year.
+   * Specifies the year format.
+   *
+   * @public
    */
   year?: 'numeric' | '2-digit';
   /**
-   * The format of the month.
+   * Specifies how the month should be displayed.
+   *
+   * @public
    */
   month?: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow';
   /**
-   * The format of the day.
+   * Specifies the day format to display.
+   *
+   * @public
    */
   day?: 'numeric' | '2-digit';
   /**
-   * The format of the hour.
+   * Specifies the hour format.
+   *
+   * @public
    */
   hour?: 'numeric' | '2-digit';
   /**
-   * The format of the minute.
+   * Format for displaying minutes.
+   *
+   * @public
    */
   minute?: 'numeric' | '2-digit';
   /**
-   * The format of the second.
+   * Format for displaying seconds.
+   *
+   * @public
    */
   second?: 'numeric' | '2-digit';
   /**
-   * The format of the time zone name.
+   * Specifies how the time zone name should be formatted.
+   *
+   * @public
    */
   timeZoneName?:
     | 'short'
@@ -75,63 +93,87 @@ export type DateTimeFormatOptions = {
     | 'shortGeneric'
     | 'longGeneric';
   /**
-   * The locale matching algorithm to use.
+   * Algorithm for matching the locale.
+   *
+   * @public
    */
   formatMatcher?: 'best fit' | 'basic';
   /**
-   * Whether to use 12-hour or 24-hour time format.
-   * If not provided, the default will be used based on the locale.
+   * Use 12-hour or 24-hour time format.
+   * Defaults to locale settings if unspecified.
+   *
+   * @public
    */
   hour12?: boolean;
   /**
-   * The time zone to use for formatting the date and time.
-   * If not provided, the system's default time zone will be used.
+   * Time zone for formatting.
+   * Defaults to the system's time zone if unspecified.
+   *
+   * @public
    */
   timeZone?: string;
 
   /**
-   * The calendar to use for formatting the date and time.
+   * Calendar system for formatting.
+   *
+   * @public
    */
   calendar?: string;
   /**
-   * The format of the day period (AM/PM).
+   * Format for displaying the day period (e.g., AM/PM).
+   *
+   * @public
    */
   dayPeriod?: 'narrow' | 'short' | 'long';
   /**
-   * The numbering system to use for formatting the date and time.
-   * If not provided, the default numbering system will be used based on the locale.
+   * Numbering system for formatting.
+   * Defaults to the locale's system if unspecified.
+   *
+   * @public
    */
   numberingSystem?: string;
 
   /**
-   * The style of the date and time formatting.
-   * If not provided, the default style will be used based on the locale.
+   * Style for formatting date and time.
+   * Defaults to locale-based style if unspecified.
+   *
+   * @public
    */
   dateStyle?: 'full' | 'long' | 'medium' | 'short';
   /**
-   * The style of the time formatting.
-   * If not provided, the default style will be used based on the locale.
+   * Style for time formatting.
+   * Defaults to locale-based style if unspecified.
+   *
+   * @public
    */
   timeStyle?: 'full' | 'long' | 'medium' | 'short';
   /**
-   * The hour cycle to use for formatting the date and time.
-   * If not provided, the default hour cycle will be used based on the locale.
+   * Specifies the hour cycle for formatting.
+   * Defaults to the locale's hour cycle if unspecified.
+   *
+   * @public
    */
   hourCycle?: 'h11' | 'h12' | 'h23' | 'h24';
 
   /**
-   * The number of fractional digits to include in the formatted date and time.
-   * If not provided, the default will be used based on the locale.
+   * Number of fractional second digits to include.
+   * Defaults to the locale's setting if unspecified.
+   *
+   * @public
    */
   fractionalSecondDigits?: 1 | 2 | 3;
 
   /**
-   * An array of transformation functions to apply to the formatted date and time.
+   * List of transformation functions applied to the formatted output.
+   *
+   * @public
    */
   transform?: Transformer<Localizable>[];
   /**
-   * An array of parts to include in the formatted date and time.
-   * If not provided, all parts will be included.
+   * Specifies which parts to include in the formatted output.
+   * If omitted, all parts are included by default.
+   *
+   * @public
    */
   parts?: Intl.DateTimeFormatPartTypes[];
 };

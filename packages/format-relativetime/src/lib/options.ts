@@ -19,17 +19,17 @@ import { Transformer } from '@localizer/transform';
 /**
  * @public
  *
- * Represents the granularity levels for relative time formatting.
+ * Defines the granularity levels for relative time formatting.
  *
- * Possible values:
- * - `year`: Granularity in years.
- * - `quarter`: Granularity in quarters.
- * - `month`: Granularity in months.
- * - `week`: Granularity in weeks.
- * - `day`: Granularity in days.
- * - `hour`: Granularity in hours.
- * - `minute`: Granularity in minutes.
- * - `second`: Granularity in seconds.
+ * Values include:
+ * - `year`: Years
+ * - `quarter`: Quarters
+ * - `month`: Months
+ * - `week`: Weeks
+ * - `day`: Days
+ * - `hour`: Hours
+ * - `minute`: Minutes
+ * - `second`: Seconds
  */
 export type Stop =
   | 'year'
@@ -43,32 +43,36 @@ export type Stop =
 
 /**
  * @public
- *
- * Options for configuring relative time formatting.
+ * Configuration options for relative time formatting.
  *
  * @see {@link Intl.RelativeTimeFormat}
  */
 export type RelativeTimeFormatOptions = {
   /**
-   * The locale matching algorithm to use.
+   * @public
+   * Specifies the algorithm for locale matching.
    */
   localeMatcher?: 'lookup' | 'best fit';
   /**
-   * Whether to always display numeric values or adjust them automatically.
+   * @public
+   * Controls numeric value display: always numeric or auto-adjusted.
    */
   numeric?: 'always' | 'auto';
   /**
-   * The length of the internationalized message.
+   * @public
+   * Specifies the length of the localized message.
    */
   style?: 'long' | 'short' | 'narrow';
 
   /**
-   * An array of granularity levels for relative time formatting.
+   * @public
+   * Granularity levels for relative time formatting.
    */
   stops?: Stop[];
 
   /**
-   * An array of transformer functions to apply to the formatted output.
+   * @public
+   * List of transformers applied to the formatted output.
    */
   transform?: Transformer<Localizable>[];
 };

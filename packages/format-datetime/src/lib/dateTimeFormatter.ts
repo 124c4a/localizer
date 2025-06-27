@@ -20,15 +20,11 @@ import { DateTimeFormatOptions } from './options.js';
 
 /**
  * @public
+ * Creates a localized date-time formatter.
  *
- * Creates a formatter for localized date-time values.
- *
- * @typeParam T - The type of the value to be formatted, either a number (timestamp) or a Date object.
- * @param options - An optional object specifying the formatting options for date-time values.
- * @returns A ValueFormatter function that formats a single date-time value into a localized string.
- *
- * This function utilizes the `buildFormatter` utility to construct the formatter.
- * If no options are provided, it defaults to an empty configuration.
+ * @typeParam T - The value type, either a number (timestamp) or a Date.
+ * @param options - Optional formatting options.
+ * @returns A function to format a date-time value as a localized string.
  */
 export function dateTimeFormatter<T extends number | Date>(
   options?: DateTimeFormatOptions,

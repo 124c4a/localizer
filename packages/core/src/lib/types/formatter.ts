@@ -18,13 +18,9 @@ import { Localizable } from './localizable.js';
 /**
  * @public
  *
- * A function type that formats a value into a `Localizable` type.
+ * Formats a value of type `T` into a `Localizable` representation.
  *
- * The `ValueFormatter` type is used to define functions that take a value of type `T`
- * and return a localized representation of that value.
- *
- * @typeParam T - The type of the value to be formatted.
- *
+ * @typeParam T - The type of the value to format.
  * @see {@link Localizable}
  */
 export type ValueFormatter<T> = (value: T) => Localizable;
@@ -32,13 +28,10 @@ export type ValueFormatter<T> = (value: T) => Localizable;
 /**
  * @public
  *
- * A function type that formats a value and its unit into a `Localizable` type.
+ * Formats a value and its unit into a `Localizable` representation.
  *
- * The `UnitValueFormatter` type is used to define functions that take a value of type `T`
- * and a unit of type `U`, and return a localized representation of the value with its unit.
- *
- * @typeParam T - The type of the value to be formatted.
- * @typeParam U - The type of the unit associated with the value.
+ * @typeParam T - Type of the value.
+ * @typeParam U - Type of the unit.
  *
  * @see {@link Localizable}
  */
@@ -47,12 +40,9 @@ export type UnitValueFormatter<T, U> = (value: T, unit: U) => Localizable;
 /**
  * @public
  *
- * A function type that formats a range of values into a `Localizable` type.
+ * Formats a range of values into a `Localizable`.
  *
- * The `ValueRangeFormatter` type is used to define functions that take a start value
- * and an end value of type `T`, and return a localized representation of the range.
- *
- * @typeParam T - The type of the values in the range.
+ * @typeParam T - The type of the range values.
  *
  * @see {@link Localizable}
  */
@@ -61,12 +51,9 @@ export type ValueRangeFormatter<T> = (start: T, end: T) => Localizable;
 /**
  * @public
  *
- * A function type that formats a value relative to a reference value into a `Localizable` type.
+ * Formats a value relative to a reference value into a `Localizable`.
  *
- * The `RelativeValueFormatter` type is used to define functions that take a value and a reference
- * value of type `T`, and return a localized representation of the relative value.
- *
- * @typeParam T - The type of the value and reference value.
+ * @typeParam T - The type of the value and reference.
  *
  * @see {@link Localizable}
  */

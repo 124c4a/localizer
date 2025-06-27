@@ -21,14 +21,11 @@ import { DateTimeFormatOptions } from './options.js';
 /**
  * @public
  *
- * Creates a formatter for localized date-time ranges.
+ * Creates a localized date-time range formatter.
  *
- * @typeParam T - The type of the values to be formatted, either numbers (timestamps) or Date objects.
- * @param options - An optional object specifying the formatting options for date-time ranges.
- * @returns A ValueRangeFormatter function that formats a date-time range into a localized string.
- *
- * This function utilizes the `buildRangeFormatter` utility to construct the formatter.
- * If no options are provided, it defaults to an empty configuration.
+ * @typeParam T - The value type, either number (timestamp) or Date.
+ * @param options - Optional formatting options.
+ * @returns A function to format date-time ranges as localized strings.
  */
 export function dateTimeRangeFormatter<T extends number | Date>(
   options?: DateTimeFormatOptions,

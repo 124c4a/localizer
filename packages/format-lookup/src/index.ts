@@ -15,8 +15,7 @@
  */
 /**
  * @beta
- *
- * Look-up based formatters for custom data types.
+ * Provides formatters for custom data types using a lookup approach.
  *
  * @packageDocumentation
  */

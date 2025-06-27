@@ -29,19 +29,14 @@ const allStops: Stop[] = [
 
 /**
  * @internal
+ * Computes the relative time difference between two values at specified granularity levels.
  *
- * Computes the relative time difference between two values based on the specified stops.
- *
- * @param value - The target value to compare, either a number (timestamp) or a Date object.
- * @param reference - The reference value to compare against, either a number (timestamp) or a Date object.
- * @param stops - An array of stops specifying the granularity of the relative time (e.g., 'year', 'month', 'day', etc.).
- * @returns An object containing:
- *   - `value`: The computed relative time difference.
- *   - `stop`: The granularity level at which the difference was computed.
- *
- * The function iterates through the predefined `allStops` array and calculates the time difference
- * using the `getTimeDifference` utility. It returns the first non-zero difference for the specified stops.
- * If no non-zero difference is found, it defaults to the smallest granularity ('second').
+ * @param value - Target value as a timestamp or Date.
+ * @param reference - Reference value as a timestamp or Date.
+ * @param stops - Granularity levels (e.g., 'year', 'month', 'day').
+ * @returns An object with:
+ *   - `value`: The relative time difference.
+ *   - `stop`: The granularity level of the difference.
  */
 export function _computeRelativeTime(
   value: number | Date,

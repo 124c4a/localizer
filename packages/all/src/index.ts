@@ -13,6 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @public
+ * Exports core packages of the `@localizer` monorepo.
+ * @packageDocumentation
+ */
 export * from '@localizer/core';
 export * from '@localizer/format';
 export * from '@localizer/format-datetime';

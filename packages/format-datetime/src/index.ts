@@ -15,8 +15,7 @@
  */
 /**
  * @public
- *
- * Formatters for date, times and their ranges.
+ * Provides utilities for formatting dates, times, and ranges.
  *
  * @packageDocumentation
  */

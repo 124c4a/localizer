@@ -20,15 +20,11 @@ import { NumberFormatOptions } from './options.js';
 
 /**
  * @public
+ * Formats a range of numbers as localized percentages.
  *
- * Creates a formatter for localized percentage ranges.
- *
- * @typeParam T - The type of the values to be formatted, either numbers or bigints.
- * @param options - An optional object specifying the formatting options for percentage ranges.
- * @returns A `ValueRangeFormatter` function that formats a range of numbers into a localized percentage string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `percent` style to generate localized percentage range strings.
- * It ensures consistent formatting of percentage values across the range based on the provided options.
+ * @typeParam T - The numeric type, either `number` or `bigint`.
+ * @param options - Optional formatting options.
+ * @returns A `ValueRangeFormatter` for percentage ranges.
  */
 export function percentRangeFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

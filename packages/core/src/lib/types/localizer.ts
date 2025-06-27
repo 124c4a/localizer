@@ -19,8 +19,8 @@ import { Localizable } from './localizable.js';
 /**
  * @public
  *
- * Represents a localizer interface that provides methods for formatting and localizing values.
- * The `Localizer` interface supports various types of formatters and localizable objects.
+ * Interface for localizing values and formatting functions.
+ * Supports various types of localizable objects and formatters.
  *
  * @see {@link Localizable}
  */
@@ -28,23 +28,22 @@ export interface Localizer {
   /**
    * @public
    *
-   * Localizes a value based on the selected locale.
+   * Returns the localized value for the given input.
    *
-   * @typeParam T - The type of the localized value.
-   * @param localizable - A `Localizable` object.
-   *
-   * @returns The localized value of type `T`.
+   * @typeParam T - Type of the localized value.
+   * @param localizable - The input to localize.
+   * @returns Localized value of type `T`.
    */
   <T>(localizable: Localizable<T>): T;
   /**
    * @public
    *
-   * Localizes a function returning a localizable value based on the selected locale.
+   * Localizes a function that returns a localizable value.
    *
-   * @typeParam T - The type of the localized value.
-   * @typeParam A - The type of the arguments for the function.
-   * @param formatter - A function that takes arguments of type `A` and returns a `Localizable<T>`.
-   * @returns A function that takes arguments of type `A` and returns a localized value of type `T`.
+   * @typeParam T - The localized value type.
+   * @typeParam A - The argument types for the function.
+   * @param formatter - A function accepting arguments of type `A` and returning `Localizable<T>`.
+   * @returns A function accepting arguments of type `A` and returning `T`.
    */
   <A extends unknown[], T>(
     formatter: (...args: A) => Localizable<T>,

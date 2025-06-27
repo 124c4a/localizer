@@ -19,16 +19,9 @@ import { coreOptions } from '../../locale/options.js';
 /**
  * @internal
  *
- * Ensures that implicit localization is enabled and an active locale is set.
+ * Validates that implicit localization is enabled and an active locale is set.
  *
- * The `ensureImplicitLocalization` function checks whether implicit localization
- * is enabled in the `coreOptions` and verifies that an active locale is defined.
- * If these conditions are not met, it throws an error. Otherwise, it returns the
- * active locale.
- *
- * @throws Throws an error if implicit localization is disabled or
- * if no active locale is set.
- *
+ * @throws If implicit localization is disabled or no active locale is set.
  * @returns The active locale code.
  */
 export function _ensureImplicitLocalization(): LocaleCode {

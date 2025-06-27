@@ -20,16 +20,11 @@ import { NumberFormatOptions } from './options.js';
 
 /**
  * @public
+ * Formats values as localized relative percentages.
  *
- * Creates a formatter for localized relative percentage values.
- *
- * @typeParam T - The type of the values to be formatted, either numbers or bigints.
- * @param options - An optional object specifying the formatting options for relative percentage values.
- * @returns A `RelativeValueFormatter` function that formats a value relative to a reference value into a localized percentage string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `percent` style and `signDisplay: 'exceptZero'`
- * to generate localized relative percentage strings. It calculates the relative difference between the value and the reference
- * before formatting. If the reference is zero, it returns `Infinity` or `-Infinity` based on the sign of the value.
+ * @typeParam T - The numeric type, either `number` or `bigint`.
+ * @param options - Optional formatting options.
+ * @returns A function to format a value relative to a reference as a percentage.
  */
 export function relativePercentFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

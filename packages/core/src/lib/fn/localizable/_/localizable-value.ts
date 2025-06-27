@@ -19,30 +19,25 @@ import { _ensureImplicitLocalization } from '../../localizer/_/ensure-implicit-l
 import { _toPrimitiveValue } from './to-primitive-value.js';
 
 /**
- * @internal
+ * @public
  *
- * Represents a value that can be localized based on a given locale.
- *
- * The `LocalizableValue` class implements the `Localizable` interface and provides
- * functionality to localize a value using a provided localization function. It also
- * supports conversion to primitive values and locale-specific string representations.
+ * A value that can be localized using a provided function.
  *
  * @typeParam T - The type of the localized value.
  */
 export class LocalizableValue<T = string> implements Localizable<T> {
   /**
    * @internal
-   *
-   * A function that localizes the value based on the provided locale.
+   * Localizes the value using the given locale.
    */
   readonly localize: (locale: LocaleCode | null) => T;
 
   /**
    * @internal
    *
-   * Creates an instance of `LocalizableValue`.
+   * Initializes a `LocalizableValue` with a localization function.
    *
-   * @param localizeFn - The function used to localize the value.
+   * @param localizeFn - Function to localize the value.
    */
   constructor(localizeFn: (locale: LocaleCode | null) => T) {
     this.localize = localizeFn;
@@ -51,13 +46,11 @@ export class LocalizableValue<T = string> implements Localizable<T> {
   /**
    * @internal
    *
-   * Converts the localized value to a primitive representation.
+   * Converts the localized value to a primitive type.
    *
-   * This method is invoked when the object is used in a primitive context,
-   * such as string concatenation or numeric operations.
+   * Used in contexts like string concatenation or numeric operations.
    *
-   * @returns The primitive representation of the localized value.
-   *
+   * @returns The primitive representation of the value.
    */
   [Symbol.toPrimitive]() {
     const localizedValue = this.localize(_ensureImplicitLocalization());
@@ -66,16 +59,15 @@ export class LocalizableValue<T = string> implements Localizable<T> {
   }
 
   /**
-   * @internal
+   * @public
    *
-   * Returns the localized value as a locale-specific string.
+   * Returns the value localized to the given locale.
    *
-   * If an array of locales is provided, the first locale in the array is used.
-   * If a single locale is provided, it is used directly. If no locale is provided,
-   * the implicit localization is used.
+   * If multiple locales are provided, the first is used.
+   * Falls back to implicit localization if none is provided.
    *
-   * @param locale - The locale(s) to use for localization.
-   * @returns The localized value.
+   * @param locale - Locale(s) for localization.
+   * @returns Localized value.
    */
   toLocaleString(locale?: LocaleCode | LocaleCode[] | null): T {
     if (Array.isArray(locale) && locale.length > 0) {

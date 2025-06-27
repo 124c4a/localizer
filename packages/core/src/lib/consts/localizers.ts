@@ -21,11 +21,8 @@ import { Localizer } from '../types/localizer.js';
 /**
  * @alpha
  *
- * An implicitly determined `Localizer` instance.
- *
- * The `ImplicitLocalizer` is a `Localizer` bound to the `activeLocale` set in the configuration.
- * It binds localization functionality to the implicitly determined locale, enabling seamless
- * localization without explicitly specifying the locale.
+ * A `Localizer` bound to the `activeLocale` from the configuration.
+ * Enables localization using the current active locale without explicitly specifying it.
  *
  * @see {@link Localizer}, {@link Core}
  */
@@ -34,14 +31,14 @@ export const ImplicitLocalizer: Localizer = _getImplicitLocalizer();
 /**
  * @public
  *
- * Special Localizer instance that is not bound to any locale. When used, it will throw an error.
+ * A Localizer instance that is unbound to any locale and throws an error when used.
  */
 export const UninitializedLocalizer: Localizer = _getUninitializedLocalizer();
 
 /**
- * @alpha
+ * @public
  *
- * Special Localizer instance that produces stable identifiers instead of localized strings.
- * It is useful for cases where you need a unique identifier that does not change with locale or value.
+ * A Localizer that returns stable identifiers instead of localized strings.
+ * Useful for generating unique, locale-independent identifiers.
  */
 export const IdentityLocalizer: Localizer = _getIdentityLocalizer();

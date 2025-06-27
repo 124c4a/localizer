@@ -25,16 +25,11 @@ import { NumberFormatOptions } from '../options.js';
 
 /**
  * @internal
+ * Creates a localized number formatter.
  *
- * Builds a formatter for localized number values based on the provided options.
- *
- * @typeParam T - The type of the value to be formatted, either a number or a bigint.
- * @param options - An object specifying the formatting options for number values.
- * @returns A `ValueFormatter` function that formats a number into a localized string.
- *
- * The formatter uses the `Intl.NumberFormat` API to generate localized number strings.
- * If the `parts` option is provided, it filters and joins specific parts of the formatted output.
- * Additionally, a `transform` property can be applied to modify the formatted result.
+ * @typeParam T - The numeric type, either `number` or `bigint`.
+ * @param options - Formatting options for the number.
+ * @returns A `ValueFormatter` that formats numbers as localized strings.
  */
 export function _buildFormatter<T extends number | bigint>(
   options: NumberFormatOptions,

@@ -18,14 +18,13 @@ import { Configurer } from '../../types/configuration.js';
 
 /**
  * @public
- *
- * Represents the core options for localization configuration.
+ * Core localization configuration options.
  */
 export interface CoreOptions {
   /**
    * @public
    *
-   * An optional array of locale codes to use as fallback locales. Defaults to `['en']`.
+   * Optional fallback locale codes. Defaults to `['en']`.
    *
    * @defaultValue `['en']`
    */
@@ -33,7 +32,7 @@ export interface CoreOptions {
   /**
    * @alpha
    *
-   * The currently active locale code for implicit localization. If not set, implicit localization will not be applied.
+   * Active locale code for implicit localization. If unset, implicit localization is disabled.
    *
    * @defaultValue `undefined`
    */
@@ -43,11 +42,10 @@ export interface CoreOptions {
 /**
  * @internal
  *
- * Singleton instance of core options.
+ * Singleton instance of core localization options.
  *
- * The `coreOptions` object holds the default configuration for localization,
- * including fallback locales, implicit localization settings, and the active locale.
- * It can be updated dynamically using the `Core` function.
+ * Holds default settings like fallback locales and active locale.
+ * Can be updated dynamically via the `Core` function.
  */
 export const coreOptions: CoreOptions = {
   fallbackLocales: ['en'],
@@ -56,19 +54,18 @@ export const coreOptions: CoreOptions = {
 
 /**
  * @public
- *
- * Configures the core localization options.
+ * Updates core localization options.
  */
 export const Core: Configurer<CoreOptions> = (config) => {
   Object.assign(coreOptions, config);
 };
 
 /**
- * @alpha
+ * @public
  *
- * Sets the active locale and enables implicit localization.
+ * Activates implicit localization by setting the active locale.
  *
- * @param locale - The locale code to set as the active locale.
+ * @param locale - The locale code to activate.
  */
 export function setActiveLocale(locale: LocaleCode) {
   coreOptions.activeLocale = locale;

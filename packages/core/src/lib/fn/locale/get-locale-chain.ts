@@ -34,15 +34,13 @@ function distinct(arr: LocaleCode[]): LocaleCode[] {
 /**
  * @public
  *
- * Generates a chain of locale codes based on the provided locale.
+ * Generates a list of locale codes starting with the given locale,
+ * followed by its parent locale (if applicable), and fallback locales.
  *
- * The `getLocaleChain` function creates a list of locale codes starting with the
- * given locale, followed by its parent locale (if applicable), and then any fallback
- * locales defined in the `coreOptions`. The result is cached for subsequent calls
- * to improve performance.
+ * Caches results for better performance.
  *
  * @param locale - The locale code to generate the chain for.
- * @returns An array of locale codes representing the chain.
+ * @returns An array of locale codes.
  */
 export function getLocaleChain(locale: LocaleCode): LocaleCode[] {
   const fallbackLocales = coreOptions.fallbackLocales;

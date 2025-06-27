@@ -21,13 +21,11 @@ import { localizeArray } from './localizeArray.js';
 
 /**
  * @public
- *
- * Creates a `Localizable` instance based on the provided localization function.
+ * Creates a `Localizable` from a localization function.
  *
  * @typeParam T - The type of the localized value.
- *
- * @param localize - A function that takes a locale code and returns a localized value.
- * @returns A `Localizable` instance representing the localized value.
+ * @param localize - Function returning a localized value for a given locale.
+ * @returns A `Localizable` representing the localized value.
  *
  * @see {@link Localizable}, {@link Localizer}
  */
@@ -37,11 +35,11 @@ export function loc<T = string>(
 /**
  * @public
  *
- * Creates a `Localizable` instance based on the provided localization template strings.
+ * Creates a `Localizable` instance using template strings and expressions.
  *
- * @param strings - Template strings.
- * @param expr - The expressions to interpolate into the template strings.
- * @returns A `Localizable` instance representing the localized value.
+ * @param strings - The template strings.
+ * @param expr - Expressions to interpolate into the template.
+ * @returns A `Localizable` instance for the localized value.
  *
  * @see {@link Localizable}, {@link Localizer}
  */

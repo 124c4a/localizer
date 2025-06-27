@@ -17,25 +17,19 @@ import { listFormatter } from '@localizer/format-list';
 
 /**
  * @public
- *
- * Formatter for creating conjunction lists.
- *
- * This formatter generates lists where items are joined using a conjunction (e.g., "and").
+ * Formatter for conjunction lists.
+ * Joins items using a conjunction like "and".
  */
 export const and = listFormatter({ type: 'conjunction' });
 /**
  * @public
- *
- * Formatter for creating disjunction lists.
- *
- * This formatter generates lists where items are joined using a disjunction (e.g., "or").
+ * Formatter for disjunction lists.
+ * Joins items using a disjunction like "or".
  */
 export const or = listFormatter({ type: 'disjunction' });
 /**
  * @public
- *
- * Formatter for creating unit lists.
- *
- * This formatter generates lists where items are joined without any conjunction or disjunction, typically used for lists of units or items that do not require a grammatical connector.
+ * Formatter for unit lists.
+ * Joins items without conjunctions or disjunctions.
  */
 export const list = listFormatter({ type: 'unit' });

@@ -19,11 +19,10 @@ import { CurrencyCode, currencyCodeFormatter } from '@localizer/format-number';
 
 /**
  * @public
+ * Converts a currency code to its symbol.
  *
- * Formats a currency code into its symbol representation.
- *
- * @param currency - The currency code to format.
- * @returns The formatted currency symbol.
+ * @param currency - The currency code to convert.
+ * @returns The currency symbol.
  */
 export const currencySymbol = currencyCodeFormatter({
   currencyDisplay: 'symbol',
@@ -31,32 +30,22 @@ export const currencySymbol = currencyCodeFormatter({
 
 /**
  * @public
- *
- * Formatter for currency names.
- *
- * This formatter generates the name representation of a currency.
+ * Formats the name of a currency.
  */
 export const currencyName = displayNameFormatter<CurrencyCode>('currency');
 /**
  * @public
- *
- * Formatter for language names.
- *
- * This formatter generates the name representation of a language.
+ * Formats the name of a language.
  */
 export const languageName = displayNameFormatter<LocaleCode>('language');
 /**
  * @public
- *
- * Formatter for country names.
- *
- * This formatter generates the name representation of a country.
+ * Formats country names.
  */
 export const countryName = displayNameFormatter<CountryCode>('region');
 /**
  * @public
- *
- * Format the name of the current language.
+ * Formats the name of the current language.
  */
 export const CurrentLanguage = loc((locale) =>
   locale === null ? '[CurrentLanguage]' : languageName(locale).localize(locale),

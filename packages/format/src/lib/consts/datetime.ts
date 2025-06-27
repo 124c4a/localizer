@@ -15,71 +15,58 @@
  */
 import { loc, ValueRangeFormatter } from '@localizer/core';
 import {
-  DateTimeFormatOptions,
   dateTimeFormatter,
   dateTimeRangeFormatter,
 } from '@localizer/format-datetime';
 
 import { GenericRangeSeparator } from './generic.js';
 
-const defaultDateFormatOptions: DateTimeFormatOptions = {
+/**
+ * @public
+ * Formats date values.
+ */
+export const date = dateTimeFormatter({
   day: 'numeric',
   month: 'numeric',
   year: 'numeric',
-};
-
-const defaultTimeFormatOptions: DateTimeFormatOptions = {
+});
+/**
+ * @public
+ * Formats time values.
+ */
+export const time = dateTimeFormatter({
   hour: '2-digit',
   minute: '2-digit',
   second: '2-digit',
-};
-
-const defaultDateTimeFormatOptions: DateTimeFormatOptions = {
-  ...defaultDateFormatOptions,
-  ...defaultTimeFormatOptions,
-};
-
+});
 /**
  * @public
- *
- * Date formatter instance.
- *
- * Formats dates using the default date format options.
+ * Formats combined date and time values.
  */
-export const date = dateTimeFormatter(defaultDateFormatOptions);
-/**
- * @public
- *
- * Time formatter instance.
- *
- * Formats times using the default time format options.
- */
-export const time = dateTimeFormatter(defaultTimeFormatOptions);
-/**
- * @public
- *
- * Date-time formatter instance.
- *
- * Formats date-time values using the default date-time format options.
- */
-export const dateTime = dateTimeFormatter(defaultDateTimeFormatOptions);
+export const dateTime = dateTimeFormatter({
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  day: 'numeric',
+  month: 'numeric',
+  year: 'numeric',
+});
 
 /**
  * @public
- *
- * Date range formatter instance.
- *
- * Formats a range of dates using the default date format options and a generic range separator.
+ * Formats a range of dates using a generic separator.
  */
 export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
   loc`${date(start)}${GenericRangeSeparator}${date(end)}`;
 /**
  * @public
- *
- * Date-time range formatter instance.
- *
- * Formats a range of date-time values using the default date-time format options.
+ * Formats a range of date and time values.
  */
-export const dateTimeRange = dateTimeRangeFormatter(
-  defaultDateTimeFormatOptions,
-);
+export const dateTimeRange = dateTimeRangeFormatter({
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  day: 'numeric',
+  month: 'numeric',
+  year: 'numeric',
+});
