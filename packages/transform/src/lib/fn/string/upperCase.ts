@@ -16,18 +16,11 @@
 import { Localizable, loc } from '@localizer/core';
 
 /**
- * Converts the localized value to uppercase for a given locale.
- *
- * @param value - A Localizable object containing the value to be transformed. Transformation is a no-op when the result is localized to a `null` locale.
- * @returns A new Localizable object with the value converted to uppercase for the specified locale.
- *
- * @example
- * const localizedValue = loc(locale => `hello ${locale}`);
- * const upperCasedValue = upperCase(localizedValue);
- * console.log(upperCasedValue.localize('en')); // Output: HELLO EN
- *
  * @public
- * @see {@link Localizable}, {@link transform}
+ * Converts a localized value to uppercase.
+ *
+ * @param value - The Localizable object to transform. No transformation occurs for a `null` locale.
+ * @returns A Localizable object with the value in uppercase for the given locale.
  */
 export function upperCase(value: Localizable): Localizable {
   return loc((locale) =>

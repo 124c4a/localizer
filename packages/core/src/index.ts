@@ -16,12 +16,11 @@
 /**
  * @public
  *
- * A core functionality of `@localizer` library. Provides types and functions for localization,
- * localizable entities, and locale management.
+ * Core functionality of the `@localizer` library, offering types and utilities
+ * for localization, localizable entities, and locale management.
  *
  * @packageDocumentation
  */
-
 export * from './lib/types/localizable.js';
 export * from './lib/types/localizer.js';
 export * from './lib/types/formatter.js';

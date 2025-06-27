@@ -16,18 +16,11 @@
 import { Localizable, loc } from '@localizer/core';
 
 /**
- * Converts the localized value to lowercase for a given locale.
- *
- * @param value - A Localizable object containing the value to be transformed. Transformation is a no-op when the result is localized to a `null` locale.
- * @returns A new Localizable object with the value converted to lowercase for the specified locale.
- *
- * @example
- * const localizedValue = loc(locale => `HELLO ${locale}`);
- * const lowerCasedValue = lowerCase(localizedValue);
- * console.log(lowerCasedValue.localize('en')); // Output: hello en
- *
  * @public
- * @see {@link Localizable}, {@link transform}
+ * Converts a localized value to lowercase.
+ *
+ * @param value - The Localizable object to transform. No-op for `null` locale.
+ * @returns A new Localizable with the value in lowercase for the given locale.
  */
 export function lowerCase(value: Localizable): Localizable {
   return loc((locale) =>

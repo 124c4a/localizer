@@ -11,44 +11,47 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10752/badge)](https://www.bestpractices.dev/projects/10752)
 ![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/124c4a/localizer?label=openssf%20scorecard)
 
+# > > > 📖 [Official documentation](https://124c4a.github.io/localizer) 📖 < < <
+
 ## About the Project
 
-`@localizer` is a powerful and flexible library designed to simplify localization, formatting, and translation in your applications. It provides a type-safe approach to managing localized content, ensuring consistency and reducing runtime errors. With `@localizer`, you can easily handle multiple languages, date and number formatting, and dynamic translations, all while maintaining clean and maintainable code.
+**@localizer** simplifies localization, formatting, and translation with a type-safe approach. It ensures consistency, reduces runtime errors, and supports multiple languages, dynamic translations, and locale-specific formatting.
 
 ## Highlights
 
-- **Type-safe Localization**: Ensures compile-time safety for translations and reduces runtime errors.
-- **Flexible Formatting**: Supports date, number, and custom formatting for various locales.
-- **Dynamic Translations**: Easily handle runtime language switching and dynamic content.
-- **Multi-language Support**: Simplifies managing multiple languages in your application.
-- **Clean API**: Provides an intuitive and maintainable API for developers.
-- **Lightweight and Performant**: Optimized for performance without adding unnecessary overhead.
-- **Extensible**: Easily extendable to meet custom localization needs.
+- **Type-safe Localization**: Compile-time safety for translations, reducing runtime errors.
+- **Flexible Formatting**: Supports locale-specific date, number, and custom formatting.
+- **Dynamic Translations**: Enables runtime language switching and dynamic content.
+- **Multi-language Support**: Simplifies managing multiple languages.
+- **Lightweight and Performant**: Optimized for performance with minimal overhead.
+- **Extensible**: Easily customizable for specific localization needs.
 
 ## Modules
 
-`@localizer` is organized into several modules to provide a modular and flexible approach to localization and formatting:
+### Modules Overview
 
-### Core Modules
+**@localizer** is modular, offering flexibility for various localization needs:
 
-- **`@localizer/core`**: The foundation of the library, providing essential utilities for localization.
-- **`@localizer/transform`**: Provides locale-dependent transformations of translations and formatted values.
+#### Core
 
-### Formatters
+- **`@localizer/core`**: Essential utilities for localization.
+- **`@localizer/transform`**: Locale-dependent transformations.
 
-- **`@localizer/format`**: Provides built-in formatting for dates, numbers, and other custom formats across different locales.
-- **`@localizer/format-datetime`**: Formatters for dates, times and their ranges.
-- **`@localizer/format-displayname`**: Formatters for display names (languages, countries, currencies).
-- **`@localizer/format-list`**: Formatters for lists of items.
-- **`@localizer/format-lookup`**: Formatters based on look-up tables.
-- **`@localizer/format-number`**: Formatters for numbers, measurements and monetary amounts.
-- **`@localizer/format-relativetime`**: Formatters for relative time.
+#### Formatters
 
-### Translation support
+- **`@localizer/format`**: Built-in formatting for dates, numbers, and more.
+- **`@localizer/format-datetime`**: Date and time formatting.
+- **`@localizer/format-displayname`**: Formatting for languages, countries, and currencies.
+- **`@localizer/format-list`**: List formatting.
+- **`@localizer/format-lookup`**: Lookup table-based formatting.
+- **`@localizer/format-number`**: Number, measurement, and currency formatting.
+- **`@localizer/format-relativetime`**: Relative time formatting.
+
+#### Translation
 
 - **`@localizer/translate`**: TypeScript-native translation library.
 
-These modules can be used independently or together, depending on your application's requirements.
+Use modules independently or combine them as needed.
 
 ### Bundle
 
@@ -56,74 +59,66 @@ These modules can be used independently or together, depending on your applicati
 
 ## Versioning
 
-`@localizer` follows [Semantic Versioning](https://semver.org/) to ensure clarity and predictability in version updates. The version numbers are structured as `MAJOR.MINOR.PATCH`, where:
+**@localizer** uses [Semantic Versioning](https://semver.org/), structured as `MAJOR.MINOR.PATCH`:
 
-- **MAJOR**: Increments when there are incompatible API changes.
-- **MINOR**: Increments when new features are added in a backward-compatible manner.
-- **PATCH**: Increments when backward-compatible bug fixes are introduced.
+- **MAJOR**: For breaking changes.
+- **MINOR**: For new features.
+- **PATCH**: For bug fixes.
 
 ### Release Process
 
-1. **Development**: All changes are made in feature branches and merged into the `main` branch after review.
-2. **Pre-release Testing**: Each release undergoes thorough testing to ensure stability and compatibility.
-3. **Version Tagging**: Once a release is ready, it is tagged with the appropriate version number.
-4. **Publishing**: The release is published to npm and other relevant platforms.
+1. **Development**: Changes are made in feature branches and merged into `main` after review.
+2. **Testing**: Each release is tested for stability and compatibility.
+3. **Version Tagging**: Releases are tagged with the appropriate version.
+4. **Publishing**: Releases are published to npm.
 
 ### Compatibility
 
-We strive to maintain backward compatibility within the same major version. Breaking changes will be clearly documented in the release notes.
-
-For detailed information about changes in each release, refer to the [Changelog](CHANGELOG.md).
+We aim to keep backward compatibility within a major version. Breaking changes are documented in the [Changelog](CHANGELOG.md).
 
 ## Contribution Guide
 
-We welcome contributions to `@localizer`! Whether you're fixing bugs, adding new features, or improving documentation, your help is greatly appreciated. Follow the steps below to get started:
+Contributions are welcome! Fix bugs, add features, or improve documentation by following these steps:
 
 ### Getting Started
 
-1. **Fork the Repository**: Click the "Fork" button on the GitHub repository to create your own copy.
-2. **Clone the Repository**: Clone your forked repository to your local machine:
-   ```bash
-   git clone https://github.com/<your-username>/localizer.git
-   ```
-3. **Install Dependencies**: Navigate to the project directory and install the required dependencies:
-   ```bash
-   cd localizer
-   npm install
-   ```
+1. **Fork and Clone**: Fork the repository and clone it locally:
 
-### Making Changes
+```bash
+git clone https://github.com/<your-username>/localizer.git
+cd localizer
+```
 
-1. **Create a Branch**: Create a new branch for your changes:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-2. **Make Your Changes**: Implement your changes in the codebase.
-3. **Run Tests**: Ensure all tests pass before committing your changes:
+2. **Install Dependencies**: Install the required dependencies:
 
-   ```bash
-   npx nx test <module>
+```bash
+npm install
+```
 
-   # for example:
-   npx nx test format-number
-   ```
+3. **Create a Branch**:
 
-4. **Commit Your Changes**: Write a clear and concise commit message:
-   ```bash
-   git commit -m "feat: Added new feature"
-   ```
+```bash
+git checkout -b feature/your-feature-name
+```
 
-### Submitting Your Changes
+4. **Make Changes**: Update the codebase as needed.
 
-1. **Push Your Branch**: Push your changes to your forked repository:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-2. **Open a Pull Request**: Go to the original repository and open a pull request. Provide a detailed description of your changes.
+5. **Run Tests**: Verify your changes:
+
+```bash
+npx nx test <module>
+```
+
+6. **Commit Changes**: Use a clear commit message:
+
+```bash
+git commit -m "feat: Add new feature"
+```
+
+Refer to the [contribution guide](./CONTRIBUTING.md) for more details.
 
 ### Need Help?
 
-If you have any questions or need assistance, feel free to open an issue or reach out to the maintainers.
+For questions or assistance, [open an issue](https://github.com/124c4a/localizer/issues/new/choose) or contact the maintainers.
 
-Thank you for contributing to `@localizer`!
-...
+Thank you for supporting **@localizer**!

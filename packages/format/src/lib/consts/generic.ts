@@ -20,20 +20,13 @@ import { Transformer } from '@localizer/transform';
 
 const ignoreUndeterminedLanguage: Transformer<Localizable> = (value) =>
   loc((locale) =>
-    locale === null ? value.localize('en') : value.localize(locale)
+    locale === null ? value.localize('en') : value.localize(locale),
   );
 
 /**
- * Decimal separator formatter.
- *
- * Formats the decimal separator using locale-specific settings.
- * Applies a transformation to handle undetermined language.
- *
- * @example
- * console.log(DecimalSeparator.localize('en')); // Output: '.'
- *
  * @public
- * @see {@link decimalFormatter}
+ * Formats the decimal separator with locale-specific settings.
+ * Handles undetermined language using a transformation.
  */
 export const DecimalSeparator = decimalFormatter({
   parts: ['decimal'],
@@ -41,16 +34,9 @@ export const DecimalSeparator = decimalFormatter({
 })(1.1);
 
 /**
- * Thousand separator formatter.
- *
- * Formats the thousand separator using locale-specific settings.
- * Applies a transformation to handle undetermined language.
- *
- * @example
- * console.log(ThousandSeparator.localize('en')); // Output: ','
- *
  * @public
- * @see {@link decimalFormatter}
+ * Formats the thousand separator with locale settings.
+ * Handles undetermined language using a transformation.
  */
 export const ThousandSeparator = decimalFormatter({
   useGrouping: 'always',
@@ -59,16 +45,9 @@ export const ThousandSeparator = decimalFormatter({
 })(1000);
 
 /**
- * Date range separator formatter.
- *
- * Formats a range of dates using locale-specific settings.
- * Applies a transformation to handle undetermined language.
- *
- * @example
- * console.log(DateRangeSeparator.localize('en')); // Output: ' – '
- *
  * @public
- * @see {@link dateTimeRangeFormatter}
+ * Formats a date range with locale-specific settings.
+ * Handles undetermined language using a transformation.
  */
 export const DateRangeSeparator = dateTimeRangeFormatter({
   year: 'numeric',
@@ -77,13 +56,7 @@ export const DateRangeSeparator = dateTimeRangeFormatter({
 })(Date.UTC(2000, 0, 1), Date.UTC(2001, 0, 1));
 
 /**
- * Generic locale-agnostic range separator.
- *
- * Represents a thin space en dash thin space separator.
- *
- * @example
- * console.log(GenericRangeSeparator.localize('en')); // Output: " – "
- *
  * @public
+ * A locale-agnostic range separator using a thin space, en dash, and thin space.
  */
 export const GenericRangeSeparator = loc`\u2009\u2013\u2009`; // thin space en dash thin space

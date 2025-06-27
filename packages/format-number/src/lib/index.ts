@@ -18,7 +18,7 @@ export * from './unit.js';
 export * from './options.js';
 
 export * from './currencyFormatter.js';
-export * from './currencySymbolFormatter.js';
+export * from './currencyCodeFormatter.js';
 export * from './decimalFormatter.js';
 export * from './decimalRangeFormatter.js';
 export * from './fixedCurrencyFormatter.js';

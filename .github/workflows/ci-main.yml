@@ -34,7 +34,13 @@ jobs:
           SARIF_ESLINT_IGNORE_SUPPRESSED: 'true'
 
       - name: Collect ESLint results
-        run: npx @microsoft/sarif-multitool merge eslint.sarif --recurse true --output-directory=./tmp --output-file=eslint-merged.sarif
+        run: |
+          npx @microsoft/sarif-multitool merge eslint.sarif --recurse true --output-directory=./tmp --output-file=eslint-merged.sarif
+          if grep -Fq '"runs": []' ./tmp/eslint-merged.sarif
+          then
+            echo '{"$schema":"http://json.schemastore.org/sarif-2.1.0.json","version": "2.1.0","runs":[{"tool":{"driver":{"name":"ESlint","rules":[],"version":"0.0.0"}},"results":[],"artifacts":[]}]}' > ./tmp/eslint-merged.sarif
+            cat ./tmp/eslint-merged.sarif
+          fi
 
       - name: Upload ESLint results
         uses: github/codeql-action/upload-sarif@ce28f5bb42b7a9f2c824e633a3f6ee835bab6858 # v3.29.0
@@ -53,7 +59,13 @@ jobs:
         continue-on-error: true
 
       - name: Collect API results
-        run: npx @microsoft/sarif-multitool merge api-extractor.sarif --recurse true --output-directory=./tmp --output-file=api-merged.sarif
+        run: |
+          npx @microsoft/sarif-multitool merge api-extractor.sarif --recurse true --output-directory=./tmp --output-file=api-merged.sarif
+          if grep -Fq '"runs": []' ./tmp/api-merged.sarif
+          then
+            echo '{"$schema":"http://json.schemastore.org/sarif-2.1.0.json","version": "2.1.0","runs":[{"tool":{"driver":{"name":"API Extractor","rules":[],"version":"0.0.0"}},"results":[],"artifacts":[]}]}' > ./tmp/api-merged.sarif
+            cat ./tmp/api-merged.sarif
+          fi
 
       - name: Upload API results
         uses: github/codeql-action/upload-sarif@ce28f5bb42b7a9f2c824e633a3f6ee835bab6858 # v3.29.0

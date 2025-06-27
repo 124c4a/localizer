@@ -15,11 +15,10 @@
  */
 /**
  * @internal
+ * Converts a value to its primitive representation.
  *
- * Convert value to primitive
- *
- * @param value - The value to convert
- * @returns The primitive representation of the value
+ * @param value - The value to convert.
+ * @returns The primitive representation of the value.
  */
 export function _toPrimitiveValue(value: unknown) {
   if (value === null || value === undefined) {

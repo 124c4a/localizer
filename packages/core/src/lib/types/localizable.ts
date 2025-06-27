@@ -35,14 +35,11 @@ export type Localizable<T = string> = {
 /**
  * @public
  *
- * Represents a type that maps localized values to their resolved types.
+ * Transforms a structure with `Localizable` values into one with resolved types.
  *
- * The `Localized` type is used to transform a structure containing `Localizable` values
- * into a structure where those values are resolved to their localized types.
+ * @typeParam T - The original structure containing `Localizable` values.
  *
- * @typeParam T - The type of the original structure containing `Localizable` values.
- *
- * @see {@link Localizable}, {@link localizeObject}, {@link localizeArray}
+ * @see {@link Localizable}
  */
 export type Localized<T> = {
   [P in keyof T]: T[P] extends Localizable<infer U> ? U : T[P];

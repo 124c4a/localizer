@@ -17,58 +17,54 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
- * Defines the options for formatting a list of localized values.
- *
- * This type supports two modes:
- * - **Intl.ListFormatOptions**: Specifies options for the `Intl.ListFormat` API, including locale matching, message format, and message length.
- * - **Delimiter-based formatting**: Specifies a localized delimiter to join list items.
- *
- * Additionally, a `transform` property can be provided to apply transformations to the formatted list.
- *
- * @example
- * // Using Intl.ListFormatOptions
- * const options = {
- *   localeMatcher: 'best fit',
- *   type: 'conjunction',
- *   style: 'short',
- * };
- *
- * // Using a delimiter
- * const optionsWithDelimiter = {
- *   delimiter: loc`, `,
- *   transform: [value => value.toUpperCase()],
- * };
- *
  * @public
- * @see {@link Intl.ListFormatOptions}, {@link Intl.ListFormat}, {@link Transformer}
+ *
+ * Options for formatting a list of localized values.
+ *
+ * Supports two modes:
+ * - **Intl.ListFormatOptions**: Options for `Intl.ListFormat` API, including locale matching, format, and length.
+ * - **Delimiter-based formatting**: Uses a localized delimiter to join list items.
+ *
+ * Includes an optional `transform` property for applying transformations.
+ *
+ * @see {@link Intl.ListFormat}
  */
 export type ListFormatOptions = (
   | {
       /**
-       * Specifies the locale matching algorithm to use.
-       * @default 'best fit'
+       * Locale matching algorithm.
+       *
+       * @public
        */
       localeMatcher?: 'lookup' | 'best fit';
 
       /**
-       * Specifies the format of the output message.
-       * @default 'conjunction'
+       * Output message format.
+       *
+       * @public
        */
       type?: 'conjunction' | 'disjunction' | 'unit';
 
       /**
-       * Specifies the length of the formatted message.
-       * @default 'long'
+       * Length of the formatted message.
+       *
+       * @public
        */
       style?: 'long' | 'short' | 'narrow';
     }
   | {
       /**
-       * A localized delimiter used to join list items.
+       * Localized delimiter for joining list items.
+       *
+       * @public
        */
       delimiter: Localizable;
     }
 ) & {
-  /** An array of transformation functions to apply to the formatted list. */
+  /**
+   * @public
+   *
+   * Array of functions to transform the formatted list.
+   */
   transform?: Transformer<Localizable>[];
 };

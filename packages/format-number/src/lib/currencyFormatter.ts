@@ -15,29 +15,20 @@
  */
 import { UnitValueFormatter } from '@localizer/core';
 
-import { buildUnitFormatter } from './build.js';
+import { _buildUnitFormatter } from './_/build.js';
 import { CurrencyCode } from './currency.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * Creates a formatter for localized currency values.
- *
- * @template T - The type of the value to be formatted, either a number or a bigint.
- * @param options - An optional object specifying the formatting options for currency values.
- * @returns A `UnitValueFormatter` function that formats a currency value into a localized string.
- *
- * The formatter uses the `Intl.NumberFormat` API with the `currency` style to generate localized currency strings.
- *
- * @example
- * const formatter = currencyFormatter();
- * const formattedCurrency = formatter(1234.56, 'USD');
- * console.log(formattedCurrency.localize('en')); // Output: $1,234.56
- *
  * @public
- * @see {@link NumberFormatOptions}, {@link UnitValueFormatter}, {@link Intl.NumberFormat}
+ * Formats currency values using localization.
+ *
+ * @typeParam T - The value type, either number or bigint.
+ * @param options - Optional formatting options.
+ * @returns A `UnitValueFormatter` for localized currency strings.
  */
 export function currencyFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,
 ): UnitValueFormatter<T, CurrencyCode> {
-  return buildUnitFormatter(options ?? {}, 'currency', 'currency');
+  return _buildUnitFormatter(options ?? {}, 'currency', 'currency');
 }

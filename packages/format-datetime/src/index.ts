@@ -13,4 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @public
+ * Provides utilities for formatting dates, times, and ranges.
+ *
+ * @packageDocumentation
+ */
 export * from './lib/index.js';

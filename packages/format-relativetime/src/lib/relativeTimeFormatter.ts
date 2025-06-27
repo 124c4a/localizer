@@ -15,29 +15,18 @@
  */
 import { RelativeValueFormatter } from '@localizer/core';
 
-import { buildFormatter } from './build.js';
+import { _buildFormatter } from './_/build.js';
 import { RelativeTimeFormatOptions } from './options.js';
 
 /**
- * Creates a relative time formatter function.
- *
- * This function generates a formatter for relative time strings based on the provided options.
- * If no options are specified, it defaults to using `{ numeric: 'auto' }`.
- *
- * @param options - Configuration options for the relative time formatter.
- * @returns A formatter function that formats relative time strings.
- *
- * @example
- * const options = { numeric: 'auto', style: 'long' };
- * const formatter = relativeTimeFormatter(options);
- * const formattedRelativeTime = formatter(new Date(Date.now() - 86400000), new Date());
- * console.log(formattedRelativeTime.localize('en')); // Output: "1 day ago"
- *
  * @public
- * @see {@link RelativeValueFormatter}, {@link RelativeTimeFormatOptions}, {@link Intl.RelativeTimeFormat}
+ * Generates a function to format relative time strings.
+ *
+ * @param options - Optional settings for the formatter. Defaults to `{ numeric: 'auto' }`.
+ * @returns A function to format relative time values.
  */
 export function relativeTimeFormatter(
-  options?: RelativeTimeFormatOptions
+  options?: RelativeTimeFormatOptions,
 ): RelativeValueFormatter<Date | number> {
-  return buildFormatter(options ?? { numeric: 'auto' });
+  return _buildFormatter(options ?? { numeric: 'auto' });
 }

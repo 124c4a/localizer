@@ -16,7 +16,7 @@
 /**
  * @public
  *
- * A consumer function that accepts a configuration properties.
+ * A function that consumes configuration properties.
  *
  * @see {@link ConfigurationProperties}
  */
@@ -25,13 +25,11 @@ export type Configurer<V> = (value: Partial<V>) => void;
 /**
  * @public
  *
- * Represents a mapped type that extracts configuration properties from a given type `T`.
+ * Maps a type `T` to its configuration properties.
+ * For each key in `T`, extracts the configurable value type
+ * if the property is a `Configurer`.
  *
- * The `ConfigurationProperties` type maps over the keys of `T` and, for each key,
- * determines the type of the value that can be configured if the corresponding property
- * is a `Configuration` type.
- *
- * @typeParam T - The type containing configuration properties.
+ * @typeParam T - The type to extract configuration properties from.
  *
  * @see {@link Configurer}
  */

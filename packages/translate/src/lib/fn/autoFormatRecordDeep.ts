@@ -51,7 +51,7 @@ import { autoFormat } from '@localizer/format';
 export function autoFormatRecordDeep<V extends Record<string, unknown>>(
   value: V,
   autoFormattedParameters: string[] = [],
-  prefix?: string
+  prefix?: string,
 ) {
   const preparedValue: Record<string, unknown> = {
     ...value,
@@ -63,7 +63,7 @@ export function autoFormatRecordDeep<V extends Record<string, unknown>>(
       preparedValue[key] = autoFormatRecordDeep(
         value as Record<string, unknown>,
         autoFormattedParameters,
-        (prefix ?? '') + key + '.'
+        (prefix ?? '') + key + '.',
       );
     });
 

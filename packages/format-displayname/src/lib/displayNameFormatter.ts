@@ -19,43 +19,40 @@ import { transform } from '@localizer/transform';
 import { DisplayNameFormatOptions } from './options.js';
 
 /**
- * Creates a formatter for display names based on the provided options.
- *
- * @template T - The type of the value to be formatted, typically a string.
- * @param options - An object specifying the formatting options for display names.
- * @returns A ValueFormatter function that formats a string value into a localized display name.
- *
- * The formatter uses the `Intl.DisplayNames` API to generate localized display names.
- * If the locale is `null`, a fallback string is returned based on the `type` option.
- * Additionally, a `transform` property can be provided to apply transformations to the formatted display name.
- *
- * @example
- * const options = { type: 'region' };
- * const formatter = displayNameFormatter(options);
- * const formattedName = formatter('US');
- * console.log(formattedName.localize('en')); // Output: United States
- *
  * @public
- * @see {@link ValueFormatter}, {@link DisplayNameFormatOptions}, {@link Intl.DisplayNames}
+ * Creates a localized display name formatter.
+ *
+ * @typeParam T - The value type to format, typically a string.
+ * @param type - The display name type, e.g., "language", "region", "script", etc.
+ * @param options - Formatting options, including transformations.
+ * @returns A function to format values into localized display names.
  */
 export function displayNameFormatter<T extends string>(
-  options: DisplayNameFormatOptions,
+  type:
+    | 'language'
+    | 'region'
+    | 'script'
+    | 'calendar'
+    | 'dateTimeField'
+    | 'currency',
+  options?: DisplayNameFormatOptions,
 ): ValueFormatter<T> {
   return (value) => {
     const formatter: Record<string, Intl.DisplayNames> = {};
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${options.type}]`;
+        return `[${type}]`;
       }
 
       formatter[locale] ||= new Intl.DisplayNames(locale, {
         ...options,
+        type,
       });
 
       return formatter[locale].of(value) ?? '';
     });
 
-    return options.transform ? transform(result, options.transform) : result;
+    return options?.transform ? transform(result, options.transform) : result;
   };
 }

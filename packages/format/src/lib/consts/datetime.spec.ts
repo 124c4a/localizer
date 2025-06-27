@@ -13,88 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { configure } from '@localizer/core';
+import { getLocalizer } from '@localizer/core';
 
-import {
-  DefaultDateFormat,
-  DefaultTimeFormat,
-  DefaultDateTimeFormat,
-  date,
-  dateRange,
-  time,
-  dateTime,
-} from './datetime.js';
+import { date, time, dateTime, dateRange, dateTimeRange } from './datetime.js';
 
-describe('configuration', () => {
-  it('should override default date format options', () => {
-    configure(
-      { DefaultDateFormat },
-      {
-        DefaultDateFormat: {
-          day: '2-digit',
-          month: '2-digit',
-          year: '2-digit',
-        },
-      },
-    );
-    expect(date(new Date('2020-01-01 2:43:56')).localize('fi-FI')).toEqual(
-      '01.01.20',
-    );
+const localizer = getLocalizer('en-US');
+
+describe('datetime formatters', () => {
+  it('should format date correctly', () => {
+    const testDate = new Date(2025, 0, 1); // January 1, 2025
+    expect(localizer(date(testDate))).toBe('1/1/2025'); // Adjust based on locale
   });
 
-  it('should override default time format options', () => {
-    configure(
-      { DefaultTimeFormat },
-      {
-        DefaultTimeFormat: {
-          hour: 'numeric',
-          minute: '2-digit',
-          second: '2-digit',
-        },
-      },
-    );
-    expect(time(new Date('2020-01-01 2:43:56')).localize('fi-FI')).toEqual(
-      '2.43.56',
-    );
+  it('should format time correctly', () => {
+    const testDate = new Date(2025, 0, 1, 14, 30, 15); // 14:30:15
+    expect(localizer(time(testDate))).toBe('02:30:15 PM'); // Adjust based on locale
   });
 
-  it('should override default date and time format options', () => {
-    configure(
-      { DefaultDateTimeFormat },
-      {
-        DefaultDateTimeFormat: {
-          day: '2-digit',
-          month: '2-digit',
-          year: '2-digit',
-          hour: 'numeric',
-          minute: '2-digit',
-          second: '2-digit',
-        },
-      },
-    );
-    expect(dateTime(new Date('2020-01-01 2:43:56')).localize('fi-FI')).toEqual(
-      '01.01.20 klo 2.43.56',
-    );
+  it('should format date and time correctly', () => {
+    const testDate = new Date(2025, 0, 1, 14, 30, 15); // January 1, 2025, 14:30:15
+    expect(localizer(dateTime(testDate))).toBe('1/1/2025, 02:30:15 PM'); // Adjust based on locale
   });
-});
 
-describe('dateRangeFormat', () => {
   it('should format date range correctly', () => {
-    configure(
-      { DefaultDateFormat },
-      {
-        DefaultDateFormat: {
-          day: '2-digit',
-          month: '2-digit',
-          year: '2-digit',
-        },
-      },
-    );
+    const startDate = new Date(2025, 0, 1); // January 1, 2025
+    const endDate = new Date(2025, 0, 31); // January 31, 2025
+    expect(localizer(dateRange(startDate, endDate))).toBe(
+      '1/1/2025\u2009\u2013\u20091/31/2025',
+    ); // Adjust based on locale and separator
+  });
 
-    const start = new Date('2020-01-01 2:43:56');
-    const end = new Date('2020-01-02 3:44:57');
-    expect(dateRange(start, end).localize('fi-FI')).toEqual(
-      '01.01.20\u2009\u2013\u200902.01.20',
-    );
+  it('should format date and time range correctly', () => {
+    const startDate = new Date(2025, 0, 1, 14, 30, 15); // January 1, 2025, 14:30:15
+    const endDate = new Date(2025, 0, 31, 16, 45, 30); // January 31, 2025, 16:45:30
+    expect(localizer(dateTimeRange(startDate, endDate))).toBe(
+      '1/1/2025, 2:30:15\u202fPM\u2009\u2013\u20091/31/2025, 4:45:30 PM',
+    ); // Adjust based on locale and separator
   });
 });

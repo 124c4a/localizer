@@ -17,17 +17,16 @@ import { LocaleCode, primaryLocales } from '../../consts/locale.js';
 import { parseLocaleCode } from './parse-locale-code.js';
 
 /**
- * @beta
+ * @public
  *
- * Retrieves the primary locale for a given country.
+ * Returns the primary locale for a given locale code.
  *
- * The `getPrimaryLocale` function determines the primary locale based on the provided
- * `LocaleCode`. If the locale includes a country component, it checks if there is a
- * corresponding primary locale for that country in the `primaryLocales` map. If no
- * country component is present or no primary locale is found, the original locale is returned.
+ * If the locale includes a country, it maps to the primary locale
+ * for that country using `primaryLocales`. Otherwise, the original
+ * locale is returned.
  *
  * @param locale - The locale code to process.
- * @returns The primary locale associated with the given locale code, or the original locale if no mapping exists.
+ * @returns The primary locale or the original locale if no mapping exists.
  */
 export function getPrimaryLocale(locale: LocaleCode): LocaleCode {
   const [, country] = parseLocaleCode(locale);

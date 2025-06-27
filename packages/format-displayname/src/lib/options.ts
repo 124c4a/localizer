@@ -17,41 +17,37 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
- * Defines the options for formatting display names using the `Intl.DisplayNames` API.
- *
- * @example
- * const options: DisplayNameFormatOptions = {
- *   type: 'region',
- *   style: 'short',
- *   fallback: 'code',
- *   transform: [upperCase],
- * };
- *
  * @public
- * @see {@link Localizable}, {@link Transformer}, {@link Intl.DisplayNames}
+ * Options for formatting display names with `Intl.DisplayNames`.
+ *
+ * @see {@link Intl.DisplayNames}
  */
 export type DisplayNameFormatOptions = {
   /**
-   * Specifies the locale matching algorithm to use.
-   * Can be 'lookup' or 'best fit'.
+   * Determines the locale matching algorithm.
+   * Options: 'lookup' or 'best fit'.
+   *
+   * @public
    */
   localeMatcher?: 'lookup' | 'best fit';
   /**
-   * Specifies the style of the display name.
-   * Can be 'long', 'short', or 'narrow'.
+   * Defines the display name style.
+   * Options: 'long', 'short', or 'narrow'.
+   *
+   * @public
    */
   style?: 'long' | 'short' | 'narrow';
   /**
+   * @public
    * Specifies the type of display name to format.
-   * Possible values include:
-   * - 'language': Formats language names.
-   * - 'region': Formats region names.
-   * - 'script': Formats script names.
-   * - 'calendar': Formats calendar names.
-   * - 'dateTimeField': Formats date-time field names.
-   * - 'currency': Formats currency names.
+   * - 'language': Language names.
+   * - 'region': Region names.
+   * - 'script': Script names.
+   * - 'calendar': Calendar names.
+   * - 'dateTimeField': Date-time field names.
+   * - 'currency': Currency names.
    */
-  type:
+  type?:
     | 'language'
     | 'region'
     | 'script'
@@ -59,18 +55,21 @@ export type DisplayNameFormatOptions = {
     | 'dateTimeField'
     | 'currency';
   /**
-   * Specifies how language names are displayed.
+   * @public
+   * Controls the display format for language names.
    */
   languageDisplay?: 'dialect' | 'standard';
   /**
-   * Specifies the fallback behavior when a display name cannot be generated.
-   * Can be 'code' or 'none'.
+   * @public
+   * Fallback behavior if a display name cannot be generated.
+   * Options: 'code' or 'none'.
    */
   fallback?: 'code' | 'none';
 
   /**
-   * An array of transformation functions to apply to the formatted display name.
-   * Each function takes a Localizable object and returns a transformed Localizable object.
+   * @public
+   * A list of functions to transform the formatted display name.
+   * Each function processes a Localizable and returns a modified Localizable.
    */
   transform?: Transformer<Localizable>[];
 };

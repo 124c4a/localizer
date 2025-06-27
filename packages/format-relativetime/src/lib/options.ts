@@ -17,19 +17,19 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
- * Represents the granularity levels for relative time formatting.
- *
- * Possible values:
- * - `year`: Granularity in years.
- * - `quarter`: Granularity in quarters.
- * - `month`: Granularity in months.
- * - `week`: Granularity in weeks.
- * - `day`: Granularity in days.
- * - `hour`: Granularity in hours.
- * - `minute`: Granularity in minutes.
- * - `second`: Granularity in seconds.
- *
  * @public
+ *
+ * Defines the granularity levels for relative time formatting.
+ *
+ * Values include:
+ * - `year`: Years
+ * - `quarter`: Quarters
+ * - `month`: Months
+ * - `week`: Weeks
+ * - `day`: Days
+ * - `hour`: Hours
+ * - `minute`: Minutes
+ * - `second`: Seconds
  */
 export type Stop =
   | 'year'
@@ -42,36 +42,37 @@ export type Stop =
   | 'second';
 
 /**
- * Options for configuring relative time formatting.
- *
  * @public
- * @see {@link Stop}, {@link Transformer}, {@link Intl.RelativeTimeFormatOptions}
+ * Configuration options for relative time formatting.
+ *
+ * @see {@link Intl.RelativeTimeFormat}
  */
 export type RelativeTimeFormatOptions = {
   /**
-   * The locale matching algorithm to use.
-   * @default 'best fit'
+   * @public
+   * Specifies the algorithm for locale matching.
    */
   localeMatcher?: 'lookup' | 'best fit';
   /**
-   * Whether to always display numeric values or adjust them automatically.
-   * @default 'auto'
+   * @public
+   * Controls numeric value display: always numeric or auto-adjusted.
    */
   numeric?: 'always' | 'auto';
   /**
-   * The length of the internationalized message.
-   * @default 'long'
+   * @public
+   * Specifies the length of the localized message.
    */
   style?: 'long' | 'short' | 'narrow';
 
   /**
-   * An array of granularity levels for relative time formatting.
-   * @default ['year', 'month', 'week', 'day', 'hour', 'minute']
+   * @public
+   * Granularity levels for relative time formatting.
    */
   stops?: Stop[];
 
   /**
-   * An array of transformer functions to apply to the formatted output.
+   * @public
+   * List of transformers applied to the formatted output.
    */
   transform?: Transformer<Localizable>[];
 };

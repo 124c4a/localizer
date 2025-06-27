@@ -48,8 +48,8 @@ const config: UserConfig = {
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Getting started', link: '/basics/getting-started' },
-      { text: 'API reference', link: '/api' },
+      { text: 'Getting started', link: '/introduction/getting-started' },
+      { text: 'Value formatting', link: '/formatting' },
     ],
 
     socialLinks: [
@@ -79,7 +79,7 @@ const configWithSidebar = withSidebar(config, {
   //
   // ============ [ GROUPING ] ============
   collapsed: true,
-  collapseDepth: 2,
+  // collapseDepth: 2,
   // rootGroupText: 'Contents',
   // rootGroupLink: 'https://github.com/jooy2',
   // rootGroupCollapsed: false,
@@ -105,7 +105,7 @@ const configWithSidebar = withSidebar(config, {
   // includeFolderIndexFile: false,
   //
   // ============ [ STYLING MENU TITLE ] ============
-  // hyphenToSpace: true,
+  hyphenToSpace: true,
   // underscoreToSpace: false,
   capitalizeFirst: true,
   // capitalizeEachWords: false,
@@ -119,11 +119,11 @@ const configWithSidebar = withSidebar(config, {
   // sortMenusByName: false,
   // sortMenusByFileDatePrefix: false,
   sortMenusByFrontmatterOrder: true,
-  frontmatterOrderDefaultValue: 0,
-  // sortMenusByFrontmatterDate: false,
+  // frontmatterOrderDefaultValue: 0,
+  // sortMenusByFrontmatterDate: true,
   // sortMenusOrderByDescending: false,
   // sortMenusOrderNumericallyFromTitle: false,
-  // sortMenusOrderNumericallyFromLink: false,
+  // sortMenusOrderNumericallyFromLink: true,
   //
   // ============ [ MISC ] ============
   // debugPrint: false,
@@ -134,6 +134,7 @@ configWithSidebar.themeConfig.sidebar.push(
     text: 'API reference',
     link: '/api/',
     items: readApiSidebar(),
+    collapsed: true,
   }),
 );
 

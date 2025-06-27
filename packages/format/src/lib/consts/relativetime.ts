@@ -13,51 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configurer } from '@localizer/core';
-import {
-  RelativeTimeFormatOptions,
-  relativeTimeFormatter,
-} from '@localizer/format-relativetime';
+import { relativeTimeFormatter } from '@localizer/format-relativetime';
 
-const defaultRelativeTimeFormatOptions: RelativeTimeFormatOptions = {
+/**
+ * @public
+ * A preconfigured instance for formatting relative time strings
+ * using default options.
+ */
+export const relativeTime = relativeTimeFormatter({
   stops: ['year', 'month', 'week', 'day', 'hour', 'minute'],
-};
-
-/**
- * Default relative time format configuration.
- *
- * This function allows overriding the default relative time format options
- * by merging the provided configuration with the existing defaults.
- *
- * @param config - An object containing the configuration options to override the defaults.
- *
- * @example
- * configure(
- *   { DefaultRelativeTimeFormat },
- *   { DefaultRelativeTimeFormat: { stops: ['year', 'month', 'day'] } }
- * );
- *
- * @public
- */
-export const DefaultRelativeTimeFormat: Configurer<
-  RelativeTimeFormatOptions
-> = (config) => {
-  Object.assign(defaultRelativeTimeFormatOptions, config);
-};
-
-/**
- * Relative time formatter instance.
- *
- * This instance is created using the default relative time format options
- * and can be used to format relative time strings.
- *
- * @example
- * const formattedTime = relativeTime(new Date('2023-01-01'), new Date('2022-12-31'));
- * console.log(formattedTime.localize('en')); // Output: "1 day ago"
- *
- * @public
- * @see {@link DefaultRelativeTimeFormat}
- */
-export const relativeTime = relativeTimeFormatter(
-  defaultRelativeTimeFormatOptions,
-);
+});

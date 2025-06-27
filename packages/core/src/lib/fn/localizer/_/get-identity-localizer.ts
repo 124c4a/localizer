@@ -20,9 +20,9 @@ import { isLocalizable } from '../../localizable/is-localizable.js';
 /**
  * @internal
  *
- * Creates an special localizer function that localizes values to a stable immutable identitfiers.
+ * Creates a localizer function that resolves values to stable, immutable identifiers.
  *
- * @returns A localizer function that produces stable immutable identifiers.
+ * @returns A localizer function for stable identifiers.
  */
 export function _getIdentityLocalizer(): Localizer {
   const fn = <T, A extends unknown[]>(

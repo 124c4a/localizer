@@ -20,14 +20,10 @@ import { isLocalizable } from '../localizable/is-localizable.js';
 
 /**
  * @public
+ * Generates a localizer function for the given locale.
  *
- * Creates a localizer function for a specific locale.
- *
- * The `getLocalizer` function generates a localizer that can be used to localize
- * values or functions returning localizable values based on the provided locale.
- *
- * @param locale - The locale code to use for localization.
- * @returns A localizer function bound to the specified locale.
+ * @param locale - The locale code for localization.
+ * @returns A localizer function bound to the locale.
  *
  * @see {@link Localizer}, {@link Localizable}, {@link LocaleCode}
  */
