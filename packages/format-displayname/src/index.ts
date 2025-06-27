@@ -13,4 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @public
+ *
+ * Formatters for language, country, currency and other names.
+ *
+ * @packageDocumentation
+ */
 export * from './lib/index.js';

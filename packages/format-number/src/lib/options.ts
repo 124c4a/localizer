@@ -20,6 +20,8 @@ import { CurrencyCode } from './currency.js';
 import { Unit } from './unit.js';
 
 /**
+ * @public
+ *
  * Represents the options for formatting numbers using the `Intl.NumberFormat` API.
  * This type defines various properties that can be used to customize the formatting of numbers,
  * including locale, style, currency, unit, and other formatting options.
@@ -29,7 +31,6 @@ import { Unit } from './unit.js';
  * It allows for extensive customization of how numbers are displayed, including options for
  * grouping, significant digits, rounding, and more.
  *
- * @public
  * @see {@link Intl.NumberFormat}
  */
 export type NumberFormatOptions = {

@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { getTimeDifference } from './getTimeDifference.js';
-import { Stop } from './options.js';
+import { Stop } from '../options.js';
+import { _getTimeDifference } from './getTimeDifference.js';
 
 const allStops: Stop[] = [
   'year',
@@ -28,6 +28,8 @@ const allStops: Stop[] = [
 ];
 
 /**
+ * @internal
+ *
  * Computes the relative time difference between two values based on the specified stops.
  *
  * @param value - The target value to compare, either a number (timestamp) or a Date object.
@@ -40,22 +42,16 @@ const allStops: Stop[] = [
  * The function iterates through the predefined `allStops` array and calculates the time difference
  * using the `getTimeDifference` utility. It returns the first non-zero difference for the specified stops.
  * If no non-zero difference is found, it defaults to the smallest granularity ('second').
- *
- * @example
- * const result = computeRelativeTime(new Date(), new Date(Date.now() - 86400000), ['day', 'hour']);
- * console.log(result); // Output: { value: 1, stop: 'day' }
- *
- * @internal
  */
-export function computeRelativeTime(
+export function _computeRelativeTime(
   value: number | Date,
   reference: number | Date,
-  stops: Stop[]
+  stops: Stop[],
 ): {
   value: number;
   stop: Stop;
 } {
-  const timeDifference = getTimeDifference(value, reference);
+  const timeDifference = _getTimeDifference(value, reference);
   let lastValue: {
     value: number;
     stop: Stop;

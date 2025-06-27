@@ -12,7 +12,7 @@ order: 7
 > **[relativeTime](../../../api/_localizer/format/relativeTime/index.md)** ( `value`: _Date | number_ , `reference`: _Date | number_ )
 >
 > - `value` - The value to format.
-> - `reference` - The reference moment of time.
+> - `reference` - The reference moment of time. Typically current moment of time (`new Date()`).
 >
 > Both arguments can be JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects or numeric timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 

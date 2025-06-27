@@ -1,17 +1,18 @@
 ---
 order: 2
+title: Value formatting
 ---
 
-# Formatting
+# Value formatting
 
 Localization is more than just translating text; it involves adapting data formats to align with the user's locale. To ensure consistency and precision, **@localizer** provides a robust set of configurable data formatters designed for common scenarios, such as:
 
-- Numeric values and monetary amounts
-- Dates, times, and ranges
-- Relative time expressions (e.g., past and future)
-- Names of languages, countries, and currencies
-- Itemized lists
-- Enumerations and custom data formats
+- [Dates, times, and ranges](./dates-and-times/index.md)
+- [Numeric values and monetary amounts](./numbers/index.md)
+- [Relative time expressions (e.g., past and future)](./relative-time/index.md)
+- [Names of languages, countries, and currencies](./display-name/index.md)
+- [Itemized lists](./lists/index.md)
+- [Enumerations and custom data types](./custom-data-types/index.md)
 
 To streamline development and minimize boilerplate code, the library also includes a [collection of preconfigured data formatters](./preconfigured-formatters.md) ready for immediate use.
 

@@ -17,6 +17,8 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
+ * @public
+ *
  * Defines the options for formatting a list of localized values.
  *
  * This type supports two modes:
@@ -25,40 +27,22 @@ import { Transformer } from '@localizer/transform';
  *
  * Additionally, a `transform` property can be provided to apply transformations to the formatted list.
  *
- * @example
- * // Using Intl.ListFormatOptions
- * const options = {
- *   localeMatcher: 'best fit',
- *   type: 'conjunction',
- *   style: 'short',
- * };
- *
- * // Using a delimiter
- * const optionsWithDelimiter = {
- *   delimiter: loc`, `,
- *   transform: [value => value.toUpperCase()],
- * };
- *
- * @public
- * @see {@link Intl.ListFormatOptions}, {@link Intl.ListFormat}, {@link Transformer}
+ * @see {@link Intl.ListFormat}
  */
 export type ListFormatOptions = (
   | {
       /**
        * Specifies the locale matching algorithm to use.
-       * @default 'best fit'
        */
       localeMatcher?: 'lookup' | 'best fit';
 
       /**
        * Specifies the format of the output message.
-       * @default 'conjunction'
        */
       type?: 'conjunction' | 'disjunction' | 'unit';
 
       /**
        * Specifies the length of the formatted message.
-       * @default 'long'
        */
       style?: 'long' | 'short' | 'narrow';
     }

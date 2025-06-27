@@ -17,6 +17,8 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
+ * @public
+ *
  * Represents the granularity levels for relative time formatting.
  *
  * Possible values:
@@ -28,8 +30,6 @@ import { Transformer } from '@localizer/transform';
  * - `hour`: Granularity in hours.
  * - `minute`: Granularity in minutes.
  * - `second`: Granularity in seconds.
- *
- * @public
  */
 export type Stop =
   | 'year'
@@ -42,31 +42,28 @@ export type Stop =
   | 'second';
 
 /**
+ * @public
+ *
  * Options for configuring relative time formatting.
  *
- * @public
- * @see {@link Stop}, {@link Transformer}, {@link Intl.RelativeTimeFormatOptions}
+ * @see {@link Intl.RelativeTimeFormat}
  */
 export type RelativeTimeFormatOptions = {
   /**
    * The locale matching algorithm to use.
-   * @default 'best fit'
    */
   localeMatcher?: 'lookup' | 'best fit';
   /**
    * Whether to always display numeric values or adjust them automatically.
-   * @default 'auto'
    */
   numeric?: 'always' | 'auto';
   /**
    * The length of the internationalized message.
-   * @default 'long'
    */
   style?: 'long' | 'short' | 'narrow';
 
   /**
    * An array of granularity levels for relative time formatting.
-   * @default ['year', 'month', 'week', 'day', 'hour', 'minute']
    */
   stops?: Stop[];
 

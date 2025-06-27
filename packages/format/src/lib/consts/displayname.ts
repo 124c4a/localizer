@@ -13,14 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { CountryCode, loc, LocaleCode, ValueFormatter } from '@localizer/core';
+import { CountryCode, loc, LocaleCode } from '@localizer/core';
 import { displayNameFormatter } from '@localizer/format-displayname';
-import { CurrencyCode, currencyFormatter } from '@localizer/format-number';
+import { CurrencyCode, currencyCodeFormatter } from '@localizer/format-number';
 
-const currencySymbolFormatter = currencyFormatter({
-  currencyDisplay: 'symbol',
-  parts: ['currency'],
-});
 /**
  * @public
  *
@@ -29,8 +25,9 @@ const currencySymbolFormatter = currencyFormatter({
  * @param currency - The currency code to format.
  * @returns The formatted currency symbol.
  */
-export const currencySymbol: ValueFormatter<CurrencyCode> = (currency) =>
-  currencySymbolFormatter(1, currency);
+export const currencySymbol = currencyCodeFormatter({
+  currencyDisplay: 'symbol',
+});
 
 /**
  * @public
@@ -39,9 +36,7 @@ export const currencySymbol: ValueFormatter<CurrencyCode> = (currency) =>
  *
  * This formatter generates the name representation of a currency.
  */
-export const currencyName = displayNameFormatter<CurrencyCode>({
-  type: 'currency',
-});
+export const currencyName = displayNameFormatter<CurrencyCode>('currency');
 /**
  * @public
  *
@@ -49,9 +44,7 @@ export const currencyName = displayNameFormatter<CurrencyCode>({
  *
  * This formatter generates the name representation of a language.
  */
-export const languageName = displayNameFormatter<LocaleCode>({
-  type: 'language',
-});
+export const languageName = displayNameFormatter<LocaleCode>('language');
 /**
  * @public
  *
@@ -59,9 +52,7 @@ export const languageName = displayNameFormatter<LocaleCode>({
  *
  * This formatter generates the name representation of a country.
  */
-export const countryName = displayNameFormatter<CountryCode>({
-  type: 'region',
-});
+export const countryName = displayNameFormatter<CountryCode>('region');
 /**
  * @public
  *

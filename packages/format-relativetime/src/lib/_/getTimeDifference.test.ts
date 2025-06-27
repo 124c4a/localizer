@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { getTimeDifference } from './getTimeDifference.js';
+import { _getTimeDifference } from './getTimeDifference.js';
 
-describe('getTimeDifference', () => {
+describe('_getTimeDifference', () => {
   it('calculates the correct time difference in all units for positive difference', () => {
-    const result = getTimeDifference(
+    const result = _getTimeDifference(
       new Date('2023-01-02T12:00:00'),
-      new Date('2023-01-01T12:00:00')
+      new Date('2023-01-01T12:00:00'),
     );
     expect(result).toEqual({
       year: 0,
@@ -34,9 +34,9 @@ describe('getTimeDifference', () => {
   });
 
   it('calculates the correct time difference in all units for negative difference', () => {
-    const result = getTimeDifference(
+    const result = _getTimeDifference(
       new Date('2023-01-01T12:00:00'),
-      new Date('2023-01-02T12:00:00')
+      new Date('2023-01-02T12:00:00'),
     );
     expect(result).toEqual({
       year: 0,
@@ -51,9 +51,9 @@ describe('getTimeDifference', () => {
   });
 
   it('returns zero for all units when the dates are the same', () => {
-    const result = getTimeDifference(
+    const result = _getTimeDifference(
       new Date('2023-01-01T12:00:00'),
-      new Date('2023-01-01T12:00:00')
+      new Date('2023-01-01T12:00:00'),
     );
     expect(result).toEqual({
       year: 0,
@@ -68,9 +68,9 @@ describe('getTimeDifference', () => {
   });
 
   it('handles non-Date inputs by converting them to Date objects', () => {
-    const result = getTimeDifference(
+    const result = _getTimeDifference(
       1672531200000, // Timestamp for 2023-01-01T00:00:00
-      1672617600000 // Timestamp for 2023-01-02T00:00:00
+      1672617600000, // Timestamp for 2023-01-02T00:00:00
     );
     expect(result).toEqual({
       year: 0,
@@ -85,17 +85,17 @@ describe('getTimeDifference', () => {
   });
 
   it('calculates the correct week difference for dates spanning multiple weeks', () => {
-    const result = getTimeDifference(
+    const result = _getTimeDifference(
       new Date('2023-01-15'),
-      new Date('2023-01-01')
+      new Date('2023-01-01'),
     );
     expect(result.week).toBe(2);
   });
 
   it('handles leap years correctly', () => {
-    const result = getTimeDifference(
+    const result = _getTimeDifference(
       new Date('2024-02-29'),
-      new Date('2023-02-28')
+      new Date('2023-02-28'),
     );
     expect(result).toEqual({
       year: 1,

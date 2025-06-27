@@ -68,6 +68,8 @@ export type LookupTable<T> = {
 };
 
 /**
+ * @beta
+ *
  * Multivariant formatter depending on value.
  *
  * This function creates a value formatter that selects the appropriate formatting logic based on the input value.
@@ -76,23 +78,10 @@ export type LookupTable<T> = {
  * Special symbols (`NoValue`, `UndefinedValue`, `NullValue`, `DefaultValue`) can be used in the lookup table
  * to handle specific cases such as `undefined`, `null`, or fallback values.
  *
- * @template T - The type of values that the formatter can handle.
+ * @typeParam T - The type of values that the formatter can handle.
  * @param lut - The lookup table containing mappings of values to localizable values or formatters.
  * @returns A function that formats the input value based on the lookup table.
  * @throws {RangeError} If the input value is not represented in the lookup table and no default value is specified.
- *
- * @example
- * const formatter = lookupFormatter({
- *   [UndefinedValue]: loc`[undefined]`,
- *   [NullValue]: loc`[null]`,
- *   [DefaultValue]: (value) => loc`Value: ${value}`,
- * });
- * console.log(formatter(undefined).localize('en')); // Output: "[undefined]"
- * console.log(formatter(null).localize('en')); // Output: "[null]"
- * console.log(formatter(42).localize('en')); // Output: "Value: 42"
- *
- * @beta
- * @see {@link LookupTable}, {@link UndefinedValue}, {@link NullValue}, {@link NoValue}, {@link DefaultValue}
  */
 export function lookupFormatter<T>(lut: LookupTable<T>): ValueFormatter<T> {
   return (value) => {
@@ -108,8 +97,8 @@ export function lookupFormatter<T>(lut: LookupTable<T>): ValueFormatter<T> {
     if (!result) {
       throw new RangeError(
         `Value ${value} is not represented in [${[...Object.keys(lut)].join(
-          ', '
-        )}], but no default value is specified`
+          ', ',
+        )}], but no default value is specified`,
       );
     }
     if (isLocalizable(result)) {

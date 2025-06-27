@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 0
 ---
 
 # Preconfigured formatters

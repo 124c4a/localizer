@@ -17,18 +17,11 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
+ * @public
+ *
  * Defines the options for formatting display names using the `Intl.DisplayNames` API.
  *
- * @example
- * const options: DisplayNameFormatOptions = {
- *   type: 'region',
- *   style: 'short',
- *   fallback: 'code',
- *   transform: [upperCase],
- * };
- *
- * @public
- * @see {@link Localizable}, {@link Transformer}, {@link Intl.DisplayNames}
+ * @see {@link Intl.DisplayNames}
  */
 export type DisplayNameFormatOptions = {
   /**
@@ -51,7 +44,7 @@ export type DisplayNameFormatOptions = {
    * - 'dateTimeField': Formats date-time field names.
    * - 'currency': Formats currency names.
    */
-  type:
+  type?:
     | 'language'
     | 'region'
     | 'script'

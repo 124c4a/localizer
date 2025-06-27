@@ -9,7 +9,7 @@
 >
 > - `value` - The value to format. Can be any JavaScript value.
 
-This is a universal data formatter that converts any value into a locale-dependent `Localizable` using [preconfigured formatters](../preconfigured-formatters.ts). It is useful for scenarios where exact value type is unknown.
+This is a universal data formatter that converts any value into a locale-dependent `Localizable` using [preconfigured formatters](../index.md). It is useful for scenarios where exact value type is unknown.
 
 Depending on value type, it uses the following formatters:
 

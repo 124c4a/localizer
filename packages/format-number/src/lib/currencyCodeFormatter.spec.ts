@@ -13,29 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { currencySymbolFormatter } from './currencySymbolFormatter.js';
+import { currencyCodeFormatter } from './currencyCodeFormatter.js';
 
-describe('currencySymbolFormatter', () => {
+describe('currencyCodeFormatter', () => {
   it('formats a currency symbol correctly for a given locale', () => {
-    const formatter = currencySymbolFormatter();
+    const formatter = currencyCodeFormatter();
     const result = formatter('USD').localize('en-US');
     expect(result).toBe('$');
   });
 
   it('returns a placeholder for undefined locale', () => {
-    const formatter = currencySymbolFormatter();
+    const formatter = currencyCodeFormatter();
     const result = formatter('USD').localize(null);
     expect(result).toBe('[currency]');
   });
 
   it('applies custom number format options if provided', () => {
-    const formatter = currencySymbolFormatter({ currencyDisplay: 'code' });
+    const formatter = currencyCodeFormatter({ currencyDisplay: 'code' });
     const result = formatter('USD').localize('en-US');
     expect(result).toBe('USD');
   });
 
   it('formats currency symbols for non-English locales', () => {
-    const formatter = currencySymbolFormatter();
+    const formatter = currencyCodeFormatter();
     const result = formatter('EUR').localize('fr-FR');
     expect(result).toBe('€');
   });

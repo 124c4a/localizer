@@ -78,9 +78,7 @@ console.log(UninitializedLocalizer(Empty)); // [!code error]
 
 This special localizer facilitates [implicit localization](#implicit-localization), making it particularly useful when working with external libraries that require a `Localizer` as input. By leveraging this localizer, you can simplify integration scenarios where explicit localization might otherwise be cumbersome or impractical.
 
-### `IdentityLocalizer` <Badge type="warning" text="experimental" />
-
-This special localizer enables the use of `Localizable` values directly as stable identifiers. This can be particularly useful for scenarios such as assigning `test-id` attributes in UI components or other cases where consistent, human-readable identifiers are preferred.
+This localizer enables the direct use of `Localizable` values as stable, human-readable identifiers. It is useful for testing UI components or scenarios requiring consistent and descriptive identifiers.
 
 <<< ./localizer-identity.ts#example{ts}
 

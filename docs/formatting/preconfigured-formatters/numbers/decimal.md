@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Number <Badge type="info" text="@localizer/format" />
+# Decimal <Badge type="info" text="@localizer/format" />
 
 > **[decimal](../../../api/_localizer/format/decimal/index.md)** ( `value`: _number | bigint_ )
 >

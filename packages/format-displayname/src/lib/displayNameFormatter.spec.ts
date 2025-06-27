@@ -19,20 +19,19 @@ import { displayNameFormatter } from './displayNameFormatter.js';
 
 describe('displayNameFormatter', () => {
   it('formats a value using the provided locale and options', () => {
-    const formatter = displayNameFormatter({ type: 'region' });
+    const formatter = displayNameFormatter('region');
     const result = formatter('US').localize('en-US');
     expect(result).toBe('United States');
   });
 
   it('returns a fallback value for unknown codes', () => {
-    const formatter = displayNameFormatter({ type: 'region' });
+    const formatter = displayNameFormatter('region');
     const result = formatter('ZL').localize('en-US');
     expect(result).toBe('ZL');
   });
 
   it('returns an empty string value for unknown codes if fallback is set as `none`', () => {
-    const formatter = displayNameFormatter({
-      type: 'region',
+    const formatter = displayNameFormatter('region', {
       fallback: 'none',
     });
     const result = formatter('ZL').localize('en-US');
@@ -40,14 +39,13 @@ describe('displayNameFormatter', () => {
   });
 
   it('returns a placeholder when locale is undefined', () => {
-    const formatter = displayNameFormatter({ type: 'region' });
+    const formatter = displayNameFormatter('region');
     const result = formatter('US').localize(null);
     expect(result).toBe('[region]');
   });
 
   it('applies a custom transform function if provided', () => {
-    const formatter = displayNameFormatter({
-      type: 'region',
+    const formatter = displayNameFormatter('region', {
       transform: [upperCase],
     });
     const result = formatter('US').localize('en-US');
@@ -55,7 +53,7 @@ describe('displayNameFormatter', () => {
   });
 
   it('handles multiple locales with caching', () => {
-    const formatter = displayNameFormatter({ type: 'region' });
+    const formatter = displayNameFormatter('region');
     const result1 = formatter('US').localize('en-US');
     const result2 = formatter('US').localize('fr-FR');
     expect(result1).toBe('United States');

@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Relative number change <Badge type="info" text="@localizer/format" />
+# Relative decimal <Badge type="info" text="@localizer/format" />
 
 > **[relativeDecimal](../../../api/_localizer/format/relativeDecimal/index.md)** ( `value`: _number | bigint_ , `reference`: _number | bigint_ )
 >

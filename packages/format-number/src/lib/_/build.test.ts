@@ -16,38 +16,38 @@
 import { upperCase } from '@localizer/transform';
 
 import {
-  buildFormatter,
-  buildRangeFormatter,
-  buildUnitFormatter,
+  _buildFormatter,
+  _buildRangeFormatter,
+  _buildUnitFormatter,
 } from './build.js';
 
 describe('buildFormatter', () => {
   it('formats a number correctly for a given locale', () => {
-    const formatter = buildFormatter({ style: 'decimal' });
+    const formatter = _buildFormatter({ style: 'decimal' });
     const result = formatter(1234.56).localize('en-US');
     expect(result).toBe('1,234.56');
   });
 
   it('formats a number correctly for a given locale and extracts parts', () => {
-    const formatter = buildFormatter({ style: 'decimal', parts: ['integer'] });
+    const formatter = _buildFormatter({ style: 'decimal', parts: ['integer'] });
     const result = formatter(1234.56).localize('en-US');
     expect(result).toBe('1234');
   });
 
   it('returns a placeholder for undefined locale', () => {
-    const formatter = buildFormatter({ style: 'decimal' });
+    const formatter = _buildFormatter({ style: 'decimal' });
     const result = formatter(1234.56).localize(null);
     expect(result).toBe('[decimal]');
   });
 
   it('returns a placeholder for undefined locale when style is not set explicitly', () => {
-    const formatter = buildFormatter({});
+    const formatter = _buildFormatter({});
     const result = formatter(1234.56).localize(null);
     expect(result).toBe('[decimal]');
   });
 
   it('applies transform function if provided', () => {
-    const formatter = buildFormatter({
+    const formatter = _buildFormatter({
       style: 'decimal',
       transform: [upperCase],
     });
@@ -58,25 +58,25 @@ describe('buildFormatter', () => {
 
 describe('buildRangeFormatter', () => {
   it('formats a range of numbers correctly for a given locale', () => {
-    const formatter = buildRangeFormatter({}, 'decimal');
+    const formatter = _buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize('en-US');
     expect(result).toBe('1,000–2,000');
   });
 
   it('returns a placeholder for undefined locale', () => {
-    const formatter = buildRangeFormatter({}, 'decimal');
+    const formatter = _buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize(null);
     expect(result).toBe('[decimalRange]');
   });
 
   it('returns a placeholder for undefined locale when style is not set explicitly', () => {
-    const formatter = buildRangeFormatter({}, 'decimal');
+    const formatter = _buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize(null);
     expect(result).toBe('[decimalRange]');
   });
 
   it('filters parts based on source if provided', () => {
-    const formatter = buildRangeFormatter(
+    const formatter = _buildRangeFormatter(
       { style: 'decimal', parts: ['integer'] },
       'decimal',
       'startRange',
@@ -86,7 +86,7 @@ describe('buildRangeFormatter', () => {
   });
 
   it('applies transformation', () => {
-    const formatter = buildRangeFormatter(
+    const formatter = _buildRangeFormatter(
       {
         style: 'unit',
         unit: 'kilometer',
@@ -101,19 +101,19 @@ describe('buildRangeFormatter', () => {
 
 describe('buildUnitFormatter', () => {
   it('formats a number with a unit correctly for a given locale', () => {
-    const formatter = buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
+    const formatter = _buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
     const result = formatter(100, 'kilometer').localize('en-US');
     expect(result).toBe('100 km');
   });
 
   it('returns a placeholder for undefined locale', () => {
-    const formatter = buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
+    const formatter = _buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
     const result = formatter(100, 'kilometer').localize(null);
     expect(result).toBe('[unit]');
   });
 
   it('applies transform function if provided', () => {
-    const formatter = buildUnitFormatter(
+    const formatter = _buildUnitFormatter(
       { style: 'unit', transform: [upperCase] },
       'unit',
       'unit',

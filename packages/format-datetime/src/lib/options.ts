@@ -15,20 +15,21 @@
  */
 import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
+
 /**
+ * @public
+ *
  * Options for formatting date and time.
  *
  * This type defines the options that can be used to customize the formatting of date and time
  * using the `Intl.DateTimeFormat` API.
  *
- * @public
- * @see {@link dateTimeFormatter}, {@link dateTimeRangeFormatter}, {@link Transformer}, {@link Intl.DateTimeFormat}
+ * @see {@link Intl.DateTimeFormat}
  */
 export type DateTimeFormatOptions = {
   /**
    * The locale to use for formatting the date and time.
    * If not provided, the default locale will be used.
-   * @default 'best fit'
    */
   localeMatcher?: 'best fit' | 'lookup';
   /**

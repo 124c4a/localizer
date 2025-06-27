@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { loc, Configurer, ValueRangeFormatter } from '@localizer/core';
+import { loc, ValueRangeFormatter } from '@localizer/core';
 import {
   DateTimeFormatOptions,
   dateTimeFormatter,
@@ -42,60 +42,9 @@ const defaultDateTimeFormatOptions: DateTimeFormatOptions = {
 /**
  * @public
  *
- * Default date format configuration.
- *
- * Allows overriding the default date format options by merging the provided configuration.
- *
- * @param config - Configuration options to override the defaults.
- *
- * @see {@link date}, {@link dateRange}
- */
-export const DefaultDateFormat: Configurer<DateTimeFormatOptions> = (
-  config,
-) => {
-  Object.assign(defaultDateFormatOptions, config);
-};
-/**
- * @public
- *
- * Default time format configuration.
- *
- * Allows overriding the default time format options by merging the provided configuration.
- *
- * @param config - Configuration options to override the defaults.
- *
- * @see {@link time}
- */
-export const DefaultTimeFormat: Configurer<DateTimeFormatOptions> = (
-  config,
-) => {
-  Object.assign(defaultTimeFormatOptions, config);
-};
-/**
- * @public
- *
- * Default date and time format configuration.
- *
- * Allows overriding the default date and time format options by merging the provided configuration.
- *
- * @param config - Configuration options to override the defaults.
- *
- * @see {@link dateTime}, {@link dateTimeRange}
- */
-export const DefaultDateTimeFormat: Configurer<DateTimeFormatOptions> = (
-  config,
-) => {
-  Object.assign(defaultDateTimeFormatOptions, config);
-};
-
-/**
- * @public
- *
  * Date formatter instance.
  *
  * Formats dates using the default date format options.
- *
- * @see {@link DefaultDateFormat}, {@link dateRange}, {@link dateTimeRange}
  */
 export const date = dateTimeFormatter(defaultDateFormatOptions);
 /**
@@ -104,8 +53,6 @@ export const date = dateTimeFormatter(defaultDateFormatOptions);
  * Time formatter instance.
  *
  * Formats times using the default time format options.
- *
- * @see {@link DefaultTimeFormat}, {@link date}
  */
 export const time = dateTimeFormatter(defaultTimeFormatOptions);
 /**
@@ -114,8 +61,6 @@ export const time = dateTimeFormatter(defaultTimeFormatOptions);
  * Date-time formatter instance.
  *
  * Formats date-time values using the default date-time format options.
- *
- * @see {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateRange}, {@link dateTimeRange}
  */
 export const dateTime = dateTimeFormatter(defaultDateTimeFormatOptions);
 
@@ -125,8 +70,6 @@ export const dateTime = dateTimeFormatter(defaultDateTimeFormatOptions);
  * Date range formatter instance.
  *
  * Formats a range of dates using the default date format options and a generic range separator.
- *
- * @see {@link DefaultDateFormat}, {@link date}, {@link time}, {@link dateTime}
  */
 export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
   loc`${date(start)}${GenericRangeSeparator}${date(end)}`;
@@ -136,8 +79,6 @@ export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
  * Date-time range formatter instance.
  *
  * Formats a range of date-time values using the default date-time format options.
- *
- * @see {@link DefaultDateTimeFormat}, {@link date}, {@link time}, {@link dateTime}, {@link dateRange}
  */
 export const dateTimeRange = dateTimeRangeFormatter(
   defaultDateTimeFormatOptions,

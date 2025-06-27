@@ -21,29 +21,22 @@ import {
 } from '@localizer/core';
 import { transform } from '@localizer/transform';
 
-import { NumberFormatOptions } from './options.js';
+import { NumberFormatOptions } from '../options.js';
 
 /**
+ * @internal
+ *
  * Builds a formatter for localized number values based on the provided options.
  *
- * @template T - The type of the value to be formatted, either a number or a bigint.
+ * @typeParam T - The type of the value to be formatted, either a number or a bigint.
  * @param options - An object specifying the formatting options for number values.
  * @returns A `ValueFormatter` function that formats a number into a localized string.
  *
  * The formatter uses the `Intl.NumberFormat` API to generate localized number strings.
  * If the `parts` option is provided, it filters and joins specific parts of the formatted output.
  * Additionally, a `transform` property can be applied to modify the formatted result.
- *
- * @example
- * const options = { style: 'currency', currency: 'USD' };
- * const formatter = buildFormatter(options);
- * const formattedValue = formatter(1234.56);
- * console.log(formattedValue.localize('en')); // Output: $1,234.56
- *
- * @internal
- * @see {@link NumberFormatOptions}, {@link ValueFormatter}, {@link Intl.NumberFormat}
  */
-export function buildFormatter<T extends number | bigint>(
+export function _buildFormatter<T extends number | bigint>(
   options: NumberFormatOptions,
   style: 'decimal' | 'currency' | 'percent' | 'unit' = 'decimal',
 ): ValueFormatter<T> {
@@ -74,9 +67,11 @@ export function buildFormatter<T extends number | bigint>(
 }
 
 /**
+ * @internal
+ *
  * Builds a formatter for localized number ranges based on the provided options.
  *
- * @template T - The type of the values to be formatted, either numbers or bigints.
+ * @typeParam T - The type of the values to be formatted, either numbers or bigints.
  * @param options - An object specifying the formatting options for number ranges.
  * @param source - An optional string indicating the source of the range ('startRange', 'endRange', or 'shared').
  * @returns A `ValueRangeFormatter` function that formats a range of numbers into a localized string.
@@ -84,17 +79,8 @@ export function buildFormatter<T extends number | bigint>(
  * The formatter uses the `Intl.NumberFormat` API to generate localized number range strings.
  * If the `parts` option is provided, it filters and joins specific parts of the formatted output.
  * Additionally, a `transform` property can be applied to modify the formatted result.
- *
- * @example
- * const options = { style: 'decimal' };
- * const rangeFormatter = buildRangeFormatter(options);
- * const formattedRange = rangeFormatter(1000, 2000);
- * console.log(formattedRange.localize('en')); // Output: 1,000–2,000
- *
- * @internal
- * @see {@link NumberFormatOptions}, {@link ValueRangeFormatter}, {@link Intl.NumberFormat}
  */
-export function buildRangeFormatter<T extends number | bigint>(
+export function _buildRangeFormatter<T extends number | bigint>(
   options: NumberFormatOptions,
   style: 'decimal' | 'currency' | 'percent' | 'unit',
   source?: 'startRange' | 'endRange' | 'shared',
@@ -130,10 +116,12 @@ export function buildRangeFormatter<T extends number | bigint>(
 }
 
 /**
+ * @internal
+ *
  * Builds a formatter for localized unit values based on the provided options.
  *
- * @template T - The type of the value to be formatted, either a number or a bigint.
- * @template U - The type of the unit to be formatted, represented as a string.
+ * @typeParam T - The type of the value to be formatted, either a number or a bigint.
+ * @typeParam U - The type of the unit to be formatted, represented as a string.
  * @param options - An object specifying the formatting options for unit values.
  * @param unitKey - The key in `NumberFormatOptions` that specifies the unit type.
  * @returns A `UnitValueFormatter` function that formats a unit value into a localized string.
@@ -141,17 +129,11 @@ export function buildRangeFormatter<T extends number | bigint>(
  * The formatter uses the `Intl.NumberFormat` API to generate localized unit strings.
  * If the `parts` option is provided, it filters and joins specific parts of the formatted output.
  * Additionally, a `transform` property can be applied to modify the formatted result.
- *
- * @example
- * const options = { style: 'unit' };
- * const unitFormatter = buildUnitFormatter(options, 'unit');
- * const formattedUnit = unitFormatter(100, 'kilometer');
- * console.log(formattedUnit.localize('en')); // Output: 100 kilometers
- *
- * @internal
- * @see {@link NumberFormatOptions}, {@link UnitValueFormatter}, {@link Intl.NumberFormat}
  */
-export function buildUnitFormatter<T extends number | bigint, U extends string>(
+export function _buildUnitFormatter<
+  T extends number | bigint,
+  U extends string,
+>(
   options: NumberFormatOptions,
   style: 'unit' | 'currency',
   unitKey: keyof NumberFormatOptions,

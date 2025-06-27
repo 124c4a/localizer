@@ -13,5 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @public
+ *
+ * Formatters for relative dates and times.
+ *
+ * @packageDocumentation
+ */
 export * from './lib/options.js';
 export * from './lib/relativeTimeFormatter.js';

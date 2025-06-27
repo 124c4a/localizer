@@ -10,19 +10,14 @@ The `configure()` method takes two parameters: an array of configuration domains
 
 ```typescript
 import { configure, Core } from '@localizer/core';
-import { DefaultDecimalFormat } from '@localizer/format';
 
 const configuration = {
   Core: {
     fallbackLocales: ['fi', 'en'];
   },
-  DefaultDecimalFormat: {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }
 }
 
-configure([Core, DefaultDecimalFormat], configuration);
+configure({ Core }, configuration);
 ```
 
 Below is a list of configuration domains that can be customized using the `configure()` method.

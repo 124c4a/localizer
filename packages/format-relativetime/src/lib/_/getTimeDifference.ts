@@ -33,6 +33,8 @@ type TimeDifference = {
 };
 
 /**
+ * @internal
+ *
  * Calculates the time difference between two values across multiple granularities.
  *
  * @param value - The target value to compare, either a number (timestamp) or a Date object.
@@ -49,17 +51,10 @@ type TimeDifference = {
  *
  * The function uses utilities from the `date-fns` library to compute differences for each granularity.
  * Weeks are derived by dividing the number of days by 7 and truncating the result to an integer.
- *
- * @example
- * const timeDiff = getTimeDifference(new Date('2023-01-01'), new Date('2022-01-01'));
- * console.log(timeDiff);
- * // Output: { year: 1, quarter: 4, month: 12, week: 52, day: 365, hour: 8760, minute: 525600, second: 31536000 }
- *
- * @internal
  */
-export function getTimeDifference(
+export function _getTimeDifference(
   value: number | Date,
-  reference: number | Date
+  reference: number | Date,
 ): TimeDifference {
   return {
     year: differenceInYears(value, reference),

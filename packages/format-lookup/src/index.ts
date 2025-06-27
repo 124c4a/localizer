@@ -13,4 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/**
+ * @beta
+ *
+ * Look-up based formatters for custom data types.
+ *
+ * @packageDocumentation
+ */
 export * from './lib/lookupFormatter.js';

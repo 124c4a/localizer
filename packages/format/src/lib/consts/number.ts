@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configurer } from '@localizer/core';
 import {
   currencyFormatter,
   decimalFormatter,
@@ -34,60 +33,9 @@ const defaultUnitFormatOptions: NumberFormatOptions = {};
 /**
  * @public
  *
- * Default configuration options for decimal formatting.
- *
- * These options can be overridden to customize the behavior of the decimal formatter.
- *
- */
-export const DefaultDecimalFormat: Configurer<NumberFormatOptions> = (
-  config,
-) => {
-  Object.assign(defaultDecimalFormatOptions, config);
-};
-
-/**
- * @public
- *
- * Default configuration options for percent formatting.
- *
- * These options can be overridden to customize the behavior of the percent formatter.
- */
-export const DefaultPercentFormat: Configurer<NumberFormatOptions> = (
-  config,
-) => {
-  Object.assign(defaultPercentFormatOptions, config);
-};
-/**
- * @public
- *
- * Default configuration options for currency formatting.
- *
- * These options can be overridden to customize the behavior of the currency formatter.
- */
-export const DefaultCurrencyFormat: Configurer<NumberFormatOptions> = (
-  config,
-) => {
-  Object.assign(defaultCurrencyFormatOptions, config);
-};
-/**
- * @public
- *
- * Default configuration options for unit formatting.
- *
- * These options can be overridden to customize the behavior of the unit formatter.
- */
-export const DefaultUnitFormat: Configurer<NumberFormatOptions> = (config) => {
-  Object.assign(defaultUnitFormatOptions, config);
-};
-
-/**
- * @public
- *
  * Decimal formatter instance.
  *
  * Formats numbers as decimals using the default decimal format options.
- *
- * @see {@link DefaultDecimalFormat}
  */
 export const decimal = decimalFormatter(defaultDecimalFormatOptions);
 /**
@@ -96,8 +44,6 @@ export const decimal = decimalFormatter(defaultDecimalFormatOptions);
  * Decimal range formatter instance.
  *
  * Formats ranges of numbers as decimals using the default decimal format options.
- *
- * @see {@link DefaultDecimalFormat}
  */
 export const decimalRange = decimalRangeFormatter(defaultDecimalFormatOptions);
 /**
@@ -106,8 +52,6 @@ export const decimalRange = decimalRangeFormatter(defaultDecimalFormatOptions);
  * Percent formatter instance.
  *
  * Formats numbers as percentages using the default percent format options.
- *
- * @see {@link DefaultPercentFormat}
  */
 export const percent = percentFormatter(defaultPercentFormatOptions);
 /**
@@ -116,8 +60,6 @@ export const percent = percentFormatter(defaultPercentFormatOptions);
  * Percent range formatter instance.
  *
  * Formats ranges of numbers as percentages using the default percent format options.
- *
- * @see {@link DefaultPercentFormat}
  */
 export const percentRange = percentRangeFormatter(defaultPercentFormatOptions);
 
@@ -127,8 +69,6 @@ export const percentRange = percentRangeFormatter(defaultPercentFormatOptions);
  * Currency formatter instance.
  *
  * Formats numbers as currency values using the default currency format options.
- *
- * @see {@link DefaultCurrencyFormat}
  */
 export const currency = currencyFormatter(defaultCurrencyFormatOptions);
 /**
@@ -137,8 +77,6 @@ export const currency = currencyFormatter(defaultCurrencyFormatOptions);
  * Unit formatter instance.
  *
  * Formats numbers as units using the default unit format options.
- *
- * @see {@link DefaultUnitFormat}
  */
 export const unit = unitFormatter(defaultUnitFormatOptions);
 
@@ -148,8 +86,6 @@ export const unit = unitFormatter(defaultUnitFormatOptions);
  * Relative decimal formatter instance.
  *
  * Formats numbers as relative decimals using the default decimal format options.
- *
- * @see {@link DefaultDecimalFormat}
  */
 export const relativeDecimal = relativeDecimalFormatter(
   defaultDecimalFormatOptions,
@@ -160,8 +96,6 @@ export const relativeDecimal = relativeDecimalFormatter(
  * Relative percent formatter instance.
  *
  * Formats numbers as relative percentages using the default percent format options.
- *
- * @see {@link DefaultPercentFormat}
  */
 export const relativePercent = relativePercentFormatter(
   defaultPercentFormatOptions,
