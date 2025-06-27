@@ -12,7 +12,7 @@
 >
 > Both arguments can be either a [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) or a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt).
 
-This formatter builds upon the functionality of [number formatter](./decimal.md) to format the difference between a value and a reference in a locale-aware manner. It ensures that the resulting output adheres to the same configuration as `decimal`, providing consistency in numerical representation.
+This formatter calculates the difference between a value and a reference and formats it in a locale-aware manner.
 
 **Examples:**
 

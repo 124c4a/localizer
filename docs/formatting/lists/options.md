@@ -35,14 +35,16 @@ This option cannot be used together with `delimiter`
 
 ## `style`
 
-The grouping style (for example, whether list separators and conjunctions are included). Possible values are:
+The grouping style determines how list separators and conjunctions are formatted. Possible values:
 
-- `"long"` **(default)** - The typical list format. For example, "A, B, and C"
-- `"short"` - The spacing, the length or presence of a conjunction, and the separators may change. Usually, you would want the input elements to be abbreviated too. For example, "A, B, & C"
-- `"narrow"` - Where possible, the list format is further abbreviated, so that the output is as short as possible. For example, "A, B, C"
+- `"long"` **(default)** - Standard list format, e.g., "A, B, and C".
+- `"short"` - Abbreviated format, e.g., "A, B, & C".
+- `"narrow"` - Minimal format, e.g., "A, B, C".
 
 ::: warning
+
 This option is incompatible with `delimiter`.
+
 :::
 
 **Examples:**
@@ -51,14 +53,18 @@ This option is incompatible with `delimiter`.
 
 ## `delimiter`
 
-Defines a custom delimiter for the list. Accepts any value that is [Localizable](../../introduction/localizable.md).
+Defines a custom delimiter for the list. Accepts any [Localizable](../../introduction/localizable.md) value.
 
 ::: warning
+
 This option is incompatible with both `type` and `style`.
+
 :::
 
 ::: info NOTE
+
 This option is not part of [`Intl.ListFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat) API.
+
 :::
 
 **Examples:**

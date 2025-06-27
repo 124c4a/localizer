@@ -9,11 +9,11 @@
 >
 > - `value` - The value to format. Can be any JavaScript value.
 
-This is a fundamental data formatter that converts any value into a locale-independent `Localizable` using [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion). It is ideal for scenarios where a straightforward string representation of the value is sufficient.
+Converts any value into a locale-independent `Localizable` using [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion). Suitable for simple string representations.
 
 ::: warning
 
-Only use `stringify` for formatting string values or when a simple string representation of the value is sufficient. For other data types, consider using more specialized formatters tailored to the specific data type or formatting requirements.
+Only use `stringify` for simple string representations. For other data types, use specialized formatters.
 
 :::
 

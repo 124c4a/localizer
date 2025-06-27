@@ -10,4 +10,4 @@ order: 16
 > - `unit` - The [measurement unit](../../../api/_localizer/format-number/Unit/index.md) to use for value formatting.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter provides a flexible solution for displaying relative measurement changes in a way that is sensitive to locale-specific conventions.
+This formatter displays relative measurement changes according to locale-specific conventions.

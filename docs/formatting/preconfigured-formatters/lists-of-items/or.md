@@ -13,7 +13,7 @@ order: 2
 >
 > - `value` - The array of localizable values.
 
-This formatter generates lists by joining items with a disjunction (e.g., "or") in a way that respects the locale's grammar and formatting rules.
+This formatter creates lists by joining items with "or," following the locale's grammar and formatting rules.
 
 **Examples:**
 

@@ -16,7 +16,7 @@ order: 5
 >
 > Both arguments can be JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects or numeric timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 
-This formatter builds upon the [date and time formatter](./date-time.md) to present a range of dates in a locale-aware format.
+This formatter displays a range of dates in a format that respects the user's locale settings.
 
 **Examples:**
 

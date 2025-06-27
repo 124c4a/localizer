@@ -10,7 +10,7 @@ order: 10
 > - `unit` - The [measurement unit](../../../api/_localizer/format-number/Unit/index.md) to use for value formatting.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter is ideal for displaying measurements with a fixed, predefined unit.
+Use this formatter to display measurements with a predefined unit.
 
 ::: tip
 

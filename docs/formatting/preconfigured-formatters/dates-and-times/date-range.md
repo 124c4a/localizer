@@ -16,11 +16,11 @@ order: 4
 >
 > Both arguments can be JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects or numeric timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 
-This formatter builds upon the [date formatter](./date.md) to present a range of dates in a locale-aware format.
+This formatter extends the [date formatter](./date.md) to display a range of dates in a locale-aware format.
 
 ::: info NOTE
 
-Unlike [date/time range formatter](./date-time-range.md) and [`Intl.DateTimeFormat.formatRange()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange), this formatter does not shorten date ranges. Instead, it consistently displays the full representation of each date, ensuring clarity and precision.
+Unlike [date/time range formatter](./date-time-range.md) or [`Intl.DateTimeFormat.formatRange()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatRange), this formatter always displays the full representation of each date for clarity and precision.
 
 :::
 

@@ -9,8 +9,7 @@ title: Display names
 >
 > - `T` _extends string_ - The type of value to format. Exact allowed values are determined by `type` parameter.
 > - `type` - One of `"language"`, `"region"`, `"script"`, `"currency"`, `"calendar"`, or `"dateTimeField"`
-
-This formatter provides a flexible and locale-aware solution for obtaining translations of languages, countries, currencies, and other names.
+>   This formatter offers a locale-aware way to translate names of languages, countries, currencies, and more.
 
 ::: tip
 

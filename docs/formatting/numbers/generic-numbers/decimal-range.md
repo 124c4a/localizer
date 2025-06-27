@@ -9,7 +9,7 @@ order: 2
 > - `T` _extends number | bigint_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter provides a flexible solution for displaying ranges of numbers, including both integers and decimals, in a locale-sensitive manner.
+This formatter displays number ranges, including integers and decimals, in a locale-sensitive way.
 
 ::: tip
 

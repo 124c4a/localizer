@@ -9,7 +9,7 @@ order: 4
 > - `T` _extends number | bigint_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter provides a flexible and locale-aware solution for representing percentage ranges.
+This formatter offers a locale-aware way to format percentage ranges.
 
 ::: tip
 

@@ -10,4 +10,4 @@ order: 15
 > - `currency` - The [currency](../../../api/_localizer/format-number/CurrencyCode/index.md) to use for value formatting.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter provides a flexible and locale-aware way to represent changes in monetary values relative to a base amount.
+Represents changes in monetary values relative to a base amount, with locale-aware formatting.

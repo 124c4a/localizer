@@ -1,37 +1,30 @@
 # Contributing to @localizer
 
-We would love for you to contribute to @localizer! Read this document to see how to do it.
+Contributions are welcome! Follow this guide to get started.
 
 ## Found an Issue?
 
-If you find a bug in the source code or a mistake in the documentation, you can help us
-by [submitting an issue](https://github.com/124c4a/localizer/blob/master/CONTRIBUTING.md#submit-issue)
-to [our GitHub Repository](https://github.com/124c4a/localizer). Even better, you
-can [submit a Pull Request](https://github.com/124c4a/localizer/blob/master/CONTRIBUTING.md#submit-pr) with a fix.
+If you find a bug or error, please [submit an issue](https://github.com/124c4a/localizer/issues/new/choose) or [open a Pull Request](https://github.com/124c4a/localizer/blob/master/CONTRIBUTING.md#submit-pr) with a fix.
 
 ## Project Structure
 
-Source code and documentation are included in the top-level folders listed below.
-
-- `packages` - Source code for @loclizer packages containing formatting, translation and other locale-specific functionality.
-- `scripts` - Miscellaneous scripts for project tasks such as building documentation, testing, and code formatting.
+- `packages` - Contains source code for @localizer packages, including formatting, translation, and locale-specific functionality.
+- `scripts` - Includes scripts for tasks like building documentation, testing, and code formatting.
 
 ## Technologies
 
-The following technologies are used in this repo:
-
-- **TypeScript**: The primary language for @localizer packages.
-- **Nx**: The monorepo toolchain.
+- **TypeScript**: Language for @localizer packages.
+- **Nx**: Monorepo toolchain.
 
 ## Building the Project
 
-After cloning the project to your machine, to install the dependencies, run:
+After cloning the project, install dependencies with:
 
 ```bash
 npm install
 ```
 
-To build all the packages, run:
+Build all packages with:
 
 ```bash
 npx nx run-many --target=build
@@ -39,13 +32,13 @@ npx nx run-many --target=build
 
 ### Running Unit Tests
 
-To make sure your changes do not break any unit tests, run the following:
+To ensure your changes pass all unit tests, use:
 
 ```bash
 npx nx affected --target=test
 ```
 
-For example, if you need to only run the tests for the `format-number` package, run:
+To test a specific package, such as `format-number`, run:
 
 ```bash
 npx nx test format-number
@@ -55,47 +48,37 @@ npx nx test format-number
 
 ### <a name="submit-issue"></a> Submitting an Issue
 
-Before you submit an issue, please search the issue tracker. An issue for your problem may already exist and has been
-resolved, or the discussion might inform you of workarounds readily available.
+Before submitting an issue, search the issue tracker to check if it already exists. If not, provide a minimal reproduction to help us confirm and fix the problem efficiently.
 
-We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. A minimal
-reproduction allows us to quickly confirm a bug (or point out a coding problem) as well as confirm that we are
-fixing the right problem.
-
-We will be insisting on a minimal reproduction in order to save maintainers' time and ultimately be able to fix more
-bugs. Interestingly, from our experience, users often find coding problems themselves while preparing a minimal
-reproduction repository. We understand that sometimes it might be hard to extract essentials bits of code from a larger
-codebase, but we really need to isolate the problem before we can fix it.
-
-You can file new issues by filling out our [issue form](https://github.com/124c4a/localizer/issues/new/choose).
+File new issues using our [issue form](https://github.com/124c4a/localizer/issues/new/choose).
 
 ### <a name="submit-pr"></a> Submitting a PR
 
-Please follow the following guidelines:
+Please ensure the following before submitting your PR:
 
-- Make sure all code is documented with TSDoc
-- Make sure all code changes are covered with unit tests
+- Document all code changes using TSDoc.
+- Cover all code changes with unit tests:
+  - Use `*.test.ts` files for preview/internal functionality (`@alpha`, `@beta`, or `@internal` TSDoc directives).
+  - Use `*.spec.ts` files for public functionality (`@public` TSDoc directive).
+- Verify all unit tests pass:
+  - Run all tests: `npx nx affected --target=test`.
+  - Run tests for a specific project: `npx nx run [project-name]:test` (e.g., `npx nx run format-number:test`).
+  - Run a specific test file: `npx vitest [file-path]` (e.g., `npx vitest packages/format-number/src/lib/currencyFormatter.spec.ts`).
+- Format your code using `nx format`.
+- Ensure your PR adheres to the [PR Title Guidelines](#pr-title-guidelines).
+- Include a clear description and reference related issues in the PR body.
 
-  - Preview and internal functionality (annotated with `@alpha`, `@beta` or `@internal` TSDoc directives) should be covered by
-    unit tests in `*.test.ts` files.
-  - Public functionality (annotated with `@public` TSDoc directive) should be covered by unit tests in `*.spec.ts` files
-    (specifications).
-
-- Make sure unit tests pass (`npx nx affected --target=test`)
-  - Target a specific project with: `npx nx proj:test` (i.e. `npx nx run format-number:test` to target `packages/format-number`)
-  - Target a specific unit test file (i.e. `packages/format-number/src/lib/currencyFormatter.spec.ts`)
-    with `npx vitest packages/format-number/src/lib/currencyFormatter`
-- Make sure you run `nx format`
+Thank you for contributing!
 
 #### PR Title Guidelines
 
-The PR title should follow the following format:
+The PR title should follow this format:
 
 ```plain
 type(scope): Subject of change
 ```
 
-or
+For changes that don't fit a specific scope, use:
 
 ```plain
 type: Subject of change
@@ -103,31 +86,27 @@ type: Subject of change
 
 ##### Type
 
-The type must be one of the following:
-
-- feat - New or improved behavior being introduced (e.g. Updating to new versions of external dependencies which bring in new
-  features)
-- fix - Fixes the current unexpected behavior to match expected behavior (e.g. Fixing the incorrect handling of `undefined` values in value formatters)
-- cleanup - Code Style changes that have little to no effect on the user (e.g. Refactoring some functions into a
-  different file)
-- chore - Changes that have absolutely no effect on users (e.g. Updating the version of Nx used to build the repo)
+- feat - Introduces new features or improvements (e.g., adding support for new formats).
+- fix - Resolves bugs or incorrect behavior (e.g., fixing edge cases in formatters).
+- cleanup - Refactors or improves code without user-facing changes (e.g., reorganizing utility functions).
+- chore - Updates project dependencies or configurations with no user impact (e.g., upgrading build tools).
 
 ##### Scope
 
 The scope must be one of the following:
 
-- core - core functionality
-- format - anything related to data formatting
-- transform - anything related to transformations
-- translate - anything related to translations
+- core - Core functionality
+- format - Data formatting
+- transform - Data transformations
+- translate - Translations
 
 ##### Subject and Body
 
-The subject must contain a description of the change, and the body of the message contains any additional details to provide more context about the change.
+The subject should briefly describe the change. The body provides additional context, such as implementation details or reasons for the change.
 
-Including the issue number that the PR relates to also helps with tracking.
+Reference related issues using keywords like `Closes #<issue-number>` to link the PR to an issue.
 
-If the PR contains breaking changes, it is advisable to include explanation in the PR body, prefixed with `BREAKING CHANGE:`
+For breaking changes, include a `BREAKING CHANGE:` section in the body to explain the impact and migration steps.
 
 #### Example
 

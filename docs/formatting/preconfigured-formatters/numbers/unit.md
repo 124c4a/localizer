@@ -10,7 +10,7 @@
 > - `value` - The measurement to format. Can be a [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) or a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt).
 > - `unit` - The measurement unit, a valid [ECMA-402](https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers) unit identifier.
 
-This is a versatile formatter designed for locale-aware representation of measurement values. It ensures culturally appropriate and consistent formatting by utilizing a default configuration, making it suitable for a wide range of measurement data across various contexts.
+This formatter provides locale-aware formatting for measurement values, ensuring consistent and culturally appropriate representation.
 
 **Examples:**
 

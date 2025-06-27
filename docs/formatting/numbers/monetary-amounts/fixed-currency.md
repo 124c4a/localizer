@@ -10,7 +10,7 @@ order: 7
 > - `currency` - The [currency](../../../api/_localizer/format-number/CurrencyCode/index.md) to use for value formatting.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter is specifically designed for presenting monetary values in a consistent manner when the currency is predetermined. It ensures clarity and uniformity in financial data representation.
+This formatter ensures consistent presentation of monetary values when the currency is fixed.
 
 ::: tip
 

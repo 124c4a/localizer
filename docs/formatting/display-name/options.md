@@ -20,7 +20,7 @@ const inputs = () => withLabels(['nl-BE','nl-NL','en-US', 'xx']);
 
 ## `style`
 
-The formatting style to use. Possible values are `"narrow"`, `"short"`, and `"long"`; the default is `"long"`.
+The formatting style to use. Options are `"narrow"`, `"short"`, and `"long"` (default: `"long"`).
 
 **Examples:**
 
@@ -28,10 +28,10 @@ The formatting style to use. Possible values are `"narrow"`, `"short"`, and `"lo
 
 ## `fallback`
 
-What to return from formatter if the input is structurally valid but there's no matching display name. Possible values are:
+What to return if the input is valid but no matching display name is found:
 
-- `"code"` **(default)** - Return the input code itself.
-- `"none"` - Return empty string.
+- `"code"` **(default)** - Returns the input code.
+- `"none"` - Returns an empty string.
 
 **Examples:**
 
@@ -39,10 +39,10 @@ What to return from formatter if the input is structurally valid but there's no 
 
 ## `languageDisplay`
 
-How language names should be displayed.
+How language names are displayed:
 
-- `"dialect"` **(default)** Display special regional dialects using their own name. E.g. "nl-BE" will be displayed as "Flemish".
-- `"standard"` - Display all languages using standard format. E.g. "nl-BE" will be displayed as "Dutch (Belgium)".
+- `"dialect"` **(default)** - Shows regional dialects by their specific names (e.g., "nl-BE" as "Flemish").
+- `"standard"` - Uses a standard format for all languages (e.g., "nl-BE" as "Dutch (Belgium)").
 
 ::: warning
 

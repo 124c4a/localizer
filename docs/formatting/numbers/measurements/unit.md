@@ -9,7 +9,7 @@ order: 9
 > - `T` _extends number | bigint_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter is ideal for representing measurements across various units.
+Use this formatter to represent measurements in different units.
 
 ::: tip
 

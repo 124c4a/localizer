@@ -13,7 +13,7 @@ order: 1
 >
 > - `value` - The array of localizable values.
 
-This formatter generates lists by joining items with a conjunction (e.g., "and") in a way that respects the locale's grammar and formatting rules.
+This formatter creates lists by joining items with a conjunction (e.g., "and") while adhering to the locale's grammar and formatting rules.
 
 **Examples:**
 

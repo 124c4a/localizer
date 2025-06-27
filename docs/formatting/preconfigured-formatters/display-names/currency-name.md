@@ -13,7 +13,7 @@ order: 3
 >
 > - `value` - The value to format, a valid [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code.
 
-This formatter provides the localized name of a given currency based on its [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code. This ensures that the currency name is displayed in the appropriate language and format for the user's locale.
+This formatter returns the localized name of a currency based on its [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code, adapting to the user's locale.
 
 **Examples:**
 

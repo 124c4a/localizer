@@ -9,7 +9,7 @@ order: 6
 > - `T` _extends [CurrencyCode](../../../api/_localizer/format-number/CurrencyCode/index.md)_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter returns the locale-specific symbol or short name for a given currency code. This is useful for displaying currency values in a format that aligns with the user's regional settings.
+This formatter returns the localized symbol or abbreviation for a currency code, aligning with the user's regional settings.
 
 ::: tip
 

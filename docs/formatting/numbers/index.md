@@ -5,7 +5,7 @@ order: 2
 
 # Formatting numbers
 
-The **@localizer** library provides a comprehensive set of formatters for numerical values. These formatters cover various use cases, including monetary amounts, measurements, and more. They are organized into the following categories:
+The **@localizer** library offers formatters for numerical values, covering monetary amounts, measurements, and more. These are grouped into the following categories:
 
 ### Generic numbers
 
@@ -34,4 +34,4 @@ The **@localizer** library provides a comprehensive set of formatters for numeri
 - [Relative currency](./relative-values/relative-currency.md)
 - [Relative unit](./relative-values/relative-unit.md)
 
-All formatters support [configuration options](./options/index.md), enabling you to customize their behavior to suit specific use cases effectively.
+See [configuration options](./options/index.md) to customize formatter behavior.

@@ -13,7 +13,7 @@ order: 4
 >
 > - `value` - The value to format, a valid [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code.
 
-This formatter returns the locale-specific symbol for a given currency code. This is useful for displaying currency values in a format that aligns with the user's regional settings.
+Returns the locale-specific symbol for a given currency code, useful for displaying currency values according to regional settings.
 
 **Examples:**
 

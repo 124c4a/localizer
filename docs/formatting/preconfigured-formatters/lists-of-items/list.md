@@ -13,7 +13,7 @@ order: 3
 >
 > - `value` - The array of localizable values.
 
-This formatter creates lists by joining items without using conjunctions or disjunctions. This is particularly useful for presenting lists of units or items where no grammatical connectors are needed.
+This formatter joins items into a list without using conjunctions or disjunctions, ideal for presenting units or items without grammatical connectors.
 
 **Examples:**
 

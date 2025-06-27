@@ -10,4 +10,4 @@ order: 12
 > - `unit` - The [measurement unit](../../../api/_localizer/format-number/Unit/index.md) to use for value formatting.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter is tailored for displaying measurement ranges using a fixed measurement unit, providing clear and precise numerical representations.
+This formatter displays measurement ranges with a fixed unit, ensuring clear numerical representation.

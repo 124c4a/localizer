@@ -4,9 +4,9 @@ order: 2
 
 # Configuration <Badge type="info" text="@localizer/core" />
 
-While most of the functionality in **@localizer** is stateless, certain aspects can be customized at runtime using the [`configure()`](../api/_localizer/core/configure/index.md) method. It is recommended to apply configuration changes as early as possible, ideally within the application shell, to ensure consistent behavior throughout the application lifecycle.
+Use the [`configure()`](../api/_localizer/core/configure/index.md) method to customize **@localizer** behavior. Apply configuration early, preferably in the application shell, for consistent behavior throughout the app lifecycle.
 
-The `configure()` method takes two parameters: an array of configuration domains and a configuration object. The configuration domains specify which parts of the library you want to configure, while the configuration object provides the corresponding settings for those domains.
+The `configure()` method accepts two arguments: an array of configuration domains and a configuration object. The domains define the library components to configure, and the object specifies their settings.
 
 ```typescript
 import { configure, Core } from '@localizer/core';
@@ -43,7 +43,7 @@ configure(
 
 ### `fallbackLocales`
 
-Specifies an ordered list of fallback locale codes to use when a translation for the requested locale is unavailable in the dictionary. For more information, refer to the [locale resolution process](./localizer.md#locale-resolution).
+Defines fallback locales used when a translation is missing. See the [locale resolution process](./localizer.md#locale-resolution) for details.
 
 **Type:** `LocaleCode[]`
 
@@ -53,7 +53,7 @@ Specifies an ordered list of fallback locale codes to use when a translation for
 
 ### `activeLocale` <Badge type="warning" text="experimental" />
 
-Activates [implicit localization](./localizer.md#implicit-localization) by defining the current locale. If left undefined, implicit localization remains disabled.
+Enables [implicit localization](./localizer.md#implicit-localization) by setting the current locale. If undefined, implicit localization is disabled.
 
 **Type:** `LocaleCode | undefined`
 
@@ -61,7 +61,7 @@ Activates [implicit localization](./localizer.md#implicit-localization) by defin
 
 ::: tip
 
-You can also use the [`setActiveLocale()`](../api/_localizer/core/setActiveLocale/index.md) method to dynamically change the active locale when using implicit localization mode. This allows you to update the current locale at runtime as needed:
+You can dynamically change the active locale at runtime using the [`setActiveLocale()`](../api/_localizer/core/setActiveLocale/index.md) method:
 
 ```typescript
 import { setActiveLocale } from '@localizer/core';

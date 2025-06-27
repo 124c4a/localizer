@@ -9,7 +9,7 @@
 >
 > - `value` - The value to format. Can be a [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) or a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt).
 
-This is a versatile formatter designed for locale-aware representation of both integer and fractional numbers. It leverages a built-in default configuration to ensure consistent and culturally appropriate formatting, making it suitable for a wide range of numerical data presentation needs.
+This formatter provides locale-aware formatting for integers and decimals, ensuring consistent and culturally appropriate representation.
 
 **Examples:**
 

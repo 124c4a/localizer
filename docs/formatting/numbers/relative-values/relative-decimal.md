@@ -9,7 +9,7 @@ order: 13
 > - `T` _extends number | bigint_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter offers a versatile and locale-sensitive approach to expressing absolute changes in relative values.
+This formatter provides a flexible, locale-aware way to represent absolute changes in relative values.
 
 ::: tip
 

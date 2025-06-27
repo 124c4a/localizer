@@ -72,6 +72,7 @@ jobs:
           NPM_CONFIG_ACCESS: public
 
   build:
+    name: Build documentation site
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -102,6 +103,7 @@ jobs:
 
   # Deployment job
   deploy:
+    name: Deploy documentation site
     permissions:
       contents: read
       pages: write
@@ -111,7 +113,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

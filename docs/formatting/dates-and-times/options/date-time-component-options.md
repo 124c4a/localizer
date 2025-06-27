@@ -27,9 +27,13 @@ The representation of the weekday. Possible values are:
 
 - `"long"` - E.g., Thursday
 - `"short"` - E.g., Thu
-- `"narrow"` - E.g., T.
+- `"narrow"` - E.g., T
 
-  Two weekdays may have the same narrow style for some locales (e.g., Tuesday's narrow style is also T).
+::: info NOTE
+
+Some locales may use the same narrow style for multiple weekdays (e.g., Tuesday and Thursday both use T).
+
+:::
 
 **Examples:**
 
@@ -37,11 +41,7 @@ The representation of the weekday. Possible values are:
 
 ## `era`
 
-The representation of the era. Possible values are:
-
-- `"long"` - E.g., Anno Domini
-- `"short"` - E.g., AD
-- `"narrow"` - E.g., A
+The representation of the era. Possible values are `"long"`, `"short"`, and `"narrow"`.
 
 **Examples:**
 
@@ -49,7 +49,7 @@ The representation of the era. Possible values are:
 
 ## `year`
 
-The representation of the year. Possible values are `"numeric"` and `"2-digit"`.
+The year can be displayed as `"numeric"` (e.g., 2023) or `"2-digit"` (e.g., 23).
 
 **Examples:**
 
@@ -65,7 +65,11 @@ The representation of the month. Possible values are:
 - `"short"` - E.g., Mar
 - `"narrow"` - E.g., M.
 
-  Two months may have the same narrow style for some locales (e.g., May's narrow style is also M).
+::: info NOTE
+
+Two months may have the same narrow style for some locales (e.g., May's narrow style is also M).
+
+:::
 
 **Examples:**
 
@@ -73,7 +77,7 @@ The representation of the month. Possible values are:
 
 ## `day`
 
-The representation of the year. Possible values are `"numeric"` and `"2-digit"`.
+The day can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
@@ -81,11 +85,11 @@ The representation of the year. Possible values are `"numeric"` and `"2-digit"`.
 
 ## `dayPeriod`
 
-The formatting style used for day periods like "in the morning", "am", "noon", "n" etc. Possible values are `"narrow"`, `"short"`, and `"long"`.
+The formatting style for day periods such as "am", "noon", or "in the morning". Possible values are `"narrow"`, `"short"`, and `"long"`.
 
 ::: info NOTE
 
-This option only has an effect if a 12-hour clock (`hourCycle`: `"h12"` or `hourCycle`: `"h11"`) is used. Many locales use the same string irrespective of the width specified.
+This option only applies when using a 12-hour clock (`hourCycle`: `"h12"` or `"h11"`) and may not vary across widths in some locales.
 
 :::
 
@@ -105,7 +109,7 @@ This option only has an effect if a 12-hour clock (`hourCycle`: `"h12"` or `hour
 
 ## `hour`
 
-The representation of the hour. Possible values are `"numeric"` and `"2-digit"`.
+The hour can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
@@ -113,7 +117,7 @@ The representation of the hour. Possible values are `"numeric"` and `"2-digit"`.
 
 ## `minute`
 
-The representation of the hour. Possible values are `"numeric"` and `"2-digit"`.
+The minute can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
@@ -121,7 +125,7 @@ The representation of the hour. Possible values are `"numeric"` and `"2-digit"`.
 
 ## `second`
 
-The representation of the second. Possible values are `"numeric"` and `"2-digit"`.
+The second can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
@@ -129,7 +133,7 @@ The representation of the second. Possible values are `"numeric"` and `"2-digit"
 
 ## `fractionalSecondDigits`
 
-The number of digits used to represent fractions of a second (any additional digits are truncated). Possible values are from `1` to `3`.
+The number of fractional second digits to display. Valid values are `1`, `2`, or `3`. Extra digits are truncated.
 
 **Examples:**
 
@@ -137,7 +141,7 @@ The number of digits used to represent fractions of a second (any additional dig
 
 ## `formatMatcher`
 
-The format matching algorithm to use. Possible values are `"basic"` and `"best fit"`; the default is `"best fit"`. The algorithm for `"best fit"` is implementation-defined, and `"basic"` is [defined by the spec](https://tc39.es/ecma402/#sec-basicformatmatcher).
+The format matching algorithm to use. Possible values are `"basic"` and `"best fit"`. The default is `"best fit"`. `"Basic"` follows the [specification](https://tc39.es/ecma402/#sec-basicformatmatcher), while `"best fit"` is implementation-defined.
 
 ---
 

@@ -12,7 +12,7 @@
 >
 > Both arguments can be either a [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) or a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt).
 
-This formatter extends the functionality of [decimal formatter](./decimal.md) to handle number ranges. It is specifically designed for locale-aware formatting of numerical ranges, ensuring both start and end values are presented in a culturally appropriate manner using the same configuration as `decimal`.
+This formatter handles numerical ranges, ensuring that both the start and end values are formatted according to locale-specific conventions.
 
 **Examples:**
 

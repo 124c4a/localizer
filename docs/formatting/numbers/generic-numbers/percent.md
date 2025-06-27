@@ -9,7 +9,7 @@ order: 3
 > - `T` _extends number | bigint_ - The type of value to format. The value represent fraction of a whole, where `1.0` corresponds to `100%`.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter designed for locale-aware representation of percentages values.
+This formatter provides a locale-aware way to represent percentage values.
 
 ::: tip
 

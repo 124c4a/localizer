@@ -9,7 +9,7 @@ title: Item lists
 >
 > - `T` _extends [Localizable](../../../introduction/localizable.md)[]_ - The type of value to format.
 
-This formatter offers a locale-aware way to format lists, ensuring clarity across languages and regions.
+This formatter provides a locale-aware method to format lists, ensuring clarity across different languages and regions.
 
 ::: tip
 

@@ -23,7 +23,7 @@ These options are incompatible with [date and time component options](./date-tim
 
 ## `dateStyle`
 
-The date formatting style to use. Possible values are `"full"`, `"long"`, `"medium"`, and `"short"`. It expands to styles for weekday, day, month, year, and era, with the exact combination of values depending on the locale.
+The date formatting style to use. Possible values are `"full"`, `"long"`, `"medium"`, and `"short"`. These styles determine how weekday, day, month, year, and era are displayed, based on the locale.
 
 **Examples:**
 
@@ -31,7 +31,7 @@ The date formatting style to use. Possible values are `"full"`, `"long"`, `"medi
 
 ## `timeStyle`
 
-The time formatting style to use. Possible values are `"full"`, `"long"`, `"medium"`, and `"short"`. It expands to styles for hour, minute, second, and timeZoneName, with the exact combination of values depending on the locale.
+The time formatting style to use. Possible values are `"full"`, `"long"`, `"medium"`, and `"short"`. These styles define how hour, minute, second, and time zone name are displayed, based on the locale.
 
 **Examples:**
 

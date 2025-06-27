@@ -11,7 +11,7 @@ order: 4
   import localizerIdentity from './localizer-identity';
 </script>
 
-Localizer is a utility function designed to apply a selected locale to [`Localizable`](../api/_localizer/core/Localizable/index.md) objects. The primary method to obtain an instance of a `Localizer` is by invoking the [`getLocalizer()`](../api/_localizer/core/getLocalizer/index.md) function:
+Localizer applies a selected locale to [`Localizable`](../api/_localizer/core/Localizable/index.md) objects. Use [`getLocalizer()`](../api/_localizer/core/getLocalizer/index.md) to create a `Localizer` instance.
 
 <<< ./localizer-string.ts#example{ts}
 
@@ -19,7 +19,7 @@ Localizer is a utility function designed to apply a selected locale to [`Localiz
 {{ localizerString }}
 ```
 
-A `Localizer` function can process either a `Localizable` object directly or a function that generates a `Localizable` object, such as a value formatter. When provided with a function, the `Localizer` returns a new function that accepts the same arguments but produces a localized string as its output:
+A `Localizer` can process a `Localizable` object or a function that generates one, such as a value formatter. When given a function, it returns a new function that produces a localized string.
 
 <<< ./localizer-function.ts#example{ts}
 
@@ -29,7 +29,7 @@ A `Localizer` function can process either a `Localizable` object directly or a f
 
 ## Locale resolution
 
-Localizable objects typically accept a single locale and perform localization based on that value. However, in the context of translations, it is common for translations to be defined at the _language_ level (e.g., `en` for English) rather than the _locale_ level (e.g., `en-US` for U.S. English). This distinction can lead to situations where translations for a specific locale are incomplete, making it necessary to fall back to a predefined set of locales.
+Translations are often defined at the _language_ level (e.g., `en` for English) rather than the _locale_ level (e.g., `en-US` for U.S. English). When specific locale translations are incomplete, the library falls back to a predefined set of locales to ensure comprehensive coverage.
 
 The fallback mechanism is controlled by the [`fallbackLocales`](./configuration.md#fallbacklocales) configuration property. Below is an example of how locale resolution works with the default configuration (`fallbackLocales` set to `['en']`):
 
@@ -39,17 +39,15 @@ The fallback mechanism is controlled by the [`fallbackLocales`](./configuration.
 | `en-US`      | `en-US` → `en`        |
 | `sv-FI`      | `sv-FI` → `sv` → `en` |
 
-In the example above:
+For `en`, the library uses `en` translations.  
+For `en-US`, it tries `en-US` first, then falls back to `en`.  
+For `sv-FI`, it checks `sv-FI`, then `sv`, and finally `en`.
 
-- For `en`, the library directly uses the `en` translations.
-- For `en-US`, the library first attempts to use `en-US` translations. If unavailable, it falls back to `en`.
-- For `sv-FI`, the library tries `sv-FI` first, then `sv`, and finally falls back to `en`.
-
-This fallback mechanism ensures that translations are as complete as possible, even when specific locale data is missing.
+This ensures translations remain comprehensive even with missing locale data.
 
 ## Implicit localization <Badge type="warning" text="experimental" />
 
-In scenarios where strict typing becomes cumbersome, such as during the development of _throw-away_ prototypes, explicitly applying `Localizer` functions to localizable objects may feel overly burdensome. To streamline such workflows, the library offers an _implicit_ localization feature. This feature can be enabled either through the [`activeLocale`](./configuration.md#activelocale) configuration property or by using the [`setActiveLocale()`](../api/_localizer/core/setActiveLocale/index.md) function, allowing for a more lightweight approach to localization during rapid prototyping.
+In rapid prototyping, applying `Localizer` functions explicitly can be tedious. The library supports _implicit_ localization, activated via the [`activeLocale`](./configuration.md#activelocale) property or the [`setActiveLocale()`](../api/_localizer/core/setActiveLocale/index.md) function, simplifying workflows for temporary projects.
 
 <<< ./localizer-implicit.ts#example{ts}
 
@@ -58,14 +56,16 @@ In scenarios where strict typing becomes cumbersome, such as during the developm
 ```
 
 ::: warning
-It is strongly recommended to avoid using implicit localization in production applications. This approach may inadvertently allow plain stringification in scenarios where precise, locale-aware formatting is required, potentially leading to inconsistent or incorrect outputs.
+
+Implicit localization is not recommended for production use, as it may lead to inconsistent or incorrect outputs due to accidental plain stringification instead of precise, locale-aware formatting.
+
 :::
 
 ## Special localizers
 
 ### `UninitializedLocalizer`
 
-This special localizer is designed to throw a `TypeError` whenever it is invoked. Its primary purpose is to assist in identifying and debugging race conditions related to improper or delayed locale initialization.
+This localizer throws a `TypeError` when invoked, helping identify race conditions caused by delayed or improper locale initialization.
 
 ```typescript
 import { UninitializedLocalizer, Empty } from '@localizer/core';
@@ -76,9 +76,7 @@ console.log(UninitializedLocalizer(Empty)); // [!code error]
 
 ### `ImplicitLocalizer` <Badge type="warning" text="experimental" />
 
-This special localizer facilitates [implicit localization](#implicit-localization), making it particularly useful when working with external libraries that require a `Localizer` as input. By leveraging this localizer, you can simplify integration scenarios where explicit localization might otherwise be cumbersome or impractical.
-
-This localizer enables the direct use of `Localizable` values as stable, human-readable identifiers. It is useful for testing UI components or scenarios requiring consistent and descriptive identifiers.
+This localizer simplifies integration with external libraries by enabling implicit localization. It allows direct use of `Localizable` values as stable, human-readable identifiers, making it useful for testing UI components or scenarios requiring consistent identifiers.
 
 <<< ./localizer-identity.ts#example{ts}
 

@@ -4,11 +4,11 @@ order: 99
 
 # Formatter options
 
-Formatter options enable you to tailor formatters to meet specific requirements. These options are organized into several categories:
+Formatter options let you customize number formatting to suit your needs. They include:
 
-- [Digit options](digit-options.md): Manage precision and rounding for formatted values.
-- [Presentation options](presentation-options.md): Define how values are visually presented.
-- [Unit and currency options](unit-and-currency-options.md): Specify the representation of measurement units and currencies in the output.
+- [Digit options](digit-options.md): Control precision and rounding.
+- [Presentation options](presentation-options.md): Adjust visual formatting.
+- [Unit and currency options](unit-and-currency-options.md): Format units and currencies.
 
 ::: info NOTE
 

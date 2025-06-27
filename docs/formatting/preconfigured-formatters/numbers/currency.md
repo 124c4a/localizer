@@ -10,7 +10,7 @@
 > - `value` - The monetary amount to format. Can be a [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) or a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt).
 > - `unit` - The currency, a valid [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code.
 
-This is a robust formatter tailored for locale-aware representation of monetary values. It ensures consistent and culturally appropriate formatting by leveraging a default configuration, making it ideal for presenting financial data across various contexts.
+This formatter ensures locale-aware and consistent formatting of monetary values, making it suitable for presenting financial data.
 
 **Examples:**
 

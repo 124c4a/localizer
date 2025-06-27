@@ -38,15 +38,17 @@ const signInputs = () => [
 
 ## `notation`
 
-The formatting that should be displayed for the number. Possible values are:
+The formatting options for numbers are:
 
-- `"standard"` **(default)** - Plain number formatting.
-- `"scientific"` - Return the order-of-magnitude for formatted number.
-- `"engineering"` - Return the exponent of ten when divisible by three.
-- `"compact"` - String representing exponent; defaults to using the "short" form.
+- `"standard"` (default): Plain number formatting.
+- `"scientific"`: Displays the order of magnitude.
+- `"engineering"`: Displays the exponent in multiples of three.
+- `"compact"`: Uses a compact notation (e.g., "short" form by default).
 
 ::: info NOTE
+
 This option affects [significant and fractional digits option defaults](digit-options.md#significant-and-fraction-digits-default-values)
+
 :::
 
 **Examples:**
@@ -55,7 +57,7 @@ This option affects [significant and fractional digits option defaults](digit-op
 
 ## `compactDisplay`
 
-Only used when `notation` is `"compact"`. Possible values are `"short"` and `"long"`; the default is `"short"`.
+Only applicable when `notation` is `"compact"`. Values: `"short"` (default) or `"long"`.
 
 **Examples:**
 
@@ -73,27 +75,27 @@ Only used when `notation` is `"compact"`. Possible values are `"short"` and `"lo
 
 ## `useGrouping`
 
-Whether to use grouping separators, such as thousands separators or thousand/lakh/crore separators.
+Whether to use grouping separators:
 
-- `"always"` - Display grouping separators even if the locale prefers otherwise.
-- `"auto"` - Display grouping separators based on the locale preference, which may also be dependent on the currency.
-- `"min2"` - Display grouping separators when there are at least 2 digits in a group.
-- `true` - Same as `"always"`.
-- `false` - Display no grouping separators.
+- `"always"` - Always display grouping separators.
+- `"auto"` - Display grouping separators based on locale preferences.
+- `"min2"` - Display grouping separators for groups with at least 2 digits.
+- `true` - Equivalent to `"always"`.
+- `false` - No grouping separators.
 
-The default is `"min2"` if [`notation`](#notation) is `"compact"`, and `"auto"` otherwise.
+Default: `"min2"` for `"compact"` notation, `"auto"` otherwise.
 
 <DemoValueFormatterOptions option="useGrouping" :values="['always','auto', 'min2', true, false]" :factory=decimalFormatter :inputs=groupingInputs />
 
 ## `signDisplay`
 
-When to display the sign for the number. Possible values are:
+When to display the sign for the number:
 
-- `"auto"` **(default)** - Sign display for negative numbers only, including negative zero.
-- `"always"` - Always display sign.
-- `"exceptZero"` - Sign display for positive and negative numbers, but not zero.
-- `"negative"` - Sign display for negative numbers only, excluding negative zero.
-- `"never"` - Never display sign.
+- `"auto"` (default): Display sign for negative numbers, including negative zero.
+- `"always"`: Always display the sign.
+- `"exceptZero"`: Display sign for non-zero numbers only.
+- `"negative"`: Display sign for negative numbers, excluding negative zero.
+- `"never"`: Never display the sign.
 
 **Examples:**
 
@@ -101,27 +103,27 @@ When to display the sign for the number. Possible values are:
 
 ## `parts`
 
-An array of localized value parts to extract. Possible values are:
+An array of localized value parts to extract. Possible values:
 
-| Value                 | Description                                                                                                                                                                                                                                                       |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `"literal"`           | Any string that's a part of the format pattern; for example `" "`. Note that common tokens like the decimal separator or the plus/minus signs have their own token types.                                                                                         |
-| `"integer"`           | The integral part of the number, or a segment of it if using grouping (controlled by [`useGrouping`](#usegrouping)).                                                                                                                                              |
-| `"group"`             | The group separator string, such as `","`. Only present when using grouping (controlled by [`useGrouping`](#usegrouping)).                                                                                                                                        |
-| `"decimal"`           | The decimal separator string, such as `"."`. Only present when fraction is present.                                                                                                                                                                               |
-| `"fraction"`          | The fractional part of the number.                                                                                                                                                                                                                                |
-| `"compact"`           | The compact exponent, such as `"M"` or `"thousands"`. Only present when [`notation`](#notation) is `"compact"`. The form (`"short"` or `"long"`) can be controlled via [`compactDisplay`](#compactdisplay).                                                       |
-| `"exponentSeparator"` | The exponent separator, such as `"E"`. Only present when [`notation`](#notation) is `"scientific"` or `"engineering"`.                                                                                                                                            |
-| `"exponentMinusSign"` | The exponent minus sign string, such as `"-"`. Only present when [`notation`](#notation) is `"scientific"` or `"engineering"` and the exponent is negative.                                                                                                       |
-| `"exponentInteger"`   | The exponent's integer value. Only present when [`notation`](#notation) is `"scientific"` or `"engineering"`.                                                                                                                                                     |
-| `"nan"`               | A string representing NaN, such as `"NaN"`. This is the sole token representing the number itself when the number is NaN.                                                                                                                                         |
-| `"infinity"`          | A string representing Infinity or -Infinity, such as `"∞"`. This is the sole token representing the number itself when the number is Infinity or -Infinity.                                                                                                       |
-| `"plusSign"`          | The plus sign, such as `"+"`.                                                                                                                                                                                                                                     |
-| `"minusSign"`         | The minus sign, such as `"-"`.                                                                                                                                                                                                                                    |
-| `"percentSign"`       | The percent sign, such as `"%"`. Only applicable to percentFormatter.                                                                                                                                                                                             |
-| `"unit"`              | The unit string, such as `"l"` or `"litres"`. Only applicable to unitFormatter. The form (`"short"`, `"narrow"`, or `"long"`) can be controlled via [`unitDisplay`](unit-and-currency-options.md#unitdisplay).                                                    |
-| `"currency"`          | The currency string, such as `"$"`, `"€"`, `"Dollar"`, or `"Euro"`. Only applicable to currencyFormatter. The form (`"code"`, `"symbol"`, `"narrowSymbol"`, or `"name"`) can be controlled via [`currencyDisplay`](unit-and-currency-options.md#currencydisplay). |
-| `"unknown"`           | Reserved for any token that's not recognized as one of the above; should be rarely encountered.                                                                                                                                                                   |
+| Value                 | Description                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------- |
+| `"literal"`           | Static text in the format, e.g., `" "`.                                                |
+| `"integer"`           | Whole number part, or segments if grouping is used.                                    |
+| `"group"`             | Group separator, e.g., `","`. Present if grouping is enabled.                          |
+| `"decimal"`           | Decimal separator, e.g., `"."`. Present if a fraction exists.                          |
+| `"fraction"`          | Fractional part of the number.                                                         |
+| `"compact"`           | Compact notation, e.g., `"M"`. Requires `notation: "compact"`.                         |
+| `"exponentSeparator"` | Exponent separator, e.g., `"E"`. Requires `notation: "scientific"` or `"engineering"`. |
+| `"exponentMinusSign"` | Exponent minus sign, e.g., `"-"`. Present for negative exponents.                      |
+| `"exponentInteger"`   | Exponent value. Requires `notation: "scientific"` or `"engineering"`.                  |
+| `"nan"`               | Represents NaN, e.g., `"NaN"`.                                                         |
+| `"infinity"`          | Represents Infinity, e.g., `"∞"`.                                                      |
+| `"plusSign"`          | Plus sign, e.g., `"+"`.                                                                |
+| `"minusSign"`         | Minus sign, e.g., `"-"`.                                                               |
+| `"percentSign"`       | Percent sign, e.g., `"%"`. Applicable to percentFormatter.                             |
+| `"unit"`              | Unit string, e.g., `"l"`. Controlled by `unitDisplay`.                                 |
+| `"currency"`          | Currency string, e.g., `"$"`. Controlled by `currencyDisplay`.                         |
+| `"unknown"`           | Unrecognized tokens. Rarely encountered.                                               |
 
 ::: info NOTE
 

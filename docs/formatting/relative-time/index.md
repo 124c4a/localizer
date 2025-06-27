@@ -10,7 +10,7 @@ title: Relative times
 > - `T` _extends number | Date_ - The type of value to format. Number values are treated as timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 > - `options` - Optional [configuration of the formatter](./options.md).
 
-This formatter offers a versatile and locale-sensitive approach to expressing relative times, both for past and future events.
+This formatter provides a flexible, locale-aware way to display relative times for past and future events.
 
 ::: tip
 

@@ -37,13 +37,15 @@ jobs:
         run: npx nx sync:check
 
       - name: Lint
-        run: npx nx run-many --target=lint -f @microsoft/eslint-formatter-sarif -o eslint.sarif
+        run: npx nx affected --target=lint -f @microsoft/eslint-formatter-sarif -o eslint.sarif
         continue-on-error: true
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: 'true'
 
       - name: Collect ESLint results
-        run: npx @microsoft/sarif-multitool merge eslint.sarif --recurse true --output-directory=./tmp --output-file=eslint-merged.sarif
+        run: |
+          echo '{"$schema":"http://json.schemastore.org/sarif-2.1.0.json","version": "2.1.0","runs":[{"tool":{"driver":{"name":"ESlint","rules":[],"version":"0.0.0"}},"results":[],"artifacts":[]}]}' > eslint.sarif
+          npx @microsoft/sarif-multitool merge eslint.sarif --recurse true --output-directory=./tmp --output-file=eslint-merged.sarif
 
       - name: Upload ESLint results
         uses: github/codeql-action/upload-sarif@ce28f5bb42b7a9f2c824e633a3f6ee835bab6858 # v3.29.0
@@ -55,14 +57,16 @@ jobs:
           category: ESLint
 
       - name: Build
-        run: npx nx run-many -t build
+        run: npx nx affected -t build
 
       - name: Analyze API
-        run: npx nx run-many --target=api
+        run: npx nx affected --target=api
         continue-on-error: true
 
       - name: Collect API results
-        run: npx @microsoft/sarif-multitool merge api-extractor.sarif --recurse true --output-directory=./tmp --output-file=api-merged.sarif
+        run: |
+          echo '{"$schema":"http://json.schemastore.org/sarif-2.1.0.json","version": "2.1.0","runs":[{"tool":{"driver":{"name":"API Extractor","rules":[],"version":"0.0.0"}},"results":[],"artifacts":[]}]}' > api-extractor.sarif
+          npx @microsoft/sarif-multitool merge api-extractor.sarif --recurse true --output-directory=./tmp --output-file=api-merged.sarif
 
       - name: Upload API results
         uses: github/codeql-action/upload-sarif@ce28f5bb42b7a9f2c824e633a3f6ee835bab6858 # v3.29.0
@@ -75,9 +79,6 @@ jobs:
 
       - name: Test
         run: npx nx affected -t test --coverage
-
-      - name: Build scripts
-        run: npx nx run-many -t build --projects=analyze-changes,analyze-coverage,update-pr
 
       - name: Prepare changelog
         run: |

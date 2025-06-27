@@ -13,7 +13,7 @@ order: 2
 >
 > - `value` - The value to format. Can be JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object or numeric timestamp (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 
-This formatter outputs the time portion of a date according to the user's locale preferences. It ensures that the output aligns with regional conventions, providing a user-friendly representation of time. This formatter is also customizable through [configuration options](../../../introduction/configuration.md), allowing for tailored formatting to suit specific needs.
+Outputs the time portion of a date based on the user's locale.
 
 **Examples:**
 

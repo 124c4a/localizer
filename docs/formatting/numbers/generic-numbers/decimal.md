@@ -9,7 +9,7 @@ order: 1
 > - `T` _extends number | bigint_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter designed for locale-aware representation of both integer and fractional numbers.
+This formatter provides locale-aware formatting for integers and fractional numbers.
 
 ::: tip
 

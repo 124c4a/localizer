@@ -9,7 +9,7 @@ order: 14
 > - `T` _extends number | bigint_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-This formatter provides a flexible solution for displaying relative value changes as percentages, tailored to the user's locale.
+This formatter displays relative value changes as percentages, adapting to the user's locale.
 
 ::: tip
 

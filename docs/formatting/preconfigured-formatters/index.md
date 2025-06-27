@@ -4,7 +4,7 @@ order: 0
 
 # Preconfigured formatters
 
-The **@localizer** library provides a set of pre-configured [value formatters](../index.md#what-are-formatters) for the most common scenarios. These formatters can be used out-of-the-box and does not explicit instantiation. To enhance flexibility, the configuration of these formatters can be adjusted in a centralized manner via [configuration](../../introduction/configuration.md).
+The **@localizer** library includes preconfigured [value formatters](../index.md#what-are-formatters) for common use cases. These formatters work out-of-the-box without requiring explicit instantiation.
 
 ## Dates and times
 

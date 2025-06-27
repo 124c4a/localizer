@@ -16,11 +16,11 @@ const dateInputs = (now) => [
 
 ## `style`
 
-The style of the formatted relative time. Possible values are:
+The `style` option determines the format of the relative time. Possible values:
 
-- `"long"` **(default)** - E.g., "in 1 month"
-- `"short"` - E.g., "in 1 mo."
-- `"narrow"` - E.g., "in 1 mo.". The narrow style could be similar to the short style for some locales.
+- `"long"` (default): e.g., "in 1 month"
+- `"short"`: e.g., "in 1 mo."
+- `"narrow"`: e.g., "in 1 mo." (may resemble the short style in some locales)
 
 **Examples:**
 
@@ -28,7 +28,7 @@ The style of the formatted relative time. Possible values are:
 
 ## `numeric`
 
-Whether to use numeric values in the output. Possible values are `"always"` and `"auto"`; the default is `"always"`. When set to `"auto"`, the output may use more idiomatic phrasing such as "yesterday" instead of "1 day ago".
+Whether to include numeric values in the output. `"always"` (default) uses numbers like "1 day ago". `"auto"` allows phrases like "yesterday".
 
 **Examples:**
 
@@ -36,7 +36,7 @@ Whether to use numeric values in the output. Possible values are `"always"` and 
 
 ## `stops`
 
-Defines the granularity level for the relative value. Accepts an array of stops from the list: `"year"`, `"quarter"`, `"month"`, `"week"`, `"day"`, `"hour"`, `"minute"`, or `"second"`. Defaults to `["year", "month", "week", "day", "hour", "minute"]`.
+Defines the granularity for the relative time. Accepts an array of stops: `"year"`, `"quarter"`, `"month"`, `"week"`, `"day"`, `"hour"`, `"minute"`, `"second"`. Default: `["year", "month", "week", "day", "hour", "minute"]`.
 
 ::: info NOTE
 

@@ -5,45 +5,45 @@ title: Value formatting
 
 # Value formatting
 
-Localization is more than just translating text; it involves adapting data formats to align with the user's locale. To ensure consistency and precision, **@localizer** provides a robust set of configurable data formatters designed for common scenarios, such as:
+Localization goes beyond translation by adapting data formats to match the user's locale. **@localizer** offers configurable data formatters for common scenarios, including:
 
-- [Dates, times, and ranges](./dates-and-times/index.md)
-- [Numeric values and monetary amounts](./numbers/index.md)
-- [Relative time expressions (e.g., past and future)](./relative-time/index.md)
-- [Names of languages, countries, and currencies](./display-name/index.md)
-- [Itemized lists](./lists/index.md)
-- [Enumerations and custom data types](./custom-data-types/index.md)
+- [Dates and times](./dates-and-times/index.md)
+- [Numbers and currencies](./numbers/index.md)
+- [Relative time](./relative-time/index.md)
+- [Display names](./display-name/index.md)
+- [Lists](./lists/index.md)
+- [Custom types](./custom-data-types/index.md)
 
-To streamline development and minimize boilerplate code, the library also includes a [collection of preconfigured data formatters](./preconfigured-formatters.md) ready for immediate use.
+The library provides a [set of preconfigured formatters](./preconfigured-formatters.md) for common use cases, reducing the need for custom implementations.
 
 ## What are formatters?
 
-A formatter is a function that accepts one or more arguments and returns a [localizable value](../basics/localizable.md). This enables seamless integration of formatted values wherever a [`Localizable`](../api/_localizer/core/Localizable/index.md) is required, such as in UI components, [template literals](../basics/localizable.md#string-templates), or translations.
+A formatter is a function that takes input and returns a [localizable value](../basics/localizable.md). This allows formatted values to be used directly in UI components, [template literals](../basics/localizable.md#string-templates), or translations.
 
 The library offers several predefined formatter types:
 
 ### [`ValueFormatter<T>`](../api/_localizer/core/ValueFormatter/index.md)
 
-`ValueFormatter<T>` is a flexible formatter type that takes a single argument of type `T` and produces a localizable representation of the value. It is ideal for formatting standalone values like numbers, dates, or strings based on the user's locale and preferences.
+`ValueFormatter<T>` formats a single value of type `T` into a localizable representation, suitable for standalone values like numbers, dates, or strings.
 
 ### [`UnitValueFormatter<T, U>`](../api/_localizer/core/UnitValueFormatter/index.md)
 
-`UnitValueFormatter<T, U>` is tailored for formatting measurable values paired with their units, such as distances (_12 kilometers_) or monetary amounts (_$123.00_). It accepts two arguments: the value to format and its associated unit, ensuring the output adheres to the user's locale and conventions.
+`UnitValueFormatter<T, U>` formats a value of type `T` with an associated unit of type `U`, such as distances (_12 km_) or monetary amounts (_$123.00_). It ensures the output respects the user's locale and conventions.
 
 ### [`ValueRangeFormatter<T>`](../api/_localizer/core/ValueRangeFormatter/index.md)
 
-`ValueRangeFormatter<T>` extends [`ValueFormatter<T>`](#valueformattert) to handle ranges of values. It takes two arguments of type `T`, representing the start and end of the range, and produces a localizable representation that respects the user's locale and formatting preferences.
+`ValueRangeFormatter<T>` formats a range of values, taking two arguments of type `T` (start and end). It returns a localizable representation that aligns with the user's locale and formatting preferences.
 
 ### [`RelativeValueFormatter<T>`](../api/_localizer/core/RelativeValueFormatter/index.md)
 
-`RelativeValueFormatter<T>` is designed for formatting relative values. It accepts two arguments of type `T`: the value to represent and a reference value. This formatter is commonly used for expressing relative changes (_+20%_) or time points relative to an event (_5 minutes ago_).
+`RelativeValueFormatter<T>` formats relative values using two arguments of type `T`: the value and a reference. It is ideal for representing changes (_+20%_) or time relative to an event (_5 minutes ago_).
 
 ::: info NOTE
 
-The predefined formatter types cover a wide range of use cases, but they are intentionally designed to be flexible. Developers can create custom formatting functions for more complex scenarios requiring three or more arguments. The only requirement for a custom formatter is that it must return a `Localizable` value. This extensibility allows developers to adapt the library to meet unique and specialized formatting needs beyond the predefined options.
+Developers can create custom formatters for scenarios requiring more than the predefined options. Custom formatters must return a `Localizable` value, enabling flexibility for unique formatting needs.
 
 :::
 
 ## Best practice
 
-To maintain consistent data formatting across your application, define all formatters in a centralized location. This approach simplifies adjustments and ensures uniformity, making it easier to manage and update formatting rules as needed.
+Centralize all formatters to ensure consistent data formatting across your application. This simplifies updates and ensures uniformity in formatting rules.

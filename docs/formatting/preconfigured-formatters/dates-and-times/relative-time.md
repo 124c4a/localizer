@@ -16,7 +16,7 @@ order: 7
 >
 > Both arguments can be JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects or numeric timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 
-This formatter generates a localized, human-readable relative time string based on a given reference moment. It is particularly useful for displaying time differences, such as "5 minutes ago" or "in 2 days," in a format that adapts to the user's locale.
+This formatter creates a localized, human-readable relative time string, such as "5 minutes ago" or "in 2 days," based on a reference time and the user's locale.
 
 **Examples:**
 

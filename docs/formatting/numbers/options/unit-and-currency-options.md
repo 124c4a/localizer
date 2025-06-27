@@ -24,15 +24,17 @@ const unitInputs = () => [
 
 ## `currencyDisplay`
 
-How to display the currency in currency formatting.
+How to display the currency in currency formatting:
 
-- `"code"` - Use the ISO currency code.
-- `"symbol"` **(default)** - Use a localized currency symbol such as €.
-- `"narrowSymbol"` - Use a narrow format symbol ("$100" rather than "US$100").
-- `"name"` - Use a localized currency name such as "dollar".
+- `"code"` - ISO currency code (e.g., USD).
+- `"symbol"` **(default)** - Localized currency symbol (e.g., €).
+- `"narrowSymbol"` - Narrow format symbol (e.g., $100 instead of US$100).
+- `"name"` - Localized currency name (e.g., dollar).
 
 ::: info NOTE
+
 This option is only applicable for `currencyFormatter`
+
 :::
 
 **Examples:**
@@ -41,10 +43,12 @@ This option is only applicable for `currencyFormatter`
 
 ## `currencySign`
 
-In many locales, accounting format means to wrap the number with parentheses instead of appending a minus sign. Possible values are `"standard"` and `"accounting"`; the default is `"standard"`.
+In some locales, the accounting format wraps negative numbers in parentheses instead of using a minus sign. Possible values: `"standard"` (default) and `"accounting"`.
 
 ::: info NOTE
+
 This option is only applicable for `currencyFormatter`
+
 :::
 
 **Examples:**
@@ -53,11 +57,11 @@ This option is only applicable for `currencyFormatter`
 
 ## `unitDisplay`
 
-The unit formatting style to use in unit formatting. Possible values are:
+The unit formatting style to use in unit formatting:
 
-- `"short"` **(default)** - E.g., 16 l.
-- `"narrow"` - E.g., 16l.
-- `"long"` - E.g., 16 litres.
+- `"short"` **(default)** - Example: 16 l.
+- `"narrow"` - Example: 16l.
+- `"long"` - Example: 16 litres.
 
 ::: info NOTE
 This option is only applicable for `unitFormatter`

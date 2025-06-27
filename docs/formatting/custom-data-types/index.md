@@ -8,14 +8,13 @@ title: Custom data types
 > **[lookupFormatter](../../api/_localizer/format-lookup/lookupFormatter/index.md)**<`T`> ( `lut` ): [ValueFormatter](../index.md#valueformatter-t)<`T`>
 >
 > - `T` - The type of value to format.
-
-This formatter ensures type safety while handling complex or unconventional value types.
+>   This formatter ensures type safety and simplifies handling of unconventional value types.
 
 ## Look-up table
 
-The behavior of the formatter is governed by the look-up table (`lut`). This table is an object where the keys represent possible values (if `T` is a string or number) or special symbols for null-ish, undefined, and null values. The values in the object can either be [Localizable](../../introduction/localizable.md) values or [value formatters](../index.md#what-are-formatters).
+The formatter uses a look-up table (`lut`) to map keys to values. Keys can be strings, numbers, or special symbols for `null`, `undefined`, or both. Values can be [Localizable](../../introduction/localizable.md) items or [value formatters](../index.md#what-are-formatters).
 
-This formatter behaves similarly to a JavaScript `switch` statement but offers a more concise syntax.
+This formatter works like a JavaScript `switch` statement but with a cleaner, more compact syntax.
 
 | `lut` Key            | `lut` Value                                                  | Condition                                                     |
 | -------------------- | ------------------------------------------------------------ | ------------------------------------------------------------- |
@@ -27,7 +26,7 @@ This formatter behaves similarly to a JavaScript `switch` statement but offers a
 
 ## Typical use
 
-This formatter is particularly well-suited for formatting enum-like value types, where a predefined set of possible values is mapped to specific localized strings or formatting logic:
+This formatter is ideal for formatting enum-like values, mapping predefined keys to localized strings or custom formatting logic.
 
 ```typescript
 import { lookupFormatter } from '@localizer/format-lookup';

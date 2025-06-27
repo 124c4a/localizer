@@ -9,7 +9,7 @@ order: 5
 > - `T` _extends number | bigint_ - The type of value to format.
 > - `options` - Optional [configuration of the formatter](../options/index.md).
 
-Use this formatter to represent monetary values in different currencies.
+Use this formatter to format monetary values in various currencies efficiently.
 
 ::: tip
 

@@ -8,8 +8,7 @@ order: 1
 >
 > - `T` _extends number | Date_ - The type of value to format. Number values are treated as timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 > - `options` - Optional [configuration of the formatter](./options/index.md).
-
-This formatter designed for locale-aware representation of dates, times and their combinations.
+>   This formatter provides locale-aware formatting for dates, times, and their combinations.
 
 ::: tip
 

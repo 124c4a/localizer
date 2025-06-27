@@ -12,7 +12,7 @@
 >
 > Both arguments can be either a [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) or a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt).
 
-This formatter extends the functionality of [`percent`](./percent.md) to calculate and format the percentage change between a given value and a reference value in a locale-aware manner. This ensures that the output remains consistent with the configuration used by `percent`, providing a uniform approach to percentage representation.
+This formatter calculates the percentage change between a value and a reference in a locale-aware manner.
 
 :::info NOTE
 

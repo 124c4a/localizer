@@ -17,7 +17,7 @@ const dateInputs = (now) => [
 
 ## `hour12`
 
-Whether to use 12-hour time (as opposed to 24-hour time). Possible values are `true` and `false`; the default is locale dependent. When `true`, this option sets `hourCycle` to either `"h11"` or `"h12"`, depending on the locale. When `false`, it sets `hourCycle` to `"h23"`.
+Whether to use 12-hour time (`true`) or 24-hour time (`false`). The default depends on the locale. When `true`, `hourCycle` is set to `"h11"` or `"h12"`. When `false`, it is set to `"h23"`.
 
 ::: warning
 
@@ -41,7 +41,7 @@ Options `hour12` and `hourCycle` cannot be used simultaneously.
 
 ## `hourCycle`
 
-The hour cycle to use. Possible values are `"h11"`, `"h12"`, `"h23"`, and `"h24"`.
+The hour cycle to use: `"h11"`, `"h12"`, `"h23"`, or `"h24"`.
 
 ::: warning
 
@@ -65,29 +65,27 @@ Options `hour12` and `hourCycle` cannot be used simultaneously.
 
 ## `parts`
 
-An array of localized value parts to extract. Possible values are:
+An array of localized value parts to extract. Possible values include:
 
-| Value                | Description                                                                                                                                                            |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `"weekday"`          | For example "M", "Monday", or "Montag".                                                                                                                                |
-| `"era"`              | For example "BC" or "AD".                                                                                                                                              |
-| `"year"`             | For example "2012" or "96".                                                                                                                                            |
-| `"month"`            | For example "12" or "January".                                                                                                                                         |
-| `"day"`              | For example "17".                                                                                                                                                      |
-| `"dayPeriod"`        | For example "AM", "PM", "in the morning", or "noon".                                                                                                                   |
-| `"hour"`             | For example "3" or "03".                                                                                                                                               |
-| `"minute"`           | For example "00".                                                                                                                                                      |
-| `"second"`           | For example "07" or "42".                                                                                                                                              |
-| `"fractionalSecond"` | For example "0", "00", or "000".                                                                                                                                       |
-| `"timeZoneName"`     | For example "UTC", "CET", or "Central European Time".                                                                                                                  |
-| `"literal"`          | Any string that's a part of the format pattern and not influenced by the date; for example "/", ", ", "o'clock", "de", " ", etc.                                       |
-| `"relatedYear"`      | A 4-digit Gregorian year, in the event that the calendar's representation would be a yearName instead of a year; for example "2019". See named years for more details. |
-| `"yearName"`         | The name given to the year, usually in calendars without the concept of continuous years; for example "geng-zi".                                                       |
-| `"unknown"`          | Reserved for any token that's not recognized as any of the above; should be rarely encountered.                                                                        |
+- `"weekday"`: For example, "M", "Monday", or "Montag".
+- `"era"`: For example, "BC" or "AD".
+- `"year"`: For example, "2012" or "96".
+- `"month"`: For example, "12" or "January".
+- `"day"`: For example, "17".
+- `"dayPeriod"`: For example, "AM", "PM", "in the morning", or "noon".
+- `"hour"`: For example, "3" or "03".
+- `"minute"`: For example, "00".
+- `"second"`: For example, "07" or "42".
+- `"fractionalSecond"`: For example, "0", "00", or "000".
+- `"timeZoneName"`: For example, "UTC", "CET", or "Central European Time".
+- `"literal"`: Any string that's part of the format pattern and not influenced by the date, such as "/", ", ", or "o'clock".
+- `"relatedYear"`: A 4-digit Gregorian year, used when the calendar's representation includes a year name instead of a year, e.g., "2019".
+- `"yearName"`: The name of the year, typically in calendars without continuous years, e.g., "geng-zi".
+- `"unknown"`: Reserved for unrecognized tokens; rarely encountered.
 
 ::: info NOTE
 
-This option reflects `type` fields of the returned value of [`Intl.DateTimeFormat.formatToParts()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatToParts)
+This option corresponds to the `type` fields returned by [`Intl.DateTimeFormat.formatToParts()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatToParts).
 
 :::
 

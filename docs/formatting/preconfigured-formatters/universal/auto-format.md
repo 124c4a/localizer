@@ -9,22 +9,20 @@
 >
 > - `value` - The value to format. Can be any JavaScript value.
 
-This is a universal data formatter that converts any value into a locale-dependent `Localizable` using [preconfigured formatters](../index.md). It is useful for scenarios where exact value type is unknown.
+This formatter converts any value into a locale-aware `Localizable` using [preconfigured formatters](../index.md). It selects a formatter based on the value type:
 
-Depending on value type, it uses the following formatters:
-
-| Type                                                  | Formatter                                                                                      |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `number`, `bigint`, or `Number`                       | [decimal formatter](../numbers/decimal.md)                                                     |
-| `Date`                                                | [date formatter](../dates-and-times/date.md)                                                   |
-| Array                                                 | [generic list formatter](../lists-of-items/list.md), applying `autoFormat` to each array entry |
-| [`Localizable`](../../../introduction/localizable.md) | Returned without changes                                                                       |
-| `undefined`                                           | Empty value                                                                                    |
-| Other types                                           | [stringification formatter](./stringify.md)                                                    |
+| Type                                                  | Formatter                                                                       |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `number`, `bigint`, `Number`                          | [Decimal formatter](../numbers/decimal.md)                                      |
+| `Date`                                                | [Date formatter](../dates-and-times/date.md)                                    |
+| Array                                                 | [List formatter](../lists-of-items/list.md), applies `autoFormat` to each entry |
+| [`Localizable`](../../../introduction/localizable.md) | Returned as-is                                                                  |
+| `undefined`                                           | Empty value                                                                     |
+| Other                                                 | [Stringification formatter](./stringify.md)                                     |
 
 ::: tip
 
-Use `autoFormat` judiciously. While it provides flexibility by handling various value types, it does not enforce strict type safety or allow for local customization of formatter properties.
+Use `autoFormat` carefully. It handles various value types but lacks strict type safety and customization options.
 
 :::
 
