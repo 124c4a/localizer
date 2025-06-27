@@ -5,7 +5,7 @@ title: Relative times
 
 # Relative time <Badge type="info" text="@localizer/format-relativetime" />
 
-> **[relativeTimeFormatter](../../../api/_localizer/format-relativetime/relativeTimeFormatter/index.md)**<`T`> ( `options?` ): [RelativeValueFormatter](../index.md#relativevalueformatter-t)<`T`>
+> **[relativeTimeFormatter](../../api/_localizer/format-relativetime/relativeTimeFormatter/index.md)**<`T`> ( `options?` ): [RelativeValueFormatter](../index.md#relativevalueformatter-t)<`T`>
 >
 > - `T` _extends number | Date_ - The type of value to format. Number values are treated as timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
 > - `options` - Optional [configuration of the formatter](./options.md).

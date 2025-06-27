@@ -13,6 +13,6 @@ This formatter provides locale-aware formatting for date/time ranges.
 
 ::: tip
 
-If you prefer to use default settings, consider using a preconfigured [date range](../preconfigured-formatters/dates-and-times/date-range.md), [time range](../preconfigured-formatters/dates-and-times/time-range.md) and [date/time range](../preconfigured-formatters/dates-and-times/date-time-range.md) formatters.
+If you prefer to use default settings, consider using a preconfigured [date range](../preconfigured-formatters/dates-and-times/date-range.md) and [date/time range](../preconfigured-formatters/dates-and-times/date-time-range.md) formatters.
 
 :::

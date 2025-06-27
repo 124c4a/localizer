@@ -14,11 +14,11 @@ Localization goes beyond translation by adapting data formats to match the user'
 - [Lists](./lists/index.md)
 - [Custom types](./custom-data-types/index.md)
 
-The library provides a [set of preconfigured formatters](./preconfigured-formatters.md) for common use cases, reducing the need for custom implementations.
+The library provides a [set of preconfigured formatters](./preconfigured-formatters/index.md) for common use cases, reducing the need for custom implementations.
 
 ## What are formatters?
 
-A formatter is a function that takes input and returns a [localizable value](../basics/localizable.md). This allows formatted values to be used directly in UI components, [template literals](../basics/localizable.md#string-templates), or translations.
+A formatter is a function that takes input and returns a [localizable value](../introduction/localizable.md). This allows formatted values to be used directly in UI components, [template literals](../introduction/localizable.md#string-templates), or translations.
 
 The library offers several predefined formatter types:
 
