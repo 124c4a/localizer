@@ -22,7 +22,7 @@ import { NumberFormatOptions } from './options.js';
  * @public
  * Creates a localized percentage formatter.
  *
- * @template T - The value type, either number or bigint.
+ * @typeParam T - The value type, either number or bigint.
  * @param options - Optional formatting options.
  * @returns A `ValueFormatter` for percentage strings.
  */

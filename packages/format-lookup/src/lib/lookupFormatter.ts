@@ -79,7 +79,7 @@ export type LookupTable<T> = {
  * @typeParam T - The type of values the formatter supports.
  * @param lut - Lookup table mapping values to localizable content or formatters.
  * @returns A function that formats the input value using the lookup table.
- * @throws {RangeError} If the value is not in the lookup table and no default is specified.
+ * @throws If the value is not in the lookup table and no default is specified.
  */
 export function lookupFormatter<T>(lut: LookupTable<T>): ValueFormatter<T> {
   return (value) => {

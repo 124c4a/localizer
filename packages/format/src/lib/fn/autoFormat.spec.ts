@@ -27,7 +27,8 @@ describe('autoFormat', () => {
   });
 
   it('formats Number objects correctly as decimals', () => {
-    const result = autoFormat(Number(123456));
+    // eslint-disable-next-line sonarjs/no-primitive-wrappers
+    const result = autoFormat(new Number(123456));
     expect(result.localize('en-US')).toBe('123,456');
   });
 
