@@ -18,6 +18,12 @@ import { upperCase } from '@localizer/transform';
 import { dateTimeFormatter } from './dateTimeFormatter.js';
 
 describe('dateTimeFormatter', () => {
+  it('formats a date correctly for a given locale using default options', () => {
+    const formatter = dateTimeFormatter();
+    const result = formatter(new Date('2023-01-01')).localize('en-US');
+    expect(result).toBe('1/1/2023');
+  });
+
   it('formats a date correctly for a given locale', () => {
     const formatter = dateTimeFormatter({
       year: 'numeric',

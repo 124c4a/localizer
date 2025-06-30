@@ -10,9 +10,9 @@ import { getLocalizer, transform, loc, date, apply, countryName, upperCase, lowe
 const localizer = getLocalizer('en-US');
 </script>
 
-Sometime you need to apply some post-processing to the results of formatting or translation. Typical examples are changing the character case. Since character case change rules are also locale-dependent, the library provides a set of transformation utilities, that naturally integrates with the rest.
+Sometimes, you may need to perform additional processing on the results of formatting or translation. Common use cases include altering the character case. Since character case transformations can depend on locale-specific rules, the library offers a suite of transformation utilities that seamlessly integrate with its core functionality.
 
-The main way to apply transformation is to use [`transform()`](../api/_localizer/transform/transform/index.md) method:
+The primary method for applying transformations is the [`transform()`](../api/_localizer/transform/transform/index.md) function. This utility allows you to modify the output of a `Localizable` object by applying a sequence of transformations. Each transformation is applied in the order specified, enabling flexible and powerful customization of localized content.
 
 ```typescript
 import { getLocalizer } from '@localizer/core';
@@ -30,11 +30,11 @@ console.log(localizer(transformed));
 {{localizer(transform(countryName('FI'), [upperCase]))}}
 ```
 
-The second argument of `transform()` method is an array of [transformers](../api/_localizer/transform/Transformer/index.md) to apply to the result sequentially.
+The `transform()` method takes a second argument, which is an array of [transformers](../api/_localizer/transform/Transformer/index.md). These transformers are applied sequentially to modify the result, offering a flexible way to customize localized content.
 
 ::: tip
 
-Most of configurable [value formatters](../formatting/index.md) allow to specify transformers in the formatter options.
+Most configurable [value formatters](../formatting/index.md) support specifying transformers directly within their options.
 
 :::
 
@@ -42,7 +42,7 @@ Most of configurable [value formatters](../formatting/index.md) allow to specify
 
 ### Converting to lower case
 
-To convert `Localizable` to lower case, use [`lowerCase`](../api/_localizer/transform/lowerCase/index.md). This transformers changes each character to corresponding lower-case version in a locale-aware manner.
+To convert a `Localizable` object to lower case, use the [`lowerCase`](../api/_localizer/transform/lowerCase/index.md) transformer. This utility ensures that each character is converted to its locale-specific lower-case equivalent, providing accurate and consistent results across different languages.
 
 ```typescript
 const transformed = transform(loc`strING`, [lowerCase]);
@@ -55,7 +55,7 @@ console.log(localizer(transformer));
 
 ### Converting to upper case
 
-To convert `Localizable` to upper case, use [`upperCase`](../api/_localizer/transform/upperCase/index.md). This transformers changes each character to corresponding upper-case version in a locale-aware manner.
+To convert a `Localizable` object to upper case, use the [`upperCase`](../api/_localizer/transform/upperCase/index.md) transformer. This utility ensures that each character is converted to its locale-specific upper-case equivalent, providing accurate and consistent results across different languages.
 
 ```typescript
 const transformed = transform(loc`strING`, [upperCase]);
@@ -68,7 +68,7 @@ console.log(localizer(transformer));
 
 ### Converting to title case
 
-To convert `Localizable` to title case (capitalize), use [`capitalize`](../api/_localizer/transform/capitalize/index.md). This transformers changes the first character to corresponding upper-case version in a locale-aware manner.
+To convert a `Localizable` object to title case, use the [`capitalize`](../api/_localizer/transform/capitalize/index.md) transformer. This utility ensures that the first character of the string is converted to its locale-specific upper-case equivalent, while the rest of the string remains unchanged. It provides accurate and consistent results across different languages, adhering to locale-aware rules.
 
 ```typescript
 const transformed = transform(loc`strING`, [capitalize]);
@@ -81,7 +81,19 @@ console.log(localizer(transformer));
 
 ### Applying custom transformation
 
-It is possible to apply custom string transformations using [`apply`](../api/_localizer/transform/apply/index.md) transformer factory.
+You can create custom string transformations using the [`apply`](../api/_localizer/transform/apply/index.md) transformer factory. This utility allows you to define a transformation function that modifies the localized output in any way you need. For example, you can wrap text in markdown-style bold formatting:
+
+```typescript
+const bold = apply((text) => `**${text}**`);
+const transformed = transform(loc`strING`, [bold]);
+console.log(localizer(transformed));
+```
+
+```console-vue
+{{localizer(transform(loc`strING`, [applyFn((text) => `**${text}**`)]))}}
+```
+
+This approach provides flexibility for implementing custom transformations while maintaining compatibility with the library's localization features.
 
 ```typescript
 const bold = apply((text) => `**${text}**`);
@@ -94,8 +106,7 @@ console.log(localizer(transformer));
 ```
 
 ::: info NOTE
-
-Such transformations are locale-agnostic. If you need a locale-aware transformation, you can create a custom transformer by implementing [`Transformer`](../api/_localizer/transform/Transformer/index.md) type:
+Such transformations are not tied to any specific locale. For scenarios requiring locale-aware transformations, you can implement a custom transformer by adhering to the [`Transformer`](../api/_localizer/transform/Transformer/index.md) type. This allows you to define transformations that respect locale-specific rules and nuances, ensuring accurate and context-sensitive results.
 
 ```typescript
 const bold = (localizable) => loc`**${localizable}**`;
@@ -105,13 +116,13 @@ console.log(localizer(transformer));
 
 :::
 
-## Locale transformations
+## Locale Transformations
 
-In contrast to [string transformations](#string-transformations), these transformers allow to override the locale that is used for localization.
+Unlike [string transformations](#string-transformations), locale transformations enable you to override the locale used during the localization process. These transformations are particularly useful when you need to ensure consistent formatting or behavior across different locales, regardless of the user's selected language or region.
 
 ### Using primary locale <Badge type="tip" text="preview" />
 
-This transformer allows to use [primary language for country](../introduction/helpers.md#getting-primary-locale) istead of supplied locale. This might come useful for example in the scenarios where it is desirable to have unified data formatting regardless of selected spoken language:
+This transformer enables the use of the [primary language for a country](../introduction/helpers.md#getting-primary-locale) instead of the provided locale. This can be particularly useful in scenarios where consistent data formatting is preferred, regardless of the selected spoken language.
 
 ```typescript
 const fiFI = getLocalizer('fi-FI');
@@ -128,7 +139,7 @@ console.log(svFI(localizedDate));
 {{ date(new Date()).localize('sv-FI') }}
 ```
 
-In this case, localization follows standard for swedish language, which might be confusing for people living in Finland. [`usePrimaryLocale`](../api/_localizer/transform/usePrimaryLocale/index.md) transformer allows to make this more consistent:
+In Finland, the standard localization for the Swedish language may lead to unexpected results for some users. The [`usePrimaryLocale`](../api/_localizer/transform/usePrimaryLocale/index.md) transformer helps ensure consistency by applying the primary locale for the region, making the localized output more intuitive and contextually appropriate.
 
 ```typescript
 const fiFI = getLocalizer('fi-FI');

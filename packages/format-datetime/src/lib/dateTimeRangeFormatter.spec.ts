@@ -18,6 +18,15 @@ import { upperCase } from '@localizer/transform';
 import { dateTimeRangeFormatter } from './dateTimeRangeFormatter.js';
 
 describe('dateTimeRangeFormatter', () => {
+  it('formats a range of dates correctly for a given local using default options', () => {
+    const formatter = dateTimeRangeFormatter();
+    const result = formatter(
+      new Date('2023-01-01'),
+      new Date('2023-12-31'),
+    ).localize('en-US');
+    expect(result).toBe('1/1/2023 – 12/31/2023');
+  });
+
   it('formats a range of dates correctly for a given locale', () => {
     const formatter = dateTimeRangeFormatter({
       year: 'numeric',

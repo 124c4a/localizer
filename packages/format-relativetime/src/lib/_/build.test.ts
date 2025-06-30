@@ -29,11 +29,16 @@ describe('_buildFormatter', () => {
 
   it('returns a placeholder for undefined locale', () => {
     const formatter = _buildFormatter({ numeric: 'auto' });
-    const result = formatter(
+    const result1 = formatter(
       new Date('2023-01-01'),
       new Date('2023-01-02'),
     ).localize(null);
-    expect(result).toBe('2023-01-01T00:00:00.000Z +1 day');
+    const result2 = formatter(
+      new Date('2023-01-02'),
+      new Date('2023-01-01'),
+    ).localize(null);
+    expect(result1).toBe('2023-01-01T00:00:00.000Z +1 day');
+    expect(result2).toBe('2023-01-02T00:00:00.000Z -1 day');
   });
 
   it('applies transform function if provided', () => {
