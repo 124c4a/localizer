@@ -16,55 +16,41 @@
 import { isLocalizable, loc, Localizable } from '@localizer/core';
 
 /**
- * Symbol representing the "zero" plural category.
- *
  * @alpha
- * @see {@link PluralCategory}, @see {@link plural}, @see {@link PluralTranslationMap}
+ * Symbol representing the "zero" plural category.
  */
 export const zero: unique symbol = Symbol();
 /**
- * Symbol representing the "one" plural category.
- *
  * @alpha
- * @see {@link PluralCategory}, @see {@link plural}, @see {@link PluralTranslationMap}
+ * Symbol representing the "one" plural category.
  */
 export const one: unique symbol = Symbol();
 /**
- * Symbol representing the "two" plural category.
- *
  * @alpha
- * @see {@link PluralCategory}, @see {@link plural}, @see {@link PluralTranslationMap}
+ * Symbol representing the "two" plural category.
  */
 export const two: unique symbol = Symbol();
 /**
- * Symbol representing the "few" plural category.
- *
  * @alpha
- * @see {@link PluralCategory}, @see {@link plural}, @see {@link PluralTranslationMap}
+ * Symbol representing the "few" plural category.
  */
 export const few: unique symbol = Symbol();
 /**
- * Symbol representing the "many" plural category.
- *
  * @alpha
- * @see {@link PluralCategory}, @see {@link plural}, @see {@link PluralTranslationMap}
+ * Symbol representing the "many" plural category.
  */
 export const many: unique symbol = Symbol();
 /**
- * Symbol representing the "other" plural category.
- *
  * @alpha
- * @see {@link PluralCategory}, @see {@link plural}, @see {@link PluralTranslationMap}
+ * Symbol representing the "other" plural category.
  */
 export const other: unique symbol = Symbol();
 
 /**
+ * @alpha
  * Type definition for plural categories.
  *
  * Represents the possible plural categories as symbols.
- *
- * @alpha
- * @see @see {@link plural}, @see {@link PluralTranslationMap}
  */
 export type PluralCategory =
   | typeof zero
@@ -75,13 +61,12 @@ export type PluralCategory =
   | typeof other;
 
 /**
+ * @alpha
  * Type definition for a plural translation map.
  *
  * Maps numeric values or plural categories to their corresponding translations.
  *
- * @template T - The type of numeric values that the map can handle.
- * @alpha
- * @see {@link PluralCategory}, {@link plural}, {@link Localizable}
+ * @typeParam T - The type of numeric values that the map can handle.
  */
 export type PluralTranslationMap<T extends number> = {
   [K in T]?: string | Localizable;
@@ -90,43 +75,28 @@ export type PluralTranslationMap<T extends number> = {
 };
 
 /**
- * Internal mapping of plural categories to their corresponding symbols.
- *
  * @internal
+ * Internal mapping of plural categories to their corresponding symbols.
  */
 const pluralCategoryMap = { zero, one, two, few, many, other };
 
 /**
+ * @alpha
+ *
  * Plural translation function.
  *
  * Determines the appropriate translation for a given numeric value based on
  * the provided plural translation map and the locale's pluralization rules.
  *
- * @template T - The type of numeric values that the function can handle.
+ * @typeParam T - The type of numeric values that the function can handle.
  * @param value - The numeric value to be pluralized.
  * @param map - The translation map containing plural categories and values.
  * @returns The localized pluralized value.
- * @throws {RangeError} If no "other" plural category is defined in the map.
- *
- * @example
- * const map = {
- *   [zero]: loc`No items`,
- *   [one]: loc`One item`,
- *   [other]: loc`${value} items`,
- * };
- * const pluralizer = (value:number) => plural(2, {
- *   [zero]: loc`No items`,
- *   [one]: loc`One item`,
- *   [other]: loc`${value} items`,
- * });
- * console.log(result.localize('en')); // Output: "2 items"
- *
- * @alpha
- * @see {@link PluralTranslationMap}, {@link translate}
+ * @throws If no "other" plural category is defined in the map.
  */
 export function plural<T extends number>(
   value: T,
-  map: PluralTranslationMap<T>
+  map: PluralTranslationMap<T>,
 ): Localizable {
   const pluralRules: Record<string, Intl.PluralRules> = {};
 

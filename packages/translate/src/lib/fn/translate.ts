@@ -23,43 +23,38 @@ import {
 } from '@localizer/core';
 
 /**
+ * @alpha
  * Type definition for a translation map.
  *
  * Represents a mapping of locale codes to their corresponding translations.
  * Each locale code can be associated with either a string or a localizable value.
  *
- * @template K - The locale code type.
- *
- * @alpha
- * @see {@link translate}
+ * @typeParam K - The locale code type.
  */
 export type TranslationMap = {
   readonly [K in LocaleCode]?: string | Localizable;
 };
 
 /**
+ * @alpha
+ *
  * Translation function for dynamic values.
  *
  * Creates a value formatter that dynamically generates a translation map based on the input value.
  *
- * @template V - The type of the input value.
+ * @typeParam V - The type of the input value.
  * @param map - A function that generates a translation map for the given value.
  * @param translationKey - An optional key used as a fallback translation.
  * @returns A function that formats the input value into a localized string.
- *
- * @example
- * const dynamicMap = (value) => ({ en: `Value: ${value}`, fr: `Valeur: ${value}` });
- * const formatter = translate(dynamicMap);
- * console.log(formatter(42).localize("fr")); // Output: "Valeur: 42"
- *
- * @alpha
- * @see {@link TranslationMap}
  */
 export function translate<V>(
   map: (value: V) => TranslationMap,
   translationKey?: string,
 ): ValueFormatter<V>;
+
 /**
+ * @alpha
+ *
  * Translation function for static maps.
  *
  * Resolves the appropriate translation for the current locale based on the provided translation map.
@@ -67,26 +62,20 @@ export function translate<V>(
  * @param map - A static translation map containing locale codes and their translations.
  * @param translationKey - An optional key used as a fallback translation.
  * @returns A localized string based on the current locale.
- *
- * @example
- * const staticMap = { en: "Hello", fr: "Bonjour" };
- * const localized = translate(staticMap);
- * console.log(localized.localize("en")); // Output: "Hello"
- *
- * @alpha
- * @see {@link TranslationMap}
  */
 export function translate(
   map: TranslationMap,
   translationKey?: string,
 ): Localizable;
 /**
+ * @alpha
  * Translation function that can handle both static and dynamic translation maps.
- * @param map
- * @param translationKey
- * @internal
+ * @typeParam V - The type of the input value.
+ * @param map - A static translation map containing locale codes and their translations, or a function that generates a translation map based on the input value.
+ * @param translationKey - An optional key used as a fallback translation.
+ * @returns A localized string based on the current locale or a value formatter for dynamic values.
  */
-export function translate<V>(
+export function translate<V = TranslationMap>(
   map: TranslationMap | ((value: V) => TranslationMap),
   translationKey?: string,
 ): Localizable | ValueFormatter<V> {
@@ -113,3 +102,12 @@ export function translate<V>(
     });
   }
 }
+
+/**
+ * @alpha
+ * A translation function that returns a localized string based on the provided translation map.
+ *
+ * This function can be used to create localized strings for various locales, falling back to a default translation if the specific locale is not available.
+ */
+export const translation: ValueFormatter<TranslationMap> =
+  translate<TranslationMap>((map) => map);
