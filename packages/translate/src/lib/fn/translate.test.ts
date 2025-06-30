@@ -72,3 +72,26 @@ describe('translate function', () => {
     );
   });
 });
+
+describe('translation function', () => {
+  it('returns a localized string based on the provided translation map', () => {
+    const translation = translate({
+      en: 'Hello',
+      fi: 'Hei',
+      sv: 'Hej',
+    });
+
+    expect(translation.localize('en')).toBe('Hello');
+    expect(translation.localize('fi')).toBe('Hei');
+    expect(translation.localize('sv-FI')).toBe('Hej');
+  });
+
+  it('returns fallback translation when locale is missing', () => {
+    const translation = translate({
+      en: 'Hello',
+      fi: 'Hei',
+    });
+
+    expect(translation.localize('de')).toBe('Hello');
+  });
+});

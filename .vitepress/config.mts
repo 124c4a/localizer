@@ -49,7 +49,8 @@ const config: UserConfig = {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Getting started', link: '/introduction/getting-started' },
-      { text: 'Value formatting', link: '/formatting' },
+      { text: 'Translation', link: '/translation' },
+      { text: 'Formatting', link: '/formatting' },
     ],
 
     socialLinks: [

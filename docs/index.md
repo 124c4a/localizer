@@ -11,6 +11,9 @@ hero:
       text: Getting started
       link: /introduction/getting-started
     - theme: alt
-      text: Value formatting
+      text: Translation
+      link: /translation
+    - theme: alt
+      text: Formatting
       link: /formatting
 ---

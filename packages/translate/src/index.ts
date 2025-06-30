@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export * from './lib/fn/autoFormatRecordDeep.js';
+export * from './lib/fn/_/autoFormatRecordDeep.js';
 export * from './lib/fn/plural.js';
 export * from './lib/fn/translate.js';
 export * from './lib/fn/dictionary.js';
