@@ -71,7 +71,7 @@ describe('listFormatter', () => {
     const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
       null,
     );
-    expect(result).toBe('[list]');
+    expect(result).toBe('apple,banana,cherry');
   });
 
   it('handles empty lists correctly', () => {

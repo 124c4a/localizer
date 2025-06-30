@@ -133,7 +133,7 @@ This option reflects `type` fields of the returned value of [`Intl.NumberFormat.
 
 ## `transform`
 
-Specifies array of transformers to apply to the result.
+Specifies array of [transformations](../../../introduction/transformations.md) to apply to the result.
 
 ::: info NOTE
 

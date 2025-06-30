@@ -42,7 +42,7 @@ export function displayNameFormatter<T extends string>(
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${type}]`;
+        return value;
       }
 
       formatter[locale] ||= new Intl.DisplayNames(locale, {

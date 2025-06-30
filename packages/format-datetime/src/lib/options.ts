@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
@@ -168,12 +167,15 @@ export type DateTimeFormatOptions = {
    *
    * @public
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
   /**
    * Specifies which parts to include in the formatted output.
    * If omitted, all parts are included by default.
    *
    * @public
    */
-  parts?: Intl.DateTimeFormatPartTypes[];
+  parts?: (
+    | Intl.DateTimeFormatPartTypes
+    | `${'startRange' | 'endRange' | 'shared'}-${Intl.DateTimeFormatPartTypes}`
+  )[];
 };

@@ -15,50 +15,11 @@
  */
 import { upperCase } from '@localizer/transform';
 
-import { _buildFormatter, _buildRangeFormatter } from './build.js';
+import { dateTimeRangeFormatter } from './dateTimeRangeFormatter.js';
 
-describe('_buildFormatter', () => {
-  it('formats a date correctly for a given locale', () => {
-    const formatter = _buildFormatter({
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-    const result = formatter(new Date('2023-01-01')).localize('en-US');
-    expect(result).toBe('January 1, 2023');
-  });
-
-  it('returns a placeholder for undefined locale', () => {
-    const formatter = _buildFormatter({
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-    const result = formatter(new Date('2023-01-01')).localize(null);
-    expect(result).toBe('2023-01-01T00:00:00.000Z');
-  });
-
-  it('filters parts based on options if provided', () => {
-    const formatter = _buildFormatter({ year: 'numeric', parts: ['year'] });
-    const result = formatter(new Date('2023-01-01')).localize('en-US');
-    expect(result).toBe('2023');
-  });
-
-  it('applies transform function if provided', () => {
-    const formatter = _buildFormatter({
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      transform: [upperCase],
-    });
-    const result = formatter(new Date('2023-01-01')).localize('en-US');
-    expect(result).toBe('JANUARY 1, 2023');
-  });
-});
-
-describe('buildRangeFormatter', () => {
+describe('dateTimeRangeFormatter', () => {
   it('formats a range of dates correctly for a given locale', () => {
-    const formatter = _buildRangeFormatter({
+    const formatter = dateTimeRangeFormatter({
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -71,7 +32,7 @@ describe('buildRangeFormatter', () => {
   });
 
   it('returns a placeholder for undefined locale', () => {
-    const formatter = _buildRangeFormatter({
+    const formatter = dateTimeRangeFormatter({
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -84,7 +45,7 @@ describe('buildRangeFormatter', () => {
   });
 
   it('filters parts based on source if provided', () => {
-    const formatter = _buildRangeFormatter({
+    const formatter = dateTimeRangeFormatter({
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -98,7 +59,7 @@ describe('buildRangeFormatter', () => {
   });
 
   it('applies transform function if provided', () => {
-    const formatter = _buildRangeFormatter({
+    const formatter = dateTimeRangeFormatter({
       year: 'numeric',
       month: 'long',
       day: 'numeric',

@@ -25,7 +25,7 @@ describe('fixedUnitFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = fixedUnitFormatter('kilometer');
     const result = formatter(100).localize(null);
-    expect(result).toBe('[unit]');
+    expect(result).toBe('100 kilometer');
   });
 
   it('handles bigint values correctly', () => {

@@ -25,7 +25,7 @@ describe('decimalFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = decimalFormatter();
     const result = formatter(1234.56).localize(null);
-    expect(result).toBe('[decimal]');
+    expect(result).toBe('1234.56');
   });
 
   it('handles bigint values correctly', () => {

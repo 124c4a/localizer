@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
@@ -71,5 +70,5 @@ export type DisplayNameFormatOptions = {
    * A list of functions to transform the formatted display name.
    * Each function processes a Localizable and returns a modified Localizable.
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
 };

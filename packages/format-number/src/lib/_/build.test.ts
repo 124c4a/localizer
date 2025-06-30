@@ -37,13 +37,13 @@ describe('buildFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = _buildFormatter({ style: 'decimal' });
     const result = formatter(1234.56).localize(null);
-    expect(result).toBe('[decimal]');
+    expect(result).toBe('1234.56');
   });
 
   it('returns a placeholder for undefined locale when style is not set explicitly', () => {
     const formatter = _buildFormatter({});
     const result = formatter(1234.56).localize(null);
-    expect(result).toBe('[decimal]');
+    expect(result).toBe('1234.56');
   });
 
   it('applies transform function if provided', () => {
@@ -66,20 +66,19 @@ describe('buildRangeFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = _buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize(null);
-    expect(result).toBe('[decimalRange]');
+    expect(result).toBe('1000 - 2000');
   });
 
   it('returns a placeholder for undefined locale when style is not set explicitly', () => {
     const formatter = _buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize(null);
-    expect(result).toBe('[decimalRange]');
+    expect(result).toBe('1000 - 2000');
   });
 
   it('filters parts based on source if provided', () => {
     const formatter = _buildRangeFormatter(
-      { style: 'decimal', parts: ['integer'] },
+      { style: 'decimal', parts: ['startRange-integer'] },
       'decimal',
-      'startRange',
     );
     const result = formatter(1000, 2000).localize('en-US');
     expect(result).toBe('1000');
@@ -109,7 +108,7 @@ describe('buildUnitFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = _buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
     const result = formatter(100, 'kilometer').localize(null);
-    expect(result).toBe('[unit]');
+    expect(result).toBe('100 kilometer');
   });
 
   it('applies transform function if provided', () => {

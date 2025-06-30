@@ -33,7 +33,7 @@ describe('_buildFormatter', () => {
       new Date('2023-01-01'),
       new Date('2023-01-02'),
     ).localize(null);
-    expect(result).toBe('[relativeTime]');
+    expect(result).toBe('2023-01-01T00:00:00.000Z +1 day');
   });
 
   it('applies transform function if provided', () => {

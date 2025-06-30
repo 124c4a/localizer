@@ -25,7 +25,7 @@ describe('percentRangeFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = percentRangeFormatter();
     const result = formatter(0.1, 0.2).localize(null);
-    expect(result).toBe('[percentRange]');
+    expect(result).toBe('10% - 20%');
   });
 
   it('applies custom number format options if provided', () => {
@@ -38,10 +38,10 @@ describe('percentRangeFormatter', () => {
     const formatter = percentRangeFormatter();
     const result = formatter(
       12345678901234567890n,
-      22345678901234567890n
+      22345678901234567890n,
     ).localize('en-US');
     expect(result).toBe(
-      '1,234,567,890,123,456,789,000% – 2,234,567,890,123,456,789,000%'
+      '1,234,567,890,123,456,789,000% – 2,234,567,890,123,456,789,000%',
     );
   });
 });

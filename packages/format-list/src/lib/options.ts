@@ -63,8 +63,7 @@ export type ListFormatOptions = (
 ) & {
   /**
    * @public
-   *
-   * Array of functions to transform the formatted list.
+   * A list of functions to transform the formatted list.
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
 };

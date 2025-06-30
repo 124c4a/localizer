@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
@@ -74,5 +73,5 @@ export type RelativeTimeFormatOptions = {
    * @public
    * List of transformers applied to the formatted output.
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
 };

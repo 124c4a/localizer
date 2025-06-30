@@ -37,5 +37,7 @@ export function currencyCodeFormatter<T extends CurrencyCode>(
   );
 
   return (value: T) =>
-    loc((locale) => innerFormatter(1, value).localize(locale));
+    loc((locale) =>
+      locale === null ? value : innerFormatter(1, value).localize(locale),
+    );
 }

@@ -19,6 +19,6 @@ import { Localizable } from '@localizer/core';
  * @public
  * A function that transforms a value of type `T`, which extends `Localizable<unknown>`.
  *
- * @typeParam T - A type extending `Localizable<unknown>`.
+ * @typeParam T - A type of `Localizable`.
  */
-export type Transformer<T extends Localizable<unknown>> = (value: T) => T;
+export type Transformer<T = string> = (value: Localizable<T>) => Localizable<T>;

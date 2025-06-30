@@ -91,7 +91,7 @@ This option corresponds to the `type` fields returned by [`Intl.DateTimeFormat.f
 
 ## `transform`
 
-Specifies array of transformers to apply to the result.
+Specifies array of [transformations](../../../introduction/transformations.md) to apply to the result.
 
 ::: info NOTE
 

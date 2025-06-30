@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 import { CurrencyCode } from './currency.js';
@@ -218,12 +217,15 @@ export type NumberFormatOptions = {
    * @public
    * List of transformers applied to the formatted output.
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
   /**
    * @public
    * Specifies parts to include in the formatted output.
    * Examples: 'currency', 'group', 'integer', 'literal', 'minusSign',
    * 'nan', 'percentSign', 'plusSign', 'unit'.
    */
-  parts?: Intl.NumberFormatPartTypes[];
+  parts?: (
+    | Intl.NumberFormatPartTypes
+    | `${'startRange' | 'endRange' | 'shared'}-${Intl.NumberFormatPartTypes}`
+  )[];
 };

@@ -15,18 +15,16 @@
  */
 import { Localizable, loc } from '@localizer/core';
 
+import { Transformer } from '../../types/transform.js';
+
 /**
  * @public
  * Applies a transformation to the localized value of a Localizable object.
  *
  * @typeParam T - The type of the value.
- * @param value - The Localizable object to transform.
  * @param fn - The transformation function.
- * @returns A new Localizable with the transformed value.
+ * @returns A transformer that applies the supplied transformation function.
  */
-export function apply<T>(
-  value: Localizable<T>,
-  fn: (value: T) => T,
-): Localizable<T> {
-  return loc((locale) => fn(value.localize(locale)));
+export function apply<T>(fn: (value: T) => T): Transformer<T> {
+  return (value: Localizable<T>) => loc((locale) => fn(value.localize(locale)));
 }

@@ -25,7 +25,7 @@ describe('unitFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = unitFormatter();
     const result = formatter(100, 'kilometer').localize(null);
-    expect(result).toBe('[unit]');
+    expect(result).toBe('100 kilometer');
   });
 
   it('applies custom number format options if provided', () => {
@@ -37,7 +37,7 @@ describe('unitFormatter', () => {
   it('handles bigint values correctly', () => {
     const formatter = unitFormatter();
     const result = formatter(12345678901234567890n, 'kilometer').localize(
-      'en-US'
+      'en-US',
     );
     expect(result).toBe('12,345,678,901,234,567,890 km');
   });

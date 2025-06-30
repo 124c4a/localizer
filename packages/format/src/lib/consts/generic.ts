@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable, loc } from '@localizer/core';
+import { loc } from '@localizer/core';
 import { dateTimeRangeFormatter } from '@localizer/format-datetime';
 import { decimalFormatter } from '@localizer/format-number';
 import { Transformer } from '@localizer/transform';
 
-const ignoreUndeterminedLanguage: Transformer<Localizable> = (value) =>
+const ignoreUndeterminedLanguage: Transformer = (value) =>
   loc((locale) =>
     locale === null ? value.localize('en') : value.localize(locale),
   );

@@ -21,11 +21,6 @@ describe('stringify', () => {
     expect(result).toBe('123');
   });
 
-  it('returns a placeholder string for undefined locale', () => {
-    const result = stringify(123).localize(null);
-    expect(result).toBe('[stringify]');
-  });
-
   it('handles null values correctly', () => {
     const result = stringify(null).localize('en-US');
     expect(result).toBe('null');

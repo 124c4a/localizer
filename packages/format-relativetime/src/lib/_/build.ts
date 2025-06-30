@@ -38,17 +38,16 @@ export function _buildFormatter<T extends number | Date>(
     const formatter: Record<string, Intl.RelativeTimeFormat> = {};
 
     const result = loc((locale) => {
-      if (locale === null) {
-        return '[relativeTime]';
-      }
-
-      formatter[locale] ||= new Intl.RelativeTimeFormat(locale, options);
-
       const relativeTime = _computeRelativeTime(
         value,
         reference,
         options.stops ?? ['year', 'month', 'week', 'day', 'hour', 'minute'],
       );
+
+      if (locale === null) {
+        return `${new Date(reference).toISOString()} ${relativeTime.value >= 0 ? '+' : ''}${relativeTime.value} ${relativeTime.stop}`;
+      }
+      formatter[locale] ||= new Intl.RelativeTimeFormat(locale, options);
       return formatter[locale].format(relativeTime.value, relativeTime.stop);
     });
 
