@@ -23,8 +23,6 @@ import { Unit } from './unit.js';
  * Options for formatting numbers using `Intl.NumberFormat`.
  * Supports customization for locale, style, currency, unit, grouping,
  * significant digits, rounding, and more.
- *
- * @see {@link Intl.NumberFormat}
  */
 export type NumberFormatOptions = {
   /**

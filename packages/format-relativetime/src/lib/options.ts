@@ -43,8 +43,6 @@ export type Stop =
 /**
  * @public
  * Configuration options for relative time formatting.
- *
- * @see {@link Intl.RelativeTimeFormat}
  */
 export type RelativeTimeFormatOptions = {
   /**

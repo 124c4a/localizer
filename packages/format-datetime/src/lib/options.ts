@@ -20,8 +20,6 @@ import { Transformer } from '@localizer/transform';
  * Options for customizing date and time formatting.
  *
  * Defines configuration options for the `Intl.DateTimeFormat` API.
- *
- * @see {@link Intl.DateTimeFormat}
  */
 export type DateTimeFormatOptions = {
   /**

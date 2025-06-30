@@ -18,8 +18,6 @@ import { Transformer } from '@localizer/transform';
 /**
  * @public
  * Options for formatting display names with `Intl.DisplayNames`.
- *
- * @see {@link Intl.DisplayNames}
  */
 export type DisplayNameFormatOptions = {
   /**
