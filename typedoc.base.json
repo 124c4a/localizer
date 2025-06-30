@@ -23,5 +23,6 @@
   "readme": "none",
   "excludeScopesInPaths": true,
   "formatWithPrettier": true,
-  "router": "structure-dir"
+  "router": "structure-dir",
+  "includeVersion": true
 }
