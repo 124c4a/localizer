@@ -74,6 +74,10 @@ function reprocessContent(content) {
     lines.splice(betaIndex, 1);
   }
 
+  if (headerIndex >= 0 && lines[headerIndex] === '# API reference v0.0.0') {
+    lines[headerIndex] = '# API reference';
+  }
+
   return lines
     .map((line) =>
       line

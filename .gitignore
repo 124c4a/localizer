@@ -52,7 +52,6 @@ eslint-report.json
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 
-packages/*/README.md
 *.sarif
 
 .vitepress/dist

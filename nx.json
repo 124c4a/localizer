@@ -49,12 +49,13 @@
     }
   ],
   "release": {
+    "projectsRelationship": "independent",
     "projects": ["packages/*"],
     "changelog": {
-      "automaticFromRef": true,
-      "workspaceChangelog": {
+      "projectChangelogs": {
         "createRelease": "github"
-      }
+      },
+      "automaticFromRef": true
     },
     "conventionalCommits": {
       "types": {
@@ -67,7 +68,7 @@
     "version": {
       "conventionalCommits": true,
       "fallbackCurrentVersionResolver": "disk",
-      "preVersionCommand": "npx nx run-many -t build && find packages -maxdepth 1 -type d -not -name '.*' -exec cp README.md {}/ \\;"
+      "preVersionCommand": "npx nx run-many -t build"
     }
   },
   "targetDefaults": {

@@ -3,10 +3,10 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/124c4a/localizer/ci-main.yml)
 ![NPM Last Update](https://img.shields.io/npm/last-update/%40localizer%2Fall)
 ![NPM Version](https://img.shields.io/npm/v/%40localizer%2Fall)
-![NPM Downloads](https://img.shields.io/npm/dw/%40localizer%2Fcore)
+![NPM Downloads](https://img.shields.io/npm/dm/%40localizer%2Fcore)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/%40localizer%2Fall)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/124c4a/localizer)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/124c4a/localizer)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/124c4a/localizer)
 ![NPM License](https://img.shields.io/npm/l/%40localizer%2Fall)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10752/badge)](https://www.bestpractices.dev/projects/10752)
 ![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/124c4a/localizer?label=openssf%20scorecard)
@@ -74,7 +74,7 @@ Use modules independently or combine them as needed.
 
 ### Compatibility
 
-We aim to keep backward compatibility within a major version. Breaking changes are documented in the [Changelog](CHANGELOG.md).
+We aim to keep backward compatibility within a major version. Breaking changes are documented in the change logs of corresponding packages.
 
 ## Contribution Guide
 
