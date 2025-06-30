@@ -22,9 +22,7 @@ import { Localizable, loc } from '@localizer/core';
  *
  * @param value - The value to convert.
  * @returns A `Localizable` object that provides the string representation of the value.
- *
- * If the locale is `null`, returns '[stringify]'.
  */
 export function stringify(value: unknown): Localizable {
-  return loc((locale) => (locale === null ? '[stringify]' : String(value)));
+  return loc(() => String(value));
 }

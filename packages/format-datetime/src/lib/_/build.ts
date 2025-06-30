@@ -18,6 +18,8 @@ import { transform } from '@localizer/transform';
 
 import { DateTimeFormatOptions } from '../options.js';
 
+type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
+
 /**
  * @public
  * Creates a formatter for localized date-time values.
@@ -38,7 +40,7 @@ export function _buildFormatter<T extends number | Date>(
 
     const result = loc((locale) => {
       if (!locale) {
-        return '[datetime]';
+        return new Date(value).toISOString();
       }
 
       formatter[locale] ||= new Intl.DateTimeFormat(locale, options);
@@ -75,14 +77,15 @@ export function _buildFormatter<T extends number | Date>(
  */
 export function _buildRangeFormatter<T extends number | Date>(
   options: DateTimeFormatOptions,
-  source?: 'startRange' | 'endRange' | 'shared',
 ): ValueRangeFormatter<T> {
   return (start, end) => {
     const formatter: Record<string, Intl.DateTimeFormat> = {};
 
     const result = loc((locale) => {
       if (!locale) {
-        return '[datetimeRange]';
+        return (
+          new Date(start).toISOString() + ' - ' + new Date(end).toISOString()
+        );
       }
 
       formatter[locale] ||= new Intl.DateTimeFormat(locale, options);
@@ -92,8 +95,12 @@ export function _buildRangeFormatter<T extends number | Date>(
             .formatRangeToParts(start, end)
             .filter(
               (part) =>
-                options.parts?.includes(part.type) &&
-                (!source || part.source === source),
+                options.parts?.includes(part.type) ||
+                options.parts?.includes(
+                  (part.source + '-' + part.type) as ArrayElement<
+                    typeof options.parts
+                  >,
+                ), // Handle parts with source prefix
             )
             .map((part) => part.value)
             .join('')

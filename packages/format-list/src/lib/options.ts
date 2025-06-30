@@ -26,8 +26,6 @@ import { Transformer } from '@localizer/transform';
  * - **Delimiter-based formatting**: Uses a localized delimiter to join list items.
  *
  * Includes an optional `transform` property for applying transformations.
- *
- * @see {@link Intl.ListFormat}
  */
 export type ListFormatOptions = (
   | {
@@ -63,8 +61,7 @@ export type ListFormatOptions = (
 ) & {
   /**
    * @public
-   *
-   * Array of functions to transform the formatted list.
+   * A list of functions to transform the formatted list.
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
 };

@@ -56,7 +56,7 @@ This option is only usable when formatting language names
 
 ## `transform`
 
-Specifies array of transformers to apply to the result.
+Specifies array of [transformations](../../introduction/transformations.md) to apply to the result.
 
 ::: info NOTE
 

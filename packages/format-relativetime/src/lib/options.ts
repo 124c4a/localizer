@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
@@ -44,8 +43,6 @@ export type Stop =
 /**
  * @public
  * Configuration options for relative time formatting.
- *
- * @see {@link Intl.RelativeTimeFormat}
  */
 export type RelativeTimeFormatOptions = {
   /**
@@ -74,5 +71,5 @@ export type RelativeTimeFormatOptions = {
    * @public
    * List of transformers applied to the formatted output.
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
 };

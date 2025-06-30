@@ -25,7 +25,7 @@ describe('percentFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = percentFormatter();
     const result = formatter(0.1234).localize(null);
-    expect(result).toBe('[percent]');
+    expect(result).toBe('12.34%');
   });
 
   it('applies custom number format options if provided', () => {

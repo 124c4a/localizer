@@ -22,11 +22,6 @@ import { getPrimaryLocale, Localizable, loc } from '@localizer/core';
  * @typeParam T - Type of the value in the Localizable object.
  * @param value - The Localizable object to transform.
  * @returns A new Localizable object using the primary locale.
- *
- * @example
- * const localizedValue = loc(locale => `Hello ${locale}`);
- * const primaryLocaleValue = usePrimaryLocale(localizedValue);
- * console.log(primaryLocaleValue.localize('sv-FI')); // Output: Hello fi-FI
  */
 export function usePrimaryLocale<T>(value: Localizable<T>): Localizable<T> {
   return loc((locale) =>

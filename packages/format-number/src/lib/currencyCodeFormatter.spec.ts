@@ -25,7 +25,7 @@ describe('currencyCodeFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = currencyCodeFormatter();
     const result = formatter('USD').localize(null);
-    expect(result).toBe('[currency]');
+    expect(result).toBe('USD');
   });
 
   it('applies custom number format options if provided', () => {

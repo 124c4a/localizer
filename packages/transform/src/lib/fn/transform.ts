@@ -21,14 +21,14 @@ import { Transformer } from '../types/transform.js';
  * @public
  * Transforms a Localizable value using a sequence of transformer functions.
  *
- * @template T - Type of the value in the Localizable object.
+ * @typeParam T - Type of the value in the Localizable object.
  * @param value - Initial Localizable value.
  * @param transformers - Array of transformer functions to apply.
  * @returns Transformed Localizable value.
  */
 export function transform<T>(
   value: Localizable<T>,
-  transformers: Transformer<Localizable<T>>[],
+  transformers: Transformer<T>[],
 ): Localizable<T> {
   return transformers.reduce((acc, transformer) => {
     return transformer(acc);

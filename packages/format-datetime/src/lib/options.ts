@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
@@ -21,8 +20,6 @@ import { Transformer } from '@localizer/transform';
  * Options for customizing date and time formatting.
  *
  * Defines configuration options for the `Intl.DateTimeFormat` API.
- *
- * @see {@link Intl.DateTimeFormat}
  */
 export type DateTimeFormatOptions = {
   /**
@@ -168,12 +165,15 @@ export type DateTimeFormatOptions = {
    *
    * @public
    */
-  transform?: Transformer<Localizable>[];
+  transform?: Transformer[];
   /**
    * Specifies which parts to include in the formatted output.
    * If omitted, all parts are included by default.
    *
    * @public
    */
-  parts?: Intl.DateTimeFormatPartTypes[];
+  parts?: (
+    | Intl.DateTimeFormatPartTypes
+    | `${'startRange' | 'endRange' | 'shared'}-${Intl.DateTimeFormatPartTypes}`
+  )[];
 };

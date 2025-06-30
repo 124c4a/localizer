@@ -59,7 +59,7 @@ export function listFormatter<T extends Localizable[]>(
 
       const result = loc((locale) => {
         if (locale === null) {
-          return '[list]';
+          return `${localizeArray(value, locale)}`;
         }
 
         formatter[locale] ||= new Intl.ListFormat(locale, options);

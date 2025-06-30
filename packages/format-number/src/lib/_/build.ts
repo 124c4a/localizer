@@ -23,6 +23,8 @@ import { transform } from '@localizer/transform';
 
 import { NumberFormatOptions } from '../options.js';
 
+type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
+
 /**
  * @internal
  * Creates a localized number formatter.
@@ -40,7 +42,17 @@ export function _buildFormatter<T extends number | bigint>(
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${style}]`;
+        switch (style) {
+          case 'currency':
+            return `${value} ${options.currency}`;
+          case 'unit':
+            return `${value} ${options.unit}`;
+          case 'percent':
+            return `${value * 100}%`;
+          case 'decimal':
+          default:
+            return `${value}`;
+        }
       }
 
       formatter[locale] ||= new Intl.NumberFormat(locale, {
@@ -78,14 +90,23 @@ export function _buildFormatter<T extends number | bigint>(
 export function _buildRangeFormatter<T extends number | bigint>(
   options: NumberFormatOptions,
   style: 'decimal' | 'currency' | 'percent' | 'unit',
-  source?: 'startRange' | 'endRange' | 'shared',
 ): ValueRangeFormatter<T> {
   return (start, end) => {
     const formatter: Record<string, Intl.NumberFormat> = {};
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${style}Range]`;
+        switch (style) {
+          case 'currency':
+            return `${start} - ${end} ${options.currency}`;
+          case 'unit':
+            return `${start} - ${end} ${options.unit}`;
+          case 'percent':
+            return `${start * 100}% - ${end * 100}%`;
+          case 'decimal':
+          default:
+            return `${start} - ${end}`;
+        }
       }
 
       formatter[locale] ||= new Intl.NumberFormat(locale, {
@@ -98,8 +119,12 @@ export function _buildRangeFormatter<T extends number | bigint>(
             .formatRangeToParts(start, end)
             .filter(
               (part) =>
-                options.parts?.includes(part.type) &&
-                (!source || part.source === source),
+                options.parts?.includes(part.type) ||
+                options.parts?.includes(
+                  (part.source + '-' + part.type) as ArrayElement<
+                    typeof options.parts
+                  >,
+                ), // Handle parts with source prefix
             )
             .map((part) => part.value)
             .join('')
@@ -138,7 +163,7 @@ export function _buildUnitFormatter<
 
     const result = loc((locale) => {
       if (locale === null) {
-        return `[${style}]`;
+        return `${value} ${unit}`;
       }
 
       formatter[locale] ||= {};

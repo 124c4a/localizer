@@ -11,7 +11,7 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10752/badge)](https://www.bestpractices.dev/projects/10752)
 ![OSSF-Scorecard Score](https://img.shields.io/ossf-scorecard/github.com/124c4a/localizer?label=openssf%20scorecard)
 
-# > > > 📖 [Official documentation](https://124c4a.github.io/localizer) 📖 < < <
+# 📖 [Official documentation](https://124c4a.github.io/localizer) 📖
 
 ## About the Project
 

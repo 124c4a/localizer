@@ -41,7 +41,7 @@ describe('displayNameFormatter', () => {
   it('returns a placeholder when locale is undefined', () => {
     const formatter = displayNameFormatter('region');
     const result = formatter('US').localize(null);
-    expect(result).toBe('[region]');
+    expect(result).toBe('US');
   });
 
   it('applies a custom transform function if provided', () => {

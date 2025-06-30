@@ -73,7 +73,7 @@ This option is not part of [`Intl.ListFormat`](https://developer.mozilla.org/en-
 
 ## `transform`
 
-Specifies array of transformers to apply to the result.
+Specifies array of [transformations](../../introduction/transformations.md) to apply to the result.
 
 ::: info NOTE
 
