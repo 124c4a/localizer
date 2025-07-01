@@ -62,7 +62,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
 
       - name: Build
-        run: npx nx run-many -t build -t api
+        run: npx nx run-many -t build
 
       - run: npx nx release ${{ github.event.inputs.version-override && github.event.inputs.version-override }} ${{ github.event.inputs.dry-run == 'true' && '--dryRun' || '--yes' }}
         env:
@@ -70,50 +70,3 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
           NPM_CONFIG_ACCESS: public
-
-  build:
-    name: Build documentation site
-    permissions:
-      contents: read
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: 20
-          registry-url: https://registry.npmjs.org/
-          cache: 'npm'
-
-      - name: Setup Pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
-
-      - run: npm ci --legacy-peer-deps
-
-      - name: Build with VitePress
-        run: npx nx build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
-        with:
-          path: .vitepress/dist
-
-  # Deployment job
-  deploy:
-    name: Deploy documentation site
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
