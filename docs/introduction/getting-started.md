@@ -73,6 +73,7 @@ This will output the following to the console:
 ```console-vue
 {{ basicUsage }}
 ```
+
 This approach simplifies translation management and integrates with TypeScript, ensuring type safety and autocompletion for all keys.
 
 Using this basic dictionary setup, you can quickly localize your application's user interface. For advanced use cases like dynamic translations or context-based localization, see the advanced examples in this guide.
