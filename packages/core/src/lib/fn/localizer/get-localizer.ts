@@ -19,13 +19,15 @@ import { Localizer } from '../../types/localizer.js';
 import { isLocalizable } from '../localizable/is-localizable.js';
 
 /**
- * @public
  * Generates a localizer function for the given locale.
  *
- * @param locale - The locale code for localization.
- * @returns A localizer function bound to the locale.
+ * @param   locale - The locale code for localization.
  *
- * @see {@link Localizer}, {@link Localizable}, {@link LocaleCode}
+ * @returns        A localizer function bound to the locale.
+ *
+ * @public
+ *
+ * @see {@link Localizer} , {@link Localizable}, {@link LocaleCode}
  */
 export function getLocalizer(locale: LocaleCode): Localizer {
   const fn = <T, A extends unknown[]>(
@@ -35,9 +37,7 @@ export function getLocalizer(locale: LocaleCode): Localizer {
       return localizable.localize(locale) as T;
     } else {
       return (...args: A) =>
-        (localizable as (...args: A) => Localizable<T>)(...args).localize(
-          locale,
-        );
+        (localizable as (...args: A) => Localizable<T>)(...args).localize(locale);
     }
   };
 

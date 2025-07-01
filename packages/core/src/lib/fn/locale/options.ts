@@ -17,35 +17,37 @@ import { LocaleCode } from '../../consts/locale.js';
 import { Configurer } from '../../types/configuration.js';
 
 /**
- * @public
  * Core localization configuration options.
+ *
+ * @public
  */
 export interface CoreOptions {
   /**
-   * @public
-   *
    * Optional fallback locale codes. Defaults to `['en']`.
    *
    * @defaultValue `['en']`
+   *
+   * @public
    */
   fallbackLocales: LocaleCode[];
+
   /**
-   * @alpha
-   *
    * Active locale code for implicit localization. If unset, implicit localization is disabled.
    *
    * @defaultValue `undefined`
+   *
+   * @alpha
    */
   activeLocale: LocaleCode | undefined;
 }
 
 /**
- * @internal
- *
  * Singleton instance of core localization options.
  *
- * Holds default settings like fallback locales and active locale.
- * Can be updated dynamically via the `Core` function.
+ * Holds default settings like fallback locales and active locale. Can be updated dynamically via
+ * the `Core` function.
+ *
+ * @internal
  */
 export const coreOptions: CoreOptions = {
   fallbackLocales: ['en'],
@@ -53,19 +55,20 @@ export const coreOptions: CoreOptions = {
 };
 
 /**
- * @public
  * Updates core localization options.
+ *
+ * @public
  */
 export const Core: Configurer<CoreOptions> = (config) => {
   Object.assign(coreOptions, config);
 };
 
 /**
- * @public
- *
  * Activates implicit localization by setting the active locale.
  *
  * @param locale - The locale code to activate.
+ *
+ * @public
  */
 export function setActiveLocale(locale: LocaleCode) {
   coreOptions.activeLocale = locale;

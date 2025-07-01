@@ -18,13 +18,16 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '../types/transform.js';
 
 /**
- * @public
  * Transforms a Localizable value using a sequence of transformer functions.
  *
  * @typeParam T - Type of the value in the Localizable object.
- * @param value - Initial Localizable value.
- * @param transformers - Array of transformer functions to apply.
- * @returns Transformed Localizable value.
+ *
+ * @param   value        - Initial Localizable value.
+ * @param   transformers - Array of transformer functions to apply.
+ *
+ * @returns              Transformed Localizable value.
+ *
+ * @public
  */
 export function transform<T>(
   value: Localizable<T>,

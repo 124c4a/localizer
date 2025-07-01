@@ -13,9 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
- * @alpha
  * TypeScript-native translation and pluralization functionality.
+ *
+ * @alpha
+ *
  * @packageDocumentation
  */
 export * from './lib/fn/_/autoFormatRecordDeep.js';

@@ -16,16 +16,16 @@
 import { Localizable, loc } from '@localizer/core';
 
 /**
- * @public
  * Converts a localized value to lowercase.
  *
- * @param value - The Localizable object to transform. No-op for `null` locale.
- * @returns A new Localizable with the value in lowercase for the given locale.
+ * @param   value - The Localizable object to transform. No-op for `null` locale.
+ *
+ * @returns       A new Localizable with the value in lowercase for the given locale.
+ *
+ * @public
  */
 export function lowerCase(value: Localizable): Localizable {
   return loc((locale) =>
-    locale === null
-      ? value.localize(locale)
-      : value.localize(locale).toLocaleLowerCase(locale),
+    locale === null ? value.localize(locale) : value.localize(locale).toLocaleLowerCase(locale),
   );
 }

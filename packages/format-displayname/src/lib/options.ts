@@ -16,57 +16,58 @@
 import { Transformer } from '@localizer/transform';
 
 /**
- * @public
  * Options for formatting display names with `Intl.DisplayNames`.
+ *
+ * @public
  */
 export type DisplayNameFormatOptions = {
   /**
-   * Determines the locale matching algorithm.
-   * Options: 'lookup' or 'best fit'.
+   * Determines the locale matching algorithm. Options: 'lookup' or 'best fit'.
    *
    * @public
    */
   localeMatcher?: 'lookup' | 'best fit';
+
   /**
-   * Defines the display name style.
-   * Options: 'long', 'short', or 'narrow'.
+   * Defines the display name style. Options: 'long', 'short', or 'narrow'.
    *
    * @public
    */
   style?: 'long' | 'short' | 'narrow';
+
   /**
-   * @public
    * Specifies the type of display name to format.
+   *
    * - 'language': Language names.
    * - 'region': Region names.
    * - 'script': Script names.
    * - 'calendar': Calendar names.
    * - 'dateTimeField': Date-time field names.
    * - 'currency': Currency names.
-   */
-  type?:
-    | 'language'
-    | 'region'
-    | 'script'
-    | 'calendar'
-    | 'dateTimeField'
-    | 'currency';
-  /**
+   *
    * @public
+   */
+  type?: 'language' | 'region' | 'script' | 'calendar' | 'dateTimeField' | 'currency';
+
+  /**
    * Controls the display format for language names.
+   *
+   * @public
    */
   languageDisplay?: 'dialect' | 'standard';
+
   /**
+   * Fallback behavior if a display name cannot be generated. Options: 'code' or 'none'.
+   *
    * @public
-   * Fallback behavior if a display name cannot be generated.
-   * Options: 'code' or 'none'.
    */
   fallback?: 'code' | 'none';
 
   /**
+   * A list of functions to transform the formatted display name. Each function processes a
+   * Localizable and returns a modified Localizable.
+   *
    * @public
-   * A list of functions to transform the formatted display name.
-   * Each function processes a Localizable and returns a modified Localizable.
    */
   transform?: Transformer[];
 };

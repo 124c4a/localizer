@@ -18,34 +18,43 @@ import { displayNameFormatter } from '@localizer/format-displayname';
 import { CurrencyCode, currencyCodeFormatter } from '@localizer/format-number';
 
 /**
- * @public
  * Converts a currency code to its symbol.
  *
- * @param currency - The currency code to convert.
- * @returns The currency symbol.
+ * @param   currency - The currency code to convert.
+ *
+ * @returns          The currency symbol.
+ *
+ * @public
  */
 export const currencySymbol = currencyCodeFormatter({
   currencyDisplay: 'symbol',
 });
 
 /**
- * @public
  * Formats the name of a currency.
+ *
+ * @public
  */
 export const currencyName = displayNameFormatter<CurrencyCode>('currency');
+
 /**
- * @public
  * Formats the name of a language.
+ *
+ * @public
  */
 export const languageName = displayNameFormatter<LocaleCode>('language');
+
 /**
- * @public
  * Formats country names.
+ *
+ * @public
  */
 export const countryName = displayNameFormatter<CountryCode>('region');
+
 /**
- * @public
  * Formats the name of the current language.
+ *
+ * @public
  */
 export const CurrentLanguage = loc((locale) =>
   locale === null ? '[CurrentLanguage]' : languageName(locale).localize(locale),

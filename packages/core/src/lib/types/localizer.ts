@@ -17,40 +17,45 @@ import { LocaleCode } from '../consts/locale.js';
 import { Localizable } from './localizable.js';
 
 /**
- * @public
+ * Interface for localizing values and formatting functions. Supports various types of localizable
+ * objects and formatters.
  *
- * Interface for localizing values and formatting functions.
- * Supports various types of localizable objects and formatters.
+ * @public
  *
  * @see {@link Localizable}
  */
 export interface Localizer {
   /**
-   * @public
-   *
    * Returns the localized value for the given input.
    *
    * @typeParam T - Type of the localized value.
-   * @param localizable - The input to localize.
-   * @returns Localized value of type `T`.
+   *
+   * @param   localizable - The input to localize.
+   *
+   * @returns             Localized value of type `T`.
+   *
+   * @public
    */
   <T>(localizable: Localizable<T>): T;
+
   /**
-   * @public
-   *
    * Localizes a function that returns a localizable value.
    *
    * @typeParam T - The localized value type.
    * @typeParam A - The argument types for the function.
-   * @param formatter - A function accepting arguments of type `A` and returning `Localizable<T>`.
-   * @returns A function accepting arguments of type `A` and returning `T`.
+   *
+   * @param   formatter - A function accepting arguments of type `A` and returning `Localizable<T>`.
+   *
+   * @returns           A function accepting arguments of type `A` and returning `T`.
+   *
+   * @public
    */
-  <A extends unknown[], T>(
-    formatter: (...args: A) => Localizable<T>,
-  ): (...args: A) => T;
+  <A extends unknown[], T>(formatter: (...args: A) => Localizable<T>): (...args: A) => T;
 
   /**
    * The selected locale code.
+   *
+   * @public
    */
   readonly locale: LocaleCode;
 }

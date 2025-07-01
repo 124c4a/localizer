@@ -19,22 +19,19 @@ import { transform } from '@localizer/transform';
 import { DisplayNameFormatOptions } from './options.js';
 
 /**
- * @public
  * Creates a localized display name formatter.
  *
  * @typeParam T - The value type to format, typically a string.
- * @param type - The display name type, e.g., "language", "region", "script", etc.
- * @param options - Formatting options, including transformations.
- * @returns A function to format values into localized display names.
+ *
+ * @param   type    - The display name type, e.g., "language", "region", "script", etc.
+ * @param   options - Formatting options, including transformations.
+ *
+ * @returns         A function to format values into localized display names.
+ *
+ * @public
  */
 export function displayNameFormatter<T extends string>(
-  type:
-    | 'language'
-    | 'region'
-    | 'script'
-    | 'calendar'
-    | 'dateTimeField'
-    | 'currency',
+  type: 'language' | 'region' | 'script' | 'calendar' | 'dateTimeField' | 'currency',
   options?: DisplayNameFormatOptions,
 ): ValueFormatter<T> {
   return (value) => {

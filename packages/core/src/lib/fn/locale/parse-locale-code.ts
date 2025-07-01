@@ -16,18 +16,15 @@
 import { CountryCode, LanguageCode, LocaleCode } from '../../consts/locale.js';
 
 /**
- * @public
  * Splits a `LocaleCode` into language and optional country components.
  *
- * @param locale - The locale code in `language-country` format (e.g., `en-US`).
- * @returns A tuple with the language code and optional country code.
+ * @param   locale - The locale code in `language-country` format (e.g., `en-US`).
+ *
+ * @returns        A tuple with the language code and optional country code.
+ *
+ * @public
  */
-export function parseLocaleCode(
-  locale: LocaleCode,
-): [LanguageCode, CountryCode | undefined] {
-  const [language, country] = locale.split('-') as [
-    LanguageCode,
-    CountryCode | undefined,
-  ];
+export function parseLocaleCode(locale: LocaleCode): [LanguageCode, CountryCode | undefined] {
+  const [language, country] = locale.split('-') as [LanguageCode, CountryCode | undefined];
   return [language, country];
 }

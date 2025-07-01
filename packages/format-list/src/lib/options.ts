@@ -17,15 +17,17 @@ import { Localizable } from '@localizer/core';
 import { Transformer } from '@localizer/transform';
 
 /**
- * @public
- *
  * Options for formatting a list of localized values.
  *
  * Supports two modes:
- * - **Intl.ListFormatOptions**: Options for `Intl.ListFormat` API, including locale matching, format, and length.
+ *
+ * - **Intl.ListFormatOptions**: Options for `Intl.ListFormat` API, including locale matching, format,
+ *   and length.
  * - **Delimiter-based formatting**: Uses a localized delimiter to join list items.
  *
  * Includes an optional `transform` property for applying transformations.
+ *
+ * @public
  */
 export type ListFormatOptions = (
   | {
@@ -60,8 +62,9 @@ export type ListFormatOptions = (
     }
 ) & {
   /**
-   * @public
    * A list of functions to transform the formatted list.
+   *
+   * @public
    */
   transform?: Transformer[];
 };

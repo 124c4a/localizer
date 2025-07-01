@@ -19,12 +19,16 @@ import { _buildFormatter } from './_/build.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Formats a value relative to a reference as a localized decimal string.
  *
  * @typeParam T - The type of values, either `number` or `bigint`.
- * @param options - Optional formatting options for relative decimal values.
- * @returns A function that formats the difference between a value and a reference using `Intl.NumberFormat`.
+ *
+ * @param   options - Optional formatting options for relative decimal values.
+ *
+ * @returns         A function that formats the difference between a value and a reference using
+ *   `Intl.NumberFormat`.
+ *
+ * @public
  */
 export function relativeDecimalFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

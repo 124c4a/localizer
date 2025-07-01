@@ -15,9 +15,9 @@
  */
 
 /**
- * @public
- *
  * IETF BCP 47 language tag
+ *
+ * @public
  *
  * @see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
  */
@@ -25,909 +25,1349 @@
 export type LanguageCode =
   /** Afar */
   | 'aa'
+
   /** Abkhazian */
   | 'ab'
+
   /** Avestan */
   | 'ae'
+
   /** Afrikaans */
   | 'af'
+
   /** Akan */
   | 'ak'
+
   /** Amharic */
   | 'am'
+
   /** Aragonese */
   | 'an'
+
   /** Arabic */
   | 'ar'
+
   /** Assamese */
   | 'as'
+
   /** Avaric */
   | 'av'
+
   /** Aymara */
   | 'ay'
+
   /** Azerbaijani */
   | 'az'
+
   /** Bashkir */
   | 'ba'
+
   /** Belarusian */
   | 'be'
+
   /** Bulgarian */
   | 'bg'
+
   /** Bhojpuri */
   | 'bh'
+
   /** Bislama */
   | 'bi'
+
   /** Bambara */
   | 'bm'
+
   /** Bangla */
   | 'bn'
+
   /** Tibetan */
   | 'bo'
+
   /** Breton */
   | 'br'
+
   /** Bosnian */
   | 'bs'
+
   /** Catalan */
   | 'ca'
+
   /** Chechen */
   | 'ce'
+
   /** Chamorro */
   | 'ch'
+
   /** Corsican */
   | 'co'
+
   /** Cree */
   | 'cr'
+
   /** Czech */
   | 'cs'
+
   /** Church Slavic */
   | 'cu'
+
   /** Chuvash */
   | 'cv'
+
   /** Welsh */
   | 'cy'
+
   /** Danish */
   | 'da'
+
   /** German */
   | 'de'
+
   /** Divehi */
   | 'dv'
+
   /** Dzongkha */
   | 'dz'
+
   /** Ewe */
   | 'ee'
+
   /** Greek */
   | 'el'
+
   /** English */
   | 'en'
+
   /** Esperanto */
   | 'eo'
+
   /** Spanish */
   | 'es'
+
   /** Estonian */
   | 'et'
+
   /** Basque */
   | 'eu'
+
   /** Persian */
   | 'fa'
+
   /** Fula */
   | 'ff'
+
   /** Finnish */
   | 'fi'
+
   /** Fijian */
   | 'fj'
+
   /** Faroese */
   | 'fo'
+
   /** French */
   | 'fr'
+
   /** Western Frisian */
   | 'fy'
+
   /** Irish */
   | 'ga'
+
   /** Scottish Gaelic */
   | 'gd'
+
   /** Galician */
   | 'gl'
+
   /** Guarani */
   | 'gn'
+
   /** Gujarati */
   | 'gu'
+
   /** Manx */
   | 'gv'
+
   /** Hausa */
   | 'ha'
+
   /** Hebrew */
   | 'he'
+
   /** Hindi */
   | 'hi'
+
   /** Hiri Motu */
   | 'ho'
+
   /** Croatian */
   | 'hr'
+
   /** Haitian Creole */
   | 'ht'
+
   /** Hungarian */
   | 'hu'
+
   /** Armenian */
   | 'hy'
+
   /** Herero */
   | 'hz'
+
   /** Interlingua */
   | 'ia'
+
   /** Indonesian */
   | 'id'
+
   /** Interlingue */
   | 'ie'
+
   /** Igbo */
   | 'ig'
+
   /** Sichuan Yi */
   | 'ii'
+
   /** Inupiaq */
   | 'ik'
+
   /** Indonesian */
   | 'in'
+
   /** Ido */
   | 'io'
+
   /** Icelandic */
   | 'is'
+
   /** Italian */
   | 'it'
+
   /** Inuktitut */
   | 'iu'
+
   /** Hebrew */
   | 'iw'
+
   /** Japanese */
   | 'ja'
+
   /** Yiddish */
   | 'ji'
+
   /** Javanese */
   | 'jv'
+
   /** Javanese */
   | 'jw'
+
   /** Georgian */
   | 'ka'
+
   /** Kongo */
   | 'kg'
+
   /** Kikuyu */
   | 'ki'
+
   /** Kuanyama */
   | 'kj'
+
   /** Kazakh */
   | 'kk'
+
   /** Kalaallisut */
   | 'kl'
+
   /** Khmer */
   | 'km'
+
   /** Kannada */
   | 'kn'
+
   /** Korean */
   | 'ko'
+
   /** Kanuri */
   | 'kr'
+
   /** Kashmiri */
   | 'ks'
+
   /** Kurdish */
   | 'ku'
+
   /** Komi */
   | 'kv'
+
   /** Cornish */
   | 'kw'
+
   /** Kyrgyz */
   | 'ky'
+
   /** Latin */
   | 'la'
+
   /** Luxembourgish */
   | 'lb'
+
   /** Ganda */
   | 'lg'
+
   /** Limburgish */
   | 'li'
+
   /** Lingala */
   | 'ln'
+
   /** Lao */
   | 'lo'
+
   /** Lithuanian */
   | 'lt'
+
   /** Luba-Katanga */
   | 'lu'
+
   /** Latvian */
   | 'lv'
+
   /** Malagasy */
   | 'mg'
+
   /** Marshallese */
   | 'mh'
+
   /** Māori */
   | 'mi'
+
   /** Macedonian */
   | 'mk'
+
   /** Malayalam */
   | 'ml'
+
   /** Mongolian */
   | 'mn'
+
   /** Romanian */
   | 'mo'
+
   /** Marathi */
   | 'mr'
+
   /** Malay */
   | 'ms'
+
   /** Maltese */
   | 'mt'
+
   /** Burmese */
   | 'my'
+
   /** Nauru */
   | 'na'
+
   /** Norwegian Bokmål */
   | 'nb'
+
   /** North Ndebele */
   | 'nd'
+
   /** Nepali */
   | 'ne'
+
   /** Ndonga */
   | 'ng'
+
   /** Dutch */
   | 'nl'
+
   /** Norwegian Nynorsk */
   | 'nn'
+
   /** Norwegian */
   | 'no'
+
   /** South Ndebele */
   | 'nr'
+
   /** Navajo */
   | 'nv'
+
   /** Nyanja */
   | 'ny'
+
   /** Occitan */
   | 'oc'
+
   /** Ojibwa */
   | 'oj'
+
   /** Oromo */
   | 'om'
+
   /** Odia */
   | 'or'
+
   /** Ossetic */
   | 'os'
+
   /** Punjabi */
   | 'pa'
+
   /** Pali */
   | 'pi'
+
   /** Polish */
   | 'pl'
+
   /** Pashto */
   | 'ps'
+
   /** Portuguese */
   | 'pt'
+
   /** Quechua */
   | 'qu'
+
   /** Romansh */
   | 'rm'
+
   /** Rundi */
   | 'rn'
+
   /** Romanian */
   | 'ro'
+
   /** Russian */
   | 'ru'
+
   /** Kinyarwanda */
   | 'rw'
+
   /** Sanskrit */
   | 'sa'
+
   /** Sardinian */
   | 'sc'
+
   /** Sindhi */
   | 'sd'
+
   /** Northern Sami */
   | 'se'
+
   /** Sango */
   | 'sg'
+
   /** Serbian (Latin) */
   | 'sh'
+
   /** Sinhala */
   | 'si'
+
   /** Slovak */
   | 'sk'
+
   /** Slovenian */
   | 'sl'
+
   /** Samoan */
   | 'sm'
+
   /** Shona */
   | 'sn'
+
   /** Somali */
   | 'so'
+
   /** Albanian */
   | 'sq'
+
   /** Serbian */
   | 'sr'
+
   /** Swati */
   | 'ss'
+
   /** Southern Sotho */
   | 'st'
+
   /** Sundanese */
   | 'su'
+
   /** Swedish */
   | 'sv'
+
   /** Swahili */
   | 'sw'
+
   /** Tamil */
   | 'ta'
+
   /** Telugu */
   | 'te'
+
   /** Tajik */
   | 'tg'
+
   /** Thai */
   | 'th'
+
   /** Tigrinya */
   | 'ti'
+
   /** Turkmen */
   | 'tk'
+
   /** Filipino */
   | 'tl'
+
   /** Tswana */
   | 'tn'
+
   /** Tongan */
   | 'to'
+
   /** Turkish */
   | 'tr'
+
   /** Tsonga */
   | 'ts'
+
   /** Tatar */
   | 'tt'
+
   /** Akan */
   | 'tw'
+
   /** Tahitian */
   | 'ty'
+
   /** Uyghur */
   | 'ug'
+
   /** Ukrainian */
   | 'uk'
+
   /** Urdu */
   | 'ur'
+
   /** Uzbek */
   | 'uz'
+
   /** Venda */
   | 've'
+
   /** Vietnamese */
   | 'vi'
+
   /** Volapük */
   | 'vo'
+
   /** Walloon */
   | 'wa'
+
   /** Wolof */
   | 'wo'
+
   /** Xhosa */
   | 'xh'
+
   /** Yiddish */
   | 'yi'
+
   /** Yoruba */
   | 'yo'
+
   /** Zhuang */
   | 'za'
+
   /** Chinese */
   | 'zh'
+
   /** Zulu */
   | 'zu'
-  /** sf */
+
+  /** Sf */
   | 'sf';
 
 /**
- * @public
- *
  * ISO 3166-1 alpha-2 country codes
+ *
+ * @public
  *
  * @see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  */
 export type CountryCode =
   /** Andorra */
   | 'AD'
+
   /** United Arab Emirates */
   | 'AE'
+
   /** Afghanistan */
   | 'AF'
+
   /** Antigua & Barbuda */
   | 'AG'
+
   /** Anguilla */
   | 'AI'
+
   /** Albania */
   | 'AL'
+
   /** Armenia */
   | 'AM'
+
   /** Curaçao */
   | 'AN'
+
   /** Angola */
   | 'AO'
+
   /** Antarctica */
   | 'AQ'
+
   /** Argentina */
   | 'AR'
+
   /** American Samoa */
   | 'AS'
+
   /** Austria */
   | 'AT'
+
   /** Australia */
   | 'AU'
+
   /** Aruba */
   | 'AW'
+
   /** Åland Islands */
   | 'AX'
+
   /** Azerbaijan */
   | 'AZ'
+
   /** Bosnia & Herzegovina */
   | 'BA'
+
   /** Barbados */
   | 'BB'
+
   /** Bangladesh */
   | 'BD'
+
   /** Belgium */
   | 'BE'
+
   /** Burkina Faso */
   | 'BF'
+
   /** Bulgaria */
   | 'BG'
+
   /** Bahrain */
   | 'BH'
+
   /** Burundi */
   | 'BI'
+
   /** Benin */
   | 'BJ'
+
   /** St. Barthélemy */
   | 'BL'
+
   /** Bermuda */
   | 'BM'
+
   /** Brunei */
   | 'BN'
+
   /** Bolivia */
   | 'BO'
+
   /** Caribbean Netherlands */
   | 'BQ'
+
   /** Brazil */
   | 'BR'
+
   /** Bahamas */
   | 'BS'
+
   /** Bhutan */
   | 'BT'
+
   /** Bouvet Island */
   | 'BV'
+
   /** Botswana */
   | 'BW'
+
   /** Belarus */
   | 'BY'
+
   /** Belize */
   | 'BZ'
+
   /** Canada */
   | 'CA'
+
   /** Cocos (Keeling) Islands */
   | 'CC'
+
   /** Congo - Kinshasa */
   | 'CD'
+
   /** Central African Republic */
   | 'CF'
+
   /** Congo - Brazzaville */
   | 'CG'
+
   /** Switzerland */
   | 'CH'
+
   /** Côte d’Ivoire */
   | 'CI'
+
   /** Cook Islands */
   | 'CK'
+
   /** Chile */
   | 'CL'
+
   /** Cameroon */
   | 'CM'
+
   /** China */
   | 'CN'
+
   /** Colombia */
   | 'CO'
+
   /** Costa Rica */
   | 'CR'
+
   /** Cuba */
   | 'CU'
+
   /** Cape Verde */
   | 'CV'
+
   /** Curaçao */
   | 'CW'
+
   /** Christmas Island */
   | 'CX'
+
   /** Cyprus */
   | 'CY'
+
   /** Czechia */
   | 'CZ'
+
   /** Germany */
   | 'DE'
+
   /** Djibouti */
   | 'DJ'
+
   /** Denmark */
   | 'DK'
+
   /** Dominica */
   | 'DM'
+
   /** Dominican Republic */
   | 'DO'
+
   /** Algeria */
   | 'DZ'
+
   /** Ecuador */
   | 'EC'
+
   /** Estonia */
   | 'EE'
+
   /** Egypt */
   | 'EG'
+
   /** Western Sahara */
   | 'EH'
+
   /** Eritrea */
   | 'ER'
+
   /** Spain */
   | 'ES'
+
   /** Ethiopia */
   | 'ET'
+
   /** Finland */
   | 'FI'
+
   /** Fiji */
   | 'FJ'
+
   /** Falkland Islands */
   | 'FK'
+
   /** Micronesia */
   | 'FM'
+
   /** Faroe Islands */
   | 'FO'
+
   /** France */
   | 'FR'
+
   /** Gabon */
   | 'GA'
+
   /** United Kingdom */
   | 'GB'
+
   /** Grenada */
   | 'GD'
+
   /** Georgia */
   | 'GE'
+
   /** French Guiana */
   | 'GF'
+
   /** Guernsey */
   | 'GG'
+
   /** Ghana */
   | 'GH'
+
   /** Gibraltar */
   | 'GI'
+
   /** Greenland */
   | 'GL'
+
   /** Gambia */
   | 'GM'
+
   /** Guinea */
   | 'GN'
+
   /** Guadeloupe */
   | 'GP'
+
   /** Equatorial Guinea */
   | 'GQ'
+
   /** Greece */
   | 'GR'
+
   /** South Georgia & South Sandwich Islands */
   | 'GS'
+
   /** Guatemala */
   | 'GT'
+
   /** Guam */
   | 'GU'
+
   /** Guinea-Bissau */
   | 'GW'
+
   /** Guyana */
   | 'GY'
+
   /** Hong Kong SAR China */
   | 'HK'
+
   /** Heard & McDonald Islands */
   | 'HM'
+
   /** Honduras */
   | 'HN'
+
   /** Croatia */
   | 'HR'
+
   /** Haiti */
   | 'HT'
+
   /** Hungary */
   | 'HU'
+
   /** Indonesia */
   | 'ID'
+
   /** Ireland */
   | 'IE'
+
   /** Israel */
   | 'IL'
+
   /** Isle of Man */
   | 'IM'
+
   /** India */
   | 'IN'
+
   /** British Indian Ocean Territory */
   | 'IO'
+
   /** Iraq */
   | 'IQ'
+
   /** Iran */
   | 'IR'
+
   /** Iceland */
   | 'IS'
+
   /** Italy */
   | 'IT'
+
   /** Jersey */
   | 'JE'
+
   /** Jamaica */
   | 'JM'
+
   /** Jordan */
   | 'JO'
+
   /** Japan */
   | 'JP'
+
   /** Kenya */
   | 'KE'
+
   /** Kyrgyzstan */
   | 'KG'
+
   /** Cambodia */
   | 'KH'
+
   /** Kiribati */
   | 'KI'
+
   /** Comoros */
   | 'KM'
+
   /** St. Kitts & Nevis */
   | 'KN'
+
   /** North Korea */
   | 'KP'
+
   /** South Korea */
   | 'KR'
+
   /** Kuwait */
   | 'KW'
+
   /** Cayman Islands */
   | 'KY'
+
   /** Kazakhstan */
   | 'KZ'
+
   /** Laos */
   | 'LA'
+
   /** Lebanon */
   | 'LB'
+
   /** St. Lucia */
   | 'LC'
+
   /** Liechtenstein */
   | 'LI'
+
   /** Sri Lanka */
   | 'LK'
+
   /** Liberia */
   | 'LR'
+
   /** Lesotho */
   | 'LS'
+
   /** Lithuania */
   | 'LT'
+
   /** Luxembourg */
   | 'LU'
+
   /** Latvia */
   | 'LV'
+
   /** Libya */
   | 'LY'
+
   /** Morocco */
   | 'MA'
+
   /** Monaco */
   | 'MC'
+
   /** Moldova */
   | 'MD'
+
   /** Montenegro */
   | 'ME'
+
   /** St. Martin */
   | 'MF'
+
   /** Madagascar */
   | 'MG'
+
   /** Marshall Islands */
   | 'MH'
+
   /** North Macedonia */
   | 'MK'
+
   /** Mali */
   | 'ML'
+
   /** Myanmar (Burma) */
   | 'MM'
+
   /** Mongolia */
   | 'MN'
+
   /** Macao SAR China */
   | 'MO'
+
   /** Northern Mariana Islands */
   | 'MP'
+
   /** Martinique */
   | 'MQ'
+
   /** Mauritania */
   | 'MR'
+
   /** Montserrat */
   | 'MS'
+
   /** Malta */
   | 'MT'
+
   /** Mauritius */
   | 'MU'
+
   /** Maldives */
   | 'MV'
+
   /** Malawi */
   | 'MW'
+
   /** Mexico */
   | 'MX'
+
   /** Malaysia */
   | 'MY'
+
   /** Mozambique */
   | 'MZ'
+
   /** Namibia */
   | 'NA'
+
   /** New Caledonia */
   | 'NC'
+
   /** Niger */
   | 'NE'
+
   /** Norfolk Island */
   | 'NF'
+
   /** Nigeria */
   | 'NG'
+
   /** Nicaragua */
   | 'NI'
+
   /** Netherlands */
   | 'NL'
+
   /** Norway */
   | 'NO'
+
   /** Nepal */
   | 'NP'
+
   /** Nauru */
   | 'NR'
+
   /** Niue */
   | 'NU'
+
   /** New Zealand */
   | 'NZ'
+
   /** Oman */
   | 'OM'
+
   /** Panama */
   | 'PA'
+
   /** Peru */
   | 'PE'
+
   /** French Polynesia */
   | 'PF'
+
   /** Papua New Guinea */
   | 'PG'
+
   /** Philippines */
   | 'PH'
+
   /** Pakistan */
   | 'PK'
+
   /** Poland */
   | 'PL'
+
   /** St. Pierre & Miquelon */
   | 'PM'
+
   /** Pitcairn Islands */
   | 'PN'
+
   /** Puerto Rico */
   | 'PR'
+
   /** Palestinian Territories */
   | 'PS'
+
   /** Portugal */
   | 'PT'
+
   /** Palau */
   | 'PW'
+
   /** Paraguay */
   | 'PY'
+
   /** Qatar */
   | 'QA'
+
   /** Réunion */
   | 'RE'
+
   /** Romania */
   | 'RO'
+
   /** Serbia */
   | 'RS'
+
   /** Russia */
   | 'RU'
+
   /** Rwanda */
   | 'RW'
+
   /** Saudi Arabia */
   | 'SA'
+
   /** Solomon Islands */
   | 'SB'
+
   /** Seychelles */
   | 'SC'
+
   /** Sudan */
   | 'SD'
+
   /** Sweden */
   | 'SE'
+
   /** Singapore */
   | 'SG'
+
   /** St. Helena */
   | 'SH'
+
   /** Slovenia */
   | 'SI'
+
   /** Svalbard & Jan Mayen */
   | 'SJ'
+
   /** Slovakia */
   | 'SK'
+
   /** Sierra Leone */
   | 'SL'
+
   /** San Marino */
   | 'SM'
+
   /** Senegal */
   | 'SN'
+
   /** Somalia */
   | 'SO'
+
   /** Suriname */
   | 'SR'
+
   /** South Sudan */
   | 'SS'
+
   /** São Tomé & Príncipe */
   | 'ST'
+
   /** El Salvador */
   | 'SV'
+
   /** Sint Maarten */
   | 'SX'
+
   /** Syria */
   | 'SY'
+
   /** Eswatini */
   | 'SZ'
+
   /** Turks & Caicos Islands */
   | 'TC'
+
   /** Chad */
   | 'TD'
+
   /** French Southern Territories */
   | 'TF'
+
   /** Togo */
   | 'TG'
+
   /** Thailand */
   | 'TH'
+
   /** Tajikistan */
   | 'TJ'
+
   /** Tokelau */
   | 'TK'
+
   /** Timor-Leste */
   | 'TL'
+
   /** Turkmenistan */
   | 'TM'
+
   /** Tunisia */
   | 'TN'
+
   /** Tonga */
   | 'TO'
+
   /** Türkiye */
   | 'TR'
+
   /** Trinidad & Tobago */
   | 'TT'
+
   /** Tuvalu */
   | 'TV'
+
   /** Taiwan */
   | 'TW'
+
   /** Tanzania */
   | 'TZ'
+
   /** Ukraine */
   | 'UA'
+
   /** Uganda */
   | 'UG'
+
   /** U.S. Outlying Islands */
   | 'UM'
+
   /** United States */
   | 'US'
+
   /** Uruguay */
   | 'UY'
+
   /** Uzbekistan */
   | 'UZ'
+
   /** Vatican City */
   | 'VA'
+
   /** St. Vincent & Grenadines */
   | 'VC'
+
   /** Venezuela */
   | 'VE'
+
   /** British Virgin Islands */
   | 'VG'
+
   /** U.S. Virgin Islands */
   | 'VI'
+
   /** Vietnam */
   | 'VN'
+
   /** Vanuatu */
   | 'VU'
+
   /** Wallis & Futuna */
   | 'WF'
+
   /** Samoa */
   | 'WS'
+
   /** Kosovo */
   | 'XK'
+
   /** Yemen */
   | 'YE'
+
   /** Mayotte */
   | 'YT'
+
   /** South Africa */
   | 'ZA'
+
   /** Zambia */
   | 'ZM'
+
   /** Zimbabwe */
   | 'ZW';
 
 /**
- * @public
- *
  * Supported locale codes
+ *
+ * @public
  */
 export type LocaleCode = LanguageCode | `${LanguageCode}-${CountryCode}`;
 
 /**
- * @public
- *
  * Primary locales for each country
+ *
+ * @public
  *
  * @see https://github.com/osm-search/Nominatim/blob/master/settings/country_settings.yaml
  */

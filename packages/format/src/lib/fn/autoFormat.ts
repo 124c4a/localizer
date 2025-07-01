@@ -21,7 +21,6 @@ import { decimal } from '../consts/number.js';
 import { stringify } from './stringify.js';
 
 /**
- * @public
  * Formats a value into a `Localizable` object based on its type.
  *
  * - Numbers and bigints: formatted with `decimal`.
@@ -32,8 +31,11 @@ import { stringify } from './stringify.js';
  * - `undefined`: represented as `Empty`.
  * - Others: converted to a localized string with `stringify`.
  *
- * @param value - The value to format.
- * @returns A `Localizable` object.
+ * @param   value - The value to format.
+ *
+ * @returns       A `Localizable` object.
+ *
+ * @public
  */
 export function autoFormat(value: unknown): Localizable {
   if (['number', 'bigint'].includes(typeof value)) {

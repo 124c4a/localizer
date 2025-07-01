@@ -16,9 +16,9 @@
 import { relativeTimeFormatter } from '@localizer/format-relativetime';
 
 /**
+ * A preconfigured instance for formatting relative time strings using default options.
+ *
  * @public
- * A preconfigured instance for formatting relative time strings
- * using default options.
  */
 export const relativeTime = relativeTimeFormatter({
   numeric: 'auto',

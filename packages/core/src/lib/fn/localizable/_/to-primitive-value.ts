@@ -13,12 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
- * @internal
  * Converts a value to its primitive representation.
  *
- * @param value - The value to convert.
- * @returns The primitive representation of the value.
+ * @param   value - The value to convert.
+ *
+ * @returns       The primitive representation of the value.
+ *
+ * @internal
  */
 export function _toPrimitiveValue(value: unknown) {
   if (value === null || value === undefined) {

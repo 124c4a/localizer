@@ -20,27 +20,29 @@ import { parseLocaleCode } from './parse-locale-code.js';
 const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
 
 /**
- * @internal
- *
  * Retains only distinct locale codes from the provided array.
  *
- * @param arr - An array of locale codes.
- * @returns A new array containing only distinct locale codes from the input array.
+ * @param   arr - An array of locale codes.
+ *
+ * @returns     A new array containing only distinct locale codes from the input array.
+ *
+ * @internal
  */
 function distinct(arr: LocaleCode[]): LocaleCode[] {
   return arr.filter((value, index, self) => self.indexOf(value) === index);
 }
 
 /**
- * @public
- *
- * Generates a list of locale codes starting with the given locale,
- * followed by its parent locale (if applicable), and fallback locales.
+ * Generates a list of locale codes starting with the given locale, followed by its parent locale
+ * (if applicable), and fallback locales.
  *
  * Caches results for better performance.
  *
- * @param locale - The locale code to generate the chain for.
- * @returns An array of locale codes.
+ * @param   locale - The locale code to generate the chain for.
+ *
+ * @returns        An array of locale codes.
+ *
+ * @public
  */
 export function getLocaleChain(locale: LocaleCode): LocaleCode[] {
   const fallbackLocales = coreOptions.fallbackLocales;
@@ -52,11 +54,7 @@ export function getLocaleChain(locale: LocaleCode): LocaleCode[] {
   if (!country) {
     parentLocaleCache[locale] = distinct([locale, ...fallbackLocales]);
   } else {
-    parentLocaleCache[locale] = distinct([
-      locale,
-      language,
-      ...fallbackLocales,
-    ]);
+    parentLocaleCache[locale] = distinct([locale, language, ...fallbackLocales]);
   }
   return parentLocaleCache[locale];
 }

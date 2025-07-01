@@ -20,16 +20,19 @@ import { RelativeTimeFormatOptions } from '../options.js';
 import { _computeRelativeTime } from './computeRelativeTime.js';
 
 /**
- * @internal
  * Builds a localized relative time formatter.
  *
- * @typeParam T - The value type, either a number (timestamp) or a Date.
- * @param options - Formatting options for relative time.
- * @returns A function to format relative time into a localized string.
+ * Uses `Intl.RelativeTimeFormat` for localization and `computeRelativeTime` for calculating the
+ * relative time. Supports granularity via `stops` and optional result transformation via
+ * `transform`.
  *
- * Uses `Intl.RelativeTimeFormat` for localization and `computeRelativeTime`
- * for calculating the relative time. Supports granularity via `stops` and
- * optional result transformation via `transform`.
+ * @typeParam T - The value type, either a number (timestamp) or a Date.
+ *
+ * @param   options - Formatting options for relative time.
+ *
+ * @returns         A function to format relative time into a localized string.
+ *
+ * @internal
  */
 export function _buildFormatter<T extends number | Date>(
   options: RelativeTimeFormatOptions,

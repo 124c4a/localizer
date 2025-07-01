@@ -16,44 +16,45 @@
 import { Localizable } from './localizable.js';
 
 /**
- * @public
- *
  * Formats a value of type `T` into a `Localizable` representation.
  *
  * @typeParam T - The type of the value to format.
+ *
+ * @public
+ *
  * @see {@link Localizable}
  */
 export type ValueFormatter<T> = (value: T) => Localizable;
 
 /**
- * @public
- *
  * Formats a value and its unit into a `Localizable` representation.
  *
  * @typeParam T - Type of the value.
  * @typeParam U - Type of the unit.
+ *
+ * @public
  *
  * @see {@link Localizable}
  */
 export type UnitValueFormatter<T, U> = (value: T, unit: U) => Localizable;
 
 /**
- * @public
- *
  * Formats a range of values into a `Localizable`.
  *
  * @typeParam T - The type of the range values.
+ *
+ * @public
  *
  * @see {@link Localizable}
  */
 export type ValueRangeFormatter<T> = (start: T, end: T) => Localizable;
 
 /**
- * @public
- *
  * Formats a value relative to a reference value into a `Localizable`.
  *
  * @typeParam T - The type of the value and reference.
+ *
+ * @public
  *
  * @see {@link Localizable}
  */

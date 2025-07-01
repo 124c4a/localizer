@@ -19,15 +19,15 @@ import { isLocalizable } from '../../localizable/is-localizable.js';
 import { _ensureImplicitLocalization } from './ensure-implicit-localization.js';
 
 /**
- * @internal
- *
  * Creates a localizer function that uses the implicit locale.
  *
- * This function generates a localizer bound to the locale provided by
- * `ensureImplicitLocalization`. It can localize values or functions
- * returning localizable values without explicitly specifying the locale.
+ * This function generates a localizer bound to the locale provided by `ensureImplicitLocalization`.
+ * It can localize values or functions returning localizable values without explicitly specifying
+ * the locale.
  *
  * @returns A localizer function bound to the implicit locale.
+ *
+ * @internal
  */
 export function _getImplicitLocalizer(): Localizer {
   const fn = <T, A extends unknown[]>(
@@ -39,9 +39,7 @@ export function _getImplicitLocalizer(): Localizer {
       return localizable.localize(locale) as T;
     } else {
       return (...args: A) =>
-        (localizable as (...args: A) => Localizable<T>)(...args).localize(
-          locale,
-        );
+        (localizable as (...args: A) => Localizable<T>)(...args).localize(locale);
     }
   };
 

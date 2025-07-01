@@ -20,13 +20,16 @@ import { NumberFormatOptions } from './options.js';
 import { Unit } from './unit.js';
 
 /**
- * @public
  * Formats values relative to a reference using localized units.
  *
  * @typeParam T - The numeric type, either `number` or `bigint`.
- * @param unit - The unit for formatting (e.g., 'meter', 'kilogram').
- * @param options - Optional formatting settings.
- * @returns A function that formats a value relative to a reference.
+ *
+ * @param   unit    - The unit for formatting (e.g., 'meter', 'kilogram').
+ * @param   options - Optional formatting settings.
+ *
+ * @returns         A function that formats a value relative to a reference.
+ *
+ * @public
  */
 export function relativeUnitFormatter<T extends number | bigint>(
   unit: Unit,

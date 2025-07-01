@@ -16,27 +16,21 @@
 import { Stop } from '../options.js';
 import { _getTimeDifference } from './getTimeDifference.js';
 
-const allStops: Stop[] = [
-  'year',
-  'quarter',
-  'month',
-  'week',
-  'day',
-  'hour',
-  'minute',
-  'second',
-];
+const allStops: Stop[] = ['year', 'quarter', 'month', 'week', 'day', 'hour', 'minute', 'second'];
 
 /**
- * @internal
  * Computes the relative time difference between two values at specified granularity levels.
  *
- * @param value - Target value as a timestamp or Date.
- * @param reference - Reference value as a timestamp or Date.
- * @param stops - Granularity levels (e.g., 'year', 'month', 'day').
- * @returns An object with:
+ * @param   value     - Target value as a timestamp or Date.
+ * @param   reference - Reference value as a timestamp or Date.
+ * @param   stops     - Granularity levels (e.g., 'year', 'month', 'day').
+ *
+ * @returns           An object with:
+ *
  *   - `value`: The relative time difference.
  *   - `stop`: The granularity level of the difference.
+ *
+ * @internal
  */
 export function _computeRelativeTime(
   value: number | Date,

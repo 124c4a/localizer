@@ -33,25 +33,25 @@ type TimeDifference = {
 };
 
 /**
- * @internal
  * Computes the time difference between two dates or timestamps.
  *
- * @param value - Target date or timestamp.
- * @param reference - Reference date or timestamp.
- * @returns Object with time differences:
- * - `year`: Difference in years.
- * - `quarter`: Difference in quarters.
- * - `month`: Difference in months.
- * - `week`: Difference in weeks (days divided by 7, truncated).
- * - `day`: Difference in days.
- * - `hour`: Difference in hours.
- * - `minute`: Difference in minutes.
- * - `second`: Difference in seconds.
+ * @param   value     - Target date or timestamp.
+ * @param   reference - Reference date or timestamp.
+ *
+ * @returns           Object with time differences:
+ *
+ *   - `year`: Difference in years.
+ *   - `quarter`: Difference in quarters.
+ *   - `month`: Difference in months.
+ *   - `week`: Difference in weeks (days divided by 7, truncated).
+ *   - `day`: Difference in days.
+ *   - `hour`: Difference in hours.
+ *   - `minute`: Difference in minutes.
+ *   - `second`: Difference in seconds.
+ *
+ * @internal
  */
-export function _getTimeDifference(
-  value: number | Date,
-  reference: number | Date,
-): TimeDifference {
+export function _getTimeDifference(value: number | Date, reference: number | Date): TimeDifference {
   return {
     year: differenceInYears(value, reference),
     quarter: differenceInQuarters(value, reference),

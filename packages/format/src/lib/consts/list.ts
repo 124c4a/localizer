@@ -16,20 +16,22 @@
 import { listFormatter } from '@localizer/format-list';
 
 /**
+ * Formatter for conjunction lists. Joins items using a conjunction like "and".
+ *
  * @public
- * Formatter for conjunction lists.
- * Joins items using a conjunction like "and".
  */
 export const and = listFormatter({ type: 'conjunction' });
+
 /**
+ * Formatter for disjunction lists. Joins items using a disjunction like "or".
+ *
  * @public
- * Formatter for disjunction lists.
- * Joins items using a disjunction like "or".
  */
 export const or = listFormatter({ type: 'disjunction' });
+
 /**
+ * Formatter for unit lists. Joins items without conjunctions or disjunctions.
+ *
  * @public
- * Formatter for unit lists.
- * Joins items without conjunctions or disjunctions.
  */
 export const list = listFormatter({ type: 'unit' });

@@ -19,11 +19,13 @@ import { _buildFormatter } from './_/build.js';
 import { RelativeTimeFormatOptions } from './options.js';
 
 /**
- * @public
  * Generates a function to format relative time strings.
  *
- * @param options - Optional settings for the formatter. Defaults to `{ numeric: 'auto' }`.
- * @returns A function to format relative time values.
+ * @param   options - Optional settings for the formatter. Defaults to `{ numeric: 'auto' }`.
+ *
+ * @returns         A function to format relative time values.
+ *
+ * @public
  */
 export function relativeTimeFormatter(
   options?: RelativeTimeFormatOptions,

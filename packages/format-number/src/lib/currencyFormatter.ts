@@ -20,12 +20,15 @@ import { CurrencyCode } from './currency.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Formats currency values using localization.
  *
  * @typeParam T - The value type, either number or bigint.
- * @param options - Optional formatting options.
- * @returns A `UnitValueFormatter` for localized currency strings.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A `UnitValueFormatter` for localized currency strings.
+ *
+ * @public
  */
 export function currencyFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

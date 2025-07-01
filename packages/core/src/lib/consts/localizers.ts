@@ -19,26 +19,26 @@ import { _getUninitializedLocalizer } from '../fn/localizer/_/get-uninitialized-
 import { Localizer } from '../types/localizer.js';
 
 /**
+ * A `Localizer` bound to the `activeLocale` from the configuration. Enables localization using the
+ * current active locale without explicitly specifying it.
+ *
  * @alpha
  *
- * A `Localizer` bound to the `activeLocale` from the configuration.
- * Enables localization using the current active locale without explicitly specifying it.
- *
- * @see {@link Localizer}, {@link Core}
+ * @see {@link Localizer} , {@link Core}
  */
 export const ImplicitLocalizer: Localizer = _getImplicitLocalizer();
 
 /**
- * @public
- *
  * A Localizer instance that is unbound to any locale and throws an error when used.
+ *
+ * @public
  */
 export const UninitializedLocalizer: Localizer = _getUninitializedLocalizer();
 
 /**
- * @public
+ * A Localizer that returns stable identifiers instead of localized strings. Useful for generating
+ * unique, locale-independent identifiers.
  *
- * A Localizer that returns stable identifiers instead of localized strings.
- * Useful for generating unique, locale-independent identifiers.
+ * @public
  */
 export const IdentityLocalizer: Localizer = _getIdentityLocalizer();

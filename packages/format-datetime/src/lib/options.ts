@@ -16,95 +16,99 @@
 import { Transformer } from '@localizer/transform';
 
 /**
- * @public
  * Options for customizing date and time formatting.
  *
  * Defines configuration options for the `Intl.DateTimeFormat` API.
+ *
+ * @public
  */
 export type DateTimeFormatOptions = {
   /**
-   * Locale for formatting.
-   * Defaults to the system's locale if not specified.
+   * Locale for formatting. Defaults to the system's locale if not specified.
    *
    * @public
    */
   localeMatcher?: 'best fit' | 'lookup';
+
   /**
    * Specifies how the weekday should be displayed.
    *
    * @public
    */
   weekday?: 'long' | 'short' | 'narrow';
+
   /**
    * Controls the display of the era (e.g., AD, BC) in the formatted date.
    *
    * @public
    */
   era?: 'long' | 'short' | 'narrow';
+
   /**
    * Specifies the year format.
    *
    * @public
    */
   year?: 'numeric' | '2-digit';
+
   /**
    * Specifies how the month should be displayed.
    *
    * @public
    */
   month?: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow';
+
   /**
    * Specifies the day format to display.
    *
    * @public
    */
   day?: 'numeric' | '2-digit';
+
   /**
    * Specifies the hour format.
    *
    * @public
    */
   hour?: 'numeric' | '2-digit';
+
   /**
    * Format for displaying minutes.
    *
    * @public
    */
   minute?: 'numeric' | '2-digit';
+
   /**
    * Format for displaying seconds.
    *
    * @public
    */
   second?: 'numeric' | '2-digit';
+
   /**
    * Specifies how the time zone name should be formatted.
    *
    * @public
    */
-  timeZoneName?:
-    | 'short'
-    | 'long'
-    | 'shortOffset'
-    | 'longOffset'
-    | 'shortGeneric'
-    | 'longGeneric';
+  timeZoneName?: 'short' | 'long' | 'shortOffset' | 'longOffset' | 'shortGeneric' | 'longGeneric';
+
   /**
    * Algorithm for matching the locale.
    *
    * @public
    */
   formatMatcher?: 'best fit' | 'basic';
+
   /**
-   * Use 12-hour or 24-hour time format.
-   * Defaults to locale settings if unspecified.
+   * Use 12-hour or 24-hour time format. Defaults to locale settings if unspecified.
    *
    * @public
    */
   hour12?: boolean;
+
   /**
-   * Time zone for formatting.
-   * Defaults to the system's time zone if unspecified.
+   * Time zone for formatting. Defaults to the system's time zone if unspecified.
    *
    * @public
    */
@@ -116,45 +120,44 @@ export type DateTimeFormatOptions = {
    * @public
    */
   calendar?: string;
+
   /**
    * Format for displaying the day period (e.g., AM/PM).
    *
    * @public
    */
   dayPeriod?: 'narrow' | 'short' | 'long';
+
   /**
-   * Numbering system for formatting.
-   * Defaults to the locale's system if unspecified.
+   * Numbering system for formatting. Defaults to the locale's system if unspecified.
    *
    * @public
    */
   numberingSystem?: string;
 
   /**
-   * Style for formatting date and time.
-   * Defaults to locale-based style if unspecified.
+   * Style for formatting date and time. Defaults to locale-based style if unspecified.
    *
    * @public
    */
   dateStyle?: 'full' | 'long' | 'medium' | 'short';
+
   /**
-   * Style for time formatting.
-   * Defaults to locale-based style if unspecified.
+   * Style for time formatting. Defaults to locale-based style if unspecified.
    *
    * @public
    */
   timeStyle?: 'full' | 'long' | 'medium' | 'short';
+
   /**
-   * Specifies the hour cycle for formatting.
-   * Defaults to the locale's hour cycle if unspecified.
+   * Specifies the hour cycle for formatting. Defaults to the locale's hour cycle if unspecified.
    *
    * @public
    */
   hourCycle?: 'h11' | 'h12' | 'h23' | 'h24';
 
   /**
-   * Number of fractional second digits to include.
-   * Defaults to the locale's setting if unspecified.
+   * Number of fractional second digits to include. Defaults to the locale's setting if unspecified.
    *
    * @public
    */
@@ -166,9 +169,10 @@ export type DateTimeFormatOptions = {
    * @public
    */
   transform?: Transformer[];
+
   /**
-   * Specifies which parts to include in the formatted output.
-   * If omitted, all parts are included by default.
+   * Specifies which parts to include in the formatted output. If omitted, all parts are included by
+   * default.
    *
    * @public
    */

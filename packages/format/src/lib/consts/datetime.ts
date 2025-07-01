@@ -14,34 +14,36 @@
  * limitations under the License.
  */
 import { loc, ValueRangeFormatter } from '@localizer/core';
-import {
-  dateTimeFormatter,
-  dateTimeRangeFormatter,
-} from '@localizer/format-datetime';
+import { dateTimeFormatter, dateTimeRangeFormatter } from '@localizer/format-datetime';
 
-import { GenericRangeSeparator } from './generic.js';
+import { RangeSeparator } from './generic.js';
 
 /**
- * @public
  * Formats date values.
+ *
+ * @public
  */
 export const date = dateTimeFormatter({
   day: 'numeric',
   month: 'numeric',
   year: 'numeric',
 });
+
 /**
- * @public
  * Formats time values.
+ *
+ * @public
  */
 export const time = dateTimeFormatter({
   hour: '2-digit',
   minute: '2-digit',
   second: '2-digit',
 });
+
 /**
- * @public
  * Formats combined date and time values.
+ *
+ * @public
  */
 export const dateTime = dateTimeFormatter({
   hour: '2-digit',
@@ -53,14 +55,17 @@ export const dateTime = dateTimeFormatter({
 });
 
 /**
- * @public
  * Formats a range of dates using a generic separator.
+ *
+ * @public
  */
 export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
-  loc`${date(start)}${GenericRangeSeparator}${date(end)}`;
+  loc`${date(start)}${RangeSeparator}${date(end)}`;
+
 /**
- * @public
  * Formats a range of date and time values.
+ *
+ * @public
  */
 export const dateTimeRange = dateTimeRangeFormatter({
   hour: '2-digit',

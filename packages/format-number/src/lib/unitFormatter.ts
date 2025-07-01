@@ -20,12 +20,15 @@ import { NumberFormatOptions } from './options.js';
 import { Unit } from './unit.js';
 
 /**
- * @public
  * Creates a formatter for localized unit values.
  *
  * @typeParam T - The type of values to format (number or bigint).
- * @param options - Optional formatting options.
- * @returns A `UnitValueFormatter` for localized unit strings.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A `UnitValueFormatter` for localized unit strings.
+ *
+ * @public
  */
 export function unitFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

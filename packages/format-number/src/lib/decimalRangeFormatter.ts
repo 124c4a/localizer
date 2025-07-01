@@ -19,12 +19,15 @@ import { _buildRangeFormatter } from './_/build.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Creates a formatter for localized decimal ranges.
  *
  * @typeParam T - The numeric type, either `number` or `bigint`.
- * @param options - Optional formatting options for decimal ranges.
- * @returns A `ValueRangeFormatter` for localized decimal range strings.
+ *
+ * @param   options - Optional formatting options for decimal ranges.
+ *
+ * @returns         A `ValueRangeFormatter` for localized decimal range strings.
+ *
+ * @public
  */
 export function decimalRangeFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,
