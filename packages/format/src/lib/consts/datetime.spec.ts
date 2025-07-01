@@ -42,6 +42,9 @@ describe('datetime formatters', () => {
     expect(dateRange(startDate, endDate).localize('ko-KR')).toBe(
       '2025. 1. 1.\u2009~\u20092025. 1. 31.',
     ); // Adjust based on locale and separator
+    expect(dateRange(startDate, endDate).localize(null)).toBe(
+      '2024-12-31T22:00:00.000Z\u2009\u2013\u20092025-01-30T22:00:00.000Z',
+    ); // Adjust based on locale and separator
   });
 
   it('should format date and time range correctly', () => {
