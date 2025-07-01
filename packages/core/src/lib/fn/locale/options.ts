@@ -32,8 +32,7 @@ export interface CoreOptions {
   fallbackLocales: LocaleCode[];
 
   /**
-   * Active locale code for implicit localization. If unset, implicit
-   * localization is disabled.
+   * Active locale code for implicit localization. If unset, implicit localization is disabled.
    *
    * @defaultValue `undefined`
    *
@@ -45,8 +44,8 @@ export interface CoreOptions {
 /**
  * Singleton instance of core localization options.
  *
- * Holds default settings like fallback locales and active locale. Can be
- * updated dynamically via the `Core` function.
+ * Holds default settings like fallback locales and active locale. Can be updated dynamically via
+ * the `Core` function.
  *
  * @internal
  */

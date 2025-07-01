@@ -35,20 +35,11 @@ for (const source of sources) {
   if (source.isDirectory()) {
     await mkdir(resolve(outputPath, source.name), { recursive: true });
   } else {
-    const content = await readFile(
-      resolve(source.parentPath, source.name),
-      'utf-8',
-    );
+    const content = await readFile(resolve(source.parentPath, source.name), 'utf-8');
     console.log(`Processing: ${relativePath}/${source.name}`);
 
-    const processedContent = source.name.endsWith('.md')
-      ? reprocessContent(content)
-      : content;
-    await writeFile(
-      resolve(outputPath, source.name),
-      processedContent,
-      'utf-8',
-    );
+    const processedContent = source.name.endsWith('.md') ? reprocessContent(content) : content;
+    await writeFile(resolve(outputPath, source.name), processedContent, 'utf-8');
   }
 }
 
@@ -65,12 +56,10 @@ function reprocessContent(content) {
   const betaIndex = lines.findIndex((line) => line.startsWith('**`Beta`**'));
 
   if (alphaIndex !== -1) {
-    lines[headerIndex] =
-      lines[headerIndex] + ' <Badge type="warning" text="experimental" />';
+    lines[headerIndex] = lines[headerIndex] + ' <Badge type="warning" text="experimental" />';
     lines.splice(alphaIndex, 1);
   } else if (betaIndex !== -1) {
-    lines[headerIndex] =
-      lines[headerIndex] + ' <Badge type="tip" text="preview" />';
+    lines[headerIndex] = lines[headerIndex] + ' <Badge type="tip" text="preview" />';
     lines.splice(betaIndex, 1);
   }
 

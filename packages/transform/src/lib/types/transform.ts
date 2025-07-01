@@ -16,8 +16,7 @@
 import { Localizable } from '@localizer/core';
 
 /**
- * A function that transforms a value of type `T`, which extends
- * `Localizable<unknown>`.
+ * A function that transforms a value of type `T`, which extends `Localizable<unknown>`.
  *
  * @typeParam T - A type of `Localizable`.
  *

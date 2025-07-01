@@ -16,8 +16,7 @@
 import { relativeTimeFormatter } from '@localizer/format-relativetime';
 
 /**
- * A preconfigured instance for formatting relative time strings using default
- * options.
+ * A preconfigured instance for formatting relative time strings using default options.
  *
  * @public
  */

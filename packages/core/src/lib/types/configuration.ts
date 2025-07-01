@@ -24,8 +24,8 @@
 export type Configurer<V> = (value: Partial<V>) => void;
 
 /**
- * Maps a type `T` to its configuration properties. For each key in `T`,
- * extracts the configurable value type if the property is a `Configurer`.
+ * Maps a type `T` to its configuration properties. For each key in `T`, extracts the configurable
+ * value type if the property is a `Configurer`.
  *
  * @typeParam T - The type to extract configuration properties from.
  *

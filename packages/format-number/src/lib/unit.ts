@@ -15,8 +15,7 @@
  */
 
 /**
- * A subset of the CLDR units explicitly sanctioned by the ECMA-402
- * specification
+ * A subset of the CLDR units explicitly sanctioned by the ECMA-402 specification
  *
  * @public
  *

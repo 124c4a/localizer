@@ -27,7 +27,5 @@ import { getPrimaryLocale, Localizable, loc } from '@localizer/core';
  * @beta
  */
 export function usePrimaryLocale<T>(value: Localizable<T>): Localizable<T> {
-  return loc((locale) =>
-    value.localize(locale !== null ? getPrimaryLocale(locale) : null),
-  );
+  return loc((locale) => value.localize(locale !== null ? getPrimaryLocale(locale) : null));
 }

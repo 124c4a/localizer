@@ -15,8 +15,7 @@
  */
 
 /**
- * Provides utilities for formatting numbers, currencies, percentages, and
- * units.
+ * Provides utilities for formatting numbers, currencies, percentages, and units.
  *
  * @public
  *

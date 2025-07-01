@@ -14,10 +14,7 @@
  * limitations under the License.
  */
 import { loc, ValueRangeFormatter } from '@localizer/core';
-import {
-  dateTimeFormatter,
-  dateTimeRangeFormatter,
-} from '@localizer/format-datetime';
+import { dateTimeFormatter, dateTimeRangeFormatter } from '@localizer/format-datetime';
 
 import { RangeSeparator } from './generic.js';
 

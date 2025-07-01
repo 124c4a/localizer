@@ -25,9 +25,8 @@ import {
 /**
  * Type definition for a translation map.
  *
- * Represents a mapping of locale codes to their corresponding translations.
- * Each locale code can be associated with either a string or a localizable
- * value.
+ * Represents a mapping of locale codes to their corresponding translations. Each locale code can be
+ * associated with either a string or a localizable value.
  *
  * @typeParam K - The locale code type.
  *
@@ -40,17 +39,14 @@ export type TranslationMap = {
 /**
  * Translation function for dynamic values.
  *
- * Creates a value formatter that dynamically generates a translation map based
- * on the input value.
+ * Creates a value formatter that dynamically generates a translation map based on the input value.
  *
  * @typeParam V - The type of the input value.
  *
- * @param   map            - A function that generates a translation map for the
- *   given value.
+ * @param   map            - A function that generates a translation map for the given value.
  * @param   translationKey - An optional key used as a fallback translation.
  *
- * @returns                A function that formats the input value into a
- *   localized string.
+ * @returns                A function that formats the input value into a localized string.
  *
  * @alpha
  */
@@ -62,35 +58,30 @@ export function translate<V>(
 /**
  * Translation function for static maps.
  *
- * Resolves the appropriate translation for the current locale based on the
- * provided translation map.
+ * Resolves the appropriate translation for the current locale based on the provided translation
+ * map.
  *
- * @param   map            - A static translation map containing locale codes
- *   and their translations.
+ * @param   map            - A static translation map containing locale codes and their
+ *   translations.
  * @param   translationKey - An optional key used as a fallback translation.
  *
  * @returns                A localized string based on the current locale.
  *
  * @alpha
  */
-export function translate(
-  map: TranslationMap,
-  translationKey?: string,
-): Localizable;
+export function translate(map: TranslationMap, translationKey?: string): Localizable;
 
 /**
- * Translation function that can handle both static and dynamic translation
- * maps.
+ * Translation function that can handle both static and dynamic translation maps.
  *
  * @typeParam V - The type of the input value.
  *
- * @param   map            - A static translation map containing locale codes
- *   and their translations, or a function that generates a translation map
- *   based on the input value.
+ * @param   map            - A static translation map containing locale codes and their
+ *   translations, or a function that generates a translation map based on the input value.
  * @param   translationKey - An optional key used as a fallback translation.
  *
- * @returns                A localized string based on the current locale or a
- *   value formatter for dynamic values.
+ * @returns                A localized string based on the current locale or a value formatter for
+ *   dynamic values.
  *
  * @alpha
  */
@@ -123,14 +114,11 @@ export function translate<V = TranslationMap>(
 }
 
 /**
- * A translation function that returns a localized string based on the provided
- * translation map.
+ * A translation function that returns a localized string based on the provided translation map.
  *
- * This function can be used to create localized strings for various locales,
- * falling back to a default translation if the specific locale is not
- * available.
+ * This function can be used to create localized strings for various locales, falling back to a
+ * default translation if the specific locale is not available.
  *
  * @alpha
  */
-export const translation: ValueFormatter<TranslationMap> =
-  translate<TranslationMap>((map) => map);
+export const translation: ValueFormatter<TranslationMap> = translate<TranslationMap>((map) => map);

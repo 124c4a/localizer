@@ -18,11 +18,11 @@ import { Localizable, loc } from '@localizer/core';
 /**
  * Capitalizes the first character of the localized value for a given locale.
  *
- * @param   value - A Localizable object containing the value to be transformed.
- *   Transformation is a no-op when the result is localized to a `null` locale.
+ * @param   value - A Localizable object containing the value to be transformed. Transformation is a
+ *   no-op when the result is localized to a `null` locale.
  *
- * @returns       A new Localizable object with the first character of the value
- *   capitalized for the specified locale.
+ * @returns       A new Localizable object with the first character of the value capitalized for the
+ *   specified locale.
  *
  * @public
  */
@@ -30,8 +30,6 @@ export function capitalize(value: Localizable): Localizable {
   return loc((locale) =>
     locale === null
       ? value.localize(locale)
-      : value
-          .localize(locale)
-          .replace(/^\p{CWU}/u, (char) => char.toLocaleUpperCase(locale)),
+      : value.localize(locale).replace(/^\p{CWU}/u, (char) => char.toLocaleUpperCase(locale)),
   );
 }

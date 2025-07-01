@@ -25,8 +25,7 @@ import { NumberFormatOptions } from './options.js';
  *
  * @param   options - Optional formatting options.
  *
- * @returns         A function to format a value relative to a reference as a
- *   percentage.
+ * @returns         A function to format a value relative to a reference as a percentage.
  *
  * @public
  */

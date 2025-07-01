@@ -24,8 +24,7 @@ const parentLocaleCache: Partial<Record<LocaleCode, LocaleCode[]>> = {};
  *
  * @param   arr - An array of locale codes.
  *
- * @returns     A new array containing only distinct locale codes from the input
- *   array.
+ * @returns     A new array containing only distinct locale codes from the input array.
  *
  * @internal
  */
@@ -34,8 +33,8 @@ function distinct(arr: LocaleCode[]): LocaleCode[] {
 }
 
 /**
- * Generates a list of locale codes starting with the given locale, followed by
- * its parent locale (if applicable), and fallback locales.
+ * Generates a list of locale codes starting with the given locale, followed by its parent locale
+ * (if applicable), and fallback locales.
  *
  * Caches results for better performance.
  *
@@ -55,11 +54,7 @@ export function getLocaleChain(locale: LocaleCode): LocaleCode[] {
   if (!country) {
     parentLocaleCache[locale] = distinct([locale, ...fallbackLocales]);
   } else {
-    parentLocaleCache[locale] = distinct([
-      locale,
-      language,
-      ...fallbackLocales,
-    ]);
+    parentLocaleCache[locale] = distinct([locale, language, ...fallbackLocales]);
   }
   return parentLocaleCache[locale];
 }

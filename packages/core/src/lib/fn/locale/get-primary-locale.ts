@@ -19,13 +19,12 @@ import { parseLocaleCode } from './parse-locale-code.js';
 /**
  * Returns the primary locale for a given locale code.
  *
- * If the locale includes a country, it maps to the primary locale for that
- * country using `primaryLocales`. Otherwise, the original locale is returned.
+ * If the locale includes a country, it maps to the primary locale for that country using
+ * `primaryLocales`. Otherwise, the original locale is returned.
  *
  * @param   locale - The locale code to process.
  *
- * @returns        The primary locale or the original locale if no mapping
- *   exists.
+ * @returns        The primary locale or the original locale if no mapping exists.
  *
  * @public
  */

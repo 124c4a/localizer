@@ -17,9 +17,7 @@ import { _autoFormatRecordDeep } from './autoFormatRecordDeep.js';
 
 describe('autoFormatRecordDeep', () => {
   it('formats specified keys at the top level', () => {
-    const result = _autoFormatRecordDeep({ key1: 123, key2: 'value' }, [
-      'key1',
-    ]);
+    const result = _autoFormatRecordDeep({ key1: 123, key2: 'value' }, ['key1']);
     expect(result).toEqual({
       key1: { localize: expect.any(Function) },
       key2: 'value',
@@ -27,10 +25,9 @@ describe('autoFormatRecordDeep', () => {
   });
 
   it('formats nested keys correctly', () => {
-    const result = _autoFormatRecordDeep(
-      { key1: { nestedKey: 123 }, key2: 'value' },
-      ['key1.nestedKey'],
-    );
+    const result = _autoFormatRecordDeep({ key1: { nestedKey: 123 }, key2: 'value' }, [
+      'key1.nestedKey',
+    ]);
     expect(result).toEqual({
       key1: { nestedKey: { localize: expect.any(Function) } },
       key2: 'value',
@@ -38,9 +35,7 @@ describe('autoFormatRecordDeep', () => {
   });
 
   it('does not format keys not included in autoFormattedParameters', () => {
-    const result = _autoFormatRecordDeep({ key1: 123, key2: 'value' }, [
-      'key2',
-    ]);
+    const result = _autoFormatRecordDeep({ key1: 123, key2: 'value' }, ['key2']);
     expect(result).toEqual({
       key1: 123,
       key2: { localize: expect.any(Function) },
@@ -58,10 +53,10 @@ describe('autoFormatRecordDeep', () => {
   });
 
   it('formats multiple keys at different levels correctly', () => {
-    const result = _autoFormatRecordDeep(
-      { key1: 123, key2: { nestedKey: true }, key3: 'value' },
-      ['key1', 'key2.nestedKey'],
-    );
+    const result = _autoFormatRecordDeep({ key1: 123, key2: { nestedKey: true }, key3: 'value' }, [
+      'key1',
+      'key2.nestedKey',
+    ]);
     expect(result).toEqual({
       key1: { localize: expect.any(Function) },
       key2: { nestedKey: { localize: expect.any(Function) } },

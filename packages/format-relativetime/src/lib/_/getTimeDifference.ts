@@ -51,10 +51,7 @@ type TimeDifference = {
  *
  * @internal
  */
-export function _getTimeDifference(
-  value: number | Date,
-  reference: number | Date,
-): TimeDifference {
+export function _getTimeDifference(value: number | Date, reference: number | Date): TimeDifference {
   return {
     year: differenceInYears(value, reference),
     quarter: differenceInQuarters(value, reference),

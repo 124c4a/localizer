@@ -25,8 +25,8 @@ import { NumberFormatOptions } from './options.js';
  *
  * @param   options - Optional formatting options for relative decimal values.
  *
- * @returns         A function that formats the difference between a value and a
- *   reference using `Intl.NumberFormat`.
+ * @returns         A function that formats the difference between a value and a reference using
+ *   `Intl.NumberFormat`.
  *
  * @public
  */

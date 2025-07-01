@@ -60,10 +60,7 @@ describe('relativePercentFormatter', () => {
 
   it('handles bigint values correctly', () => {
     const formatter = relativePercentFormatter();
-    const result = formatter(
-      12345678901234567890n,
-      12345678901234567880n,
-    ).localize('en-US');
+    const result = formatter(12345678901234567890n, 12345678901234567880n).localize('en-US');
     expect(result).toBe('0%');
   });
 });

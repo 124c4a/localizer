@@ -21,8 +21,7 @@ import { RelativeTimeFormatOptions } from './options.js';
 /**
  * Generates a function to format relative time strings.
  *
- * @param   options - Optional settings for the formatter. Defaults to `{
- *   numeric: 'auto' }`.
+ * @param   options - Optional settings for the formatter. Defaults to `{ numeric: 'auto' }`.
  *
  * @returns         A function to format relative time values.
  *

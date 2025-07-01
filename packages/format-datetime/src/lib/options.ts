@@ -91,13 +91,7 @@ export type DateTimeFormatOptions = {
    *
    * @public
    */
-  timeZoneName?:
-    | 'short'
-    | 'long'
-    | 'shortOffset'
-    | 'longOffset'
-    | 'shortGeneric'
-    | 'longGeneric';
+  timeZoneName?: 'short' | 'long' | 'shortOffset' | 'longOffset' | 'shortGeneric' | 'longGeneric';
 
   /**
    * Algorithm for matching the locale.
@@ -107,16 +101,14 @@ export type DateTimeFormatOptions = {
   formatMatcher?: 'best fit' | 'basic';
 
   /**
-   * Use 12-hour or 24-hour time format. Defaults to locale settings if
-   * unspecified.
+   * Use 12-hour or 24-hour time format. Defaults to locale settings if unspecified.
    *
    * @public
    */
   hour12?: boolean;
 
   /**
-   * Time zone for formatting. Defaults to the system's time zone if
-   * unspecified.
+   * Time zone for formatting. Defaults to the system's time zone if unspecified.
    *
    * @public
    */
@@ -137,16 +129,14 @@ export type DateTimeFormatOptions = {
   dayPeriod?: 'narrow' | 'short' | 'long';
 
   /**
-   * Numbering system for formatting. Defaults to the locale's system if
-   * unspecified.
+   * Numbering system for formatting. Defaults to the locale's system if unspecified.
    *
    * @public
    */
   numberingSystem?: string;
 
   /**
-   * Style for formatting date and time. Defaults to locale-based style if
-   * unspecified.
+   * Style for formatting date and time. Defaults to locale-based style if unspecified.
    *
    * @public
    */
@@ -160,16 +150,14 @@ export type DateTimeFormatOptions = {
   timeStyle?: 'full' | 'long' | 'medium' | 'short';
 
   /**
-   * Specifies the hour cycle for formatting. Defaults to the locale's hour
-   * cycle if unspecified.
+   * Specifies the hour cycle for formatting. Defaults to the locale's hour cycle if unspecified.
    *
    * @public
    */
   hourCycle?: 'h11' | 'h12' | 'h23' | 'h24';
 
   /**
-   * Number of fractional second digits to include. Defaults to the locale's
-   * setting if unspecified.
+   * Number of fractional second digits to include. Defaults to the locale's setting if unspecified.
    *
    * @public
    */
@@ -183,8 +171,8 @@ export type DateTimeFormatOptions = {
   transform?: Transformer[];
 
   /**
-   * Specifies which parts to include in the formatted output. If omitted, all
-   * parts are included by default.
+   * Specifies which parts to include in the formatted output. If omitted, all parts are included by
+   * default.
    *
    * @public
    */

@@ -19,16 +19,14 @@ import { CurrencyCode } from './currency.js';
 import { Unit } from './unit.js';
 
 /**
- * Options for formatting numbers using `Intl.NumberFormat`. Supports
- * customization for locale, style, currency, unit, grouping, significant
- * digits, rounding, and more.
+ * Options for formatting numbers using `Intl.NumberFormat`. Supports customization for locale,
+ * style, currency, unit, grouping, significant digits, rounding, and more.
  *
  * @public
  */
 export type NumberFormatOptions = {
   /**
-   * Specifies the locale for formatting. Defaults to the runtime's locale if
-   * omitted.
+   * Specifies the locale for formatting. Defaults to the runtime's locale if omitted.
    *
    * @public
    */
@@ -47,8 +45,7 @@ export type NumberFormatOptions = {
   style?: 'decimal' | 'currency' | 'percent' | 'unit';
 
   /**
-   * ISO 4217 currency code (e.g., 'USD', 'EUR'). Required if `style` is
-   * 'currency'.
+   * ISO 4217 currency code (e.g., 'USD', 'EUR'). Required if `style` is 'currency'.
    *
    * @public
    */
@@ -79,48 +76,42 @@ export type NumberFormatOptions = {
   useGrouping?: 'auto' | 'always' | 'min2' | true | false;
 
   /**
-   * Minimum integer digits in the output. Defaults to runtime environment
-   * settings.
+   * Minimum integer digits in the output. Defaults to runtime environment settings.
    *
    * @public
    */
   minimumIntegerDigits?: number;
 
   /**
-   * Minimum fraction digits in the output. Defaults to runtime environment
-   * settings.
+   * Minimum fraction digits in the output. Defaults to runtime environment settings.
    *
    * @public
    */
   minimumFractionDigits?: number;
 
   /**
-   * Maximum fraction digits in the output. Defaults to runtime environment
-   * settings.
+   * Maximum fraction digits in the output. Defaults to runtime environment settings.
    *
    * @public
    */
   maximumFractionDigits?: number;
 
   /**
-   * Minimum significant digits in the output. Defaults to runtime environment
-   * settings.
+   * Minimum significant digits in the output. Defaults to runtime environment settings.
    *
    * @public
    */
   minimumSignificantDigits?: number;
 
   /**
-   * Maximum significant digits in the output. Defaults to runtime environment
-   * settings.
+   * Maximum significant digits in the output. Defaults to runtime environment settings.
    *
    * @public
    */
   maximumSignificantDigits?: number;
 
   /**
-   * Specifies the numbering system for formatting. Examples: 'latn' (Latin),
-   * 'arab' (Arabic).
+   * Specifies the numbering system for formatting. Examples: 'latn' (Latin), 'arab' (Arabic).
    *
    * @public
    */
@@ -162,8 +153,8 @@ export type NumberFormatOptions = {
   signDisplay?: 'auto' | 'never' | 'always' | 'exceptZero' | 'negative';
 
   /**
-   * Specifies the unit for formatting when `style` is 'unit'. Example: 'meter',
-   * 'kilogram'. Required if `style` is 'unit'.
+   * Specifies the unit for formatting when `style` is 'unit'. Example: 'meter', 'kilogram'.
+   * Required if `style` is 'unit'.
    *
    * @public
    */
@@ -202,8 +193,8 @@ export type NumberFormatOptions = {
   roundingPriority?: 'auto' | 'morePrecision' | 'lessPrecision';
 
   /**
-   * Specifies the rounding increment for formatting. Examples: 1, 2, 5, 10,
-   * etc. Defaults to runtime environment settings if omitted.
+   * Specifies the rounding increment for formatting. Examples: 1, 2, 5, 10, etc. Defaults to
+   * runtime environment settings if omitted.
    *
    * @public
    */
@@ -268,9 +259,8 @@ export type NumberFormatOptions = {
   transform?: Transformer[];
 
   /**
-   * Specifies parts to include in the formatted output. Examples: 'currency',
-   * 'group', 'integer', 'literal', 'minusSign', 'nan', 'percentSign',
-   * 'plusSign', 'unit'.
+   * Specifies parts to include in the formatted output. Examples: 'currency', 'group', 'integer',
+   * 'literal', 'minusSign', 'nan', 'percentSign', 'plusSign', 'unit'.
    *
    * @public
    */

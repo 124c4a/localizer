@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 import { loc } from '@localizer/core';
-import {
-  decimalFormatter,
-  decimalRangeFormatter,
-} from '@localizer/format-number';
+import { decimalFormatter, decimalRangeFormatter } from '@localizer/format-number';
 import { apply, Transformer } from '@localizer/transform';
 
 const ignoreUndeterminedLanguage: Transformer = (value) =>
-  loc((locale) =>
-    locale === null ? value.localize('en') : value.localize(locale),
-  );
+  loc((locale) => (locale === null ? value.localize('en') : value.localize(locale)));
 
 /**
- * Formats the decimal separator with locale-specific settings. Handles
- * undetermined language using a transformation.
+ * Formats the decimal separator with locale-specific settings. Handles undetermined language using
+ * a transformation.
  *
  * @public
  */
@@ -37,8 +32,8 @@ export const DecimalSeparator = decimalFormatter({
 })(1.1);
 
 /**
- * Formats the thousand separator with locale settings. Handles undetermined
- * language using a transformation.
+ * Formats the thousand separator with locale settings. Handles undetermined language using a
+ * transformation.
  *
  * @public
  */
@@ -49,8 +44,8 @@ export const ThousandSeparator = decimalFormatter({
 })(1000);
 
 /**
- * Formats a date range with locale-specific settings. Handles undetermined
- * language using a transformation.
+ * Formats a date range with locale-specific settings. Handles undetermined language using a
+ * transformation.
  *
  * @public
  */

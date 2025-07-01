@@ -47,13 +47,7 @@ export type DisplayNameFormatOptions = {
    *
    * @public
    */
-  type?:
-    | 'language'
-    | 'region'
-    | 'script'
-    | 'calendar'
-    | 'dateTimeField'
-    | 'currency';
+  type?: 'language' | 'region' | 'script' | 'calendar' | 'dateTimeField' | 'currency';
 
   /**
    * Controls the display format for language names.
@@ -63,16 +57,15 @@ export type DisplayNameFormatOptions = {
   languageDisplay?: 'dialect' | 'standard';
 
   /**
-   * Fallback behavior if a display name cannot be generated. Options: 'code' or
-   * 'none'.
+   * Fallback behavior if a display name cannot be generated. Options: 'code' or 'none'.
    *
    * @public
    */
   fallback?: 'code' | 'none';
 
   /**
-   * A list of functions to transform the formatted display name. Each function
-   * processes a Localizable and returns a modified Localizable.
+   * A list of functions to transform the formatted display name. Each function processes a
+   * Localizable and returns a modified Localizable.
    *
    * @public
    */

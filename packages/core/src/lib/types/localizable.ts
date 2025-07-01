@@ -18,9 +18,9 @@ import { LocaleCode } from '../consts/locale.js';
 /**
  * Represents a type that can be localized based on a given locale.
  *
- * The `Localizable` type is used to define objects or values that can be
- * localized to different languages or regions. It provides a `localize` method
- * that takes a locale code and returns the localized value.
+ * The `Localizable` type is used to define objects or values that can be localized to different
+ * languages or regions. It provides a `localize` method that takes a locale code and returns the
+ * localized value.
  *
  * @typeParam T - The type of the localized value. Defaults to `string`.
  *
@@ -33,8 +33,7 @@ export type Localizable<T = string> = {
 };
 
 /**
- * Transforms a structure with `Localizable` values into one with resolved
- * types.
+ * Transforms a structure with `Localizable` values into one with resolved types.
  *
  * @typeParam T - The original structure containing `Localizable` values.
  *

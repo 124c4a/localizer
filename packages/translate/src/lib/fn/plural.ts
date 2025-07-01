@@ -97,8 +97,8 @@ const pluralCategoryMap = { zero, one, two, few, many, other };
 /**
  * Plural translation function.
  *
- * Determines the appropriate translation for a given numeric value based on the
- * provided plural translation map and the locale's pluralization rules.
+ * Determines the appropriate translation for a given numeric value based on the provided plural
+ * translation map and the locale's pluralization rules.
  *
  * @typeParam T - The type of numeric values that the function can handle.
  *
@@ -111,10 +111,7 @@ const pluralCategoryMap = { zero, one, two, few, many, other };
  *
  * @alpha
  */
-export function plural<T extends number>(
-  value: T,
-  map: PluralTranslationMap<T>,
-): Localizable {
+export function plural<T extends number>(value: T, map: PluralTranslationMap<T>): Localizable {
   const pluralRules: Record<string, Intl.PluralRules> = {};
 
   return loc((locale) => {
@@ -122,9 +119,7 @@ export function plural<T extends number>(
       return '[plural]';
     }
 
-    const pluralRule =
-      pluralRules[locale] ??
-      (pluralRules[locale] = new Intl.PluralRules(locale));
+    const pluralRule = pluralRules[locale] ?? (pluralRules[locale] = new Intl.PluralRules(locale));
 
     const result =
       map[value] ??

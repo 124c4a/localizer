@@ -27,8 +27,7 @@ import { NumberFormatOptions } from './options.js';
  * @param   currency - The currency code (e.g., 'USD', 'EUR').
  * @param   options  - Optional formatting options.
  *
- * @returns          A `ValueRangeFormatter` for localized fixed currency
- *   ranges.
+ * @returns          A `ValueRangeFormatter` for localized fixed currency ranges.
  *
  * @public
  */

@@ -58,18 +58,10 @@ describe('translate function', () => {
   });
 
   it('returns fallback for empty translation map', () => {
-    expect(emptyTranslationWithKey.localize('en')).toBe(
-      'emptyTranslationWithKey',
-    );
-    expect(emptyTranslationWithoutKey.localize('en')).toBe(
-      '[anonymous translation]',
-    );
-    expect(emptyTranslationWithKey.localize(null)).toBe(
-      'emptyTranslationWithKey',
-    );
-    expect(emptyTranslationWithoutKey.localize(null)).toBe(
-      '[anonymous translation]',
-    );
+    expect(emptyTranslationWithKey.localize('en')).toBe('emptyTranslationWithKey');
+    expect(emptyTranslationWithoutKey.localize('en')).toBe('[anonymous translation]');
+    expect(emptyTranslationWithKey.localize(null)).toBe('emptyTranslationWithKey');
+    expect(emptyTranslationWithoutKey.localize(null)).toBe('[anonymous translation]');
   });
 });
 

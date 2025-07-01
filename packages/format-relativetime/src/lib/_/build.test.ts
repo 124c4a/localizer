@@ -20,23 +20,14 @@ import { _buildFormatter } from './build.js';
 describe('_buildFormatter', () => {
   it('formats relative time correctly for a given locale', () => {
     const formatter = _buildFormatter({ numeric: 'auto' });
-    const result = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-01-02'),
-    ).localize('en-US');
+    const result = formatter(new Date('2023-01-01'), new Date('2023-01-02')).localize('en-US');
     expect(result).toBe('yesterday');
   });
 
   it('returns a placeholder for undefined locale', () => {
     const formatter = _buildFormatter({ numeric: 'auto' });
-    const result1 = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-01-02'),
-    ).localize(null);
-    const result2 = formatter(
-      new Date('2023-01-02'),
-      new Date('2023-01-01'),
-    ).localize(null);
+    const result1 = formatter(new Date('2023-01-01'), new Date('2023-01-02')).localize(null);
+    const result2 = formatter(new Date('2023-01-02'), new Date('2023-01-01')).localize(null);
     expect(result1).toBe('2023-01-02T00:00:00.000Z -1 day');
     expect(result2).toBe('2023-01-01T00:00:00.000Z +1 day');
   });
@@ -46,19 +37,13 @@ describe('_buildFormatter', () => {
       numeric: 'auto',
       transform: [upperCase],
     });
-    const result = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-01-02'),
-    ).localize('en-US');
+    const result = formatter(new Date('2023-01-01'), new Date('2023-01-02')).localize('en-US');
     expect(result).toBe('YESTERDAY');
   });
 
   it('handles past relative times correctly', () => {
     const formatter = _buildFormatter({ numeric: 'auto' });
-    const result = formatter(
-      new Date('2023-01-02'),
-      new Date('2023-01-01'),
-    ).localize('en-US');
+    const result = formatter(new Date('2023-01-02'), new Date('2023-01-01')).localize('en-US');
     expect(result).toBe('tomorrow');
   });
 

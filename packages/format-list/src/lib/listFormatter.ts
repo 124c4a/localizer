@@ -13,12 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  Localizable,
-  ValueFormatter,
-  loc,
-  localizeArray,
-} from '@localizer/core';
+import { Localizable, ValueFormatter, loc, localizeArray } from '@localizer/core';
 import { transform } from '@localizer/transform';
 
 import { ListFormatOptions } from './options.js';

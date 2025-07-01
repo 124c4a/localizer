@@ -19,9 +19,8 @@ import { _toPrimitiveValue } from './to-primitive-value.js';
 /**
  * Represents a value that cannot be localized.
  *
- * The `UnlocalizableValue` class implements the `Localizable` interface but
- * always returns the same value regardless of the locale. It is useful for
- * values that do not require localization.
+ * The `UnlocalizableValue` class implements the `Localizable` interface but always returns the same
+ * value regardless of the locale. It is useful for values that do not require localization.
  *
  * @typeParam T - The type of the unlocalizable value.
  *
@@ -49,8 +48,8 @@ export class UnlocalizableValue<T = string> implements Localizable<T> {
   }
 
   /**
-   * Converts the value to its primitive form. Used in contexts like string
-   * concatenation or numeric operations.
+   * Converts the value to its primitive form. Used in contexts like string concatenation or numeric
+   * operations.
    *
    * @returns The primitive value.
    *

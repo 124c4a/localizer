@@ -32,9 +32,7 @@ import { localizeArray } from './localizeArray.js';
  *
  * @see {@link Localizable} , {@link Localizer}
  */
-export function loc<T = string>(
-  localize: (locale: LocaleCode | null) => T,
-): Localizable<T>;
+export function loc<T = string>(localize: (locale: LocaleCode | null) => T): Localizable<T>;
 
 /**
  * Creates a `Localizable` instance using template strings and expressions.
@@ -48,10 +46,7 @@ export function loc<T = string>(
  *
  * @see {@link Localizable} , {@link Localizer}
  */
-export function loc(
-  strings: TemplateStringsArray,
-  ...expr: Localizable[]
-): Localizable;
+export function loc(strings: TemplateStringsArray, ...expr: Localizable[]): Localizable;
 
 export function loc<T = string>(
   stringsOrLocalize: TemplateStringsArray | ((locale: LocaleCode | null) => T),

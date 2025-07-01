@@ -27,8 +27,7 @@ import { Unit } from './unit.js';
  * @param   unit    - The unit for formatting (e.g., 'meter', 'kilogram').
  * @param   options - Optional formatting options for the unit range.
  *
- * @returns         A `ValueRangeFormatter` that formats a range of values with
- *   a fixed unit.
+ * @returns         A `ValueRangeFormatter` that formats a range of values with a fixed unit.
  *
  * @public
  */

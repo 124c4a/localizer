@@ -21,10 +21,9 @@ import { Transformer } from '@localizer/transform';
  *
  * Supports two modes:
  *
- * - **Intl.ListFormatOptions**: Options for `Intl.ListFormat` API, including
- *   locale matching, format, and length.
- * - **Delimiter-based formatting**: Uses a localized delimiter to join list
- *   items.
+ * - **Intl.ListFormatOptions**: Options for `Intl.ListFormat` API, including locale matching, format,
+ *   and length.
+ * - **Delimiter-based formatting**: Uses a localized delimiter to join list items.
  *
  * Includes an optional `transform` property for applying transformations.
  *

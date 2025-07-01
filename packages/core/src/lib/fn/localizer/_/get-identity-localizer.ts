@@ -18,8 +18,7 @@ import { Localizer } from '../../../types/localizer.js';
 import { isLocalizable } from '../../localizable/is-localizable.js';
 
 /**
- * Creates a localizer function that resolves values to stable, immutable
- * identifiers.
+ * Creates a localizer function that resolves values to stable, immutable identifiers.
  *
  * @returns A localizer function for stable identifiers.
  *

@@ -31,15 +31,7 @@ import { Transformer } from '@localizer/transform';
  *
  * @public
  */
-export type Stop =
-  | 'year'
-  | 'quarter'
-  | 'month'
-  | 'week'
-  | 'day'
-  | 'hour'
-  | 'minute'
-  | 'second';
+export type Stop = 'year' | 'quarter' | 'month' | 'week' | 'day' | 'hour' | 'minute' | 'second';
 
 /**
  * Configuration options for relative time formatting.

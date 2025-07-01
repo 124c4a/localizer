@@ -17,8 +17,8 @@ import { loc } from '../fn/localizable/loc.js';
 import { Localizable } from '../types/localizable.js';
 
 /**
- * An empty localizable string, useful when an empty string must explicitly be
- * treated as a localizable entity.
+ * An empty localizable string, useful when an empty string must explicitly be treated as a
+ * localizable entity.
  *
  * @public
  */

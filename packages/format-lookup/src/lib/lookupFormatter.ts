@@ -52,8 +52,7 @@ export const NoValue: unique symbol = Symbol();
 export const DefaultValue: unique symbol = Symbol();
 
 /**
- * Defines a lookup table for mapping values to localizable content or
- * formatters.
+ * Defines a lookup table for mapping values to localizable content or formatters.
  *
  * @typeParam T - The type of values the lookup table supports.
  *
@@ -66,14 +65,9 @@ export const DefaultValue: unique symbol = Symbol();
  * @see {@link DefaultValue}
  */
 export type LookupTable<T> = {
-  [K in T extends string | number ? T : never]?:
-    | Localizable
-    | ValueFormatter<K>;
+  [K in T extends string | number ? T : never]?: Localizable | ValueFormatter<K>;
 } & {
-  [K in
-    | typeof UndefinedValue
-    | typeof NoValue
-    | typeof NullValue]?: Localizable;
+  [K in typeof UndefinedValue | typeof NoValue | typeof NullValue]?: Localizable;
 } & {
   [K in typeof DefaultValue]?: Localizable | ValueFormatter<T>;
 };
@@ -81,18 +75,16 @@ export type LookupTable<T> = {
 /**
  * Creates a formatter that selects formatting logic based on the input value.
  *
- * Special symbols (`NoValue`, `UndefinedValue`, `NullValue`, `DefaultValue`)
- * handle cases like `undefined`, `null`, or fallback values.
+ * Special symbols (`NoValue`, `UndefinedValue`, `NullValue`, `DefaultValue`) handle cases like
+ * `undefined`, `null`, or fallback values.
  *
  * @typeParam T - The type of values the formatter supports.
  *
- * @param   lut - Lookup table mapping values to localizable content or
- *   formatters.
+ * @param   lut - Lookup table mapping values to localizable content or formatters.
  *
  * @returns     A function that formats the input value using the lookup table.
  *
- * @throws      If the value is not in the lookup table and no default is
- *   specified.
+ * @throws      If the value is not in the lookup table and no default is specified.
  *
  * @beta
  */
@@ -109,9 +101,7 @@ export function lookupFormatter<T>(lut: LookupTable<T>): ValueFormatter<T> {
     result = result ?? lut[DefaultValue];
     if (!result) {
       throw new RangeError(
-        `Value ${value} is not represented in [${[...Object.keys(lut)].join(
-          ', ',
-        )}], but no default value is specified`,
+        `Value ${value} is not represented in [${[...Object.keys(lut)].join(', ')}], but no default value is specified`,
       );
     }
     if (isLocalizable(result)) {

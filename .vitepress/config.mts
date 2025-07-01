@@ -53,9 +53,7 @@ const config: UserConfig = {
       { text: 'Formatting', link: '/formatting' },
     ],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/124c4a/localizer' },
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/124c4a/localizer' }],
 
     search: {
       provider: 'local',

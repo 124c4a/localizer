@@ -23,17 +23,14 @@ type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 /**
  * Creates a formatter for localized date-time values.
  *
- * Uses `Intl.DateTimeFormat` for localization. Supports extracting specific
- * parts of the formatted output via the `parts` option and applying
- * transformations with the `transform` property.
+ * Uses `Intl.DateTimeFormat` for localization. Supports extracting specific parts of the formatted
+ * output via the `parts` option and applying transformations with the `transform` property.
  *
- * @typeParam T - The type of the value to format, either a number (timestamp)
- *   or a Date object.
+ * @typeParam T - The type of the value to format, either a number (timestamp) or a Date object.
  *
  * @param   options - Configuration for date-time formatting.
  *
- * @returns         A function that formats a single date-time value as a
- *   localized string.
+ * @returns         A function that formats a single date-time value as a localized string.
  *
  * @public
  */
@@ -64,29 +61,26 @@ export function _buildFormatter<T extends number | Date>(
 }
 
 /**
- * Builds a formatter for localized date-time ranges based on the provided
- * options.
+ * Builds a formatter for localized date-time ranges based on the provided options.
  *
- * The formatter uses the `Intl.DateTimeFormat` API to generate localized
- * date-time range strings. If the `parts` option is provided, the formatter
- * extracts and joins specific parts of the formatted output. Additionally, a
- * `transform` property can be provided to apply transformations to the
- * formatted result.
+ * The formatter uses the `Intl.DateTimeFormat` API to generate localized date-time range strings.
+ * If the `parts` option is provided, the formatter extracts and joins specific parts of the
+ * formatted output. Additionally, a `transform` property can be provided to apply transformations
+ * to the formatted result.
  *
- * @typeParam T - The type of the values to be formatted, either numbers
- *   (timestamps) or Date objects.
+ * @typeParam T - The type of the values to be formatted, either numbers (timestamps) or Date
+ *   objects.
  *
- * @param   options - An object specifying the formatting options for date-time
- *   ranges.
- * @param   source  - Specifies the source of the range parts to include in the
- *   formatted output. Possible values:
+ * @param   options - An object specifying the formatting options for date-time ranges.
+ * @param   source  - Specifies the source of the range parts to include in the formatted output.
+ *   Possible values:
  *
  *   - 'startRange': Includes parts from the start of the range.
  *   - 'endRange': Includes parts from the end of the range.
  *   - 'shared': Includes parts shared between the start and end of the range.
  *
- * @returns         A ValueRangeFormatter function that formats a date-time
- *   range into a localized string.
+ * @returns         A ValueRangeFormatter function that formats a date-time range into a localized
+ *   string.
  *
  * @internal
  */
@@ -98,9 +92,7 @@ export function _buildRangeFormatter<T extends number | Date>(
 
     const result = loc((locale) => {
       if (!locale) {
-        return (
-          new Date(start).toISOString() + ' - ' + new Date(end).toISOString()
-        );
+        return new Date(start).toISOString() + ' - ' + new Date(end).toISOString();
       }
 
       formatter[locale] ||= new Intl.DateTimeFormat(locale, options);
@@ -112,9 +104,7 @@ export function _buildRangeFormatter<T extends number | Date>(
               (part) =>
                 options.parts?.includes(part.type) ||
                 options.parts?.includes(
-                  (part.source + '-' + part.type) as ArrayElement<
-                    typeof options.parts
-                  >,
+                  (part.source + '-' + part.type) as ArrayElement<typeof options.parts>,
                 ), // Handle parts with source prefix
             )
             .map((part) => part.value)

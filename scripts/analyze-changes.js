@@ -46,9 +46,7 @@ if (!args.baseRef) {
   process.exit(1);
 }
 
-/**
- * Main entry point for the analyzer tool.
- */
+/** Main entry point for the analyzer tool. */
 const tasks = new Listr(
   [
     {
@@ -86,10 +84,7 @@ function getFilenames(path) {
   }
   const pathParts = parts[1].split(' => ');
 
-  return [
-    parts[0] + pathParts[0] + parts[2],
-    parts[0] + pathParts[1] + parts[2],
-  ];
+  return [parts[0] + pathParts[0] + parts[2], parts[0] + pathParts[1] + parts[2]];
 }
 
 function parseCommitType(type) {
@@ -168,22 +163,17 @@ async function fetchDiff(ctx, baseRef, headRef) {
     ctx.changes.push(currentChange);
   }
 }
-function classifyChangeLevel(
-  added,
-  deleted,
-  oldName,
-  moduleName,
-  currentChange,
-) {
+function classifyChangeLevel(added, deleted, oldName, moduleName, currentChange) {
   switch (true) {
     case +deleted > 0:
       currentChange.changeLevel[moduleName] = 'major';
       break;
-    case +added > 0 && currentChange.changeLevel[moduleName] !== 'major':
+    case +added > 0 &&
+      currentChange.changeLevel[moduleName] !== 'major' &&
+      currentChange.type === 'feature':
       currentChange.changeLevel[moduleName] = 'minor';
       break;
-    case !oldName.includes('.spec.') &&
-      currentChange.changeLevel[moduleName] !== 'major':
+    case !oldName.includes('.spec.') && currentChange.changeLevel[moduleName] !== 'major':
       currentChange.changeLevel[moduleName] = 'minor';
       break;
     default:
@@ -353,10 +343,7 @@ function writeModuleChanges(changes, module, lines) {
     return max;
   }, 'patch');
 
-  lines.push(
-    `<details><summary>${module} (${getChangeLevelIcon(maxLevel)})</summary>`,
-    ``,
-  );
+  lines.push(`<details><summary>${module} (${getChangeLevelIcon(maxLevel)})</summary>`, ``);
 
   const moduleChanges = changes
     .filter((change) => Object.keys(change.changeLevel).includes(module))

@@ -25,8 +25,7 @@ import { DateTimeFormatOptions } from './options.js';
  *
  * @param   options - Optional formatting options.
  *
- * @returns         A function to format a date-time value as a localized
- *   string.
+ * @returns         A function to format a date-time value as a localized string.
  *
  * @public
  */

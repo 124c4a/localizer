@@ -13,12 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  UnitValueFormatter,
-  ValueFormatter,
-  ValueRangeFormatter,
-  loc,
-} from '@localizer/core';
+import { UnitValueFormatter, ValueFormatter, ValueRangeFormatter, loc } from '@localizer/core';
 import { transform } from '@localizer/transform';
 
 import { NumberFormatOptions } from '../options.js';
@@ -32,8 +27,7 @@ type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
  *
  * @param   options - Formatting options for the number.
  *
- * @returns         A `ValueFormatter` that formats numbers as localized
- *   strings.
+ * @returns         A `ValueFormatter` that formats numbers as localized strings.
  *
  * @internal
  */
@@ -80,21 +74,18 @@ export function _buildFormatter<T extends number | bigint>(
 /**
  * Builds a formatter for localized number ranges based on the provided options.
  *
- * The formatter uses the `Intl.NumberFormat` API to generate localized number
- * range strings. If the `parts` option is provided, it filters and joins
- * specific parts of the formatted output. Additionally, a `transform` property
- * can be applied to modify the formatted result.
+ * The formatter uses the `Intl.NumberFormat` API to generate localized number range strings. If the
+ * `parts` option is provided, it filters and joins specific parts of the formatted output.
+ * Additionally, a `transform` property can be applied to modify the formatted result.
  *
- * @typeParam T - The type of the values to be formatted, either numbers or
- *   bigints.
+ * @typeParam T - The type of the values to be formatted, either numbers or bigints.
  *
- * @param   options - An object specifying the formatting options for number
- *   ranges.
- * @param   source  - An optional string indicating the source of the range
- *   ('startRange', 'endRange', or 'shared').
+ * @param   options - An object specifying the formatting options for number ranges.
+ * @param   source  - An optional string indicating the source of the range ('startRange',
+ *   'endRange', or 'shared').
  *
- * @returns         A `ValueRangeFormatter` function that formats a range of
- *   numbers into a localized string.
+ * @returns         A `ValueRangeFormatter` function that formats a range of numbers into a
+ *   localized string.
  *
  * @internal
  */
@@ -132,9 +123,7 @@ export function _buildRangeFormatter<T extends number | bigint>(
               (part) =>
                 options.parts?.includes(part.type) ||
                 options.parts?.includes(
-                  (part.source + '-' + part.type) as ArrayElement<
-                    typeof options.parts
-                  >,
+                  (part.source + '-' + part.type) as ArrayElement<typeof options.parts>,
                 ), // Handle parts with source prefix
             )
             .map((part) => part.value)
@@ -149,29 +138,22 @@ export function _buildRangeFormatter<T extends number | bigint>(
 /**
  * Builds a formatter for localized unit values based on the provided options.
  *
- * The formatter uses the `Intl.NumberFormat` API to generate localized unit
- * strings. If the `parts` option is provided, it filters and joins specific
- * parts of the formatted output. Additionally, a `transform` property can be
- * applied to modify the formatted result.
+ * The formatter uses the `Intl.NumberFormat` API to generate localized unit strings. If the `parts`
+ * option is provided, it filters and joins specific parts of the formatted output. Additionally, a
+ * `transform` property can be applied to modify the formatted result.
  *
- * @typeParam T - The type of the value to be formatted, either a number or a
- *   bigint.
+ * @typeParam T - The type of the value to be formatted, either a number or a bigint.
  * @typeParam U - The type of the unit to be formatted, represented as a string.
  *
- * @param   options - An object specifying the formatting options for unit
- *   values.
- * @param   unitKey - The key in `NumberFormatOptions` that specifies the unit
- *   type.
+ * @param   options - An object specifying the formatting options for unit values.
+ * @param   unitKey - The key in `NumberFormatOptions` that specifies the unit type.
  *
- * @returns         A `UnitValueFormatter` function that formats a unit value
- *   into a localized string.
+ * @returns         A `UnitValueFormatter` function that formats a unit value into a localized
+ *   string.
  *
  * @internal
  */
-export function _buildUnitFormatter<
-  T extends number | bigint,
-  U extends string,
->(
+export function _buildUnitFormatter<T extends number | bigint, U extends string>(
   options: NumberFormatOptions,
   style: 'unit' | 'currency',
   unitKey: keyof NumberFormatOptions,

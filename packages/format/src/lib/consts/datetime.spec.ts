@@ -38,9 +38,7 @@ describe('datetime formatters', () => {
   it('should format date range correctly', () => {
     const startDate = new Date(2025, 0, 1); // January 1, 2025
     const endDate = new Date(2025, 0, 31); // January 31, 2025
-    expect(localizer(dateRange(startDate, endDate))).toBe(
-      '1/1/2025\u2009\u2013\u20091/31/2025',
-    ); // Adjust based on locale and separator
+    expect(localizer(dateRange(startDate, endDate))).toBe('1/1/2025\u2009\u2013\u20091/31/2025'); // Adjust based on locale and separator
     expect(dateRange(startDate, endDate).localize('ko-KR')).toBe(
       '2025. 1. 1.\u2009~\u20092025. 1. 31.',
     ); // Adjust based on locale and separator

@@ -62,8 +62,8 @@ export class LocalizableValue<T = string> implements Localizable<T> {
   /**
    * Returns the value localized to the given locale.
    *
-   * If multiple locales are provided, the first is used. Falls back to implicit
-   * localization if none is provided.
+   * If multiple locales are provided, the first is used. Falls back to implicit localization if
+   * none is provided.
    *
    * @param   locale - Locale(s) for localization.
    *

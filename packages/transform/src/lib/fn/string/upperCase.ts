@@ -18,18 +18,15 @@ import { Localizable, loc } from '@localizer/core';
 /**
  * Converts a localized value to uppercase.
  *
- * @param   value - The Localizable object to transform. No transformation
- *   occurs for a `null` locale.
- *
- * @returns       A Localizable object with the value in uppercase for the given
+ * @param   value - The Localizable object to transform. No transformation occurs for a `null`
  *   locale.
+ *
+ * @returns       A Localizable object with the value in uppercase for the given locale.
  *
  * @public
  */
 export function upperCase(value: Localizable): Localizable {
   return loc((locale) =>
-    locale === null
-      ? value.localize(locale)
-      : value.localize(locale).toLocaleUpperCase(locale),
+    locale === null ? value.localize(locale) : value.localize(locale).toLocaleUpperCase(locale),
   );
 }

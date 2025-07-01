@@ -19,9 +19,8 @@ import { _getUninitializedLocalizer } from '../fn/localizer/_/get-uninitialized-
 import { Localizer } from '../types/localizer.js';
 
 /**
- * A `Localizer` bound to the `activeLocale` from the configuration. Enables
- * localization using the current active locale without explicitly specifying
- * it.
+ * A `Localizer` bound to the `activeLocale` from the configuration. Enables localization using the
+ * current active locale without explicitly specifying it.
  *
  * @alpha
  *
@@ -30,16 +29,15 @@ import { Localizer } from '../types/localizer.js';
 export const ImplicitLocalizer: Localizer = _getImplicitLocalizer();
 
 /**
- * A Localizer instance that is unbound to any locale and throws an error when
- * used.
+ * A Localizer instance that is unbound to any locale and throws an error when used.
  *
  * @public
  */
 export const UninitializedLocalizer: Localizer = _getUninitializedLocalizer();
 
 /**
- * A Localizer that returns stable identifiers instead of localized strings.
- * Useful for generating unique, locale-independent identifiers.
+ * A Localizer that returns stable identifiers instead of localized strings. Useful for generating
+ * unique, locale-independent identifiers.
  *
  * @public
  */

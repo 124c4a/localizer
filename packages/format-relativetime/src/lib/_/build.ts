@@ -22,9 +22,9 @@ import { _computeRelativeTime } from './computeRelativeTime.js';
 /**
  * Builds a localized relative time formatter.
  *
- * Uses `Intl.RelativeTimeFormat` for localization and `computeRelativeTime` for
- * calculating the relative time. Supports granularity via `stops` and optional
- * result transformation via `transform`.
+ * Uses `Intl.RelativeTimeFormat` for localization and `computeRelativeTime` for calculating the
+ * relative time. Supports granularity via `stops` and optional result transformation via
+ * `transform`.
  *
  * @typeParam T - The value type, either a number (timestamp) or a Date.
  *

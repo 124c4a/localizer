@@ -20,8 +20,7 @@ import { Localizable, loc } from '@localizer/core';
  *
  * @param   value - The value to convert.
  *
- * @returns       A `Localizable` object that provides the string representation
- *   of the value.
+ * @returns       A `Localizable` object that provides the string representation of the value.
  *
  * @public
  */
