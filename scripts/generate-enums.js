@@ -19,9 +19,23 @@ import { fetch } from 'undici';
 import { read, utils } from 'xlsx';
 import { parse } from 'yaml';
 
-/**
- * Main entry point for the data generation tool.
- */
+const header = `/*
+ * Copyright 2025 Artem Godin.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */`;
+
+/** Main entry point for the data generation tool. */
 const tasks = new Listr(
   [
     {
@@ -81,26 +95,27 @@ export const localeTasks = new Listr([
 //----------------------------------------------------------------------------------------------------------------------
 /**
  * Fetches and parses Nominatim country settings from the provided URL.
- * @param url - The URL to fetch the Nominatim data from.
- * @returns A promise that resolves to the parsed Nominatim data.
+ *
+ * @param   url - The URL to fetch the Nominatim data from.
+ *
+ * @returns     A promise that resolves to the parsed Nominatim data.
+ *
  * @internal
  */
 async function fetchAndParseNominatimData(url) {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(
-      `Failed to fetch Nominatim data from ${url}: ${response.statusText}`,
-    );
+    throw new Error(`Failed to fetch Nominatim data from ${url}: ${response.statusText}`);
   }
 
-  return parse(
-    (await response.text()).split('!include').join('ignore include'),
-  );
+  return parse((await response.text()).split('!include').join('ignore include'));
 }
 
 /**
  * Fetches Nominatim country settings and stores them in the context.
+ *
  * @param ctx - The context object to store the fetched data.
+ *
  * @internal
  */
 async function fetchNominatimData(ctx) {
@@ -116,7 +131,9 @@ async function fetchNominatimData(ctx) {
 
 /**
  * Fetches the IANA language registry and populates the context with language codes.
+ *
  * @param ctx - The context object to store the fetched languages.
+ *
  * @internal
  */
 async function fetchIanaLanguageRegistry(ctx) {
@@ -124,9 +141,7 @@ async function fetchIanaLanguageRegistry(ctx) {
     'https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry',
   );
   if (!response.ok) {
-    throw new Error(
-      `Failed to fetch IANA language registry: ${response.statusText}`,
-    );
+    throw new Error(`Failed to fetch IANA language registry: ${response.statusText}`);
   }
 
   const blocks = (await response.text()).split('%%');
@@ -151,20 +166,19 @@ async function fetchIanaLanguageRegistry(ctx) {
 
 /**
  * Converts Nominatim country settings into a structured format for languages and primary locales.
- * @param ctx - The context object containing country settings and to be populated with languages and primary locales.
+ *
+ * @param ctx - The context object containing country settings and to be populated with languages
+ *   and primary locales.
+ *
  * @internal
  */
 function convertNominatimData(ctx) {
-  ctx.countries = Object.keys(ctx.countrySettings).map((it) =>
-    it.toUpperCase(),
-  );
+  ctx.countries = Object.keys(ctx.countrySettings).map((it) => it.toUpperCase());
   ctx.primaryLocales = {};
 
   ctx.countries.forEach((country) => {
     const countryData = ctx.countrySettings[country.toLowerCase()];
-    const countryLanguages = (countryData.languages || '')
-      .split(',')
-      .map((it) => it.trim());
+    const countryLanguages = (countryData.languages || '').split(',').map((it) => it.trim());
     if (countryLanguages.length > 0) {
       countryLanguages
         .filter((it) => it.length === 2)
@@ -190,52 +204,48 @@ const languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
 
 /**
  * Writes the locale TypeScript file based on the context data.
+ *
  * @param ctx - The context object containing languages, countries, and primary locales.
+ *
  * @internal
  */
 async function writeLocaleTs(ctx) {
   const cwd = process.cwd();
   const targetFile = `${cwd}/packages/core/src/lib/consts/locale.ts`;
 
-  const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
-  
+  const content = `${header}
+/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
+
 /**
- * @public
- * 
  * IETF BCP 47 language tag
- * 
+ *
+ * @public
  * @see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
  */
 
 export type LanguageCode =
-${ctx.languages
-  .map((it) => `  /** ${languageNames.of(it)} */\n  | '${it}'`)
-  .join('\n')};
+${ctx.languages.map((it) => `  /** ${languageNames.of(it)} */\n  | '${it}'`).join('\n')};
 
 /**
- * @public
- * 
  * ISO 3166-1 alpha-2 country codes
  *
+ * @public
  * @see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  */
 export type CountryCode =
-${ctx.countries
-  .map((it) => `  /** ${regionNames.of(it)} */\n  | '${it}'`)
-  .join('\n')};
+${ctx.countries.map((it) => `  /** ${regionNames.of(it)} */\n  | '${it}'`).join('\n')};
 
 /**
- * @public
- * 
  * Supported locale codes
+ *
+ * @public
  */
 export type LocaleCode = LanguageCode | \`\${LanguageCode}-\${CountryCode}\`;
 
 /**
- * @public
- * 
  * Primary locales for each country
  *
+ * @public
  * @see https://github.com/osm-search/Nominatim/blob/master/settings/country_settings.yaml
  */
 export const primaryLocales: Record<CountryCode, LocaleCode> = {
@@ -269,17 +279,18 @@ export const currencyTasks = new Listr([
 /**
  * Fetches and parses currency data from a given URL and sheet name.
  *
- * @param url - The URL to fetch the Excel file from.
- * @param sheet - The name of the sheet to parse from the Excel file.
- * @return A promise that resolves to an array of unique currency codes sorted alphabetically.
+ * @param   url   - The URL to fetch the Excel file from.
+ * @param   sheet - The name of the sheet to parse from the Excel file.
+ *
+ * @returns       A promise that resolves to an array of unique currency codes sorted
+ *   alphabetically.
+ *
  * @internal
  */
 async function fetchAndParseData(url, sheet) {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(
-      `Failed to fetch SIX Group data from ${url}: ${response.statusText}`,
-    );
+    throw new Error(`Failed to fetch SIX Group data from ${url}: ${response.statusText}`);
   }
 
   const excelData = read(Buffer.from(await response.arrayBuffer()));
@@ -290,15 +301,15 @@ async function fetchAndParseData(url, sheet) {
   }
 
   return Array.from(
-    new Set(
-      data.map((it) => it['Alphabetic Code']).filter((it) => it !== undefined),
-    ),
+    new Set(data.map((it) => it['Alphabetic Code']).filter((it) => it !== undefined)),
   ).sort((a, b) => a.localeCompare(b));
 }
 
 /**
  * Fetches the actual currency codes from the SIX Group data center.
+ *
  * @param ctx - The context object to store the fetched data.
+ *
  * @internal
  */
 async function fetchActualCodes(ctx) {
@@ -310,7 +321,9 @@ async function fetchActualCodes(ctx) {
 
 /**
  * Fetches the historical currency codes from the SIX Group data center.
+ *
  * @param ctx - The context object to store the fetched data.
+ *
  * @internal
  */
 async function fetchHistoricalCodes(ctx) {
@@ -322,20 +335,22 @@ async function fetchHistoricalCodes(ctx) {
 
 /**
  * Writes the currency types to a TypeScript file.
+ *
  * @param ctx - The context object containing the actual and historical currency codes.
+ *
  * @internal
  */
 async function writeCurrencyTs(ctx) {
   const cwd = process.cwd();
   const targetFile = `${cwd}/packages/format-number/src/lib/currency.ts`;
 
-  const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
+  const content = `${header}
+/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
 
 /**
- * @public
- * 
  * ISO 4217 currency, fund and precious metal codes
  *
+ * @public
  * @see https://en.wikipedia.org/wiki/ISO_4217#Active_codes_(list_one)
  */
 
@@ -343,19 +358,18 @@ export type ActiveCurrencyCode =
 ${ctx.actual.map((it) => `  | '${it}'`).join('\n')};
 
 /**
- * @public
- * 
- * ISO 4217 codes for historic denominations of currencies and funds 
+ * ISO 4217 codes for historic denominations of currencies and funds
  *
+ * @public
  * @see https://en.wikipedia.org/wiki/ISO_4217#Historical_codes
  */
 export type HistoricCurrencyCode =
 ${ctx.historical.map((it) => `  | '${it}'`).join('\n')};
 
 /**
- * @public
- * 
  * Supported currency codes, including both actual and historical
+ *
+ * @public
  */
 export type CurrencyCode = ActiveCurrencyCode | HistoricCurrencyCode;
 `;
@@ -366,9 +380,11 @@ export type CurrencyCode = ActiveCurrencyCode | HistoricCurrencyCode;
 //---
 
 /**
- * Generates the `unit.ts` file containing the supported units for unit formatting.
- * The generated file exports types for singular units and a union type for all supported units.
+ * Generates the `unit.ts` file containing the supported units for unit formatting. The generated
+ * file exports types for singular units and a union type for all supported units.
+ *
  * @returns A promise that resolves when the file has been written.
+ *
  * @internal
  */
 async function writeUnitTs() {
@@ -377,13 +393,13 @@ async function writeUnitTs() {
 
   const units = Intl.supportedValuesOf('unit');
 
-  const content = `/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
-  
+  const content = `${header}
+/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
+
 /**
- * @public
- * 
  * A subset of the CLDR units explicitly sanctioned by the ECMA-402 specification
- * 
+ *
+ * @public
  * @see https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers
  */
 
@@ -391,9 +407,9 @@ export type SingularUnit =
 ${units.map((it) => `  | '${it}'`).join('\n')};
 
 /**
- * @public
- * 
  * Supported units for unit formatting
+ *
+ * @public
  */
 export type Unit = SingularUnit | \`\${SingularUnit}-per-\${SingularUnit}\`;
 `;
