@@ -103,21 +103,21 @@ jobs:
 
       - name: Create changelog comment
         uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.3
-        if: steps.changelog.outputs.CHANGELEVEL == '0'
+        if: steps.coverage.outputs.COVERAGESTATUS == 0
         with:
           path: tmp/CHANGESET.md
           recreate: true
 
       - name: Create coverage report comment
         uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.3
-        if: steps.coverage.outputs.COVERAGESTATUS == '1'
+        if: steps.coverage.outputs.COVERAGESTATUS == 1
         with:
           path: tmp/COVERAGEREPORT.md
           recreate: true
 
       - name: Run the action
         uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
-        if: steps.coverage.outputs.COVERAGESTATUS == '0'
+        if: steps.coverage.outputs.COVERAGESTATUS == 0
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test coverage results'
@@ -127,7 +127,7 @@ jobs:
 
       - name: Run the action
         uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
-        if: steps.coverage.outputs.COVERAGESTATUS == '1'
+        if: steps.coverage.outputs.COVERAGESTATUS == 1
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test coverage results'
