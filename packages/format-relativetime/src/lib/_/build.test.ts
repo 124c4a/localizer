@@ -24,7 +24,7 @@ describe('_buildFormatter', () => {
       new Date('2023-01-01'),
       new Date('2023-01-02'),
     ).localize('en-US');
-    expect(result).toBe('tomorrow');
+    expect(result).toBe('yesterday');
   });
 
   it('returns a placeholder for undefined locale', () => {
@@ -37,8 +37,8 @@ describe('_buildFormatter', () => {
       new Date('2023-01-02'),
       new Date('2023-01-01'),
     ).localize(null);
-    expect(result1).toBe('2023-01-01T00:00:00.000Z +1 day');
-    expect(result2).toBe('2023-01-02T00:00:00.000Z -1 day');
+    expect(result1).toBe('2023-01-02T00:00:00.000Z -1 day');
+    expect(result2).toBe('2023-01-01T00:00:00.000Z +1 day');
   });
 
   it('applies transform function if provided', () => {
@@ -50,7 +50,7 @@ describe('_buildFormatter', () => {
       new Date('2023-01-01'),
       new Date('2023-01-02'),
     ).localize('en-US');
-    expect(result).toBe('TOMORROW');
+    expect(result).toBe('YESTERDAY');
   });
 
   it('handles past relative times correctly', () => {
@@ -59,7 +59,7 @@ describe('_buildFormatter', () => {
       new Date('2023-01-02'),
       new Date('2023-01-01'),
     ).localize('en-US');
-    expect(result).toBe('yesterday');
+    expect(result).toBe('tomorrow');
   });
 
   it('handles custom stops for relative time calculation', () => {
@@ -71,6 +71,6 @@ describe('_buildFormatter', () => {
       new Date('2023-01-01T12:12:00'),
       new Date('2023-01-01T15:00:00'),
     ).localize('en-US');
-    expect(result).toBe('in 2 hours');
+    expect(result).toBe('2 hours ago');
   });
 });

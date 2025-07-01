@@ -21,5 +21,6 @@ import { relativeTimeFormatter } from '@localizer/format-relativetime';
  * using default options.
  */
 export const relativeTime = relativeTimeFormatter({
+  numeric: 'auto',
   stops: ['year', 'month', 'week', 'day', 'hour', 'minute'],
 });
