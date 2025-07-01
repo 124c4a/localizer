@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 import { loc } from '@localizer/core';
-import { dateTimeRangeFormatter } from '@localizer/format-datetime';
-import { decimalFormatter } from '@localizer/format-number';
-import { Transformer } from '@localizer/transform';
+import {
+  decimalFormatter,
+  decimalRangeFormatter,
+} from '@localizer/format-number';
+import { apply, Transformer } from '@localizer/transform';
 
 const ignoreUndeterminedLanguage: Transformer = (value) =>
   loc((locale) =>
@@ -52,11 +54,10 @@ export const ThousandSeparator = decimalFormatter({
  *
  * @public
  */
-export const DateRangeSeparator = dateTimeRangeFormatter({
-  year: 'numeric',
+export const RangeSeparator = decimalRangeFormatter({
   parts: ['literal'],
-  transform: [ignoreUndeterminedLanguage],
-})(Date.UTC(2000, 0, 1), Date.UTC(2001, 0, 1));
+  transform: [ignoreUndeterminedLanguage, apply((str) => `\u2009${str}\u2009`)], // thin space
+})(1, 2);
 
 /**
  * A locale-agnostic range separator using a thin space, en dash, and thin

@@ -19,7 +19,7 @@ import {
   dateTimeRangeFormatter,
 } from '@localizer/format-datetime';
 
-import { GenericRangeSeparator } from './generic.js';
+import { RangeSeparator } from './generic.js';
 
 /**
  * Formats date values.
@@ -63,7 +63,7 @@ export const dateTime = dateTimeFormatter({
  * @public
  */
 export const dateRange: ValueRangeFormatter<number | Date> = (start, end) =>
-  loc`${date(start)}${GenericRangeSeparator}${date(end)}`;
+  loc`${date(start)}${RangeSeparator}${date(end)}`;
 
 /**
  * Formats a range of date and time values.
