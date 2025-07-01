@@ -19,13 +19,15 @@ import { _buildRangeFormatter } from './_/build.js';
 import { DateTimeFormatOptions } from './options.js';
 
 /**
- * @public
- *
  * Creates a localized date-time range formatter.
  *
  * @typeParam T - The value type, either number (timestamp) or Date.
- * @param options - Optional formatting options.
- * @returns A function to format date-time ranges as localized strings.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A function to format date-time ranges as localized strings.
+ *
+ * @public
  */
 export function dateTimeRangeFormatter<T extends number | Date>(
   options?: DateTimeFormatOptions,

@@ -19,12 +19,16 @@ import { _buildFormatter } from './_/build.js';
 import { DateTimeFormatOptions } from './options.js';
 
 /**
- * @public
  * Creates a localized date-time formatter.
  *
  * @typeParam T - The value type, either a number (timestamp) or a Date.
- * @param options - Optional formatting options.
- * @returns A function to format a date-time value as a localized string.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A function to format a date-time value as a localized
+ *   string.
+ *
+ * @public
  */
 export function dateTimeFormatter<T extends number | Date>(
   options?: DateTimeFormatOptions,

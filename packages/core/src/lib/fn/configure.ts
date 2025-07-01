@@ -16,18 +16,20 @@
 import { Configurer, ConfigurationProperties } from '../types/configuration.js';
 
 /**
- * @public
- *
  * Configures properties using their corresponding functions.
  *
  * Iterates over `arg` keys and applies values from `values` to the
  * corresponding functions in `arg` if a value exists.
  *
- * @typeParam T - A record with string keys and `Configurer` functions as values.
- * @param arg - Object with configuration functions.
+ * @typeParam T - A record with string keys and `Configurer` functions as
+ *   values.
+ *
+ * @param arg    - Object with configuration functions.
  * @param values - Object with values for the configuration functions.
  *
- * @see {@link Configurer}, {@link ConfigurationProperties}
+ * @public
+ *
+ * @see {@link Configurer} , {@link ConfigurationProperties}
  */
 export function configure<T extends Record<string, Configurer<object>>>(
   arg: T,

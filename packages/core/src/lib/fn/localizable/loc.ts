@@ -20,28 +20,33 @@ import { UnlocalizableValue } from './_/unlocalizable-value.js';
 import { localizeArray } from './localizeArray.js';
 
 /**
- * @public
  * Creates a `Localizable` from a localization function.
  *
  * @typeParam T - The type of the localized value.
- * @param localize - Function returning a localized value for a given locale.
- * @returns A `Localizable` representing the localized value.
  *
- * @see {@link Localizable}, {@link Localizer}
+ * @param   localize - Function returning a localized value for a given locale.
+ *
+ * @returns          A `Localizable` representing the localized value.
+ *
+ * @public
+ *
+ * @see {@link Localizable} , {@link Localizer}
  */
 export function loc<T = string>(
   localize: (locale: LocaleCode | null) => T,
 ): Localizable<T>;
+
 /**
- * @public
- *
  * Creates a `Localizable` instance using template strings and expressions.
  *
- * @param strings - The template strings.
- * @param expr - Expressions to interpolate into the template.
- * @returns A `Localizable` instance for the localized value.
+ * @param   strings - The template strings.
+ * @param   expr    - Expressions to interpolate into the template.
  *
- * @see {@link Localizable}, {@link Localizer}
+ * @returns         A `Localizable` instance for the localized value.
+ *
+ * @public
+ *
+ * @see {@link Localizable} , {@link Localizer}
  */
 export function loc(
   strings: TemplateStringsArray,

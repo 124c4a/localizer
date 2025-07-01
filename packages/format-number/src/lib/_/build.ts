@@ -26,12 +26,16 @@ import { NumberFormatOptions } from '../options.js';
 type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 
 /**
- * @internal
  * Creates a localized number formatter.
  *
  * @typeParam T - The numeric type, either `number` or `bigint`.
- * @param options - Formatting options for the number.
- * @returns A `ValueFormatter` that formats numbers as localized strings.
+ *
+ * @param   options - Formatting options for the number.
+ *
+ * @returns         A `ValueFormatter` that formats numbers as localized
+ *   strings.
+ *
+ * @internal
  */
 export function _buildFormatter<T extends number | bigint>(
   options: NumberFormatOptions,
@@ -74,18 +78,25 @@ export function _buildFormatter<T extends number | bigint>(
 }
 
 /**
- * @internal
- *
  * Builds a formatter for localized number ranges based on the provided options.
  *
- * @typeParam T - The type of the values to be formatted, either numbers or bigints.
- * @param options - An object specifying the formatting options for number ranges.
- * @param source - An optional string indicating the source of the range ('startRange', 'endRange', or 'shared').
- * @returns A `ValueRangeFormatter` function that formats a range of numbers into a localized string.
+ * The formatter uses the `Intl.NumberFormat` API to generate localized number
+ * range strings. If the `parts` option is provided, it filters and joins
+ * specific parts of the formatted output. Additionally, a `transform` property
+ * can be applied to modify the formatted result.
  *
- * The formatter uses the `Intl.NumberFormat` API to generate localized number range strings.
- * If the `parts` option is provided, it filters and joins specific parts of the formatted output.
- * Additionally, a `transform` property can be applied to modify the formatted result.
+ * @typeParam T - The type of the values to be formatted, either numbers or
+ *   bigints.
+ *
+ * @param   options - An object specifying the formatting options for number
+ *   ranges.
+ * @param   source  - An optional string indicating the source of the range
+ *   ('startRange', 'endRange', or 'shared').
+ *
+ * @returns         A `ValueRangeFormatter` function that formats a range of
+ *   numbers into a localized string.
+ *
+ * @internal
  */
 export function _buildRangeFormatter<T extends number | bigint>(
   options: NumberFormatOptions,
@@ -136,19 +147,26 @@ export function _buildRangeFormatter<T extends number | bigint>(
 }
 
 /**
- * @internal
- *
  * Builds a formatter for localized unit values based on the provided options.
  *
- * @typeParam T - The type of the value to be formatted, either a number or a bigint.
- * @typeParam U - The type of the unit to be formatted, represented as a string.
- * @param options - An object specifying the formatting options for unit values.
- * @param unitKey - The key in `NumberFormatOptions` that specifies the unit type.
- * @returns A `UnitValueFormatter` function that formats a unit value into a localized string.
+ * The formatter uses the `Intl.NumberFormat` API to generate localized unit
+ * strings. If the `parts` option is provided, it filters and joins specific
+ * parts of the formatted output. Additionally, a `transform` property can be
+ * applied to modify the formatted result.
  *
- * The formatter uses the `Intl.NumberFormat` API to generate localized unit strings.
- * If the `parts` option is provided, it filters and joins specific parts of the formatted output.
- * Additionally, a `transform` property can be applied to modify the formatted result.
+ * @typeParam T - The type of the value to be formatted, either a number or a
+ *   bigint.
+ * @typeParam U - The type of the unit to be formatted, represented as a string.
+ *
+ * @param   options - An object specifying the formatting options for unit
+ *   values.
+ * @param   unitKey - The key in `NumberFormatOptions` that specifies the unit
+ *   type.
+ *
+ * @returns         A `UnitValueFormatter` function that formats a unit value
+ *   into a localized string.
+ *
+ * @internal
  */
 export function _buildUnitFormatter<
   T extends number | bigint,

@@ -16,11 +16,10 @@
 import { Transformer } from '@localizer/transform';
 
 /**
- * @public
- *
  * Defines the granularity levels for relative time formatting.
  *
  * Values include:
+ *
  * - `year`: Years
  * - `quarter`: Quarters
  * - `month`: Months
@@ -29,6 +28,8 @@ import { Transformer } from '@localizer/transform';
  * - `hour`: Hours
  * - `minute`: Minutes
  * - `second`: Seconds
+ *
+ * @public
  */
 export type Stop =
   | 'year'
@@ -41,35 +42,43 @@ export type Stop =
   | 'second';
 
 /**
- * @public
  * Configuration options for relative time formatting.
+ *
+ * @public
  */
 export type RelativeTimeFormatOptions = {
   /**
-   * @public
    * Specifies the algorithm for locale matching.
+   *
+   * @public
    */
   localeMatcher?: 'lookup' | 'best fit';
+
   /**
-   * @public
    * Controls numeric value display: always numeric or auto-adjusted.
+   *
+   * @public
    */
   numeric?: 'always' | 'auto';
+
   /**
-   * @public
    * Specifies the length of the localized message.
+   *
+   * @public
    */
   style?: 'long' | 'short' | 'narrow';
 
   /**
-   * @public
    * Granularity levels for relative time formatting.
+   *
+   * @public
    */
   stops?: Stop[];
 
   /**
-   * @public
    * List of transformers applied to the formatted output.
+   *
+   * @public
    */
   transform?: Transformer[];
 };

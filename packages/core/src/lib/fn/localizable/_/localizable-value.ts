@@ -19,38 +19,39 @@ import { _ensureImplicitLocalization } from '../../localizer/_/ensure-implicit-l
 import { _toPrimitiveValue } from './to-primitive-value.js';
 
 /**
- * @public
- *
  * A value that can be localized using a provided function.
  *
  * @typeParam T - The type of the localized value.
+ *
+ * @public
  */
 export class LocalizableValue<T = string> implements Localizable<T> {
   /**
-   * @internal
    * Localizes the value using the given locale.
+   *
+   * @internal
    */
   readonly localize: (locale: LocaleCode | null) => T;
 
   /**
-   * @internal
-   *
    * Initializes a `LocalizableValue` with a localization function.
    *
    * @param localizeFn - Function to localize the value.
+   *
+   * @internal
    */
   constructor(localizeFn: (locale: LocaleCode | null) => T) {
     this.localize = localizeFn;
   }
 
   /**
-   * @internal
-   *
    * Converts the localized value to a primitive type.
    *
    * Used in contexts like string concatenation or numeric operations.
    *
    * @returns The primitive representation of the value.
+   *
+   * @internal
    */
   [Symbol.toPrimitive]() {
     const localizedValue = this.localize(_ensureImplicitLocalization());
@@ -59,15 +60,16 @@ export class LocalizableValue<T = string> implements Localizable<T> {
   }
 
   /**
-   * @public
-   *
    * Returns the value localized to the given locale.
    *
-   * If multiple locales are provided, the first is used.
-   * Falls back to implicit localization if none is provided.
+   * If multiple locales are provided, the first is used. Falls back to implicit
+   * localization if none is provided.
    *
-   * @param locale - Locale(s) for localization.
-   * @returns Localized value.
+   * @param   locale - Locale(s) for localization.
+   *
+   * @returns        Localized value.
+   *
+   * @public
    */
   toLocaleString(locale?: LocaleCode | LocaleCode[] | null): T {
     if (Array.isArray(locale) && locale.length > 0) {

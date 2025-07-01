@@ -16,12 +16,15 @@
 import { getPrimaryLocale, Localizable, loc } from '@localizer/core';
 
 /**
- * @beta
  * Transforms a Localizable value to use the primary locale.
  *
  * @typeParam T - Type of the value in the Localizable object.
- * @param value - The Localizable object to transform.
- * @returns A new Localizable object using the primary locale.
+ *
+ * @param   value - The Localizable object to transform.
+ *
+ * @returns       A new Localizable object using the primary locale.
+ *
+ * @beta
  */
 export function usePrimaryLocale<T>(value: Localizable<T>): Localizable<T> {
   return loc((locale) =>

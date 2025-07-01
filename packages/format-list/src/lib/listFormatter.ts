@@ -24,17 +24,20 @@ import { transform } from '@localizer/transform';
 import { ListFormatOptions } from './options.js';
 
 /**
- * @public
- *
  * Creates a list formatter based on the given options.
  *
- * @typeParam T - Array elements, must be Localizable.
- * @param options - Formatting options for the list.
- * @returns A ValueFormatter that formats a list of Localizable objects.
- *
  * Supports two modes:
+ *
  * - Uses a localized delimiter if `delimiter` is provided.
  * - Falls back to `Intl.ListFormat` for formatting otherwise.
+ *
+ * @typeParam T - Array elements, must be Localizable.
+ *
+ * @param   options - Formatting options for the list.
+ *
+ * @returns         A ValueFormatter that formats a list of Localizable objects.
+ *
+ * @public
  */
 export function listFormatter<T extends Localizable[]>(
   options: ListFormatOptions,

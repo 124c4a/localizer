@@ -19,12 +19,15 @@ import { _buildFormatter } from './_/build.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Creates a localized percentage formatter.
  *
  * @typeParam T - The value type, either number or bigint.
- * @param options - Optional formatting options.
- * @returns A `ValueFormatter` for percentage strings.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A `ValueFormatter` for percentage strings.
+ *
+ * @public
  */
 export function percentFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

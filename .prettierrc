@@ -1,3 +1,10 @@
 {
-  "singleQuote": true
+  "plugins": ["prettier-plugin-jsdoc"],
+  "singleQuote": true,
+  "tsdoc": true,
+  "jsdocVerticalAlignment": true,
+  "jsdocSeparateReturnsFromParam": true,
+  "jsdocSeparateTagGroups": true,
+  "jsdocPreferCodeFences": true,
+  "vueIndentScriptAndStyle": true
 }

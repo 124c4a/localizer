@@ -16,12 +16,14 @@
 import { Localizable, loc } from '@localizer/core';
 
 /**
- * @public
- *
  * Converts any value to a `Localizable` object.
  *
- * @param value - The value to convert.
- * @returns A `Localizable` object that provides the string representation of the value.
+ * @param   value - The value to convert.
+ *
+ * @returns       A `Localizable` object that provides the string representation
+ *   of the value.
+ *
+ * @public
  */
 export function stringify(value: unknown): Localizable {
   return loc(() => String(value));

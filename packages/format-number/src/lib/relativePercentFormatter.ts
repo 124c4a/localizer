@@ -19,12 +19,16 @@ import { _buildFormatter } from './_/build.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Formats values as localized relative percentages.
  *
  * @typeParam T - The numeric type, either `number` or `bigint`.
- * @param options - Optional formatting options.
- * @returns A function to format a value relative to a reference as a percentage.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A function to format a value relative to a reference as a
+ *   percentage.
+ *
+ * @public
  */
 export function relativePercentFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

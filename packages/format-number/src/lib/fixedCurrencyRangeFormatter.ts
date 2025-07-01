@@ -20,13 +20,17 @@ import { CurrencyCode } from './currency.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Formats a range of numbers or bigints as a fixed currency string.
  *
  * @typeParam T - The type of values to format, either `number` or `bigint`.
- * @param currency - The currency code (e.g., 'USD', 'EUR').
- * @param options - Optional formatting options.
- * @returns A `ValueRangeFormatter` for localized fixed currency ranges.
+ *
+ * @param   currency - The currency code (e.g., 'USD', 'EUR').
+ * @param   options  - Optional formatting options.
+ *
+ * @returns          A `ValueRangeFormatter` for localized fixed currency
+ *   ranges.
+ *
+ * @public
  */
 export function fixedCurrencyRangeFormatter<T extends number | bigint>(
   currency: CurrencyCode,

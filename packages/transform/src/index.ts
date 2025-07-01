@@ -13,9 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
- * @public
  * A collection of transformation utilities for localizable values.
+ *
+ * @public
+ *
  * @packageDocumentation
  */
 export type { Transformer } from './lib/types/transform.js';

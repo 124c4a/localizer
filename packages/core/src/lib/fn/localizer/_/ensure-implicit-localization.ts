@@ -17,12 +17,13 @@ import { LocaleCode } from '../../../consts/locale.js';
 import { coreOptions } from '../../locale/options.js';
 
 /**
- * @internal
- *
  * Validates that implicit localization is enabled and an active locale is set.
  *
- * @throws If implicit localization is disabled or no active locale is set.
  * @returns The active locale code.
+ *
+ * @throws  If implicit localization is disabled or no active locale is set.
+ *
+ * @internal
  */
 export function _ensureImplicitLocalization(): LocaleCode {
   if (coreOptions.activeLocale === undefined) {

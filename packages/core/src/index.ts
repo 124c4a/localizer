@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
- * @public
- *
  * Core functionality of the `@localizer` library, offering types and utilities
  * for localization, localizable entities, and locale management.
  *
  * @packageDocumentation
+ *
+ * @public
  */
 export * from './lib/types/localizable.js';
 export * from './lib/types/localizer.js';

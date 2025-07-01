@@ -20,13 +20,17 @@ import { NumberFormatOptions } from './options.js';
 import { Unit } from './unit.js';
 
 /**
- * @public
  * Creates a formatter for fixed unit ranges using localization.
  *
  * @typeParam T - The type of values to format, either `number` or `bigint`.
- * @param unit - The unit for formatting (e.g., 'meter', 'kilogram').
- * @param options - Optional formatting options for the unit range.
- * @returns A `ValueRangeFormatter` that formats a range of values with a fixed unit.
+ *
+ * @param   unit    - The unit for formatting (e.g., 'meter', 'kilogram').
+ * @param   options - Optional formatting options for the unit range.
+ *
+ * @returns         A `ValueRangeFormatter` that formats a range of values with
+ *   a fixed unit.
+ *
+ * @public
  */
 export function fixedUnitRangeFormatter<T extends number | bigint>(
   unit: Unit,

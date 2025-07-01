@@ -20,13 +20,16 @@ import { CurrencyCode } from './currency.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Formats values relative to a reference as localized currency strings.
  *
  * @typeParam T - The numeric type, either `number` or `bigint`.
- * @param currency - The currency code (e.g., 'USD', 'EUR').
- * @param options - Optional formatting options.
- * @returns A function to format a value relative to a reference.
+ *
+ * @param   currency - The currency code (e.g., 'USD', 'EUR').
+ * @param   options  - Optional formatting options.
+ *
+ * @returns          A function to format a value relative to a reference.
+ *
+ * @public
  */
 export function relativeCurrencyFormatter<T extends number | bigint>(
   currency: CurrencyCode,

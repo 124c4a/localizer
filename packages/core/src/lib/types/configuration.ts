@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
- * @public
- *
  * A function that consumes configuration properties.
+ *
+ * @public
  *
  * @see {@link ConfigurationProperties}
  */
 export type Configurer<V> = (value: Partial<V>) => void;
 
 /**
- * @public
- *
- * Maps a type `T` to its configuration properties.
- * For each key in `T`, extracts the configurable value type
- * if the property is a `Configurer`.
+ * Maps a type `T` to its configuration properties. For each key in `T`,
+ * extracts the configurable value type if the property is a `Configurer`.
  *
  * @typeParam T - The type to extract configuration properties from.
+ *
+ * @public
  *
  * @see {@link Configurer}
  */

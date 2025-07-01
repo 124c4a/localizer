@@ -16,40 +16,49 @@
 import { isLocalizable, Localizable, ValueFormatter } from '@localizer/core';
 
 /**
- * @beta
  * Key used in a lookup table to represent `undefined` values.
  *
- * @see {@link LookupTable}, {@link lookupFormatter}
+ * @beta
+ *
+ * @see {@link LookupTable} , {@link lookupFormatter}
  */
 export const UndefinedValue: unique symbol = Symbol();
+
 /**
- * @beta
  * Key used in a lookup table to represent `null` values.
  *
- * @see {@link LookupTable}, {@link lookupFormatter}
+ * @beta
+ *
+ * @see {@link LookupTable} , {@link lookupFormatter}
  */
 export const NullValue: unique symbol = Symbol();
 
 /**
- * @beta
  * Symbol representing both `undefined` and `null` values in a lookup table.
  *
- * @see {@link LookupTable}, {@link lookupFormatter}
+ * @beta
+ *
+ * @see {@link LookupTable} , {@link lookupFormatter}
  */
 export const NoValue: unique symbol = Symbol();
+
 /**
- * @beta
  * Symbol used as a fallback key in a lookup table when no other key matches.
  *
- * @see {@link LookupTable}, {@link lookupFormatter}
+ * @beta
+ *
+ * @see {@link LookupTable} , {@link lookupFormatter}
  */
 export const DefaultValue: unique symbol = Symbol();
 
 /**
- * @beta
- * Defines a lookup table for mapping values to localizable content or formatters.
+ * Defines a lookup table for mapping values to localizable content or
+ * formatters.
  *
  * @typeParam T - The type of values the lookup table supports.
+ *
+ * @beta
+ *
  * @see {@link lookupFormatter}
  * @see {@link UndefinedValue}
  * @see {@link NullValue}
@@ -70,16 +79,22 @@ export type LookupTable<T> = {
 };
 
 /**
- * @beta
  * Creates a formatter that selects formatting logic based on the input value.
  *
  * Special symbols (`NoValue`, `UndefinedValue`, `NullValue`, `DefaultValue`)
  * handle cases like `undefined`, `null`, or fallback values.
  *
  * @typeParam T - The type of values the formatter supports.
- * @param lut - Lookup table mapping values to localizable content or formatters.
- * @returns A function that formats the input value using the lookup table.
- * @throws If the value is not in the lookup table and no default is specified.
+ *
+ * @param   lut - Lookup table mapping values to localizable content or
+ *   formatters.
+ *
+ * @returns     A function that formats the input value using the lookup table.
+ *
+ * @throws      If the value is not in the lookup table and no default is
+ *   specified.
+ *
+ * @beta
  */
 export function lookupFormatter<T>(lut: LookupTable<T>): ValueFormatter<T> {
   return (value) => {

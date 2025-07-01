@@ -20,12 +20,15 @@ import { CurrencyCode } from './currency.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Creates a formatter to extract the currency symbol from a currency code.
  *
  * @typeParam T - The currency code type.
- * @param options - Optional formatting options.
- * @returns A `ValueFormatter` that maps a currency code to its symbol.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A `ValueFormatter` that maps a currency code to its symbol.
+ *
+ * @public
  */
 export function currencyCodeFormatter<T extends CurrencyCode>(
   options?: NumberFormatOptions,

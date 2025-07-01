@@ -25,44 +25,57 @@ import {
 } from '@localizer/format-number';
 
 /**
- * @public
  * Formats numbers as decimals with default options.
+ *
+ * @public
  */
 export const decimal = decimalFormatter({});
+
 /**
- * @public
  * Formats number ranges as decimals with default options.
+ *
+ * @public
  */
 export const decimalRange = decimalRangeFormatter({});
+
 /**
- * @public
  * Formats numbers as percentages with default options.
+ *
+ * @public
  */
 export const percent = percentFormatter({});
+
 /**
- * @public
  * Formats number ranges as percentages with default options.
+ *
+ * @public
  */
 export const percentRange = percentRangeFormatter({});
 
 /**
- * @public
  * Formats numbers as currency using default options.
+ *
+ * @public
  */
 export const currency = currencyFormatter({});
+
 /**
- * @public
  * Formats numbers as units with default options.
+ *
+ * @public
  */
 export const unit = unitFormatter({});
 
 /**
- * @public
  * Formats numbers as relative decimals with default options.
+ *
+ * @public
  */
 export const relativeDecimal = relativeDecimalFormatter({});
+
 /**
- * @public
  * Formats numbers as relative percentages with default options.
+ *
+ * @public
  */
 export const relativePercent = relativePercentFormatter({});

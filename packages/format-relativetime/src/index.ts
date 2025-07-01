@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 /**
- * @public
  * Provides utilities for formatting relative dates and times.
+ *
+ * @public
  */
 export * from './lib/options.js';
 export * from './lib/relativeTimeFormatter.js';

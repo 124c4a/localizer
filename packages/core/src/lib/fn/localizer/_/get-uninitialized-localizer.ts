@@ -20,12 +20,13 @@ const _uninitializedLocalizer = ((): never => {
 }) as unknown as Localizer;
 
 /**
- * @internal
  * Returns a `Localizer` that throws an error when used.
  *
  * Useful as a placeholder before the `Localizer` is initialized.
  *
  * @returns The uninitialized `Localizer`.
+ *
+ * @internal
  */
 export function _getUninitializedLocalizer(): Localizer {
   return _uninitializedLocalizer;

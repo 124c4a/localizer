@@ -19,12 +19,15 @@ import { _buildRangeFormatter } from './_/build.js';
 import { NumberFormatOptions } from './options.js';
 
 /**
- * @public
  * Formats a range of numbers as localized percentages.
  *
  * @typeParam T - The numeric type, either `number` or `bigint`.
- * @param options - Optional formatting options.
- * @returns A `ValueRangeFormatter` for percentage ranges.
+ *
+ * @param   options - Optional formatting options.
+ *
+ * @returns         A `ValueRangeFormatter` for percentage ranges.
+ *
+ * @public
  */
 export function percentRangeFormatter<T extends number | bigint>(
   options?: NumberFormatOptions,

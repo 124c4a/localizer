@@ -18,13 +18,16 @@ import { Localized } from '../../types/localizable.js';
 import { isLocalizable } from './is-localizable.js';
 
 /**
- * @public
  * Localizes an array of values using the given locale.
  *
  * @typeParam T - Type of the array elements.
- * @param values - Array of values to localize.
- * @param locale - Locale code or `null` for no localization.
- * @returns Localized array.
+ *
+ * @param   values - Array of values to localize.
+ * @param   locale - Locale code or `null` for no localization.
+ *
+ * @returns        Localized array.
+ *
+ * @public
  *
  * @see {@link Localizable}
  */

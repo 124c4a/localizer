@@ -18,14 +18,19 @@ import { Localized } from '../../types/localizable.js';
 import { isLocalizable } from './is-localizable.js';
 
 /**
+ * Localizes an object's properties by converting `Localizable` values to their
+ * localized forms.
+ *
+ * @typeParam T - The input object type with properties that may be
+ *   `Localizable`.
+ *
+ * @param   values - The object with properties to localize.
+ * @param   locale - The locale code for localization, or `null` for a default.
+ *
+ * @returns        A new object with `Localizable` properties replaced by
+ *   localized values.
+ *
  * @public
- *
- * Localizes an object's properties by converting `Localizable` values to their localized forms.
- *
- * @typeParam T - The input object type with properties that may be `Localizable`.
- * @param values - The object with properties to localize.
- * @param locale - The locale code for localization, or `null` for a default.
- * @returns A new object with `Localizable` properties replaced by localized values.
  *
  * @see {@link Localizable}
  */

@@ -16,41 +16,53 @@
 import { isLocalizable, loc, Localizable } from '@localizer/core';
 
 /**
- * @alpha
  * Symbol representing the "zero" plural category.
+ *
+ * @alpha
  */
 export const zero: unique symbol = Symbol();
+
 /**
- * @alpha
  * Symbol representing the "one" plural category.
+ *
+ * @alpha
  */
 export const one: unique symbol = Symbol();
+
 /**
- * @alpha
  * Symbol representing the "two" plural category.
+ *
+ * @alpha
  */
 export const two: unique symbol = Symbol();
+
 /**
- * @alpha
  * Symbol representing the "few" plural category.
+ *
+ * @alpha
  */
 export const few: unique symbol = Symbol();
+
 /**
- * @alpha
  * Symbol representing the "many" plural category.
+ *
+ * @alpha
  */
 export const many: unique symbol = Symbol();
+
 /**
- * @alpha
  * Symbol representing the "other" plural category.
+ *
+ * @alpha
  */
 export const other: unique symbol = Symbol();
 
 /**
- * @alpha
  * Type definition for plural categories.
  *
  * Represents the possible plural categories as symbols.
+ *
+ * @alpha
  */
 export type PluralCategory =
   | typeof zero
@@ -61,12 +73,13 @@ export type PluralCategory =
   | typeof other;
 
 /**
- * @alpha
  * Type definition for a plural translation map.
  *
  * Maps numeric values or plural categories to their corresponding translations.
  *
  * @typeParam T - The type of numeric values that the map can handle.
+ *
+ * @alpha
  */
 export type PluralTranslationMap<T extends number> = {
   [K in T]?: string | Localizable;
@@ -75,24 +88,28 @@ export type PluralTranslationMap<T extends number> = {
 };
 
 /**
- * @internal
  * Internal mapping of plural categories to their corresponding symbols.
+ *
+ * @internal
  */
 const pluralCategoryMap = { zero, one, two, few, many, other };
 
 /**
- * @alpha
- *
  * Plural translation function.
  *
- * Determines the appropriate translation for a given numeric value based on
- * the provided plural translation map and the locale's pluralization rules.
+ * Determines the appropriate translation for a given numeric value based on the
+ * provided plural translation map and the locale's pluralization rules.
  *
  * @typeParam T - The type of numeric values that the function can handle.
- * @param value - The numeric value to be pluralized.
- * @param map - The translation map containing plural categories and values.
- * @returns The localized pluralized value.
- * @throws If no "other" plural category is defined in the map.
+ *
+ * @param   value - The numeric value to be pluralized.
+ * @param   map   - The translation map containing plural categories and values.
+ *
+ * @returns       The localized pluralized value.
+ *
+ * @throws        If no "other" plural category is defined in the map.
+ *
+ * @alpha
  */
 export function plural<T extends number>(
   value: T,

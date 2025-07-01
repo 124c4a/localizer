@@ -16,8 +16,6 @@
 import { autoFormat } from '@localizer/format';
 
 /**
- * @internal
- *
  * Recursively auto-formats a record's values based on specified parameters.
  *
  * This function traverses a record deeply, applying auto-formatting to values
@@ -25,10 +23,15 @@ import { autoFormat } from '@localizer/format';
  * keys during traversal to maintain the hierarchical structure.
  *
  * @typeParam V - The type of the record being processed.
- * @param value - The record to be auto-formatted.
- * @param autoFormattedParameters - An array of parameter keys to auto-format.
- * @param prefix - A prefix to prepend to keys during traversal.
- * @returns A new record with auto-formatted values.
+ *
+ * @param   value                   - The record to be auto-formatted.
+ * @param   autoFormattedParameters - An array of parameter keys to auto-format.
+ * @param   prefix                  - A prefix to prepend to keys during
+ *   traversal.
+ *
+ * @returns                         A new record with auto-formatted values.
+ *
+ * @internal
  */
 export function _autoFormatRecordDeep<V extends Record<string, unknown>>(
   value: V,

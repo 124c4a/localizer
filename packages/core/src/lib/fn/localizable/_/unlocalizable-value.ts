@@ -17,65 +17,68 @@ import { Localizable } from '../../../types/localizable.js';
 import { _toPrimitiveValue } from './to-primitive-value.js';
 
 /**
- * @internal
- *
  * Represents a value that cannot be localized.
  *
- * The `UnlocalizableValue` class implements the `Localizable` interface but always
- * returns the same value regardless of the locale. It is useful for values that
- * do not require localization.
+ * The `UnlocalizableValue` class implements the `Localizable` interface but
+ * always returns the same value regardless of the locale. It is useful for
+ * values that do not require localization.
  *
  * @typeParam T - The type of the unlocalizable value.
+ *
+ * @internal
  *
  * @see {@link Localizable}
  */
 export class UnlocalizableValue<T = string> implements Localizable<T> {
   /**
-   * @internal
-   *
    * The unlocalizable value.
+   *
+   * @internal
    */
   readonly value: T;
 
   /**
-   * @internal
-   *
    * Creates an instance of `UnlocalizableValue`.
    *
    * @param value - The value that cannot be localized.
+   *
+   * @internal
    */
   constructor(value: T) {
     this.value = value;
   }
 
   /**
-   * @internal
-   * Converts the value to its primitive form.
-   * Used in contexts like string concatenation or numeric operations.
+   * Converts the value to its primitive form. Used in contexts like string
+   * concatenation or numeric operations.
    *
    * @returns The primitive value.
+   *
+   * @internal
    */
   [Symbol.toPrimitive]() {
     return _toPrimitiveValue(this.value);
   }
 
   /**
-   * @internal
-   *
    * Returns the value as a string formatted for the current locale.
    *
    * @returns The value as a locale-specific string.
+   *
+   * @internal
    */
   toLocaleString(): T {
     return this.value;
   }
 
   /**
-   * @internal
    * Returns the unlocalizable value.
    *
-   * @param locale - Ignored.
-   * @returns The value.
+   * @param   locale - Ignored.
+   *
+   * @returns        The value.
+   *
+   * @internal
    */
   localize(): T {
     return this.value;

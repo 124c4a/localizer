@@ -24,9 +24,10 @@ const ignoreUndeterminedLanguage: Transformer = (value) =>
   );
 
 /**
+ * Formats the decimal separator with locale-specific settings. Handles
+ * undetermined language using a transformation.
+ *
  * @public
- * Formats the decimal separator with locale-specific settings.
- * Handles undetermined language using a transformation.
  */
 export const DecimalSeparator = decimalFormatter({
   parts: ['decimal'],
@@ -34,9 +35,10 @@ export const DecimalSeparator = decimalFormatter({
 })(1.1);
 
 /**
+ * Formats the thousand separator with locale settings. Handles undetermined
+ * language using a transformation.
+ *
  * @public
- * Formats the thousand separator with locale settings.
- * Handles undetermined language using a transformation.
  */
 export const ThousandSeparator = decimalFormatter({
   useGrouping: 'always',
@@ -45,9 +47,10 @@ export const ThousandSeparator = decimalFormatter({
 })(1000);
 
 /**
+ * Formats a date range with locale-specific settings. Handles undetermined
+ * language using a transformation.
+ *
  * @public
- * Formats a date range with locale-specific settings.
- * Handles undetermined language using a transformation.
  */
 export const DateRangeSeparator = dateTimeRangeFormatter({
   year: 'numeric',
@@ -56,7 +59,9 @@ export const DateRangeSeparator = dateTimeRangeFormatter({
 })(Date.UTC(2000, 0, 1), Date.UTC(2001, 0, 1));
 
 /**
+ * A locale-agnostic range separator using a thin space, en dash, and thin
+ * space.
+ *
  * @public
- * A locale-agnostic range separator using a thin space, en dash, and thin space.
  */
 export const GenericRangeSeparator = loc`\u2009\u2013\u2009`; // thin space en dash thin space
