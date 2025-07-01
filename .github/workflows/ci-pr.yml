@@ -89,33 +89,35 @@ jobs:
         run: npx nx affected -t test --coverage
 
       - name: Prepare changelog
+        id: changelog
         run: |
           node scripts/analyze-changes.js --baseRef=${{ github.event.pull_request.base.sha }} --headRef=${{ github.event.pull_request.head.sha }}
-          echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_ENV
-          echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_ENV
+          echo "CHANGELEVEL=semver:$(cat tmp/CHANGELEVEL)" >> $GITHUB_OUTPUT
+          echo "MODULES=$(cat tmp/MODULES)" >> $GITHUB_OUTPUT
 
       - name: Prepare coverage report
+        id: coverage
         run: |
           node scripts/analyze-coverage.js
-          echo "COVERAGESTATUS=$(cat tmp/COVERAGESTATUS)" >> $GITHUB_ENV
+          echo "COVERAGESTATUS=$(cat tmp/COVERAGESTATUS)" >> $GITHUB_OUTPUT
 
       - name: Create changelog comment
         uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.3
-        if: env.COVERAGESTATUS == '0'
+        if: steps.changelog.outputs.CHANGELEVEL == '0'
         with:
           path: tmp/CHANGESET.md
           recreate: true
 
       - name: Create coverage report comment
         uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.3
-        if: env.COVERAGESTATUS == '1'
+        if: steps.coverage.outputs.COVERAGESTATUS == '1'
         with:
           path: tmp/COVERAGEREPORT.md
           recreate: true
 
       - name: Run the action
         uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
-        if: env.COVERAGESTATUS == '0'
+        if: steps.coverage.outputs.COVERAGESTATUS == '0'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test coverage results'
@@ -125,7 +127,7 @@ jobs:
 
       - name: Run the action
         uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
-        if: env.COVERAGESTATUS == '1'
+        if: steps.coverage.outputs.COVERAGESTATUS == '1'
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test coverage results'
@@ -134,8 +136,11 @@ jobs:
           sha: ${{github.event.pull_request.head.sha || github.sha}}
 
       - name: Update PR
-        if: env.CHANGELEVEL != ''
+        if: steps.changelog.outputs.CHANGELEVEL != ''
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        env:
+          CHANGELEVEL: ${{ steps.changelog.outputs.CHANGELEVEL }}
+          MODULES: ${{ steps.changelog.outputs.MODULES }}
         with:
           script: |
             const { default: updatePr } = await import('${{ github.workspace }}/scripts/update-pr.js')
