@@ -34,6 +34,12 @@ describe('relativePercentFormatter', () => {
     expect(result).toBe('0%');
   });
 
+  it('returns zero percentage when both value and reference are zero', () => {
+    const formatter = relativePercentFormatter();
+    const result = formatter(0, 0).localize('en-US');
+    expect(result).toBe('0%');
+  });
+
   it('returns positive infinity percentage when the reference is zero and value is positive', () => {
     const formatter = relativePercentFormatter();
     const result = formatter(100, 0).localize('en-US');
@@ -56,7 +62,7 @@ describe('relativePercentFormatter', () => {
     const formatter = relativePercentFormatter();
     const result = formatter(
       12345678901234567890n,
-      12345678901234567880n
+      12345678901234567880n,
     ).localize('en-US');
     expect(result).toBe('0%');
   });

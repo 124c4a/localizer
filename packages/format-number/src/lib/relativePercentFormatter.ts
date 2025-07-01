@@ -38,7 +38,9 @@ export function relativePercentFormatter<T extends number | bigint>(
   );
 
   return (value, reference) => {
-    if (reference == 0) {
+    if (value === reference) {
+      return innerFormatter(0);
+    } else if (reference == 0) {
       return innerFormatter(value > 0 ? +Infinity : -Infinity);
     } else {
       return innerFormatter((value - reference) / reference);
