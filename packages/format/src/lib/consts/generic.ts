@@ -58,11 +58,3 @@ export const RangeSeparator = decimalRangeFormatter({
   parts: ['literal'],
   transform: [ignoreUndeterminedLanguage, apply((str) => `\u2009${str}\u2009`)], // thin space
 })(1, 2);
-
-/**
- * A locale-agnostic range separator using a thin space, en dash, and thin
- * space.
- *
- * @public
- */
-export const GenericRangeSeparator = loc`\u2009\u2013\u2009`; // thin space en dash thin space
