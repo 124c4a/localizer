@@ -2,7 +2,7 @@
 order: 16
 ---
 
-# Relative unit <Badge type="info" text="@localizer/format-number" />
+# Relative unit <Package name="format-number"/>
 
 > **[relativeUnitFormatter](../../../api/_localizer/format-number/relativeUnitFormatter/index.md)**<`T`> ( `unit` , `options?` ): [RelativeValueFormatter](../../index.md#relativevalueformatter-t)<`T`>
 >

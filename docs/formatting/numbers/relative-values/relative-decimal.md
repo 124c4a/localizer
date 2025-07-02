@@ -2,7 +2,7 @@
 order: 13
 ---
 
-# Relative decimal <Badge type="info" text="@localizer/format-number" />
+# Relative decimal <Package name="format-number"/>
 
 > **[relativeDecimalFormatter](../../../api/_localizer/format-number/relativeDecimalFormatter/index.md)**<`T`> ( `options?` ): [RelativeValueFormatter](../../index.md#relativevalueformatter-t)<`T`>
 >

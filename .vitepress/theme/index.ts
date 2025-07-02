@@ -13,21 +13,55 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/// <reference types="vite/client" />
 import type { Theme } from 'vitepress';
 
+import { GlobalThemeOverrides, NConfigProvider } from 'naive-ui/es/config-provider';
+import { darkTheme } from 'naive-ui/es/themes/dark';
+import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import { h } from 'vue';
+import { defineComponent, h } from 'vue';
 
 import './style.css';
+import Deprecated from './components/Deprecated.vue';
+import Experimental from './components/Experimental.vue';
+import Package from './components/Package.vue';
+import Preview from './components/Preview.vue';
+
+const { Layout } = DefaultTheme;
+
+const NaiveUIProvider = defineComponent({
+  render() {
+    const { isDark } = useData();
+
+    const themeOverrides: GlobalThemeOverrides = {
+      common: {
+        infoColor: isDark.value ? '#a8b1ff' : '#3451b2',
+      },
+    };
+
+    return h(
+      NConfigProvider,
+      {
+        abstract: true,
+        inlineThemeDisabled: true,
+        theme: isDark.value ? darkTheme : undefined,
+        themeOverrides,
+      },
+      {
+        default: () => [h(Layout, null, { default: this.$slots.default?.() })],
+      },
+    );
+  },
+});
 
 export default {
   extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    });
-  },
-  enhanceApp({ app, router, siteData }) {
-    // Configure theme
+  Layout: NaiveUIProvider,
+  enhanceApp: ({ app }) => {
+    app.component('Package', Package);
+    app.component('Experimental', Experimental);
+    app.component('Preview', Preview);
+    app.component('Deprecated', Deprecated);
   },
 } satisfies Theme;

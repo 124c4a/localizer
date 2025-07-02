@@ -2,7 +2,7 @@
 order: 4
 ---
 
-# Localizer <Badge type="info" text="@localizer/core" />
+# Localizer <Package name="core"/>
 
 <script setup>
   import localizerString from './localizer-string';
@@ -39,13 +39,13 @@ The fallback mechanism is controlled by the [`fallbackLocales`](./configuration.
 | `en-US`      | `en-US` → `en`        |
 | `sv-FI`      | `sv-FI` → `sv` → `en` |
 
-For `en`, the library uses `en` translations.  
-For `en-US`, it tries `en-US` first, then falls back to `en`.  
+For `en`, the library uses `en` translations.
+For `en-US`, it tries `en-US` first, then falls back to `en`.
 For `sv-FI`, it checks `sv-FI`, then `sv`, and finally `en`.
 
 This ensures translations remain comprehensive even with missing locale data.
 
-## Implicit localization <Badge type="warning" text="experimental" />
+## Implicit localization <Experimental/>
 
 In rapid prototyping, applying `Localizer` functions explicitly can be tedious. The library supports _implicit_ localization, activated via the [`activeLocale`](./configuration.md#activelocale) property or the [`setActiveLocale()`](../api/_localizer/core/setActiveLocale/index.md) function, simplifying workflows for temporary projects.
 
@@ -74,7 +74,7 @@ console.log(UninitializedLocalizer(Empty)); // [!code error]
 > RangeError: Attempt to use Localizer before locale was set // [!code error]
 ```
 
-### `ImplicitLocalizer` <Badge type="warning" text="experimental" />
+### `ImplicitLocalizer` <Experimental/>
 
 This localizer simplifies integration with external libraries by enabling implicit localization. It allows direct use of `Localizable` values as stable, human-readable identifiers, making it useful for testing UI components or scenarios requiring consistent identifiers.
 

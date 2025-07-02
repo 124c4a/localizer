@@ -7,7 +7,7 @@ order: 3
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Generic list <Badge type="info" text="@localizer/format" />
+# Generic list <Package name="format"/>
 
 > **[list](../../../api/_localizer/format/list/index.md)** ( `value`: _[Localizable](../../../introduction/localizable.md)[]_ )
 >

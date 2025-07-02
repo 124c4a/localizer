@@ -75,12 +75,6 @@ Thank you for contributing!
 The PR title should follow this format:
 
 ```plain
-type(scope): Subject of change
-```
-
-For changes that don't fit a specific scope, use:
-
-```plain
 type: Subject of change
 ```
 
@@ -90,15 +84,6 @@ type: Subject of change
 - fix - Resolves bugs or incorrect behavior (e.g., fixing edge cases in formatters).
 - cleanup - Refactors or improves code without user-facing changes (e.g., reorganizing utility functions).
 - chore - Updates project dependencies or configurations with no user impact (e.g., upgrading build tools).
-
-##### Scope
-
-The scope must be one of the following:
-
-- core - Core functionality
-- format - Data formatting
-- transform - Data transformations
-- translate - Translations
 
 ##### Subject and Body
 
@@ -111,7 +96,7 @@ For breaking changes, include a `BREAKING CHANGE:` section in the body to explai
 #### Example
 
 ```plain
-feat(format): Time zone support in date/time formatter
+feat: Time zone support in date/time formatter
 
 Date/time formatters now accept `TZDate` type from `@date-fns/tz`
 

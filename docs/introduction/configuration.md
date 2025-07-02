@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Configuration <Badge type="info" text="@localizer/core" />
+# Configuration <Package name="core"/>
 
 Use the [`configure()`](../api/_localizer/core/configure/index.md) method to customize **@localizer** behavior. Apply configuration early, preferably in the application shell, for consistent behavior throughout the app lifecycle.
 
@@ -23,7 +23,7 @@ configure({ Core }, configuration);
 Below is a list of configuration domains that can be customized using the `configure()` method.
 Each domain corresponds to a specific aspect of the library, enabling fine-grained control over its behavior.
 
-## [Core](../api/_localizer/core/CoreOptions/index.md) <Badge type="info" text="@localizer/core" />
+## [Core](../api/_localizer/core/CoreOptions/index.md) <Package name="core"/>
 
 This is the basic configuration for **@localizer**. Below are the key configuration properties available:
 
@@ -51,7 +51,7 @@ Defines fallback locales used when a translation is missing. See the [locale res
 
 ---
 
-### `activeLocale` <Badge type="warning" text="experimental" />
+### `activeLocale` <Experimental/>
 
 Enables [implicit localization](./localizer.md#implicit-localization) by setting the current locale. If undefined, implicit localization is disabled.
 

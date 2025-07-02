@@ -7,7 +7,7 @@ order: 1
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Conjunction (and) <Badge type="info" text="@localizer/format" />
+# Conjunction (and) <Package name="format"/>
 
 > **[and](../../../api/_localizer/format/and/index.md)** ( `value`: _[Localizable](../../../introduction/localizable.md)[]_ )
 >

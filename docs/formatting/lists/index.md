@@ -3,7 +3,7 @@ order: 5
 title: Item lists
 ---
 
-# List <Badge type="info" text="@localizer/format-list" />
+# List <Package name="format-list"/>
 
 > **[listFormatter](../../api/_localizer/format-list/listFormatter/index.md)**<`T`> ( `options?` ): [ValueFormatter](../index.md#valueformatter-t)<`T`>
 >

@@ -2,7 +2,7 @@
 order: 1
 ---
 
-# Date/time <Badge type="info" text="@localizer/format-datetime" />
+# Date/time <Package name="format-datetime"/>
 
 > **[dateTimeFormatter](../../api/_localizer/format-datetime/dateTimeFormatter/index.md)**<`T`> ( `options?` ): [ValueFormatter](../index.md#valueformatter-t)<`T`>
 >

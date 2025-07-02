@@ -7,7 +7,7 @@ order: 4
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Currency symbol <Badge type="info" text="@localizer/format" />
+# Currency symbol <Package name="format"/>
 
 > **[currencySymbol](../../../api/_localizer/format/currencySymbol/index.md)** ( `value`: _[CurrencyCode](../../../api/_localizer/format-number/CurrencyCode/index.md)_ )
 >

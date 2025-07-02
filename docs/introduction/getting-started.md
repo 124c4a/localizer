@@ -52,7 +52,7 @@ The `@localizer/all` package provides all core components of the **@localizer** 
 
 :::
 
-## Translation (basic) <Badge type="warning" text="experimental" />
+## Translation (basic) <Experimental/>
 
 **@localizer** provides a vast set of utilities for localization, translation and data formatting. Below are examples for main functionality:
 
@@ -73,11 +73,12 @@ This will output the following to the console:
 ```console-vue
 {{ basicUsage }}
 ```
+
 This approach simplifies translation management and integrates with TypeScript, ensuring type safety and autocompletion for all keys.
 
 Using this basic dictionary setup, you can quickly localize your application's user interface. For advanced use cases like dynamic translations or context-based localization, see the advanced examples in this guide.
 
-## Translation (advanced) <Badge type="warning" text="experimental" />
+## Translation (advanced) <Experimental/>
 
 Dynamic translations allow you to include runtime values like user names, dates, or numbers in your strings. Define a dictionary where translation values are functions that accept arguments and return formatted strings.
 

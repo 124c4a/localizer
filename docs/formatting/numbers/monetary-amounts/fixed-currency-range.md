@@ -2,7 +2,7 @@
 order: 8
 ---
 
-# Fixed currency range <Badge type="info" text="@localizer/format-number" />
+# Fixed currency range <Package name="format-number"/>
 
 > **[fixedCurrencyRangeFormatter](../../../api/_localizer/format-number/fixedCurrencyRangeFormatter/index.md)**<`T`> ( `currency` , `options?` ): [ValueRangeFormatter](../../index.md#valuerangeformatter-t)<`T`>
 >

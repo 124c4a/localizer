@@ -25,6 +25,7 @@
   "bugs": {
     "url": "https://github.com/124c4a/localizer/issues"
   },
+  "homepage": "https://124c4a.github.io/localizer",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Automatic formatting <Badge type="info" text="@localizer/format" />
+# Automatic formatting <Package name="format"/>
 
 > **[autoFormat](../../../api/_localizer/format/autoFormat/index.md)** ( `value`: _any_ )
 >

@@ -3,7 +3,7 @@ order: 6
 title: Custom data types
 ---
 
-# Lookup <Badge type="tip" text="preview" /><Badge type="info" text="@localizer/format-lookup" />
+# Lookup <Package name="format-lookup"/> <Preview/>
 
 > **[lookupFormatter](../../api/_localizer/format-lookup/lookupFormatter/index.md)**<`T`> ( `lut` ): [ValueFormatter](../index.md#valueformatter-t)<`T`>
 >
