@@ -2,7 +2,7 @@
 order: 6
 ---
 
-# Currency code <Badge type="info" text="@localizer/format-number" />
+# Currency code <Package name="format-number"/>
 
 > **[currencyCodeFormatter](../../../api/_localizer/format-number/currencyCodeFormatter/index.md)**<`T`> ( `options?` ): [ValueFormatter](../../index.md#valueformatter-t)<`T`>
 >

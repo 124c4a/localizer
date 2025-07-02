@@ -7,7 +7,7 @@ order: 4
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Date range <Badge type="info" text="@localizer/format" />
+# Date range <Package name="format"/>
 
 > **[dateRange](../../../api/_localizer/format/dateRange/index.md)** ( `start`: _Date | number_ , `end`: _Date | number_ )
 >

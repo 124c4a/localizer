@@ -56,5 +56,6 @@ eslint-report.json
 
 .vitepress/dist
 .vitepress/cache
+.vitepress/theme/data
 
 docs/api

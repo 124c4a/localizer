@@ -7,7 +7,7 @@ order: 2
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Disjunction (or) <Badge type="info" text="@localizer/format" />
+# Disjunction (or) <Package name="format"/>
 
 > **[or](../../../api/_localizer/format/or/index.md)** ( `value`: _[Localizable](../../../introduction/localizable.md)[]_ )
 >

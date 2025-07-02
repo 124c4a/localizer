@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Currency <Badge type="info" text="@localizer/format" />
+# Currency <Package name="format"/>
 
 > **[currency](../../../api/_localizer/format/currency/index.md)** ( `value`: _number | bigint_ , `unit`: _[CurrencyCode](../../../api/_localizer/format-number/CurrencyCode/index.md)_ )
 >

@@ -16,6 +16,7 @@
     "@nx/vite": "21.2.0",
     "@nx/workspace": "21.2.0",
     "@types/node": "22.15.32",
+    "@vicons/ionicons5": "^0.13.0",
     "@vitest/coverage-v8": "3.2.4",
     "eslint": "9.29.0",
     "eslint-config-prettier": "10.1.5",
@@ -25,6 +26,7 @@
     "execa": "9.6.0",
     "jsonc-eslint-parser": "2.4.0",
     "listr2": "8.3.3",
+    "naive-ui": "^2.42.0",
     "node-sarif-builder": "3.2.0",
     "nx": "21.2.0",
     "prettier": "3.5.3",
@@ -87,7 +89,10 @@
           "typedoc"
         ],
         "options": {
-          "command": "vitepress build"
+          "commands": [
+            "node scripts/generate-package-reference.js",
+            "vitepress build"
+          ]
         }
       },
       "dev": {
@@ -96,7 +101,10 @@
           "typedoc"
         ],
         "options": {
-          "command": "vitepress dev"
+          "commands": [
+            "node scripts/generate-package-reference.js",
+            "vitepress dev"
+          ]
         }
       },
       "preview": {
@@ -105,7 +113,10 @@
           "build"
         ],
         "options": {
-          "command": "vitepress serve"
+          "commands": [
+            "node scripts/generate-package-reference.js",
+            "vitepress serve"
+          ]
         }
       }
     }

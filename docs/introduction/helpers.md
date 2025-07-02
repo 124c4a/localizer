@@ -2,7 +2,7 @@
 order: 5
 ---
 
-# Helpers <Badge type="info" text="@localizer/core" />
+# Helpers <Package name="core"/>
 
 ## Testing if value is `Localizable`
 
@@ -76,7 +76,7 @@ const enUsLocale = parseLocaleCode('en-US');
 // ['en', 'US']
 ```
 
-## Getting primary locale <Badge type="tip" text="preview" />
+## Getting primary locale <Previeww/>
 
 In some scenarios, you may need to determine the _primary_ locale associated with a given locale code. The [`getPrimaryLocale()`](../api/_localizer/core/getPrimaryLocale/index.md) function provides this capability:
 

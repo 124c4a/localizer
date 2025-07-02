@@ -306,12 +306,7 @@ export async function writeChangelevel(ctx) {
     ),
   ).sort((a, b) => a.localeCompare(b));
 
-  let preparedModules;
-  if (modules.length > 0 && modules.length < 4) {
-    preparedModules = modules.join(',');
-  } else {
-    preparedModules = '';
-  }
+  const preparedModules = modules.join(',');
 
   await mkdirSync('tmp', { recursive: true });
   await writeFile('tmp/CHANGELEVEL', changeLevel);

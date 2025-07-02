@@ -2,7 +2,7 @@
 order: 6
 ---
 
-# Transformations <Badge type="info" text="@localizer/transform" />
+# Transformations <Package name="transform"/>
 
 <script setup>
 import { getLocalizer, transform, loc, date, apply, countryName, upperCase, lowerCase, capitalize, apply as applyFn, usePrimaryLocale } from '@localizer/all';
@@ -120,7 +120,7 @@ console.log(localizer(transformer));
 
 Unlike [string transformations](#string-transformations), locale transformations enable you to override the locale used during the localization process. These transformations are particularly useful when you need to ensure consistent formatting or behavior across different locales, regardless of the user's selected language or region.
 
-### Using primary locale <Badge type="tip" text="preview" />
+### Using primary locale <Preview/>
 
 This transformer enables the use of the [primary language for a country](../introduction/helpers.md#getting-primary-locale) instead of the provided locale. This can be particularly useful in scenarios where consistent data formatting is preferred, regardless of the selected spoken language.
 

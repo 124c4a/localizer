@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Stringification <Badge type="info" text="@localizer/format" />
+# Stringification <Package name="format"/>
 
 > **[stringify](../../../api/_localizer/format/stringify/index.md)** ( `value`: _any_ )
 >

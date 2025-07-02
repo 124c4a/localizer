@@ -3,7 +3,7 @@ order: 3
 title: Relative times
 ---
 
-# Relative time <Badge type="info" text="@localizer/format-relativetime" />
+# Relative time <Package name="format-relativetime"/>
 
 > **[relativeTimeFormatter](../../api/_localizer/format-relativetime/relativeTimeFormatter/index.md)**<`T`> ( `options?` ): [RelativeValueFormatter](../index.md#relativevalueformatter-t)<`T`>
 >

@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Measurement <Badge type="info" text="@localizer/format" />
+# Measurement <Package name="format"/>
 
 > **[unit](../../../api/_localizer/format/unit/index.md)** ( `value`: _number | bigint_ , `unit`: _[Unit](../../../api/_localizer/format-number/Unit/index.md)_ )
 >

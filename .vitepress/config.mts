@@ -19,6 +19,8 @@ import { defineConfig, UserConfig } from 'vitepress';
 import { withSidebar } from 'vitepress-sidebar';
 import { SidebarItem } from 'vitepress-sidebar/types';
 
+const fileAndStyles: Record<string, string> = {};
+
 function patchSidebar(entry: SidebarItem): SidebarItem {
   if (entry.link && entry.link.startsWith('/tmp/')) {
     entry.link = entry.link.replace('/tmp/', '/');
@@ -40,6 +42,11 @@ function readApiSidebar() {
 }
 
 const config: UserConfig = {
+  vite: {
+    ssr: {
+      noExternal: ['naive-ui', 'date-fns', 'vueuc'],
+    },
+  },
   title: '@localizer',
   description: 'Type-safe localization, formatting and translation library',
   base: '/localizer/',

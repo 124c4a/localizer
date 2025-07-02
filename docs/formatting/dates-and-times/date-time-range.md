@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Date/time range <Badge type="info" text="@localizer/format-datetime" />
+# Date/time range <Package name="format-datetime"/>
 
 > **[dateTimeRangeFormatter](../../api/_localizer/format-datetime/dateTimeFormatter/index.md)**<`T`> ( `options?` ): [ValueRangeFormatter](../index.md#valuerangeformatter-t)<`T`>
 >

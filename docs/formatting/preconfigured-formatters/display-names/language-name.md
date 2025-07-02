@@ -7,7 +7,7 @@ order: 1
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Language name <Badge type="info" text="@localizer/format" />
+# Language name <Package name="format"/>
 
 > **[langaugeName](../../../api/_localizer/format/languageName/index.md)** ( `value`: _[LocaleCode](../../../api/_localizer/core/LocaleCode/index.md)_ )
 >

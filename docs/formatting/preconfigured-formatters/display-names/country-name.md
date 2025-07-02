@@ -7,7 +7,7 @@ order: 2
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Country name <Badge type="info" text="@localizer/format" />
+# Country name <Package name="format"/>
 
 > **[countryName](../../../api/_localizer/format/countryName/index.md)** ( `value`: _[CountryCode](../../../api/_localizer/core/CountryCode/index.md)_ )
 >
