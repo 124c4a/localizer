@@ -6,7 +6,7 @@ order: 2
 
 Use the [`configure()`](../api/_localizer/core/configure/index.md) method to customize **@localizer** behavior. Apply configuration early, preferably in the application shell, for consistent behavior throughout the app lifecycle.
 
-The `configure()` method accepts two arguments: an array of configuration domains and a configuration object. The domains define the library components to configure, and the object specifies their settings.
+The `configure()` method offers maximum flexibility by accepting two arguments: an array of configuration domains and a corresponding configuration object. The domains specify the library components to configure, while the configuration object defines their respective settings.
 
 ```typescript
 import { configure, Core } from '@localizer/core';
@@ -18,6 +18,16 @@ const configuration = {
 }
 
 configure({ Core }, configuration);
+```
+
+This approach centralizes configuration in a single location while providing the flexibility to selectively configure specific domains as needed.
+
+When only one single domain needs to be configured, it is possible to use simpler notation:
+
+```typescript
+import { configure, Core } from '@localizer/core';
+
+configure(Core, { fallbackLocales: ['fi', 'en'] });
 ```
 
 Below is a list of configuration domains that can be customized using the `configure()` method.

@@ -16,6 +16,23 @@
 import { Configurer, ConfigurationProperties } from '../types/configuration.js';
 
 /**
+ * Configures properties of a single configuration domain.
+ *
+ * @typeParam T - A function that consumes configuration properties.
+ *
+ * @param configurer - Consumer function for the configuration properties.
+ * @param values     - Configuration values to apply.
+ *
+ * @public
+ *
+ * @see {@link Configurer} , {@link ConfigurationProperties}
+ */
+export function configure<T extends Configurer<object>>(
+  configurer: T,
+  values: T extends Configurer<infer P> ? Partial<P> : never,
+): void;
+
+/**
  * Configures properties using their corresponding functions.
  *
  * Iterates over `arg` keys and applies values from `values` to the corresponding functions in `arg`
@@ -33,10 +50,22 @@ import { Configurer, ConfigurationProperties } from '../types/configuration.js';
 export function configure<T extends Record<string, Configurer<object>>>(
   arg: T,
   values: ConfigurationProperties<T>,
-) {
-  for (const key in arg) {
-    if (values[key]) {
-      arg[key](values[key]);
+): void;
+
+export function configure<T extends Record<string, Configurer<object>> | Configurer<object>>(
+  arg: T,
+  values: T extends Configurer<infer P> ? Partial<P> : ConfigurationProperties<T>,
+): void {
+  if (typeof arg === 'function') {
+    // If arg is a function, call it with the values
+    arg(values);
+  } else {
+    for (const key in arg) {
+      if ((values as ConfigurationProperties<T>)[key]) {
+        (arg as Record<string, Configurer<object>>)[key](
+          (values as ConfigurationProperties<T>)[key] as object,
+        );
+      }
     }
   }
 }
