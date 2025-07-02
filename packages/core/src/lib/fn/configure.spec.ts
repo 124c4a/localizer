@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configuration } from '../types/configuration.js';
+import { Configurer } from '../types/configuration.js';
 import { configure } from './configure.js';
 
 type ConfigOptions = {
@@ -22,7 +22,7 @@ type ConfigOptions = {
 
 const config: ConfigOptions = {};
 
-const Config: Configuration<ConfigOptions> = (options: ConfigOptions) => {
+const Config: Configurer<ConfigOptions> = (options: ConfigOptions) => {
   Object.assign(config, options);
 };
 
@@ -35,8 +35,15 @@ describe('core', () => {
         Config: {
           property1: 'value1',
         },
-      }
+      },
     );
+    expect(config.property1).toBe('value1');
+  });
+  it('should set properties via simplified syntax', () => {
+    config.property1 = undefined;
+    configure(Config, {
+      property1: 'value1',
+    });
     expect(config.property1).toBe('value1');
   });
   it('should update properties', () => {
@@ -47,8 +54,15 @@ describe('core', () => {
         Config: {
           property1: 'value2',
         },
-      }
+      },
     );
+    expect(config.property1).toBe('value2');
+  });
+  it('should update properties via simplified syntax', () => {
+    config.property1 = 'value1';
+    configure(Config, {
+      property1: 'value2',
+    });
     expect(config.property1).toBe('value2');
   });
   it('should clear properties', () => {
@@ -59,8 +73,15 @@ describe('core', () => {
         Config: {
           property1: undefined,
         },
-      }
+      },
     );
+    expect(config.property1).toBeUndefined();
+  });
+  it('should clear properties via simplified syntax', () => {
+    config.property1 = 'value1';
+    configure(Config, {
+      property1: undefined,
+    });
     expect(config.property1).toBeUndefined();
   });
 });
