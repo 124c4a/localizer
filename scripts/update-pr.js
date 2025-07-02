@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const moduleLabels = ['module:core', 'module:format', 'module:transform', 'module:translate'];
+const moduleLabels = ['scope:core', 'scope:format', 'scope:transform', 'scope:translate'];
 
 export default async function updatePr({ github, context }) {
   const label = process.env.CHANGELEVEL ?? 'patch';
@@ -23,7 +23,7 @@ export default async function updatePr({ github, context }) {
     pull_number: context.issue.number,
   });
 
-  const modules = process.env.MODULES.split(',').map((m) => 'module:' + m.trim());
+  const modules = process.env.MODULES.split(',').map((m) => 'scope:' + m.trim());
 
   // Remove old labels if needed
   const existingLabels = pullRequest.labels.map((l) => l.name);
@@ -47,7 +47,7 @@ export default async function updatePr({ github, context }) {
   ];
 
   // Add the new label if not already present
-  if (missingModuleLabels.length > 0) {
+  if (missingLabels.length > 0) {
     await github.rest.issues.addLabels({
       owner: context.repo.owner,
       repo: context.repo.repo,
