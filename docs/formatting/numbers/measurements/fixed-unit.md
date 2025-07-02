@@ -2,7 +2,7 @@
 order: 10
 ---
 
-# Fixed unit <Badge type="info" text="@localizer/format-number" />
+# Fixed unit <Package name="format-number"/>
 
 > **[fixedUnitFormatter](../../../api/_localizer/format-number/fixedUnitFormatter/index.md)**<`T`> ( `unit` , `options?` ): [ValueFormatter](../../index.md#valueformatter-t)<`T`>
 >

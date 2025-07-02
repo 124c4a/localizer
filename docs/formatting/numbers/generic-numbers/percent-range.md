@@ -2,7 +2,7 @@
 order: 4
 ---
 
-# Percent range <Badge type="info" text="@localizer/format-number" />
+# Percent range <Package name="format-number"/>
 
 > **[percentRangeFormatter](../../../api/_localizer/format-number/percentRangeFormatter/index.md)**<`T`> ( `options?` ): [ValueRangeFormatter](../../index.md#valuerangeformatter-t)<`T`>
 >

@@ -2,7 +2,7 @@
 order: 3
 ---
 
-# Percent <Badge type="info" text="@localizer/format-number" />
+# Percent <Package name="format-number"/>
 
 > **[percentFormatter](../../../api/_localizer/format-number/percentFormatter/index.md)**<`T`> ( `options?` ): [ValueFormatter](../../index.md#valueformatter-t)<`T`>
 >

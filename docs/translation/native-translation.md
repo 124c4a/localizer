@@ -1,4 +1,4 @@
-# Native translation support <Badge type="info" text="@localizer/translate" /><Badge type="warning" text="experimental" />
+# Native translation support <Package name="translate"/> <Experimental/>
 
 <script setup>
   import {getLocalizer, translate, translation, dictionary, loc} from '@localizer/all';

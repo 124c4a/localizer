@@ -7,7 +7,7 @@ order: 1
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Date <Badge type="info" text="@localizer/format" />
+# Date <Package name="format"/>
 
 > **[date](../../../api/_localizer/format/date/index.md)** ( `value`: _Date | number_ )
 >

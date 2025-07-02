@@ -2,7 +2,7 @@
 order: 3
 ---
 
-# Localizable <Badge type="info" text="@localizer/core" />
+# Localizable <Package name="core"/>
 
 Localizable is a core concept in **@localizer**, representing values that adapt their output based on the locale. Examples include translations, formatted data, and other locale-dependent values.
 

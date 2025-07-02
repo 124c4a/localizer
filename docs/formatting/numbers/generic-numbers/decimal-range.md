@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Decimal range <Badge type="info" text="@localizer/format-number" />
+# Decimal range <Package name="format-number"/>
 
 > **[decimalRangeFormatter](../../../api/_localizer/format-number/decimalRangeFormatter/index.md)**<`T`> ( `options?` ): [ValueRangeFormatter](../../index.md#valuerangeformatter-t)<`T`>
 >

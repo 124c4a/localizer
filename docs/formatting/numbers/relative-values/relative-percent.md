@@ -2,7 +2,7 @@
 order: 14
 ---
 
-# Relative percent <Badge type="info" text="@localizer/format-number" />
+# Relative percent <Package name="format-number"/>
 
 > **[relativePercentFormatter](../../../api/_localizer/format-number/relativeDecimalFormatter/index.md)**<`T`> ( `options?` ): [RelativeValueFormatter](../../index.md#relativevalueformatter-t)<`T`>
 >

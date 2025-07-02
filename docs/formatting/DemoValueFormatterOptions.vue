@@ -14,71 +14,71 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <script setup lang="ts">
-import { isLocalizable, Localizable } from '@localizer/all';
-import { format } from 'path';
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+  import { isLocalizable, Localizable } from '@localizer/all';
+  import { format } from 'path';
+  import { computed, onMounted, onUnmounted, ref } from 'vue';
 
-const { factory, defaultOptions, inputs, option, values } = defineProps<{
-  factory: (options: any & {}) => (...args: unknown[]) => Localizable;
-  defaultOptions?: any & {};
-  inputs: (now: Date, then: Date) => unknown[][];
-  option: string;
-  values: unknown[];
-}>();
+  const { factory, defaultOptions, inputs, option, values } = defineProps<{
+    factory: (options: any & {}) => (...args: unknown[]) => Localizable;
+    defaultOptions?: any & {};
+    inputs: (now: Date, then: Date) => unknown[][];
+    option: string;
+    values: unknown[];
+  }>();
 
-const formatters = values.map((value) =>
-  factory({ ...(defaultOptions ?? {}), [option]: value }),
-);
+  const formatters = values.map((value) => factory({ ...(defaultOptions ?? {}), [option]: value }));
 
-const formatValue = (value: unknown) => {
-  if (isLocalizable(value)) {
-    return 'loc`' + value.localize(null) + '`';
-  }
-  switch (typeof value) {
-    case 'string':
-    case 'number':
-      return value.toString();
-    default:
-      return `${value}`;
-  }
-};
+  const formatValue = (value: unknown) => {
+    if (isLocalizable(value)) {
+      return 'loc`' + value.localize(null) + '`';
+    }
+    switch (typeof value) {
+      case 'string':
+      case 'number':
+        return value.toString();
+      default:
+        return `${value}`;
+    }
+  };
 
-const now = ref(new Date());
-const then = new Date();
+  const now = ref(new Date());
+  const then = new Date();
 
-let intervalId: number;
-onMounted(() => {
-  intervalId = +setInterval(() => {
-    now.value = new Date();
-  }, 1000);
-});
+  let intervalId: number;
+  onMounted(() => {
+    intervalId = +setInterval(() => {
+      now.value = new Date();
+    }, 1000);
+  });
 
-onUnmounted(() => clearInterval(intervalId));
+  onUnmounted(() => clearInterval(intervalId));
 
-const data = computed(() => inputs(now.value, then));
+  const data = computed(() => inputs(now.value, then));
 </script>
 
 <template>
-  <table tabindex="0">
-    <thead>
-      <tr>
-        <th>
-          <code>{{ option }}</code>
-        </th>
-        <th v-for="input in data">
-          <code>{{ input[0] }}</code>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(value, index) in values">
-        <th>
-          {{ formatValue(value) }}
-        </th>
-        <td v-for="input in data">
-          {{ formatters[index](...input.slice(1)).localize('en-US') }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <ClientOnly>
+    <table tabindex="0">
+      <thead>
+        <tr>
+          <th>
+            <code>{{ option }}</code>
+          </th>
+          <th v-for="input in data">
+            <code>{{ input[0] }}</code>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(value, index) in values">
+          <th>
+            {{ formatValue(value) }}
+          </th>
+          <td v-for="input in data">
+            {{ formatters[index](...input.slice(1)).localize('en-US') }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ClientOnly>
 </template>

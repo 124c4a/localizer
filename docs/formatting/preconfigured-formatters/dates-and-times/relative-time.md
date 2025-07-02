@@ -7,7 +7,7 @@ order: 7
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Relative time <Badge type="info" text="@localizer/format" />
+# Relative time <Package name="format"/>
 
 > **[relativeTime](../../../api/_localizer/format/relativeTime/index.md)** ( `value`: _Date | number_ , `reference`: _Date | number_ )
 >

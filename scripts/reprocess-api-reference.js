@@ -56,10 +56,10 @@ function reprocessContent(content) {
   const betaIndex = lines.findIndex((line) => line.startsWith('**`Beta`**'));
 
   if (alphaIndex !== -1) {
-    lines[headerIndex] = lines[headerIndex] + ' <Badge type="warning" text="experimental" />';
+    lines[headerIndex] = lines[headerIndex] + ' <Experimental/>';
     lines.splice(alphaIndex, 1);
   } else if (betaIndex !== -1) {
-    lines[headerIndex] = lines[headerIndex] + ' <Badge type="tip" text="preview" />';
+    lines[headerIndex] = lines[headerIndex] + ' <Preview/>';
     lines.splice(betaIndex, 1);
   }
 
@@ -69,9 +69,7 @@ function reprocessContent(content) {
 
   return lines
     .map((line) =>
-      line
-        .replace('**`Alpha`**', '<Badge type="warning" text="experimental" />')
-        .replace('**`Beta`**', '<Badge type="tip" text="preview" />'),
+      line.replace('**`Alpha`**', '<Experimental/>').replace('**`Beta`**', '<Preview/>'),
     )
     .join('\n');
 }

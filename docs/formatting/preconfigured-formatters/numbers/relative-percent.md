@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Relative percentage ratio change <Badge type="info" text="@localizer/format" />
+# Relative percentage ratio change <Package name="format"/>
 
 > **[relativePercent](../../../api/_localizer/format/relativePercent/index.md)** ( `value`: _number | bigint_ , `reference`: _number | bigint_ )
 >

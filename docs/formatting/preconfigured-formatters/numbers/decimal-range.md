@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Decimal range <Badge type="info" text="@localizer/format" />
+# Decimal range <Package name="format"/>
 
 > **[decimalRange](../../../api/_localizer/format/decimalRange/index.md)** ( `start`: _number | bigint_ , `end`: _number | bigint_ )
 >

@@ -3,7 +3,7 @@
   import { demos } from '../preconfigured-formatters';
 </script>
 
-# Percentage <Badge type="info" text="@localizer/format" />
+# Percentage <Package name="format"/>
 
 > **[percent](../../../api/_localizer/format/percent/index.md)** ( `value`: _number | bigint_ )
 >

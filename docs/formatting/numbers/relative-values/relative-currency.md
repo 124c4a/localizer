@@ -2,7 +2,7 @@
 order: 15
 ---
 
-# Relative currency <Badge type="info" text="@localizer/format-number" />
+# Relative currency <Package name="format-number"/>
 
 > **[relativeCurrencyFormatter](../../../api/_localizer/format-number/relativeCurrencyFormatter/index.md)**<`T`> ( `currency` , `options?` ): [RelativeValueFormatter](../../index.md#relativevalueformatter-t)<`T`>
 >

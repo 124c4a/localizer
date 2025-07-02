@@ -3,7 +3,7 @@ order: 4
 title: Display names
 ---
 
-# Display name <Badge type="info" text="@localizer/format-displayname" />
+# Display name <Package name="format-displayname"/>
 
 > **[displayNameFormatter](../../api/_localizer/format-displayname/displayNameFormatter/index.md)**<`T`> ( `type` , `options?` ): [ValueFormatter](../index.md#valueformatter-t)<`T`>
 >
