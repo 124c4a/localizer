@@ -2,7 +2,7 @@
 
 ### 🩹 Fixes
 
-- **format:** Range separator in `dateRange` formatter doesn't take locale into account ([#111](https://github.com/124c4a/localizer/pull/111))
+- Range separator in `dateRange` formatter doesn't take locale into account ([#111](https://github.com/124c4a/localizer/pull/111))
 
 ### 🧱 Updated Dependencies
 

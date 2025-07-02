@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const moduleLabels = ['scope:core', 'scope:format', 'scope:transform', 'scope:translate'];
+import { existsSync, readFileSync } from 'node:fs';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
 
 export default async function updatePr({ github, context }) {
   const label = process.env.CHANGELEVEL ?? 'patch';
@@ -24,6 +26,7 @@ export default async function updatePr({ github, context }) {
   });
 
   const modules = process.env.MODULES.split(',').map((m) => 'scope:' + m.trim());
+  const moduleLabels = await collectScopes();
 
   // Remove old labels if needed
   const existingLabels = pullRequest.labels.map((l) => l.name);
@@ -102,4 +105,28 @@ function capitalize(str) {
     return '';
   }
   return trimmedStr.charAt(0).toUpperCase() + trimmedStr.slice(1);
+}
+
+async function collectScopes() {
+  const packageDirs = await readdir('./packages', { withFileTypes: true });
+  const packageMetas = packageDirs
+    .filter((dir) => dir.isDirectory())
+    .map((dir) => dir.name)
+    .filter((name) => existsSync(path.join('./packages', name, 'package.json')));
+
+  const data = [];
+
+  packageMetas.forEach((name) => {
+    const packageJsonPath = path.join('./packages', name, 'package.json');
+    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+    const moduleName = packageJson.name.replace('@localizer/', 'scope:');
+
+    const finalModuleName = moduleName.split('-')[0];
+
+    if (!data.includes(finalModuleName)) {
+      data.push(finalModuleName);
+    }
+  });
+
+  return data;
 }

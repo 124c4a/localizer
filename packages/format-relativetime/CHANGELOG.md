@@ -2,7 +2,7 @@
 
 ### 🩹 Fixes
 
-- **format:** Wrong argument order of `relativeTimeFormatter` ([#109](https://github.com/124c4a/localizer/pull/109))
+- Wrong argument order of `relativeTimeFormatter` ([#109](https://github.com/124c4a/localizer/pull/109))
 
 ### 🧱 Updated Dependencies
 

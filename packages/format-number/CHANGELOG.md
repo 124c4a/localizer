@@ -2,7 +2,7 @@
 
 ### 🩹 Fixes
 
-- **format:** Incorrect result of `relativePercentageFormatter` when both value and reference are `0` ([#110](https://github.com/124c4a/localizer/pull/110))
+- Incorrect result of `relativePercentageFormatter` when both value and reference are `0` ([#110](https://github.com/124c4a/localizer/pull/110))
 
 ### 🧱 Updated Dependencies
 
