@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+const moduleLabels = ['module:core', 'module:format', 'module:transform', 'module:translate'];
+
 export default async function updatePr({ github, context }) {
   const label = process.env.CHANGELEVEL ?? 'patch';
   const { data: pullRequest } = await github.rest.pulls.get({
@@ -21,10 +23,15 @@ export default async function updatePr({ github, context }) {
     pull_number: context.issue.number,
   });
 
+  const modules = process.env.MODULES.split(',').map((m) => 'module:' + m.trim());
+
   // Remove old labels if needed
   const existingLabels = pullRequest.labels.map((l) => l.name);
   for (const existingLabel of existingLabels) {
-    if (existingLabel.startsWith('semver:') && existingLabel !== label) {
+    if (
+      (existingLabel.startsWith('semver:') && existingLabel !== label) ||
+      (moduleLabels.includes(existingLabel) && !modules.includes(existingLabel))
+    ) {
       await github.rest.issues.removeLabel({
         owner: context.repo.owner,
         repo: context.repo.repo,
@@ -34,13 +41,18 @@ export default async function updatePr({ github, context }) {
     }
   }
 
+  const missingLabels = [
+    ...modules.filter((m) => !existingLabels.includes(m)),
+    ...(existingLabels.includes(label) ? [] : [label]),
+  ];
+
   // Add the new label if not already present
-  if (!existingLabels.includes(label)) {
+  if (missingModuleLabels.length > 0) {
     await github.rest.issues.addLabels({
       owner: context.repo.owner,
       repo: context.repo.repo,
       issue_number: context.issue.number,
-      labels: [label],
+      labels: missingLabels,
     });
   }
 
@@ -69,7 +81,6 @@ export default async function updatePr({ github, context }) {
     };
   }
 
-  metadata.scope = process.env.MODULES;
   metadata.breaking = process.env.CHANGELEVEL === 'semver:major';
   const scopePart = metadata.scope ? `(${metadata.scope})` : '';
 
