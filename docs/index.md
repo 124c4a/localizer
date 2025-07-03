@@ -17,3 +17,5 @@ hero:
       text: Formatting
       link: /formatting
 ---
+
+<!--@include: ./changelog.inc-->

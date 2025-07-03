@@ -95,6 +95,7 @@
         "options": {
           "commands": [
             "node scripts/generate-package-reference.js",
+            "node scripts/generate-recent-changes.js",
             "vitepress build"
           ]
         }
@@ -107,6 +108,7 @@
         "options": {
           "commands": [
             "node scripts/generate-package-reference.js",
+            "node scripts/generate-recent-changes.js",
             "vitepress dev"
           ]
         }
@@ -118,7 +120,6 @@
         ],
         "options": {
           "commands": [
-            "node scripts/generate-package-reference.js",
             "vitepress serve"
           ]
         }

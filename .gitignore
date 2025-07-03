@@ -59,3 +59,4 @@ eslint-report.json
 .vitepress/theme/data
 
 docs/api
+docs/changelog.inc
