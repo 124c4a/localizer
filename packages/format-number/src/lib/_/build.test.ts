@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { upperCase } from '@localizer/transform';
-
 import { _buildFormatter, _buildRangeFormatter, _buildUnitFormatter } from './build.js';
 
 describe('buildFormatter', () => {
