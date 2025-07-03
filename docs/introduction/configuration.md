@@ -86,3 +86,83 @@ setActiveLocale('en');
 ```
 
 :::
+
+## [DefaultFormatters](../api/_localizer/format/DefaultFormattersOptions/index.md) <Package name="format"/>
+
+This configuration allows to change the default behavior of [`autoFormat`](../formatting/preconfigured-formatters/universal/auto-format.md) formatter:
+
+```typescript
+configure(
+  { DefaultFormatters },
+  {
+    DefaultFormatters: {
+      number: decimal,
+      date: date,
+      array: list,
+      boolean: stringify,
+      string: stringify,
+      default: stringify,
+    },
+  },
+);
+```
+
+---
+
+### `number`
+
+Specifies the formatter to use for `number` and `bigint` values.
+
+**Type:** `ValueFormatter<number | bigint>`
+
+**Default:** `decimal`
+
+---
+
+### `date`
+
+Specifies the formatter to use for `Date` values.
+
+**Type:** `ValueFormatter<Date>`
+
+**Default:** `date`
+
+---
+
+### `array`
+
+Specifies the formatter to use for arrays.
+
+**Type:** `ValueFormatter<Localizable[]>`
+
+**Default:** `list`
+
+---
+
+### `boolean`
+
+Specifies the formatter to use for `boolean` values.
+
+**Type:** `ValueFormatter<boolean>`
+
+**Default:** `stringify`
+
+---
+
+### `string`
+
+Specifies the formatter to use for `string` values.
+
+**Type:** `ValueFormatter<string>`
+
+**Default:** `stringify`
+
+---
+
+### `default`
+
+Specifies the formatter to use for all other values.
+
+**Type:** `ValueFormatter<boolean>`
+
+**Default:** `stringify`

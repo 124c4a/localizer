@@ -13,7 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Empty, isLocalizable, Localizable } from '@localizer/core';
+import {
+  Configurer,
+  declareConfiguration,
+  Empty,
+  isLocalizable,
+  Localizable,
+  ValueFormatter,
+} from '@localizer/core';
 
 import { date } from '../consts/datetime.js';
 import { list } from '../consts/list.js';
@@ -21,7 +28,84 @@ import { decimal } from '../consts/number.js';
 import { stringify } from './stringify.js';
 
 /**
- * Formats a value into a `Localizable` object based on its type.
+ * Options for the `autoFormat` function, defining how different types of values should be
+ * formatted.
+ *
+ * @public
+ */
+export type DefaultFormattersOptions = {
+  /**
+   * Formatter for numbers and bigints.
+   *
+   * @defaultValue `decimal`
+   *
+   * @public
+   */
+  number: ValueFormatter<number | bigint>;
+  /**
+   * Formatter for dates.
+   *
+   * @defaultValue `date`
+   *
+   * @public
+   */
+  date: ValueFormatter<Date>;
+  /**
+   * Formatter for arrays.
+   *
+   * @defaultValue `list`
+   *
+   * @public
+   */
+  array: ValueFormatter<Localizable[]>;
+  /**
+   * Formatter for booleans.
+   *
+   * @defaultValue `stringify`
+   *
+   * @public
+   */
+  boolean: ValueFormatter<boolean>;
+  /**
+   * Formatter for strings.
+   *
+   * @defaultValue `stringify`
+   *
+   * @public
+   */
+  string: ValueFormatter<string>;
+  /**
+   * Formatter for all other types.
+   *
+   * @defaultValue `stringify`
+   *
+   * @public
+   */
+  default: ValueFormatter<unknown>;
+};
+
+const [_defaultFormatOptions, _DefaultFormatters] = declareConfiguration<DefaultFormattersOptions>(
+  'DefaultFormatters',
+  {
+    number: decimal,
+    date: date,
+    array: list,
+    boolean: stringify,
+    string: stringify,
+    default: stringify,
+  },
+);
+
+/**
+ * Updates auto format options.
+ *
+ * @public
+ */
+export const DefaultFormatters: Configurer<DefaultFormattersOptions> = _DefaultFormatters;
+
+/**
+ * Formats a value into a `Localizable` object based on its type. By default, it uses the following
+ * formatters:
  *
  * - Numbers and bigints: formatted with `decimal`.
  * - `Number` objects: formatted using their primitive value.
@@ -38,19 +122,24 @@ import { stringify } from './stringify.js';
  * @public
  */
 export function autoFormat(value: unknown): Localizable {
-  if (['number', 'bigint'].includes(typeof value)) {
-    return decimal(value as number | bigint);
-  } else if (value instanceof Number) {
-    return decimal(value.valueOf());
-  } else if (value instanceof Date) {
-    return date(value);
-  } else if (Array.isArray(value)) {
-    return list(value.map((it) => autoFormat(it)));
-  } else if (isLocalizable(value)) {
-    return value;
-  } else if (value === undefined) {
-    return Empty;
-  } else {
-    return stringify(value);
+  switch (true) {
+    case value === undefined || value === null:
+      return Empty;
+    case ['number', 'bigint'].includes(typeof value):
+      return _defaultFormatOptions.number(value as number | bigint);
+    case value instanceof Number:
+      return _defaultFormatOptions.number(value.valueOf());
+    case value instanceof Date:
+      return _defaultFormatOptions.date(value);
+    case Array.isArray(value):
+      return _defaultFormatOptions.array(value.map((it) => autoFormat(it)));
+    case typeof value === 'boolean':
+      return _defaultFormatOptions.boolean(value);
+    case typeof value === 'string':
+      return _defaultFormatOptions.string(value);
+    case isLocalizable(value):
+      return value;
+    default:
+      return _defaultFormatOptions.default(value);
   }
 }
