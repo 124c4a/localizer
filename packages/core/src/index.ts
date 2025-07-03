@@ -28,6 +28,7 @@ export * from './lib/types/formatter.js';
 export * from './lib/types/configuration.js';
 
 export * from './lib/fn/configure.js';
+export * from './lib/fn/declare-configuration.js';
 
 export { type CoreOptions, Core, setActiveLocale } from './lib/fn/locale/options.js';
 
