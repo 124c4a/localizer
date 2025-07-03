@@ -93,6 +93,8 @@ function parseCommitType(type) {
       return 'feature';
     case type?.trim().startsWith('fix'):
       return 'fix';
+    case type?.trim().startsWith('chore'):
+      return 'chore';
     default:
       return 'other'; // Default type for unrecognized types
   }
@@ -165,6 +167,10 @@ async function fetchDiff(ctx, baseRef, headRef) {
 }
 function classifyChangeLevel(added, deleted, oldName, moduleName, currentChange) {
   switch (true) {
+    case currentChange.type === 'chore' && !currentChange.changeLevel[moduleName]:
+      // Skip chores for change level
+      currentChange.changeLevel[moduleName] = 'patch';
+      break;
     case +deleted > 0:
       currentChange.changeLevel[moduleName] = 'major';
       break;
