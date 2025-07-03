@@ -39,7 +39,7 @@ describe('dateTimeFormatter', () => {
       day: 'numeric',
     });
     const result = formatter(new Date('2023-01-01')).localize(null);
-    expect(result).toBe('2023-01-01T00:00:00.000Z');
+    expect(result).toBe('"2023-01-01T00:00:00.000Z"');
   });
 
   it('filters parts based on options if provided', () => {

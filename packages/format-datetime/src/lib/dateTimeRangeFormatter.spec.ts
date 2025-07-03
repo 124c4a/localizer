@@ -39,7 +39,7 @@ describe('dateTimeRangeFormatter', () => {
       day: 'numeric',
     });
     const result = formatter(new Date('2023-01-01'), new Date('2023-12-31')).localize(null);
-    expect(result).toBe('2023-01-01T00:00:00.000Z - 2023-12-31T00:00:00.000Z');
+    expect(result).toBe('{"start":"2023-01-01T00:00:00.000Z","end":"2023-12-31T00:00:00.000Z"}');
   });
 
   it('filters parts based on source if provided', () => {

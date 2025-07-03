@@ -27,7 +27,7 @@ describe('listFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = listFormatter({ delimiter: loc`, ` });
     const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(null);
-    expect(result).toBe('[list]');
+    expect(result).toBe('["apple","banana","cherry"]');
   });
 
   it('formats a list using Intl.ListFormat for a given locale', () => {
@@ -39,7 +39,7 @@ describe('listFormatter', () => {
   it('returns a placeholder when formatting list using Intl.ListFormat for an undefined locale', () => {
     const formatter = listFormatter({ style: 'long', type: 'conjunction' });
     const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(null);
-    expect(result).toBe('apple,banana,cherry');
+    expect(result).toBe('["apple","banana","cherry"]');
   });
 
   it('handles empty lists correctly', () => {

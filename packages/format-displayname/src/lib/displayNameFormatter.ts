@@ -38,7 +38,7 @@ export function displayNameFormatter<T extends string>(
 
     return loc((locale) => {
       if (locale === null) {
-        return value;
+        return JSON.stringify(value);
       }
 
       formatter[locale] ||= new Intl.DisplayNames(locale, {

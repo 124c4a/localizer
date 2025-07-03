@@ -56,6 +56,7 @@ const genericObject: Localizable<GenericObject> = loc((locale) => {
 This flexibility enables creating complex, locale-aware objects or values while adhering to consistent localization principles.
 
 ::: warning
-When creating custom [`Localizable`](../api/_localizer/core/Localizable/index.md) functions, ensure they handle `null` locales gracefully. This ensures compatibility with the [`IdentityLocalizer`](./localizer.md#identitylocalizer), which uses `null` to produce stable, locale-independent identifiers.
+
+When creating custom [`Localizable`](../api/_localizer/core/Localizable/index.md) functions, ensure they handle `null` locales gracefully. This ensures compatibility with the [`TestLocalizer`](./localizer.md#testlocalizer), which uses `null` to produce locale-independent values.
 
 :::

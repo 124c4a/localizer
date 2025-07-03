@@ -43,7 +43,7 @@ describe('datetime formatters', () => {
       '2025. 1. 1.\u2009~\u20092025. 1. 31.',
     ); // Adjust based on locale and separator
     expect(dateRange(startDate, endDate).localize(null)).toBe(
-      `${startDate.toISOString()}\u2009\u2013\u2009${endDate.toISOString()}`,
+      `"${startDate.toISOString()}"\u2009\u2013\u2009"${endDate.toISOString()}"`,
     ); // Adjust based on locale and separator
   });
 

@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { _getIdentityLocalizer } from '../fn/localizer/_/get-identity-localizer.js';
 import { _getImplicitLocalizer } from '../fn/localizer/_/get-implicit-localizer.js';
+import { _getTestLocalizer } from '../fn/localizer/_/get-test-localizer.js';
 import { _getUninitializedLocalizer } from '../fn/localizer/_/get-uninitialized-localizer.js';
 import { Localizer } from '../types/localizer.js';
 
@@ -36,9 +36,8 @@ export const ImplicitLocalizer: Localizer = _getImplicitLocalizer();
 export const UninitializedLocalizer: Localizer = _getUninitializedLocalizer();
 
 /**
- * A Localizer that returns stable identifiers instead of localized strings. Useful for generating
- * unique, locale-independent identifiers.
+ * A Localizer that returns locale-independent representation of data. Useful for testing purposes.
  *
- * @public
+ * @experimental
  */
-export const IdentityLocalizer: Localizer = _getIdentityLocalizer();
+export const TestLocalizer: Localizer = _getTestLocalizer();
