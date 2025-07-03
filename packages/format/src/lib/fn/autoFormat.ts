@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import {
+  Configurer,
   declareConfiguration,
   Empty,
   isLocalizable,
@@ -83,7 +84,7 @@ export type DefaultFormattersOptions = {
   default: ValueFormatter<unknown>;
 };
 
-const [defaultFormatOptions, DefaultFormatters] = declareConfiguration<DefaultFormattersOptions>(
+const [_defaultFormatOptions, _DefaultFormatters] = declareConfiguration<DefaultFormattersOptions>(
   'DefaultFormatters',
   {
     number: decimal,
@@ -95,14 +96,12 @@ const [defaultFormatOptions, DefaultFormatters] = declareConfiguration<DefaultFo
   },
 );
 
-export {
-  /**
-   * Updates auto format options.
-   *
-   * @public
-   */
-  DefaultFormatters,
-};
+/**
+ * Updates auto format options.
+ *
+ * @public
+ */
+export const DefaultFormatters: Configurer<DefaultFormattersOptions> = _DefaultFormatters;
 
 /**
  * Formats a value into a `Localizable` object based on its type. By default, it uses the following
@@ -127,20 +126,20 @@ export function autoFormat(value: unknown): Localizable {
     case value === undefined || value === null:
       return Empty;
     case ['number', 'bigint'].includes(typeof value):
-      return defaultFormatOptions.number(value as number | bigint);
+      return _defaultFormatOptions.number(value as number | bigint);
     case value instanceof Number:
-      return defaultFormatOptions.number(value.valueOf());
+      return _defaultFormatOptions.number(value.valueOf());
     case value instanceof Date:
-      return defaultFormatOptions.date(value);
+      return _defaultFormatOptions.date(value);
     case Array.isArray(value):
-      return defaultFormatOptions.array(value.map((it) => autoFormat(it)));
+      return _defaultFormatOptions.array(value.map((it) => autoFormat(it)));
     case typeof value === 'boolean':
-      return defaultFormatOptions.boolean(value);
+      return _defaultFormatOptions.boolean(value);
     case typeof value === 'string':
-      return defaultFormatOptions.string(value);
+      return _defaultFormatOptions.string(value);
     case isLocalizable(value):
       return value;
     default:
-      return defaultFormatOptions.default(value);
+      return _defaultFormatOptions.default(value);
   }
 }
