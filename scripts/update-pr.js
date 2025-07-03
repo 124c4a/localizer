@@ -25,7 +25,9 @@ export default async function updatePr({ github, context }) {
     pull_number: context.issue.number,
   });
 
-  const modules = process.env.MODULES.split(',').map((m) => 'scope:' + m.trim());
+  const modules = process.env.MODULES.split(',')
+    .filter((m) => m !== '')
+    .map((m) => 'scope:' + m.trim());
   const moduleLabels = await collectScopes();
 
   // Remove old labels if needed
