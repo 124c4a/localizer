@@ -16,6 +16,11 @@
 import { autoFormat } from './autoFormat.js';
 
 describe('autoFormat', () => {
+  it('formats booleans correctly as strings', () => {
+    const result = autoFormat(true);
+    expect(result.localize('en-US')).toBe('true');
+  });
+
   it('formats numbers correctly as decimals', () => {
     const result = autoFormat(123456);
     expect(result.localize('en-US')).toBe('123,456');
@@ -51,6 +56,16 @@ describe('autoFormat', () => {
   it('returns Empty for undefined values', () => {
     const result = autoFormat(undefined);
     expect(result.localize('en-US')).toBe('');
+  });
+
+  it('returns Empty for null values', () => {
+    const result = autoFormat(null);
+    expect(result.localize('en-US')).toBe('');
+  });
+
+  it('formats strings using stringify', () => {
+    const result = autoFormat('test string');
+    expect(result.localize('en-US')).toBe('test string');
   });
 
   it('formats other values using stringify', () => {
