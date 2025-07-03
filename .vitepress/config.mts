@@ -19,14 +19,16 @@ import { defineConfig, UserConfig } from 'vitepress';
 import { withSidebar } from 'vitepress-sidebar';
 import { SidebarItem } from 'vitepress-sidebar/types';
 
-const fileAndStyles: Record<string, string> = {};
-
 function patchSidebar(entry: SidebarItem): SidebarItem {
   if (entry.link && entry.link.startsWith('/tmp/')) {
     entry.link = entry.link.replace('/tmp/', '/');
   }
-  if (entry.text && entry.text.startsWith('@localizer/')) {
-    entry.text = entry.text.replace('@localizer/', '');
+  if (entry.text) {
+    if (entry.text.startsWith('@localizer/')) {
+      entry.text = entry.text.replace('@localizer/', '');
+    } else if (entry.text === 'Variables') {
+      entry.text = 'Constants';
+    }
   }
 
   if (entry.items) {
@@ -52,6 +54,7 @@ const config: UserConfig = {
   base: '/localizer/',
   srcDir: 'docs',
   markdown: {},
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -61,6 +64,9 @@ const config: UserConfig = {
     ],
 
     socialLinks: [{ icon: 'github', link: 'https://github.com/124c4a/localizer' }],
+    editLink: {
+      pattern: 'https://github.com/124c4a/localizer/edit/main/docs/:path',
+    },
 
     search: {
       provider: 'local',
@@ -74,65 +80,30 @@ const config: UserConfig = {
       },
     },
   },
+  transformHtml(code) {
+    const styleRegex = /<css-render-style>(.*)<\/css-render-style>/s;
+    const style = styleRegex.exec(code)?.[1];
+
+    if (style) {
+      return code.replace(styleRegex, '').replace(/<\/head>/, `${style}</head>`);
+    } else {
+      return code.replace(styleRegex, '');
+    }
+  },
 };
 
 const configWithSidebar = withSidebar(config, {
-  // ============ [ RESOLVING PATHS ] ============
   documentRootPath: 'docs',
-  // scanStartPath: null,
-  // resolvePath: null,
-  // basePath: null,
-  //
-  // ============ [ GROUPING ] ============
   collapsed: true,
-  // collapseDepth: 2,
-  // rootGroupText: 'Contents',
-  // rootGroupLink: 'https://github.com/jooy2',
-  // rootGroupCollapsed: false,
-  //
-  // ============ [ GETTING MENU TITLE ] ============
   useTitleFromFileHeading: true,
   useTitleFromFrontmatter: true,
   useFolderLinkFromIndexFile: true,
   useFolderTitleFromIndexFile: true,
-  // frontmatterTitleFieldName: 'title',
-  //
-  // ============ [ GETTING MENU LINK ] ============
   useFolderLinkFromSameNameSubFile: true,
-  // useFolderLinkFromIndexFile: false,
-  // folderLinkNotIncludesFileName: true,
-  //
-  // ============ [ INCLUDE / EXCLUDE ] ============
   excludePattern: ['api'],
-  // excludeFilesByFrontmatterFieldName: 'exclude',
-  // includeDotFiles: false,
-  // includeEmptyFolder: false,
-  // includeRootIndexFile: false,
-  // includeFolderIndexFile: false,
-  //
-  // ============ [ STYLING MENU TITLE ] ============
   hyphenToSpace: true,
-  // underscoreToSpace: false,
   capitalizeFirst: true,
-  // capitalizeEachWords: false,
-  // keepMarkdownSyntaxFromTitle: false,
-  // removePrefixAfterOrdering: false,
-  // prefixSeparator: '.',
-  //
-  // ============ [ SORTING ] ============
-  // manualSortFileNameByPriority: ['first.md', 'second', 'third.md'],
-  // sortFolderTo: null,
-  // sortMenusByName: false,
-  // sortMenusByFileDatePrefix: false,
   sortMenusByFrontmatterOrder: true,
-  // frontmatterOrderDefaultValue: 0,
-  // sortMenusByFrontmatterDate: true,
-  // sortMenusOrderByDescending: false,
-  // sortMenusOrderNumericallyFromTitle: false,
-  // sortMenusOrderNumericallyFromLink: true,
-  //
-  // ============ [ MISC ] ============
-  // debugPrint: false,
 });
 
 configWithSidebar.themeConfig.sidebar.push(

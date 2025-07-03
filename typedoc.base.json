@@ -1,6 +1,11 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme", "typedoc-plugin-mdn-links"],
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-frontmatter",
+    "typedoc-vitepress-theme",
+    "typedoc-plugin-mdn-links"
+  ],
   "excludeInternal": true,
   "parametersFormat": "table",
   "interfacePropertiesFormat": "table",
@@ -20,5 +25,9 @@
   "excludeScopesInPaths": true,
   "formatWithPrettier": true,
   "router": "structure-dir",
-  "includeVersion": true
+  "includeVersion": true,
+  "frontmatterGlobals": {
+    "editLink": false,
+    "lastUpdated": false
+  }
 }

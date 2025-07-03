@@ -69,7 +69,11 @@ function reprocessContent(content) {
 
   return lines
     .map((line) =>
-      line.replace('**`Alpha`**', '<Experimental/>').replace('**`Beta`**', '<Preview/>'),
+      line
+        .replace('**`Alpha`**', '<Experimental/>')
+        .replace('**`Beta`**', '<Preview/>')
+        .replace('# Variable: ', '# Constant: ')
+        .replace('## Variables', '## Constants'),
     )
     .join('\n');
 }

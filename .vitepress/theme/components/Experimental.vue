@@ -19,12 +19,10 @@ limitations under the License.
 </script>
 
 <template>
-  <ClientOnly>
-    <NTooltip trigger="hover">
-      <template #trigger>
-        <NTag round type="warning" :bordered="false">experimental</NTag>
-      </template>
-      This is an experimental feature. It may change or be removed in future versions.
-    </NTooltip>
-  </ClientOnly>
+  <NTooltip trigger="hover">
+    <template #trigger>
+      <NTag round type="warning" :bordered="false">experimental</NTag>
+    </template>
+    This is an experimental feature. It may change or be removed in future versions.
+  </NTooltip>
 </template>
