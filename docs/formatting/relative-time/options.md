@@ -9,7 +9,7 @@ import DemoValueFormatterOptions from '../DemoValueFormatterOptions.vue';
 import { relativeTimeFormatter } from '@localizer/all';
 
 const dateInputs = (now) => [
-  ['1980-06-19 00:05:31, now', new Date("1980-06-19 00:05:31"), now], 
+  ['1980-06-19 00:05:31, now', new Date("1980-06-19 00:05:31"), now],
   ['2020-01-24 05:50:00, 2020-01-23 04:41:20', new Date('2020-01-24 05:50:00'), new Date('2020-01-23 04:41:20')]
 ];
 </script>
@@ -57,16 +57,6 @@ This option is not part of [`Intl.RelativeTimeFormat`](https://developer.mozilla
 :::
 
 <DemoValueFormatterOptions option="stops" :values="[['second'], ['minute'], ['hour'], ['day'], ['day', 'week'], ['week'], ['month'], ['quarter'], ['year']]" :defaultOptions="{numeric:'auto'}" :factory=relativeTimeFormatter :inputs=dateInputs />
-
-## `transform`
-
-Specifies array of transformers to apply to the result.
-
-::: info NOTE
-
-This option is not part of [`Intl.RelativeTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat) API.
-
-:::
 
 ---
 

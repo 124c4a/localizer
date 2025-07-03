@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { UnitValueFormatter, ValueFormatter, ValueRangeFormatter, loc } from '@localizer/core';
-import { transform } from '@localizer/transform';
 
 import { NumberFormatOptions } from '../options.js';
 
@@ -38,7 +37,7 @@ export function _buildFormatter<T extends number | bigint>(
   return (value) => {
     const formatter: Record<string, Intl.NumberFormat> = {};
 
-    const result = loc((locale) => {
+    return loc((locale) => {
       if (locale === null) {
         switch (style) {
           case 'currency':
@@ -66,8 +65,6 @@ export function _buildFormatter<T extends number | bigint>(
             .join('')
         : formatter[locale].format(value);
     });
-
-    return options.transform ? transform(result, options.transform) : result;
   };
 }
 
@@ -96,7 +93,7 @@ export function _buildRangeFormatter<T extends number | bigint>(
   return (start, end) => {
     const formatter: Record<string, Intl.NumberFormat> = {};
 
-    const result = loc((locale) => {
+    return loc((locale) => {
       if (locale === null) {
         switch (style) {
           case 'currency':
@@ -130,8 +127,6 @@ export function _buildRangeFormatter<T extends number | bigint>(
             .join('')
         : formatter[locale].formatRange(start, end);
     });
-
-    return options.transform ? transform(result, options.transform) : result;
   };
 }
 
@@ -161,7 +156,7 @@ export function _buildUnitFormatter<T extends number | bigint, U extends string>
   return (value, unit) => {
     const formatter: Record<string, Record<string, Intl.NumberFormat>> = {};
 
-    const result = loc((locale) => {
+    return loc((locale) => {
       if (locale === null) {
         return `${value} ${unit}`;
       }
@@ -181,7 +176,5 @@ export function _buildUnitFormatter<T extends number | bigint, U extends string>
             .join('')
         : formatter[locale][unit].format(value);
     });
-
-    return options.transform ? transform(result, options.transform) : result;
   };
 }

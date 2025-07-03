@@ -27,10 +27,8 @@ describe('transform', () => {
   });
 
   it('applies multiple transformers in sequence', () => {
-    const transformer1 = (value: Localizable) =>
-      loc((locale) => value.localize(locale) + ' step1');
-    const transformer2 = (value: Localizable) =>
-      loc((locale) => value.localize(locale) + ' step2');
+    const transformer1 = (value: Localizable) => loc((locale) => value.localize(locale) + ' step1');
+    const transformer2 = (value: Localizable) => loc((locale) => value.localize(locale) + ' step2');
     const value: Localizable = loc`original`;
     const result = transform(value, [transformer1, transformer2]);
     expect(result.localize('en')).toBe('original step1 step2');
@@ -40,5 +38,27 @@ describe('transform', () => {
     const value: Localizable = loc`original`;
     const result = transform(value, []);
     expect(result.localize('en')).toBe('original');
+  });
+
+  it('applies a single transformer to the value formatter', () => {
+    const transformer = (value: Localizable) =>
+      loc((locale) => value.localize(locale) + ' transformed');
+    const formatter = (value: string) => loc(() => value + ' formatted');
+    const result = transform(formatter, [transformer]);
+    expect(result('original').localize('en')).toBe('original formatted transformed');
+  });
+
+  it('applies multiple transformers to a value formatter in sequence', () => {
+    const transformer1 = (value: Localizable) => loc((locale) => value.localize(locale) + ' step1');
+    const transformer2 = (value: Localizable) => loc((locale) => value.localize(locale) + ' step2');
+    const formatter = (value: string) => loc(() => value + ' formatted');
+    const result = transform(formatter, [transformer1, transformer2]);
+    expect(result('original').localize('en')).toBe('original formatted step1 step2');
+  });
+
+  it('returns the original result of value formatter when no transformers are provided', () => {
+    const formatter = (value: string) => loc(() => value + ' formatted');
+    const result = transform(formatter, []);
+    expect(result('original').localize('en')).toBe('original formatted');
   });
 });

@@ -15,7 +15,7 @@
  */
 import { loc } from '@localizer/core';
 import { decimalFormatter, decimalRangeFormatter } from '@localizer/format-number';
-import { apply, Transformer } from '@localizer/transform';
+import { apply, transform, Transformer } from '@localizer/transform';
 
 const ignoreUndeterminedLanguage: Transformer = (value) =>
   loc((locale) => (locale === null ? value.localize('en') : value.localize(locale)));
@@ -26,10 +26,12 @@ const ignoreUndeterminedLanguage: Transformer = (value) =>
  *
  * @public
  */
-export const DecimalSeparator = decimalFormatter({
-  parts: ['decimal'],
-  transform: [ignoreUndeterminedLanguage],
-})(1.1);
+export const DecimalSeparator = transform(
+  decimalFormatter({
+    parts: ['decimal'],
+  })(1.1),
+  [ignoreUndeterminedLanguage],
+);
 
 /**
  * Formats the thousand separator with locale settings. Handles undetermined language using a
@@ -37,11 +39,13 @@ export const DecimalSeparator = decimalFormatter({
  *
  * @public
  */
-export const ThousandSeparator = decimalFormatter({
-  useGrouping: 'always',
-  parts: ['group'],
-  transform: [ignoreUndeterminedLanguage],
-})(1000);
+export const ThousandSeparator = transform(
+  decimalFormatter({
+    useGrouping: 'always',
+    parts: ['group'],
+  })(1000),
+  [ignoreUndeterminedLanguage],
+);
 
 /**
  * Formats a date range with locale-specific settings. Handles undetermined language using a
@@ -49,7 +53,9 @@ export const ThousandSeparator = decimalFormatter({
  *
  * @public
  */
-export const RangeSeparator = decimalRangeFormatter({
-  parts: ['literal'],
-  transform: [ignoreUndeterminedLanguage, apply((str) => `\u2009${str}\u2009`)], // thin space
-})(1, 2);
+export const RangeSeparator = transform(
+  decimalRangeFormatter({
+    parts: ['literal'],
+  })(1, 2),
+  [ignoreUndeterminedLanguage, apply((str) => `\u2009${str}\u2009`)],
+);

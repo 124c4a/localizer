@@ -54,16 +54,6 @@ This option is only usable when formatting language names
 
 <DemoValueFormatterOptions option="languageDisplay" :values="['dialect', 'standard']" :factory=factory :inputs=inputs />
 
-## `transform`
-
-Specifies array of [transformations](../../introduction/transformations.md) to apply to the result.
-
-::: info NOTE
-
-This option is not part of [`Intl.DisplayNames`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames) API.
-
-:::
-
 ---
 
 <small>

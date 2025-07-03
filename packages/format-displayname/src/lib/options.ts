@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Transformer } from '@localizer/transform';
-
 /**
  * Options for formatting display names with `Intl.DisplayNames`.
  *
@@ -62,12 +60,4 @@ export type DisplayNameFormatOptions = {
    * @public
    */
   fallback?: 'code' | 'none';
-
-  /**
-   * A list of functions to transform the formatted display name. Each function processes a
-   * Localizable and returns a modified Localizable.
-   *
-   * @public
-   */
-  transform?: Transformer[];
 };

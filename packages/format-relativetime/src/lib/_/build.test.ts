@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { upperCase } from '@localizer/transform';
-
 import { _buildFormatter } from './build.js';
 
 describe('_buildFormatter', () => {
@@ -30,15 +28,6 @@ describe('_buildFormatter', () => {
     const result2 = formatter(new Date('2023-01-02'), new Date('2023-01-01')).localize(null);
     expect(result1).toBe('2023-01-02T00:00:00.000Z -1 day');
     expect(result2).toBe('2023-01-01T00:00:00.000Z +1 day');
-  });
-
-  it('applies transform function if provided', () => {
-    const formatter = _buildFormatter({
-      numeric: 'auto',
-      transform: [upperCase],
-    });
-    const result = formatter(new Date('2023-01-01'), new Date('2023-01-02')).localize('en-US');
-    expect(result).toBe('YESTERDAY');
   });
 
   it('handles past relative times correctly', () => {

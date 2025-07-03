@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Transformer } from '@localizer/transform';
 
 /**
  * Options for customizing date and time formatting.
@@ -162,13 +161,6 @@ export type DateTimeFormatOptions = {
    * @public
    */
   fractionalSecondDigits?: 1 | 2 | 3;
-
-  /**
-   * List of transformation functions applied to the formatted output.
-   *
-   * @public
-   */
-  transform?: Transformer[];
 
   /**
    * Specifies which parts to include in the formatted output. If omitted, all parts are included by
