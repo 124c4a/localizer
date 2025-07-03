@@ -41,7 +41,12 @@ export interface CoreOptions {
   activeLocale: LocaleCode | undefined;
 }
 
-const [
+const [coreOptions, Core] = declareConfiguration<CoreOptions>('Core', {
+  fallbackLocales: ['en'],
+  activeLocale: undefined,
+});
+
+export {
   /**
    * Singleton instance of core localization options.
    *
@@ -58,12 +63,7 @@ const [
    * @public
    */
   Core,
-] = declareConfiguration<CoreOptions>('Core', {
-  fallbackLocales: ['en'],
-  activeLocale: undefined,
-});
-
-export { coreOptions, Core };
+};
 
 /**
  * Activates implicit localization by setting the active locale.

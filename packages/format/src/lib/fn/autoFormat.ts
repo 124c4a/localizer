@@ -83,33 +83,26 @@ export type DefaultFormattersOptions = {
   default: ValueFormatter<unknown>;
 };
 
-const [
-  /**
-   * Singleton instance of auto format options.
-   *
-   * Provides default formatters for numbers, dates, arrays, booleans, and other types. Can be
-   * updated dynamically via the `AutoFormat` function.
-   *
-   * @internal
-   */
-  defaultFormatOptions,
+const [defaultFormatOptions, DefaultFormatters] = declareConfiguration<DefaultFormattersOptions>(
+  'DefaultFormatters',
+  {
+    number: decimal,
+    date: date,
+    array: list,
+    boolean: stringify,
+    string: stringify,
+    default: stringify,
+  },
+);
 
+export {
   /**
    * Updates auto format options.
    *
    * @public
    */
   DefaultFormatters,
-] = declareConfiguration<DefaultFormattersOptions>('DefaultFormatters', {
-  number: decimal,
-  date: date,
-  array: list,
-  boolean: stringify,
-  string: stringify,
-  default: stringify,
-});
-
-export { DefaultFormatters };
+};
 
 /**
  * Formats a value into a `Localizable` object based on its type. By default, it uses the following
