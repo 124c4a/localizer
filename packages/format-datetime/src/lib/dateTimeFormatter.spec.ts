@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { upperCase } from '@localizer/transform';
-
 import { dateTimeFormatter } from './dateTimeFormatter.js';
 
 describe('dateTimeFormatter', () => {
@@ -48,16 +46,5 @@ describe('dateTimeFormatter', () => {
     const formatter = dateTimeFormatter({ year: 'numeric', parts: ['year'] });
     const result = formatter(new Date('2023-01-01')).localize('en-US');
     expect(result).toBe('2023');
-  });
-
-  it('applies transform function if provided', () => {
-    const formatter = dateTimeFormatter({
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      transform: [upperCase],
-    });
-    const result = formatter(new Date('2023-01-01')).localize('en-US');
-    expect(result).toBe('JANUARY 1, 2023');
   });
 });

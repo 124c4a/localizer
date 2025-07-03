@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { Localizable, ValueFormatter, loc, localizeArray } from '@localizer/core';
-import { transform } from '@localizer/transform';
 
 import { ListFormatOptions } from './options.js';
 
@@ -39,7 +38,7 @@ export function listFormatter<T extends Localizable[]>(
 ): ValueFormatter<T> {
   if ('delimiter' in options) {
     return (value) => {
-      const result = loc((locale) => {
+      return loc((locale) => {
         if (locale === null) {
           return '[list]';
         }
@@ -48,14 +47,12 @@ export function listFormatter<T extends Localizable[]>(
           .filter((s) => s !== '')
           .join(options.delimiter.localize(locale));
       });
-
-      return options.transform ? transform(result, options.transform) : result;
     };
   } else {
     return (value) => {
       const formatter: Record<string, Intl.ListFormat> = {};
 
-      const result = loc((locale) => {
+      return loc((locale) => {
         if (locale === null) {
           return `${localizeArray(value, locale)}`;
         }
@@ -64,8 +61,6 @@ export function listFormatter<T extends Localizable[]>(
 
         return formatter[locale].format(localizeArray(value, locale));
       });
-
-      return options.transform ? transform(result, options.transform) : result;
     };
   }
 }

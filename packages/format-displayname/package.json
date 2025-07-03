@@ -44,8 +44,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "1.0.1",
-    "@localizer/transform": "1.0.1"
+    "@localizer/core": "1.0.1"
   },
   "nx": {
     "targets": {

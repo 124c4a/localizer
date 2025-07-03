@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { ValueFormatter, loc } from '@localizer/core';
-import { transform } from '@localizer/transform';
 
 import { DisplayNameFormatOptions } from './options.js';
 
@@ -37,7 +36,7 @@ export function displayNameFormatter<T extends string>(
   return (value) => {
     const formatter: Record<string, Intl.DisplayNames> = {};
 
-    const result = loc((locale) => {
+    return loc((locale) => {
       if (locale === null) {
         return value;
       }
@@ -49,7 +48,5 @@ export function displayNameFormatter<T extends string>(
 
       return formatter[locale].of(value) ?? '';
     });
-
-    return options?.transform ? transform(result, options.transform) : result;
   };
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { Localizable } from '@localizer/core';
-import { Transformer } from '@localizer/transform';
 
 /**
  * Options for formatting a list of localized values.
@@ -29,7 +28,7 @@ import { Transformer } from '@localizer/transform';
  *
  * @public
  */
-export type ListFormatOptions = (
+export type ListFormatOptions =
   | {
       /**
        * Locale matching algorithm.
@@ -59,12 +58,4 @@ export type ListFormatOptions = (
        * @public
        */
       delimiter: Localizable;
-    }
-) & {
-  /**
-   * A list of functions to transform the formatted list.
-   *
-   * @public
-   */
-  transform?: Transformer[];
-};
+    };

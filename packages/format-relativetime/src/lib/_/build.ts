@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { loc, RelativeValueFormatter } from '@localizer/core';
-import { transform } from '@localizer/transform';
 
 import { RelativeTimeFormatOptions } from '../options.js';
 import { _computeRelativeTime } from './computeRelativeTime.js';
@@ -40,7 +39,7 @@ export function _buildFormatter<T extends number | Date>(
   return (value, reference) => {
     const formatter: Record<string, Intl.RelativeTimeFormat> = {};
 
-    const result = loc((locale) => {
+    return loc((locale) => {
       const relativeTime = _computeRelativeTime(
         value,
         reference,
@@ -53,7 +52,5 @@ export function _buildFormatter<T extends number | Date>(
       formatter[locale] ||= new Intl.RelativeTimeFormat(locale, options);
       return formatter[locale].format(relativeTime.value, relativeTime.stop);
     });
-
-    return options.transform ? transform(result, options.transform) : result;
   };
 }

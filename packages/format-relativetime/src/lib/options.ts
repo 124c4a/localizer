@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Transformer } from '@localizer/transform';
-
 /**
  * Defines the granularity levels for relative time formatting.
  *
@@ -66,11 +64,4 @@ export type RelativeTimeFormatOptions = {
    * @public
    */
   stops?: Stop[];
-
-  /**
-   * List of transformers applied to the formatted output.
-   *
-   * @public
-   */
-  transform?: Transformer[];
 };

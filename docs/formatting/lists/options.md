@@ -9,9 +9,9 @@ import DemoValueFormatterOptions from '../DemoValueFormatterOptions.vue';
 import { listFormatter, loc } from '@localizer/all';
 
 const inputs = (now) => [
-  ['One', [ loc`One` ]], 
-  ['One, two', [ loc`One`, loc`two` ]], 
-  ['One, two, three', [ loc`One`, loc`two`, loc`three` ]], 
+  ['One', [ loc`One` ]],
+  ['One, two', [ loc`One`, loc`two` ]],
+  ['One, two, three', [ loc`One`, loc`two`, loc`three` ]],
 ];
 </script>
 
@@ -70,16 +70,6 @@ This option is not part of [`Intl.ListFormat`](https://developer.mozilla.org/en-
 **Examples:**
 
 <DemoValueFormatterOptions option="delimiter" :values="[loc`::`, loc` `]" :factory=listFormatter :inputs=inputs />
-
-## `transform`
-
-Specifies array of [transformations](../../introduction/transformations.md) to apply to the result.
-
-::: info NOTE
-
-This option is not part of [`Intl.RelativeTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat) API.
-
-:::
 
 ---
 

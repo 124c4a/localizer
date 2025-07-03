@@ -7,28 +7,28 @@ import DemoValueFormatterOptions from '../../DemoValueFormatterOptions.vue';
 import { decimalFormatter } from '@localizer/all';
 
 const digitInputs = () => [
-  ['1.2', 1.2], 
-  ['12.34', 12.34], 
-  ['123.456', 123.456], 
-  ['1234.5678', 1234.5678], 
+  ['1.2', 1.2],
+  ['12.34', 12.34],
+  ['123.456', 123.456],
+  ['1234.5678', 1234.5678],
   ['12345.67891', 12345.67891]
 ];
 
 const groupingInputs = () => [
-  ['1', 1], 
-  ['10', 10], 
-  ['100', 100], 
-  ['1000', 1000], 
+  ['1', 1],
+  ['10', 10],
+  ['100', 100],
+  ['1000', 1000],
   ['10000', 10000],
   ['100000', 100000],
   ['1000000', 1000000],
 ];
 
 const signInputs = () => [
-  ['100000', 100000], 
-  ['-100000', -100000], 
-  ['0', 0], 
-  ['0.0000001', 0.0000001], 
+  ['100000', 100000],
+  ['-100000', -100000],
+  ['0', 0],
+  ['0.0000001', 0.0000001],
   ['-0.0000001', -0.0000001],
 ];
 
@@ -128,16 +128,6 @@ An array of localized value parts to extract. Possible values:
 ::: info NOTE
 
 This option reflects `type` fields of the returned value of [`Intl.NumberFormat.formatToParts()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatToParts)
-
-:::
-
-## `transform`
-
-Specifies array of [transformations](../../../introduction/transformations.md) to apply to the result.
-
-::: info NOTE
-
-This option is not part of [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat) API.
 
 :::
 

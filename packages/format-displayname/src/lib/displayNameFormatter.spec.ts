@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { upperCase } from '@localizer/transform';
-
 import { displayNameFormatter } from './displayNameFormatter.js';
 
 describe('displayNameFormatter', () => {
@@ -42,14 +40,6 @@ describe('displayNameFormatter', () => {
     const formatter = displayNameFormatter('region');
     const result = formatter('US').localize(null);
     expect(result).toBe('US');
-  });
-
-  it('applies a custom transform function if provided', () => {
-    const formatter = displayNameFormatter('region', {
-      transform: [upperCase],
-    });
-    const result = formatter('US').localize('en-US');
-    expect(result).toBe('UNITED STATES');
   });
 
   it('handles multiple locales with caching', () => {
