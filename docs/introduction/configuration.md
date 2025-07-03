@@ -87,15 +87,15 @@ setActiveLocale('en');
 
 :::
 
-## [AutoFormat](../api/_localizer/format/AutoFormatOptions/index.md) <Package name="format"/>
+## [DefaultFormatters](../api/_localizer/format/DefaultFormattersOptions/index.md) <Package name="format"/>
 
 This configuration allows to change the default behavior of [`autoFormat`](../formatting/preconfigured-formatters/universal/auto-format.md) formatter:
 
 ```typescript
 configure(
-  { AutoFormat },
+  { DefaultFormatters },
   {
-    AutoFormat: {
+    DefaultFormatters: {
       number: decimal,
       date: date,
       array: list,

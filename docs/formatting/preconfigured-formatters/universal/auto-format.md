@@ -21,13 +21,13 @@ This formatter transforms any value into a locale-aware `Localizable` by leverag
 | `string`, `boolean`                                   | [Stringification formatter](./stringify.md)                                     |
 | Other                                                 | [Stringification formatter](./stringify.md)                                     |
 
-You can customize the behavior of `autoFormat` by configuring the [`AutoFormat`](../../../introduction/configuration.md#autoformat) settings. This allows you to specify which formatters should be applied to different value types.
+You can customize the behavior of `autoFormat` by configuring the [`DefaultFormatters`](../../../introduction/configuration.md#defaultformatters) settings. This allows you to specify which formatters should be applied to different value types.
 
 ```typescript
 configure(
-  { AutoFormat },
+  { DefaultFormatters },
   {
-    AutoFormat: {
+    DefaultFormatters: {
       number: decimal,
       date: date,
       array: list,

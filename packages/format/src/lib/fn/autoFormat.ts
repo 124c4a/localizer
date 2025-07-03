@@ -32,7 +32,7 @@ import { stringify } from './stringify.js';
  *
  * @public
  */
-export type AutoFormatOptions = {
+export type DefaultFormattersOptions = {
   /**
    * Formatter for numbers and bigints.
    *
@@ -92,15 +92,15 @@ const [
    *
    * @internal
    */
-  autoFormatOptions,
+  defaultFormatOptions,
 
   /**
    * Updates auto format options.
    *
    * @public
    */
-  AutoFormat,
-] = declareConfiguration<AutoFormatOptions>('AutoFormat', {
+  DefaultFormatters,
+] = declareConfiguration<DefaultFormattersOptions>('DefaultFormatters', {
   number: decimal,
   date: date,
   array: list,
@@ -109,7 +109,7 @@ const [
   default: stringify,
 });
 
-export { AutoFormat };
+export { DefaultFormatters };
 
 /**
  * Formats a value into a `Localizable` object based on its type. By default, it uses the following
@@ -134,20 +134,20 @@ export function autoFormat(value: unknown): Localizable {
     case value === undefined || value === null:
       return Empty;
     case ['number', 'bigint'].includes(typeof value):
-      return autoFormatOptions.number(value as number | bigint);
+      return defaultFormatOptions.number(value as number | bigint);
     case value instanceof Number:
-      return autoFormatOptions.number(value.valueOf());
+      return defaultFormatOptions.number(value.valueOf());
     case value instanceof Date:
-      return autoFormatOptions.date(value);
+      return defaultFormatOptions.date(value);
     case Array.isArray(value):
-      return autoFormatOptions.array(value.map((it) => autoFormat(it)));
+      return defaultFormatOptions.array(value.map((it) => autoFormat(it)));
     case typeof value === 'boolean':
-      return autoFormatOptions.boolean(value);
+      return defaultFormatOptions.boolean(value);
     case typeof value === 'string':
-      return autoFormatOptions.string(value);
+      return defaultFormatOptions.string(value);
     case isLocalizable(value):
       return value;
     default:
-      return autoFormatOptions.default(value);
+      return defaultFormatOptions.default(value);
   }
 }
