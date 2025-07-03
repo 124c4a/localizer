@@ -66,13 +66,13 @@ if (features.length > 0 || fixes.length > 0) {
   );
   lines.push('');
   if (features.length > 0) {
-    lines.push('### 🚀 Features');
+    lines.push('### New features');
     lines.push('');
     lines.push(...features.sort((a, b) => a.localeCompare(b)));
     lines.push('');
   }
   if (fixes.length > 0) {
-    lines.push('### 🩹 Fixes');
+    lines.push('### Fixes');
     lines.push('');
     lines.push(...fixes.sort((a, b) => a.localeCompare(b)));
     lines.push('');
