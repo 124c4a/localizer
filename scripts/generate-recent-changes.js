@@ -41,7 +41,19 @@ packageMetas.forEach((name) => {
         ...featureMatches[1]
           .trim()
           .split('\n')
-          .map((line) => line + ' <Package name="' + name + '" />'),
+          .map((line) => line + ' <Package name="' + name + '" />')
+          .map((line) => {
+            if (line.includes('(experimental)')) {
+              return line.replace('(experimental)', '').trim() + ' <Experimental />';
+            }
+            return line;
+          })
+          .map((line) => {
+            if (line.includes('(preview)')) {
+              return line.replace('(preview)', '').trim() + ' <Preview />';
+            }
+            return line;
+          }),
       );
     }
 
@@ -50,7 +62,19 @@ packageMetas.forEach((name) => {
         ...fixMatches[1]
           .trim()
           .split('\n')
-          .map((line) => line + ' <Package name="' + name + '" />'),
+          .map((line) => line + ' <Package name="' + name + '" />')
+          .map((line) => {
+            if (line.includes('(experimental)')) {
+              return line.replace('(experimental)', '').trim() + ' <Experimental />';
+            }
+            return line;
+          })
+          .map((line) => {
+            if (line.includes('(preview)')) {
+              return line.replace('(preview)', '').trim() + ' <Preview />';
+            }
+            return line;
+          }),
       );
     }
   }
