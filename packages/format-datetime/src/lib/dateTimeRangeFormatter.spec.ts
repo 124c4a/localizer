@@ -13,17 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { upperCase } from '@localizer/transform';
-
 import { dateTimeRangeFormatter } from './dateTimeRangeFormatter.js';
 
 describe('dateTimeRangeFormatter', () => {
   it('formats a range of dates correctly for a given local using default options', () => {
     const formatter = dateTimeRangeFormatter();
-    const result = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-12-31'),
-    ).localize('en-US');
+    const result = formatter(new Date('2023-01-01'), new Date('2023-12-31')).localize('en-US');
     expect(result).toBe('1/1/2023 – 12/31/2023');
   });
 
@@ -33,10 +28,7 @@ describe('dateTimeRangeFormatter', () => {
       month: 'long',
       day: 'numeric',
     });
-    const result = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-12-31'),
-    ).localize('en-US');
+    const result = formatter(new Date('2023-01-01'), new Date('2023-12-31')).localize('en-US');
     expect(result).toBe('January 1 – December 31, 2023');
   });
 
@@ -46,10 +38,7 @@ describe('dateTimeRangeFormatter', () => {
       month: 'long',
       day: 'numeric',
     });
-    const result = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-12-31'),
-    ).localize(null);
+    const result = formatter(new Date('2023-01-01'), new Date('2023-12-31')).localize(null);
     expect(result).toBe('2023-01-01T00:00:00.000Z - 2023-12-31T00:00:00.000Z');
   });
 
@@ -60,24 +49,7 @@ describe('dateTimeRangeFormatter', () => {
       day: 'numeric',
       parts: ['startRange-month'],
     });
-    const result = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-12-31'),
-    ).localize('en-US');
+    const result = formatter(new Date('2023-01-01'), new Date('2023-12-31')).localize('en-US');
     expect(result).toBe('January');
-  });
-
-  it('applies transform function if provided', () => {
-    const formatter = dateTimeRangeFormatter({
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      transform: [upperCase],
-    });
-    const result = formatter(
-      new Date('2023-01-01'),
-      new Date('2023-12-31'),
-    ).localize('en-US');
-    expect(result).toBe('JANUARY 1 – DECEMBER 31, 2023');
   });
 });

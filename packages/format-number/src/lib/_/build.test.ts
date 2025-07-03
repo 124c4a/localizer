@@ -15,11 +15,7 @@
  */
 import { upperCase } from '@localizer/transform';
 
-import {
-  _buildFormatter,
-  _buildRangeFormatter,
-  _buildUnitFormatter,
-} from './build.js';
+import { _buildFormatter, _buildRangeFormatter, _buildUnitFormatter } from './build.js';
 
 describe('buildFormatter', () => {
   it('formats a number correctly for a given locale', () => {
@@ -44,15 +40,6 @@ describe('buildFormatter', () => {
     const formatter = _buildFormatter({});
     const result = formatter(1234.56).localize(null);
     expect(result).toBe('1234.56');
-  });
-
-  it('applies transform function if provided', () => {
-    const formatter = _buildFormatter({
-      style: 'decimal',
-      transform: [upperCase],
-    });
-    const result = formatter(1234.56).localize('en-US');
-    expect(result).toBe('1,234.56'.toUpperCase());
   });
 });
 
@@ -83,19 +70,6 @@ describe('buildRangeFormatter', () => {
     const result = formatter(1000, 2000).localize('en-US');
     expect(result).toBe('1000');
   });
-
-  it('applies transformation', () => {
-    const formatter = _buildRangeFormatter(
-      {
-        style: 'unit',
-        unit: 'kilometer',
-        transform: [upperCase],
-      },
-      'unit',
-    );
-    const result = formatter(1000, 2000).localize('en-US');
-    expect(result).toBe('1,000–2,000 KM');
-  });
 });
 
 describe('buildUnitFormatter', () => {
@@ -109,15 +83,5 @@ describe('buildUnitFormatter', () => {
     const formatter = _buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
     const result = formatter(100, 'kilometer').localize(null);
     expect(result).toBe('100 kilometer');
-  });
-
-  it('applies transform function if provided', () => {
-    const formatter = _buildUnitFormatter(
-      { style: 'unit', transform: [upperCase] },
-      'unit',
-      'unit',
-    );
-    const result = formatter(100, 'kilometer').localize('en-US');
-    expect(result).toBe('100 KM');
   });
 });

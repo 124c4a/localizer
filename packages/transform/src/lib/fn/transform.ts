@@ -29,11 +29,40 @@ import { Transformer } from '../types/transform.js';
  *
  * @public
  */
+export function transform<T>(value: Localizable<T>, transformers: Transformer<T>[]): Localizable<T>;
+
+/**
+ * Transforms a value formatter result using a sequence of transformer functions.
+ *
+ * @typeParam A - Type of value formatter arguments.
+ *
+ * @param   formatter    - Value formatter.
+ * @param   transformers - Array of transformer functions to apply.
+ *
+ * @returns              Value formatter with applied transformations.
+ *
+ * @public
+ */
+export function transform<A extends unknown[]>(
+  formatter: (...args: A) => Localizable,
+  transformers: Transformer[],
+): (...args: A) => Localizable;
+
 export function transform<T>(
-  value: Localizable<T>,
-  transformers: Transformer<T>[],
-): Localizable<T> {
-  return transformers.reduce((acc, transformer) => {
-    return transformer(acc);
-  }, value);
+  value: T extends (...args: unknown[]) => Localizable ? T : Localizable<T>,
+  transformers: Transformer<T>[] | Transformer[],
+): T | Localizable<T> {
+  if (typeof value === 'function') {
+    // If the value is a function, we assume it's a formatter
+    return ((...args: unknown[]) => {
+      const result = value(...args);
+      return transformers.reduce((acc, transformer) => {
+        return (transformer as Transformer)(acc);
+      }, result as Localizable);
+    }) as T;
+  } else {
+    return transformers.reduce((acc, transformer) => {
+      return (transformer as Transformer<T>)(acc);
+    }, value as Localizable<T>);
+  }
 }

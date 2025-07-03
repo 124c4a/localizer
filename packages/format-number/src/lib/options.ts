@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Transformer } from '@localizer/transform';
-
 import { CurrencyCode } from './currency.js';
 import { Unit } from './unit.js';
 
@@ -250,13 +248,6 @@ export type NumberFormatOptions = {
    * @public
    */
   trailingZeroDisplay?: 'auto' | 'stripIfInteger';
-
-  /**
-   * List of transformers applied to the formatted output.
-   *
-   * @public
-   */
-  transform?: Transformer[];
 
   /**
    * Specifies parts to include in the formatted output. Examples: 'currency', 'group', 'integer',

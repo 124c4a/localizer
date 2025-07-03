@@ -14,63 +14,31 @@
  * limitations under the License.
  */
 import { loc } from '@localizer/core';
-import { upperCase } from '@localizer/transform';
 
 import { listFormatter } from './listFormatter.js';
 
 describe('listFormatter', () => {
   it('formats a list with a custom delimiter for a given locale', () => {
     const formatter = listFormatter({ delimiter: loc`, ` });
-    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
-      'en-US',
-    );
+    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize('en-US');
     expect(result).toBe('apple, banana, cherry');
   });
 
   it('returns a placeholder for undefined locale', () => {
     const formatter = listFormatter({ delimiter: loc`, ` });
-    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
-      null,
-    );
+    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(null);
     expect(result).toBe('[list]');
-  });
-
-  it('applies a transform function to the formatted list', () => {
-    const formatter = listFormatter({
-      delimiter: loc`, `,
-      transform: [upperCase],
-    });
-    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
-      'en-US',
-    );
-    expect(result).toBe('APPLE, BANANA, CHERRY');
   });
 
   it('formats a list using Intl.ListFormat for a given locale', () => {
     const formatter = listFormatter({ style: 'long', type: 'conjunction' });
-    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
-      'en-US',
-    );
+    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize('en-US');
     expect(result).toBe('apple, banana, and cherry');
-  });
-
-  it('formats a list using Intl.ListFormat for a given locale and applies transformation', () => {
-    const formatter = listFormatter({
-      style: 'long',
-      type: 'conjunction',
-      transform: [upperCase],
-    });
-    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
-      'en-US',
-    );
-    expect(result).toBe('APPLE, BANANA, AND CHERRY');
   });
 
   it('returns a placeholder when formatting list using Intl.ListFormat for an undefined locale', () => {
     const formatter = listFormatter({ style: 'long', type: 'conjunction' });
-    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(
-      null,
-    );
+    const result = formatter([loc`apple`, loc`banana`, loc`cherry`]).localize(null);
     expect(result).toBe('apple,banana,cherry');
   });
 

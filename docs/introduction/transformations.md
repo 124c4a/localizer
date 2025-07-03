@@ -23,20 +23,31 @@ const localizer = getLocalizer('en-US');
 const someLocalizable = countryName('FI');
 
 const transformed = transform(someLocalizable, [upperCase]); // [!code focus]
-console.log(localizer(transformed));
+console.log(localizer(transformed)); // [!code focus]
 ```
 
 ```console-vue
 {{localizer(transform(countryName('FI'), [upperCase]))}}
 ```
 
-The `transform()` method takes a second argument, which is an array of [transformers](../api/_localizer/transform/Transformer/index.md). These transformers are applied sequentially to modify the result, offering a flexible way to customize localized content.
+You can also apply `transform()` directly to a value formatter. This creates a new value formatter that automatically applies the specified transformations to its output:
 
-::: tip
+```typescript
+import { getLocalizer } from '@localizer/core';
+import { countryName } from '@localizer/format';
+import { transform } from '@localizer/transform'; // [!code focus]
 
-Most configurable [value formatters](../formatting/index.md) support specifying transformers directly within their options.
+const localizer = getLocalizer('en-US');
+const transformedValueFormatter = transform(countryName, [upperCase]); // [!code focus]
 
-:::
+console.log(localizer(transformedValueFormatter('FI'))); // [!code focus]
+```
+
+```console-vue
+{{localizer(transform(countryName, [upperCase])('FI'))}}
+```
+
+The second argument of `transform()` method is an array of [transformers](../api/_localizer/transform/Transformer/index.md). These transformers are applied sequentially to modify the result, offering a flexible way to customize localized content.
 
 ## String transformations
 
@@ -145,14 +156,16 @@ In Finland, the standard localization for the Swedish language may lead to unexp
 const fiFI = getLocalizer('fi-FI');
 const svFI = getLocalizer('sv-FI');
 
+const fixedDate = transform(date, [usePrimaryLocale]); // [!code ++]
+
 const localizedDate = date(new Date()); // [!code --]
-const localizedDate = transform(date(new Date()), [usePrimaryLocale]); // [!code ++]
+const localizedDate = fixedDate(new Date()); // [!code ++]
 
 console.log(fiFI(localizedDate));
 console.log(svFI(localizedDate));
 ```
 
 ```console-vue
-{{ transform(date(new Date()), [usePrimaryLocale]).localize('fi-FI') }}
-{{ transform(date(new Date()), [usePrimaryLocale]).localize('sv-FI') }}
+{{ transform(date, [usePrimaryLocale])(new Date()).localize('fi-FI') }}
+{{ transform(date, [usePrimaryLocale])(new Date()).localize('sv-FI') }}
 ```

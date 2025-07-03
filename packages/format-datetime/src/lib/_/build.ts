@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 import { ValueFormatter, ValueRangeFormatter, loc } from '@localizer/core';
-import { transform } from '@localizer/transform';
 
 import { DateTimeFormatOptions } from '../options.js';
 
@@ -40,7 +39,7 @@ export function _buildFormatter<T extends number | Date>(
   return (value) => {
     const formatter: Record<string, Intl.DateTimeFormat> = {};
 
-    const result = loc((locale) => {
+    return loc((locale) => {
       if (!locale) {
         return new Date(value).toISOString();
       }
@@ -55,8 +54,6 @@ export function _buildFormatter<T extends number | Date>(
             .join('')
         : formatter[locale].format(value);
     });
-
-    return options.transform ? transform(result, options.transform) : result;
   };
 }
 
@@ -90,7 +87,7 @@ export function _buildRangeFormatter<T extends number | Date>(
   return (start, end) => {
     const formatter: Record<string, Intl.DateTimeFormat> = {};
 
-    const result = loc((locale) => {
+    return loc((locale) => {
       if (!locale) {
         return new Date(start).toISOString() + ' - ' + new Date(end).toISOString();
       }
@@ -111,7 +108,5 @@ export function _buildRangeFormatter<T extends number | Date>(
             .join('')
         : formatter[locale].formatRange(start, end);
     });
-
-    return options.transform ? transform(result, options.transform) : result;
   };
 }

@@ -9,9 +9,9 @@ import DemoValueFormatterOptions from '../../DemoValueFormatterOptions.vue';
 import { dateTimeFormatter } from '@localizer/all';
 
 const dateInputs = (now) => [
-  ['(now)', now], 
-  ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")], 
-  ['2020-10-02 23:59:01', new Date("2020-10-02 23:59:01")], 
+  ['(now)', now],
+  ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")],
+  ['2020-10-02 23:59:01', new Date("2020-10-02 23:59:01")],
 ];
 </script>
 
@@ -86,16 +86,6 @@ An array of localized value parts to extract. Possible values include:
 ::: info NOTE
 
 This option corresponds to the `type` fields returned by [`Intl.DateTimeFormat.formatToParts()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/formatToParts).
-
-:::
-
-## `transform`
-
-Specifies array of [transformations](../../../introduction/transformations.md) to apply to the result.
-
-::: info NOTE
-
-This option is not part of [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) API.
 
 :::
 
