@@ -19,13 +19,11 @@ limitations under the License.
 </script>
 
 <template>
-  <ClientOnly>
-    <NTooltip trigger="hover">
-      <template #trigger>
-        <NTag round type="success" :bordered="false">preview</NTag>
-      </template>
-      This is a preview feature. Although it is considered stable, the API may change in future
-      versions. Use it with caution.
-    </NTooltip>
-  </ClientOnly>
+  <NTooltip trigger="hover">
+    <template #trigger>
+      <NTag round type="success" :bordered="false">preview</NTag>
+    </template>
+    This is a preview feature. Although it is considered stable, the API may change in future
+    versions. Use it with caution.
+  </NTooltip>
 </template>

@@ -19,12 +19,10 @@ limitations under the License.
 </script>
 
 <template>
-  <ClientOnly>
-    <NTooltip trigger="hover">
-      <template #trigger>
-        <NTag round type="error" :bordered="false">deprecation warning</NTag>
-      </template>
-      This feature is deprecated and will be removed in future versions.
-    </NTooltip>
-  </ClientOnly>
+  <NTooltip trigger="hover">
+    <template #trigger>
+      <NTag round type="error" :bordered="false">deprecation warning</NTag>
+    </template>
+    This feature is deprecated and will be removed in future versions.
+  </NTooltip>
 </template>

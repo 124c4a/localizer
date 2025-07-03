@@ -16,11 +16,12 @@
 /// <reference types="vite/client" />
 import type { Theme } from 'vitepress';
 
+import { setup } from '@css-render/vue3-ssr';
 import { GlobalThemeOverrides, NConfigProvider } from 'naive-ui/es/config-provider';
 import { darkTheme } from 'naive-ui/es/themes/dark';
 import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import { defineComponent, h } from 'vue';
+import { defineComponent, h, inject, InjectionKey, onMounted, ref, watch } from 'vue';
 
 import './style.css';
 import Deprecated from './components/Deprecated.vue';
@@ -30,13 +31,44 @@ import Preview from './components/Preview.vue';
 
 const { Layout } = DefaultTheme;
 
-const NaiveUIProvider = defineComponent({
-  render() {
-    const { isDark } = useData();
+const Collect = Symbol.for('css-render-collect') as InjectionKey<() => string>;
 
+const CssRenderStyle = defineComponent({
+  setup() {
+    const collect = inject(Collect, () => '');
+    return {
+      style: collect(),
+    };
+  },
+  render() {
+    return h('css-render-style', {
+      innerHTML: this.style,
+    });
+  },
+});
+
+const NaiveUIProvider = defineComponent({
+  setup() {
+    const { isDark } = useData();
+    const isDarkTheme = ref(false);
+
+    // Dirty hack to make sure the theme is reactive
+    // This is necessary because `isDark` is not reactive in the SSR context
+    watch(isDark, (newValue) => {
+      isDarkTheme.value = newValue;
+    });
+    onMounted(() => {
+      isDarkTheme.value = isDark.value;
+    });
+
+    return {
+      isDark: isDarkTheme,
+    };
+  },
+  render() {
     const themeOverrides: GlobalThemeOverrides = {
       common: {
-        infoColor: isDark.value ? '#a8b1ff' : '#3451b2',
+        infoColor: this.isDark ? '#a8b1ff' : '#3451b2',
       },
     };
 
@@ -45,11 +77,15 @@ const NaiveUIProvider = defineComponent({
       {
         abstract: true,
         inlineThemeDisabled: true,
-        theme: isDark.value ? darkTheme : undefined,
+        preflightStyleDisabled: true,
+        theme: this.isDark ? darkTheme : undefined,
         themeOverrides,
       },
       {
-        default: () => [h(Layout, null, { default: this.$slots.default?.() })],
+        default: () => [
+          h(Layout, null, { default: this.$slots.default?.() }),
+          import.meta.env.SSR ? h(CssRenderStyle) : null,
+        ],
       },
     );
   },
@@ -63,5 +99,9 @@ export default {
     app.component('Experimental', Experimental);
     app.component('Preview', Preview);
     app.component('Deprecated', Deprecated);
+    if (import.meta.env.SSR) {
+      const { collect } = setup(app);
+      app.provide(Collect, collect);
+    }
   },
 } satisfies Theme;

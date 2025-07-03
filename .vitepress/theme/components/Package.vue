@@ -25,14 +25,12 @@ limitations under the License.
 </script>
 
 <template>
-  <ClientOnly>
-    <NTooltip trigger="hover">
-      <template #trigger>
-        <NTag round type="info" :bordered="false"
-          >{{ packages[name].name }} <NText>{{ packages[name].version }}</NText></NTag
-        >
-      </template>
-      {{ packages[name].description }}
-    </NTooltip>
-  </ClientOnly>
+  <NTooltip trigger="hover">
+    <template #trigger>
+      <NTag round type="info" :bordered="false"
+        >{{ packages[name].name }} <NText>{{ packages[name].version }}</NText></NTag
+      >
+    </template>
+    {{ packages[name].description }}
+  </NTooltip>
 </template>
