@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Configurer } from 'src/lib/types/configuration.js';
-
 import { LocaleCode } from '../../consts/locale.js';
+import { Configurer } from '../../types/configuration.js';
 import { declareConfiguration } from '../declare-configuration.js';
 
 /**
