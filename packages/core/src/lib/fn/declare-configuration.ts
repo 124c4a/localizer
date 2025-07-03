@@ -16,14 +16,16 @@
 import { Configurer } from '../types/configuration.js';
 
 declare global {
-  var $Localizer: Record<string, unknown>;
+  var $Localizer: Map<string, unknown>;
 }
 
 /**
  * Defines a configuration with a unique identifier and an initial configuration object.
  *
- * @param   id            Unique identifier for the configuration.
- * @param   initialConfig Initial configuration object.
+ * @typeParam T - The type of the configuration object.
+ *
+ * @param   id            - Unique identifier for the configuration.
+ * @param   initialConfig - Initial configuration object.
  *
  * @returns               A tuple containing the current configuration and a configurer function.
  *
@@ -33,12 +35,15 @@ export function declareConfiguration<T extends object>(
   id: string,
   initialConfig: T,
 ): [T, Configurer<T>] {
-  globalThis.$Localizer ??= {};
-  globalThis.$Localizer[id] ??= initialConfig;
+  globalThis.$Localizer ??= new Map<string, unknown>();
+  if (!globalThis.$Localizer.has(id)) {
+    // If the configuration with the given id does not exist, initialize it
+    globalThis.$Localizer.set(id, initialConfig);
+  }
   return [
-    globalThis.$Localizer[id] as T,
+    globalThis.$Localizer.get(id) as T,
     (config: Partial<T>) => {
-      Object.assign(globalThis.$Localizer[id] as T, config);
+      Object.assign(globalThis.$Localizer.get(id) as T, config);
     },
   ];
 }

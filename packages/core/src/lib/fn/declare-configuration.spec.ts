@@ -18,11 +18,10 @@ import { declareConfiguration } from './declare-configuration.js';
 describe('declareConfiguration', () => {
   beforeEach(() => {
     // Reset the global $Localizer object before each test
-    globalThis.$Localizer = {};
+    delete (globalThis as { $Localizer?: unknown }).$Localizer;
   });
 
   it('should initialize a $Localizer if it does not exist', () => {
-    delete (globalThis as { $Localizer?: unknown }).$Localizer;
     assert(globalThis.$Localizer === undefined, 'Expected $Localizer to be undefined');
 
     declareConfiguration('testId', {});
@@ -35,7 +34,7 @@ describe('declareConfiguration', () => {
     const [config] = declareConfiguration('testId', initialConfig);
 
     expect(config).toEqual(initialConfig);
-    expect(globalThis.$Localizer['testId']).toEqual(initialConfig);
+    expect(globalThis.$Localizer.get('testId')).toEqual(initialConfig);
   });
 
   it('should return a configurer function that updates the configuration', () => {
@@ -44,7 +43,7 @@ describe('declareConfiguration', () => {
 
     configure({ key: 'newValue' });
     expect(config.key).toBe('newValue');
-    expect(globalThis.$Localizer['testId']).toEqual({ key: 'newValue' });
+    expect(globalThis.$Localizer.get('testId')).toEqual({ key: 'newValue' });
   });
 
   it('should not overwrite existing configuration if the same id is used', () => {
@@ -55,7 +54,7 @@ describe('declareConfiguration', () => {
     const [config] = declareConfiguration('testId', initialConfig2);
 
     expect(config).toEqual(initialConfig1);
-    expect(globalThis.$Localizer['testId']).toEqual(initialConfig1);
+    expect(globalThis.$Localizer.get('testId')).toEqual(initialConfig1);
   });
 
   it('should allow partial updates to the configuration', () => {
@@ -64,6 +63,6 @@ describe('declareConfiguration', () => {
 
     configure({ key1: 'newValue1' });
     expect(config).toEqual({ key1: 'newValue1', key2: 'value2' });
-    expect(globalThis.$Localizer['testId']).toEqual({ key1: 'newValue1', key2: 'value2' });
+    expect(globalThis.$Localizer.get('testId')).toEqual({ key1: 'newValue1', key2: 'value2' });
   });
 });
