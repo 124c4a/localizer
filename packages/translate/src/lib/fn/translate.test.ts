@@ -37,6 +37,10 @@ const dynamicTranslation = translate(
   }),
   'dynamicTranslation',
 );
+const anonymousDynamicTranslation = translate((value: unknown) => ({
+  en: `Hello, ${value}`,
+  fi: `Hei ${value}`,
+}));
 
 const emptyTranslationWithKey = translate({}, 'emptyTranslationWithKey');
 const emptyTranslationWithoutKey = translate({});
@@ -62,6 +66,9 @@ describe('translate function', () => {
   });
 
   it('handles function-based translation maps when used with TestLocalizer', () => {
+    expect(anonymousDynamicTranslation('Anna').localize(null)).toBe(
+      '[anonymous translation]("Anna")',
+    );
     expect(dynamicTranslation('Anna').localize(null)).toBe('dynamicTranslation("Anna")');
     expect(dynamicTranslation(decimal(5)).localize(null)).toBe('dynamicTranslation("5")');
     expect(dynamicTranslation(Math.PI).localize(null)).toBe(

@@ -38,6 +38,6 @@ export const UninitializedLocalizer: Localizer = _getUninitializedLocalizer();
 /**
  * A Localizer that returns locale-independent representation of data. Useful for testing purposes.
  *
- * @experimental
+ * @alpha
  */
 export const TestLocalizer: Localizer = _getTestLocalizer();
