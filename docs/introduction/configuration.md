@@ -30,6 +30,12 @@ import { configure, Core } from '@localizer/core';
 configure(Core, { fallbackLocales: ['fi', 'en'] });
 ```
 
+::: warning
+
+Configurations are globally managed as singleton objects stored in `globalThis.$Localizer`. To ensure consistent behavior, initialize configurations as early as possible in the application lifecycle. Avoid modifying configuration properties at runtime unless explicitly supported and documented, as doing so may result in unpredictable behavior.
+
+:::
+
 Below is a list of configuration domains that can be customized using the `configure()` method.
 Each domain corresponds to a specific aspect of the library, enabling fine-grained control over its behavior.
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { LocaleCode } from '../../consts/locale.js';
-import { Configurer } from '../../types/configuration.js';
+import { declareConfiguration } from '../declare-configuration.js';
 
 /**
  * Core localization configuration options.
@@ -41,27 +41,29 @@ export interface CoreOptions {
   activeLocale: LocaleCode | undefined;
 }
 
-/**
- * Singleton instance of core localization options.
- *
- * Holds default settings like fallback locales and active locale. Can be updated dynamically via
- * the `Core` function.
- *
- * @internal
- */
-export const coreOptions: CoreOptions = {
+const [
+  /**
+   * Singleton instance of core localization options.
+   *
+   * Holds default settings like fallback locales and active locale. Can be updated dynamically via
+   * the `Core` function.
+   *
+   * @internal
+   */
+  coreOptions,
+
+  /**
+   * Updates core localization options.
+   *
+   * @public
+   */
+  Core,
+] = declareConfiguration<CoreOptions>('Core', {
   fallbackLocales: ['en'],
   activeLocale: undefined,
-};
+});
 
-/**
- * Updates core localization options.
- *
- * @public
- */
-export const Core: Configurer<CoreOptions> = (config) => {
-  Object.assign(coreOptions, config);
-};
+export { coreOptions, Core };
 
 /**
  * Activates implicit localization by setting the active locale.
