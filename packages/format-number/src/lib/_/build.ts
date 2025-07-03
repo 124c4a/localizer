@@ -41,14 +41,14 @@ export function _buildFormatter<T extends number | bigint>(
       if (locale === null) {
         switch (style) {
           case 'currency':
-            return `${value} ${options.currency}`;
+            return JSON.stringify({ value, currency: options.currency });
           case 'unit':
-            return `${value} ${options.unit}`;
+            return JSON.stringify({ value, unit: options.unit });
           case 'percent':
-            return `${value * 100}%`;
+            return JSON.stringify({ value: value * 100, unit: '%' });
           case 'decimal':
           default:
-            return `${value}`;
+            return JSON.stringify(value);
         }
       }
 
@@ -97,14 +97,29 @@ export function _buildRangeFormatter<T extends number | bigint>(
       if (locale === null) {
         switch (style) {
           case 'currency':
-            return `${start} - ${end} ${options.currency}`;
+            return JSON.stringify({
+              start,
+              end,
+              currency: options.currency,
+            });
           case 'unit':
-            return `${start} - ${end} ${options.unit}`;
+            return JSON.stringify({
+              start,
+              end,
+              unit: options.unit,
+            });
           case 'percent':
-            return `${start * 100}% - ${end * 100}%`;
+            return JSON.stringify({
+              start: start * 100,
+              end: end * 100,
+              unit: '%',
+            });
           case 'decimal':
           default:
-            return `${start} - ${end}`;
+            return JSON.stringify({
+              start,
+              end,
+            });
         }
       }
 
@@ -158,7 +173,7 @@ export function _buildUnitFormatter<T extends number | bigint, U extends string>
 
     return loc((locale) => {
       if (locale === null) {
-        return `${value} ${unit}`;
+        return JSON.stringify({ value, unit });
       }
 
       formatter[locale] ||= {};

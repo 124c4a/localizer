@@ -47,7 +47,11 @@ export function _buildFormatter<T extends number | Date>(
       );
 
       if (locale === null) {
-        return `${new Date(reference).toISOString()} ${relativeTime.value >= 0 ? '+' : ''}${relativeTime.value} ${relativeTime.stop}`;
+        return JSON.stringify({
+          reference: new Date(reference),
+          diff: relativeTime.value,
+          unit: relativeTime.stop,
+        });
       }
       formatter[locale] ||= new Intl.RelativeTimeFormat(locale, options);
       return formatter[locale].format(relativeTime.value, relativeTime.stop);

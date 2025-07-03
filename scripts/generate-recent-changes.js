@@ -41,6 +41,18 @@ packageMetas.forEach((name) => {
         ...featureMatches[1]
           .trim()
           .split('\n')
+          .map((line) => {
+            if (line.includes('(experimental)')) {
+              return line.replace('(experimental)', '').trim() + ' <Experimental />';
+            }
+            return line;
+          })
+          .map((line) => {
+            if (line.includes('(preview)')) {
+              return line.replace('(preview)', '').trim() + ' <Preview />';
+            }
+            return line;
+          })
           .map((line) => line + ' <Package name="' + name + '" />'),
       );
     }
@@ -50,6 +62,18 @@ packageMetas.forEach((name) => {
         ...fixMatches[1]
           .trim()
           .split('\n')
+          .map((line) => {
+            if (line.includes('(experimental)')) {
+              return line.replace('(experimental)', '').trim() + ' <Experimental />';
+            }
+            return line;
+          })
+          .map((line) => {
+            if (line.includes('(preview)')) {
+              return line.replace('(preview)', '').trim() + ' <Preview />';
+            }
+            return line;
+          })
           .map((line) => line + ' <Package name="' + name + '" />'),
       );
     }
@@ -68,13 +92,13 @@ if (features.length > 0 || fixes.length > 0) {
   if (features.length > 0) {
     lines.push('### New features');
     lines.push('');
-    lines.push(...features.sort((a, b) => a.localeCompare(b)));
+    lines.push(...deduplicateLines(features));
     lines.push('');
   }
   if (fixes.length > 0) {
     lines.push('### Fixes');
     lines.push('');
-    lines.push(...fixes.sort((a, b) => a.localeCompare(b)));
+    lines.push(...deduplicateLines(fixes));
     lines.push('');
   }
 }
@@ -82,3 +106,30 @@ if (features.length > 0 || fixes.length > 0) {
 const outputPath = path.join('./docs', 'changelog.inc');
 writeFileSync(outputPath, lines.join('\n'), 'utf-8');
 console.log(`Recent changes written to ${outputPath}`);
+
+function deduplicateLines(lines) {
+  const seen = new Set();
+  const packageRest = {};
+
+  lines.forEach((line) => {
+    const lineParts = line.split('<Package name="');
+    if (lineParts.length > 1) {
+      const rest = lineParts[1];
+      if (!packageRest[lineParts[0]]) {
+        packageRest[lineParts[0]] = [];
+      }
+      packageRest[lineParts[0]].push(rest);
+    }
+
+    seen.add(lineParts[0]);
+  });
+
+  return Array.from(seen)
+    .sort((a, b) => a.localeCompare(b))
+    .map((line) => {
+      if (packageRest[line]) {
+        return [line, ...packageRest[line]].join(' <Package name="');
+      }
+      return line;
+    });
+}

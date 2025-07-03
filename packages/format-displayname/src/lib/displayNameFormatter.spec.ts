@@ -39,7 +39,7 @@ describe('displayNameFormatter', () => {
   it('returns a placeholder when locale is undefined', () => {
     const formatter = displayNameFormatter('region');
     const result = formatter('US').localize(null);
-    expect(result).toBe('US');
+    expect(result).toBe('"US"');
   });
 
   it('handles multiple locales with caching', () => {

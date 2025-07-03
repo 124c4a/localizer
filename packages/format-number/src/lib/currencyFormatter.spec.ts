@@ -25,7 +25,7 @@ describe('currencyFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = currencyFormatter();
     const result = formatter(1234.56, 'USD').localize(null);
-    expect(result).toBe('1234.56 USD');
+    expect(result).toBe('{"value":1234.56,"unit":"USD"}');
   });
 
   it('handles bigint values correctly', () => {

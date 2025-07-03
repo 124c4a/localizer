@@ -41,7 +41,7 @@ export function _buildFormatter<T extends number | Date>(
 
     return loc((locale) => {
       if (!locale) {
-        return new Date(value).toISOString();
+        return JSON.stringify(new Date(value));
       }
 
       formatter[locale] ||= new Intl.DateTimeFormat(locale, options);
@@ -89,7 +89,7 @@ export function _buildRangeFormatter<T extends number | Date>(
 
     return loc((locale) => {
       if (!locale) {
-        return new Date(start).toISOString() + ' - ' + new Date(end).toISOString();
+        return JSON.stringify({ start: new Date(start), end: new Date(end) });
       }
 
       formatter[locale] ||= new Intl.DateTimeFormat(locale, options);

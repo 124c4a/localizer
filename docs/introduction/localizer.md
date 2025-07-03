@@ -8,7 +8,6 @@ order: 4
   import localizerString from './localizer-string';
   import localizerFunction from './localizer-function';
   import localizerImplicit from './localizer-implicit';
-  import localizerIdentity from './localizer-identity';
 </script>
 
 Localizer applies a selected locale to [`Localizable`](../api/_localizer/core/Localizable/index.md) objects. Use [`getLocalizer()`](../api/_localizer/core/getLocalizer/index.md) to create a `Localizer` instance.
@@ -74,12 +73,27 @@ console.log(UninitializedLocalizer(Empty)); // [!code error]
 > RangeError: Attempt to use Localizer before locale was set // [!code error]
 ```
 
-### `ImplicitLocalizer` <Experimental/>
+### `TestLocalizer` <Experimental/>
 
-This localizer simplifies integration with external libraries by enabling implicit localization. It allows direct use of `Localizable` values as stable, human-readable identifiers, making it useful for testing UI components or scenarios requiring consistent identifiers.
+This localizer consistently produces locale-independent machine representations of localizable values. It is particularly useful for unit or integration testing, where ensuring reproducibility and avoiding locale-specific variations is critical.
 
-<<< ./localizer-identity.ts#example{ts}
+```typescript
+import { TestLocalizer } from '@localizer/format';
+import { decimal, date } from '@localizer/format';
+import { dictionary } from '@localizer/translate';
 
-```console-vue
-{{ localizerIdentity }}
+const translations = dictionary({
+  files: (count: number) => ({
+    en: loc`${decimal(count)} files`,
+    fi: loc`${decimal(count)} tiedostoa`,
+    sv: loc`${decimal(count)} filer`,
+  }),
+});
+
+describe('TestLocalizer', () => {
+  it('should produce locale-independent representations', () => {
+    expect(TestLocalizer(date(1751555555000))).toBe('"2025-07-03T15:12:35.000Z"');
+    expect(TestLocalizer(translations.files(5))).toBe('files(5)');
+  });
+});
 ```

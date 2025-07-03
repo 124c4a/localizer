@@ -51,13 +51,7 @@ describe('buildRangeFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = _buildRangeFormatter({}, 'decimal');
     const result = formatter(1000, 2000).localize(null);
-    expect(result).toBe('1000 - 2000');
-  });
-
-  it('returns a placeholder for undefined locale when style is not set explicitly', () => {
-    const formatter = _buildRangeFormatter({}, 'decimal');
-    const result = formatter(1000, 2000).localize(null);
-    expect(result).toBe('1000 - 2000');
+    expect(result).toBe('{"start":1000,"end":2000}');
   });
 
   it('filters parts based on source if provided', () => {
@@ -80,6 +74,6 @@ describe('buildUnitFormatter', () => {
   it('returns a placeholder for undefined locale', () => {
     const formatter = _buildUnitFormatter({ style: 'unit' }, 'unit', 'unit');
     const result = formatter(100, 'kilometer').localize(null);
-    expect(result).toBe('100 kilometer');
+    expect(result).toBe('{"value":100,"unit":"kilometer"}');
   });
 });

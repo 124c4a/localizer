@@ -20,6 +20,8 @@ import {
   getLocaleChain,
   ValueFormatter,
   isLocalizable,
+  localizeArray,
+  localizeObject,
 } from '@localizer/core';
 
 /**
@@ -71,26 +73,29 @@ export function translate<V>(
  */
 export function translate(map: TranslationMap, translationKey?: string): Localizable;
 
-/**
- * Translation function that can handle both static and dynamic translation maps.
- *
- * @typeParam V - The type of the input value.
- *
- * @param   map            - A static translation map containing locale codes and their
- *   translations, or a function that generates a translation map based on the input value.
- * @param   translationKey - An optional key used as a fallback translation.
- *
- * @returns                A localized string based on the current locale or a value formatter for
- *   dynamic values.
- *
- * @alpha
- */
 export function translate<V = TranslationMap>(
   map: TranslationMap | ((value: V) => TranslationMap),
   translationKey?: string,
 ): Localizable | ValueFormatter<V> {
   if (typeof map === 'function') {
-    return (value: V) => translate(map(value), translationKey);
+    return (value: V) =>
+      loc((locale) => {
+        if (locale === null) {
+          const prefix = translationKey ?? '[anonymous translation]';
+          switch (true) {
+            case isLocalizable(value):
+              return `${prefix}(${JSON.stringify(value.localize(null))})`;
+            case Array.isArray(value):
+              return `${prefix}(${JSON.stringify(localizeArray(value, null))})`;
+            case typeof value === 'object':
+              return `${prefix}(${JSON.stringify(localizeObject(value as Record<string, unknown>, null))})`;
+            default:
+              return `${prefix}(${JSON.stringify(value)})`;
+          }
+        } else {
+          return translate(map(value), translationKey).localize(locale);
+        }
+      });
   } else {
     return loc((locale) => {
       if (!locale) {

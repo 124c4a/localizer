@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import { loc } from '@localizer/core';
+import { decimal } from '@localizer/format';
 
 import { translate } from './translate.js';
 
@@ -29,7 +30,14 @@ const staticTranslationWithLocalizables = translate({
   sv: loc`Hej`,
 });
 
-const dynamicTranslation = translate((value: string) => ({
+const dynamicTranslation = translate(
+  (value: unknown) => ({
+    en: `Hello, ${value}`,
+    fi: `Hei ${value}`,
+  }),
+  'dynamicTranslation',
+);
+const anonymousDynamicTranslation = translate((value: unknown) => ({
   en: `Hello, ${value}`,
   fi: `Hei ${value}`,
 }));
@@ -55,6 +63,21 @@ describe('translate function', () => {
   it('handles function-based translation maps', () => {
     expect(dynamicTranslation('Anna').localize('en')).toBe('Hello, Anna');
     expect(dynamicTranslation('Anna').localize('fi')).toBe('Hei Anna');
+  });
+
+  it('handles function-based translation maps when used with TestLocalizer', () => {
+    expect(anonymousDynamicTranslation('Anna').localize(null)).toBe(
+      '[anonymous translation]("Anna")',
+    );
+    expect(dynamicTranslation('Anna').localize(null)).toBe('dynamicTranslation("Anna")');
+    expect(dynamicTranslation(decimal(5)).localize(null)).toBe('dynamicTranslation("5")');
+    expect(dynamicTranslation(Math.PI).localize(null)).toBe(
+      'dynamicTranslation(3.141592653589793)',
+    );
+    expect(dynamicTranslation([1, decimal(3)]).localize(null)).toBe('dynamicTranslation([1,"3"])');
+    expect(dynamicTranslation({ a: 1, b: decimal(3) }).localize(null)).toBe(
+      'dynamicTranslation({"a":1,"b":"3"})',
+    );
   });
 
   it('returns fallback for empty translation map', () => {

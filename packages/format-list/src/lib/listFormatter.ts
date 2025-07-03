@@ -40,7 +40,7 @@ export function listFormatter<T extends Localizable[]>(
     return (value) => {
       return loc((locale) => {
         if (locale === null) {
-          return '[list]';
+          return JSON.stringify(localizeArray(value, locale));
         }
 
         return localizeArray(value, locale)
@@ -54,7 +54,7 @@ export function listFormatter<T extends Localizable[]>(
 
       return loc((locale) => {
         if (locale === null) {
-          return `${localizeArray(value, locale)}`;
+          return JSON.stringify(localizeArray(value, locale));
         }
 
         formatter[locale] ||= new Intl.ListFormat(locale, options);

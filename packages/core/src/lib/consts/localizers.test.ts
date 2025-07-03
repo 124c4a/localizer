@@ -15,7 +15,7 @@
  */
 import { coreOptions, setActiveLocale } from '../fn/locale/options.js';
 import { loc } from '../fn/localizable/loc.js';
-import { ImplicitLocalizer, IdentityLocalizer } from './localizers.js';
+import { ImplicitLocalizer, TestLocalizer } from './localizers.js';
 
 const localizable = loc((loc) => loc);
 
@@ -23,14 +23,10 @@ describe('ImplicitLocalizer', () => {
   it('throws an error when implicit localization is disabled', () => {
     coreOptions.activeLocale = undefined;
     expect(() => `${localizable}`).toThrow(
-      new RangeError(
-        'Implicit localization requires an active locale to be set.',
-      ),
+      new RangeError('Implicit localization requires an active locale to be set.'),
     );
     expect(() => ImplicitLocalizer(localizable)).toThrow(
-      new RangeError(
-        'Implicit localization requires an active locale to be set.',
-      ),
+      new RangeError('Implicit localization requires an active locale to be set.'),
     );
   });
 
@@ -48,8 +44,7 @@ describe('ImplicitLocalizer', () => {
   it('localizes function using the active locale when implicit localization is enabled and active locale is set', () => {
     coreOptions.activeLocale = 'en';
 
-    const fn = (value: number) =>
-      loc((locale) => `Value: ${value} (${locale})`);
+    const fn = (value: number) => loc((locale) => `Value: ${value} (${locale})`);
 
     expect(ImplicitLocalizer(fn)(5)).toBe('Value: 5 (en)');
   });
@@ -60,21 +55,20 @@ describe('ImplicitLocalizer', () => {
   });
 });
 
-describe('IdentityLocalizer', () => {
+describe('TestLocalizer', () => {
   it('passes `null` as a locale to localizable', () => {
-    expect(IdentityLocalizer(localizable)).toBe(null);
+    expect(TestLocalizer(localizable)).toBe(null);
   });
 
   it('passes `null` as a locale to localizable function', () => {
     coreOptions.activeLocale = 'en';
 
-    const fn = (value: number) =>
-      loc((locale) => `Value: ${value} (${locale})`);
+    const fn = (value: number) => loc((locale) => `Value: ${value} (${locale})`);
 
-    expect(IdentityLocalizer(fn)(5)).toBe('Value: 5 (null)');
+    expect(TestLocalizer(fn)(5)).toBe('Value: 5 (null)');
   });
 
   it('returns current `null` locale', () => {
-    expect(IdentityLocalizer.locale).toBe(null);
+    expect(TestLocalizer.locale).toBe(null);
   });
 });

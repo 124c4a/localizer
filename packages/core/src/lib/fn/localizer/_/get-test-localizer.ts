@@ -24,7 +24,7 @@ import { isLocalizable } from '../../localizable/is-localizable.js';
  *
  * @internal
  */
-export function _getIdentityLocalizer(): Localizer {
+export function _getTestLocalizer(): Localizer {
   const fn = <T, A extends unknown[]>(
     localizable: Localizable<T> | ((...args: A) => Localizable<T>),
   ): T | ((...args: A) => T) => {
