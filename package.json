@@ -16,6 +16,7 @@
     "@nx/js": "21.2.1",
     "@nx/vite": "21.2.1",
     "@nx/workspace": "21.2.1",
+    "@shikijs/vitepress-twoslash": "^3.7.0",
     "@swc-node/register": "1.10.10",
     "@swc/core": "1.12.9",
     "@types/node": "22.15.32",
@@ -27,6 +28,7 @@
     "eslint-plugin-perfectionist": "4.15.0",
     "eslint-plugin-sonarjs": "3.0.3",
     "execa": "9.6.0",
+    "gray-matter": "^4.0.3",
     "jsonc-eslint-parser": "2.4.0",
     "listr2": "8.3.3",
     "naive-ui": "2.42.0",
@@ -95,6 +97,7 @@
         "options": {
           "commands": [
             "node scripts/generate-package-reference.js",
+            "node scripts/generate-entity-reference.js",
             "node scripts/generate-recent-changes.js",
             "vitepress build"
           ]
@@ -108,6 +111,7 @@
         "options": {
           "commands": [
             "node scripts/generate-package-reference.js",
+            "node scripts/generate-entity-reference.js",
             "node scripts/generate-recent-changes.js",
             "vitepress dev"
           ]
@@ -125,6 +129,5 @@
         }
       }
     }
-  },
-  "dependencies": {}
+  }
 }

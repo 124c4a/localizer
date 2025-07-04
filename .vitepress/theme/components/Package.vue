@@ -27,7 +27,7 @@ limitations under the License.
 <template>
   <NTooltip trigger="hover">
     <template #trigger>
-      <NTag round type="info" :bordered="false"
+      <NTag round type="info" :bordered="false" style="vertical-align: text-bottom"
         >{{ packages[name].name }} <NText>{{ packages[name].version }}</NText></NTag
       >
     </template>

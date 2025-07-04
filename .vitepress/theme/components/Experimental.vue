@@ -21,7 +21,9 @@ limitations under the License.
 <template>
   <NTooltip trigger="hover">
     <template #trigger>
-      <NTag round type="warning" :bordered="false">experimental</NTag>
+      <NTag round type="warning" :bordered="false" style="vertical-align: text-bottom"
+        >experimental</NTag
+      >
     </template>
     This is an experimental feature. It may change or be removed in future versions.
   </NTooltip>
