@@ -44,5 +44,5 @@ export function relativeUnitFormatter<T extends number | bigint>(
     'unit',
   );
 
-  return (value, reference) => innerFormatter(value - reference);
+  return (reference, value) => innerFormatter(value - reference);
 }

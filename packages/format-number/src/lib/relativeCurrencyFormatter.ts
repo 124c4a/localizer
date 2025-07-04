@@ -44,5 +44,5 @@ export function relativeCurrencyFormatter<T extends number | bigint>(
     'currency',
   );
 
-  return (value, reference) => innerFormatter(value - reference);
+  return (reference, value) => innerFormatter(value - reference);
 }
