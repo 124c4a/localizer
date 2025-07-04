@@ -58,4 +58,4 @@ export type ValueRangeFormatter<T> = (start: T, end: T) => Localizable;
  *
  * @see {@link Localizable}
  */
-export type RelativeValueFormatter<T> = (value: T, reference: T) => Localizable;
+export type RelativeValueFormatter<T> = (reference: T, value: T) => Localizable;
