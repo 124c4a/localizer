@@ -40,7 +40,7 @@ export function relativePercentFormatter<T extends number | bigint>(
     'percent',
   );
 
-  return (value, reference) => {
+  return (reference, value) => {
     if (value === reference) {
       return innerFormatter(0);
     } else if (reference == 0) {

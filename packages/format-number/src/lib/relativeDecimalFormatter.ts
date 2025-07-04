@@ -41,5 +41,5 @@ export function relativeDecimalFormatter<T extends number | bigint>(
     'decimal',
   );
 
-  return (value, reference) => innerFormatter(value - reference);
+  return (reference, value) => innerFormatter(value - reference);
 }

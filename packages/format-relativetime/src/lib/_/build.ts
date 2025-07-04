@@ -36,7 +36,7 @@ import { _computeRelativeTime } from './computeRelativeTime.js';
 export function _buildFormatter<T extends number | Date>(
   options: RelativeTimeFormatOptions,
 ): RelativeValueFormatter<T> {
-  return (value, reference) => {
+  return (reference, value) => {
     const formatter: Record<string, Intl.RelativeTimeFormat> = {};
 
     return loc((locale) => {
