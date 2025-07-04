@@ -1,49 +1,41 @@
 ---
 order: 3
-title: Value formatting
+title: Formatting
+entity:
+  type: constant
+  pkg: format
+  name: autoFormat
+  summary: Whatever
+  argument: loc`test`
+  example: autoFormat("Arbitrary value")
+  configurable: false
+  maturity: public
+  related:
+    - stringify
 ---
 
-# Value formatting
+# Formatting
 
-Localization goes beyond translation by adapting data formats to match the user's locale. **@localizer** offers configurable data formatters for common scenarios, including:
+Localization involves more than just translation—it ensures that data formats align with the user's locale and cultural preferences. **@localizer** provides a robust suite of data formatters designed to handle a wide range of common use cases.
 
-- [Dates and times](./dates-and-times/index.md)
-- [Numbers and currencies](./numbers/index.md)
-- [Relative time](./relative-time/index.md)
-- [Display names](./display-name/index.md)
-- [Lists](./lists/index.md)
-- [Custom types](./custom-data-types/index.md)
+To learn more about the core concepts and functionality of value formatters, refer to the [Introduction](./introduction.md) section of this guide.
 
-The library provides a [set of preconfigured formatters](./preconfigured-formatters/index.md) for common use cases, reducing the need for custom implementations.
+## Numbers and amounts
 
-## What are formatters?
+<Entities type="number" />
 
-A formatter is a function that takes input and returns a [localizable value](../introduction/localizable.md). This allows formatted values to be used directly in UI components, [template literals](../introduction/localizable.md#string-templates), or translations.
+## Dates and times
 
-The library offers several predefined formatter types:
+<Entities type="date" />
 
-### [`ValueFormatter<T>`](../api/_localizer/core/ValueFormatter/index.md)
+## Enumerations
 
-`ValueFormatter<T>` formats a single value of type `T` into a localizable representation, suitable for standalone values like numbers, dates, or strings.
+<Entities type="string" />
 
-### [`UnitValueFormatter<T, U>`](../api/_localizer/core/UnitValueFormatter/index.md)
+## Advanced types
 
-`UnitValueFormatter<T, U>` formats a value of type `T` with an associated unit of type `U`, such as distances (_12 km_) or monetary amounts (_$123.00_). It ensures the output respects the user's locale and conventions.
+<Entities type="other" />
 
-### [`ValueRangeFormatter<T>`](../api/_localizer/core/ValueRangeFormatter/index.md)
+## Predefined constants
 
-`ValueRangeFormatter<T>` formats a range of values, taking two arguments of type `T` (start and end). It returns a localizable representation that aligns with the user's locale and formatting preferences.
-
-### [`RelativeValueFormatter<T>`](../api/_localizer/core/RelativeValueFormatter/index.md)
-
-`RelativeValueFormatter<T>` formats relative values using two arguments of type `T`: the value and a reference. It is ideal for representing changes (_+20%_) or time relative to an event (_5 minutes ago_).
-
-::: info NOTE
-
-Developers can create custom formatters for scenarios requiring more than the predefined options. Custom formatters must return a `Localizable` value, enabling flexibility for unique formatting needs.
-
-:::
-
-## Best practice
-
-Centralize all formatters to ensure consistent data formatting across your application. This simplifies updates and ensures uniformity in formatting rules.
+<Entities type="constant" />

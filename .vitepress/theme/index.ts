@@ -17,14 +17,19 @@
 import type { Theme } from 'vitepress';
 
 import { setup } from '@css-render/vue3-ssr';
+import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
 import { GlobalThemeOverrides, NConfigProvider } from 'naive-ui/es/config-provider';
 import { darkTheme } from 'naive-ui/es/themes/dark';
 import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import { defineComponent, h, inject, InjectionKey, onMounted, ref, watch } from 'vue';
+import '@shikijs/vitepress-twoslash/style.css';
 
 import './style.css';
 import Deprecated from './components/Deprecated.vue';
+import Entities from './components/Entities.vue';
+import Entity from './components/Entity.vue';
+import EntityDemo from './components/EntityDemo.vue';
 import Experimental from './components/Experimental.vue';
 import Package from './components/Package.vue';
 import Preview from './components/Preview.vue';
@@ -95,10 +100,14 @@ export default {
   extends: DefaultTheme,
   Layout: NaiveUIProvider,
   enhanceApp: ({ app }) => {
+    app.use(TwoslashFloatingVue);
     app.component('Package', Package);
     app.component('Experimental', Experimental);
     app.component('Preview', Preview);
     app.component('Deprecated', Deprecated);
+    app.component('Entity', Entity);
+    app.component('EntityDemo', EntityDemo);
+    app.component('Entities', Entities);
     if (import.meta.env.SSR) {
       const { collect } = setup(app);
       app.provide(Collect, collect);
