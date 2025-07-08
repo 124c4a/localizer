@@ -35,12 +35,10 @@ See [formatter options](./options/index.md) for formatter configuration details.
 ## Demo
 
 <script setup>
-  import { ref, computed, watch } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
-  import { NInputNumber } from 'naive-ui/es/input-number';
+  import { ref } from 'vue';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NSelect } from 'naive-ui/es/select';
   import { NDivider } from 'naive-ui/es/divider';
-  import { NCollapse, NCollapseItem } from 'naive-ui/es/collapse';
   import NumberFormatOptionsForm from './NumberFormatOptionsForm.vue';
   import { currencyName } from '@localizer/format';
 

@@ -1,10 +1,8 @@
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue';
   import { NFormItem } from 'naive-ui/es/form';
-  import { NInputNumber } from 'naive-ui/es/input-number';
   import { NSelect } from 'naive-ui/es/select';
-  import { NDivider } from 'naive-ui/es/divider';
-  import { RelativeTimeFormatOptions } from '@localizer/all';
+  import { RelativeTimeFormatOptions } from '@localizer/format-relativetime';
 
   const { initial } = defineProps<{
     initial: RelativeTimeFormatOptions;

@@ -29,7 +29,7 @@ The first argument specifies the initial reference value, representing the state
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NInputNumber } from 'naive-ui/es/input-number';
 
   const reference = ref(35);

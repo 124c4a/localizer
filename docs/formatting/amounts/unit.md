@@ -28,7 +28,7 @@ const result = unit(120, 'kilometer-per-hour');
 
 <script setup>
   import { ref, computed } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NInputNumber } from 'naive-ui/es/input-number';
   import { NSelect } from 'naive-ui/es/select';
 

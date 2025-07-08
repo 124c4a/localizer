@@ -35,8 +35,7 @@ See [formatter options](./options.md) for formatter configuration details.
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
-  import { NInputNumber } from 'naive-ui/es/input-number';
+  import { NFormItem } from 'naive-ui/es/form';
   import { loc } from '@localizer/core';
   import ListFormatOptionsForm from './ListFormatOptionsForm.vue'
 

@@ -30,7 +30,7 @@ Formatter accepts JavaScript Date objects or numbers, which are treated as times
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NDatePicker } from 'naive-ui/es/date-picker';
 
   const value = ref(1742723940000);

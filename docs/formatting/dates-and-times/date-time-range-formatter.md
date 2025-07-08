@@ -40,12 +40,9 @@ See [formatter options](./options/index.md) for formatter configuration details.
 ## Demo
 
 <script setup>
-  import { ref, computed, watch } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
-  import { NInputNumber } from 'naive-ui/es/input-number';
-  import { NSelect } from 'naive-ui/es/select';
+  import { ref } from 'vue';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NDivider } from 'naive-ui/es/divider';
-  import { NCollapse, NCollapseItem } from 'naive-ui/es/collapse';
   import { NDatePicker } from 'naive-ui/es/date-picker';
   import DateTimeFormatOptionsForm from './DateTimeFormatOptionsForm.vue';
 

@@ -1,10 +1,11 @@
 # Native translation support <Package name="translate"/> <Experimental/>
 
 <script setup>
-  import {getLocalizer, translate, translation, dictionary, loc} from '@localizer/all';
-  import { plural } from '@localizer/all';
-  import { one, two, few, many, other } from '@localizer/all';
-  import { decimal } from '@localizer/all';
+  import { getLocalizer, loc } from '@localizer/core';
+  import { translate, translation, dictionary } from '@localizer/translate';
+  import { plural } from '@localizer/translate';
+  import { one, two, few, many, other } from '@localizer/translate';
+  import { decimal } from '@localizer/format';
 
   const enUS = getLocalizer('en-US');
   const ruRU = getLocalizer('ru-RU');
@@ -99,12 +100,12 @@ To define standalone individual translations, use the [`translate()`](../api/_lo
 
 ```typescript
 import { getLocalizer } from '@localizer/core';
-import { translate } from '@localizer/translate'; // [!code focus]
+import { translate } from '@localizer/translate'; // [!code highlight]
 
 const enUS = getLocalizer('en-US');
 const ruRU = getLocalizer('ru-RU');
 
-// [!code focus:4]
+// [!code highlight:4]
 const yes = translate({
   en: 'Yes',
   ru: 'Да',
@@ -201,12 +202,12 @@ Several individual translations can be combined to form a dictionary using [`dic
 
 ```typescript
 import { getLocalizer } from '@localizer/core';
-import { translate } from '@localizer/translate'; // [!code focus]
+import { translate } from '@localizer/translate'; // [!code highlight]
 
 const enUS = getLocalizer('en-US');
 const frFR = getLocalizer('fr-FR');
 
-// [!code focus:14]
+// [!code highlight:14]
 const translations = dictionary({
   yes: {
     en: 'Yes',
@@ -236,13 +237,13 @@ Similar to `translate()`, the values in a dictionary can either be a [`Translati
 ```typescript
 import { getLocalizer } from '@localizer/core';
 import { decimal } from '@localizer/format';
-import { dictionary } from '@localizer/translate'; // [!code focus]
+import { dictionary } from '@localizer/translate'; // [!code highlight]
 
 const enUS = getLocalizer('en-US');
 const fiFI = getLocalizer('fi-FI');
 const svFI = getLocalizer('sv-FI');
 
-// [!code focus:7]
+// [!code highlight:7]
 const translations = dictionary({
   files: (count: number) => ({
     en: loc`${decimal(count)} files`,
@@ -301,14 +302,14 @@ Here is how the `plural()` function can be used to define translations for file 
 ```typescript
 import { getLocalizer } from '@localizer/core';
 import { decimal } from '@localizer/format';
-import { dictionary, plural } from '@localizer/translate'; // [!code focus]
-import { one, two, few, many, other } from '@localizer/translate'; // [!code focus]
+import { dictionary, plural } from '@localizer/translate'; // [!code highlight]
+import { one, two, few, many, other } from '@localizer/translate'; // [!code highlight]
 
 const enUS = getLocalizer('en-US');
 const fiFI = getLocalizer('fi-FI');
 const svFI = getLocalizer('sv-FI');
 
-// [!code focus:19]
+// [!code highlight:19]
 const translations = dictionary({
   files: (count: number) => ({
     en: plural(count, {

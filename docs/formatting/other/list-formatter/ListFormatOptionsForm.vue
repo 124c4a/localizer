@@ -2,10 +2,9 @@
   import { ref, computed, watch } from 'vue';
   import { NFormItem } from 'naive-ui/es/form';
   import { NInput } from 'naive-ui/es/input';
-  import { NInputNumber } from 'naive-ui/es/input-number';
   import { NSelect } from 'naive-ui/es/select';
-  import { NDivider } from 'naive-ui/es/divider';
-  import { ListFormatOptions, loc, Localizable } from '@localizer/all';
+  import { loc, Localizable } from '@localizer/core';
+  import { ListFormatOptions } from '@localizer/format-list';
 
   const { initial } = defineProps<{
     initial: ListFormatOptions;

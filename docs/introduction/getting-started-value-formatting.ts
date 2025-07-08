@@ -17,7 +17,8 @@ import { ConsoleStub } from '../_console_stub';
 const console = new ConsoleStub();
 
 // #region example
-import { getLocalizer, dateTime } from '@localizer/all';
+import { getLocalizer } from '@localizer/core';
+import { dateTime } from '@localizer/format';
 
 const now = dateTime(new Date());
 

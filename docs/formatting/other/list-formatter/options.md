@@ -5,7 +5,8 @@ order: 2
 # Options
 
 <script setup>
-import { listFormatter, loc } from '@localizer/all';
+import { loc } from '@localizer/core';
+import { listFormatter } from '@localizer/format-list';
 
 const inputs = () => [
   ['One', [ loc`One` ]],

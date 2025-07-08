@@ -32,13 +32,10 @@ See [formatter options](./options.md) for formatter configuration details.
 ## Demo
 
 <script setup>
-  import { ref, computed, watch } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
-  import { NInputNumber } from 'naive-ui/es/input-number';
+  import { ref, computed } from 'vue';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NSelect } from 'naive-ui/es/select';
   import { NDivider } from 'naive-ui/es/divider';
-  import { NCollapse, NCollapseItem } from 'naive-ui/es/collapse';
-  import { NDatePicker } from 'naive-ui/es/date-picker';
   import DisplayNameFormatOptionsForm from './DisplayNameFormatOptionsForm.vue';
   import { countryName, languageName, currencyName } from '@localizer/format';
   import { countries } from '../country-name';

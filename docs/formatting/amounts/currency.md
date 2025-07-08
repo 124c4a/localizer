@@ -27,7 +27,7 @@ const result = currency(1005, 'EUR');
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NInputNumber } from 'naive-ui/es/input-number';
   import { NSelect } from 'naive-ui/es/select';
   import { currencyName } from '@localizer/format';

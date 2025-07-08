@@ -28,8 +28,7 @@ const result = languageName('sv-FI');
 
 <script setup>
   import { ref, computed } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
-  import { NInputNumber } from 'naive-ui/es/input-number';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NSelect } from 'naive-ui/es/select';
   import { countryName, languageName } from '@localizer/format';
   import { countries } from './country-name';

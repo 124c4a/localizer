@@ -33,9 +33,8 @@ const result = transform(value, [upperCase]);
 
 <script setup>
   import { ref, computed } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NInput } from 'naive-ui/es/input';
-  import { NSelect } from 'naive-ui/es/select';
 
   const value = ref('lower UPPER');
 </script>

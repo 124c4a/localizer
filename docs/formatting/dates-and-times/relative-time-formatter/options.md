@@ -5,7 +5,7 @@ order: 2
 # Relative time options
 
 <script setup>
-import { relativeTimeFormatter } from '@localizer/all';
+import { relativeTimeFormatter } from '@localizer/format-relativetime';
 
 const dateInputs = () => [
   ['2020-01-24 05:50:00, 2020-01-23 04:41:20', new Date('2020-01-24 05:50:00'), new Date('2020-01-23 04:41:20')]

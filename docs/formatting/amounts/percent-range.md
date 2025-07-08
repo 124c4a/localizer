@@ -30,7 +30,7 @@ The arguments passed to this formatter represent a ratio in its unscaled form, w
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NInputNumber } from 'naive-ui/es/input-number';
 
   const start = ref(0.1);

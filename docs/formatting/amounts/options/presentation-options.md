@@ -3,7 +3,7 @@ order: 1
 ---
 
 <script setup>
-import { decimalFormatter } from '@localizer/all';
+import { decimalFormatter } from '@localizer/format-number';
 
 const digitInputs = () => [
   ['1.2', 1.2],
@@ -30,7 +30,6 @@ const signInputs = () => [
   ['0.0000001', 0.0000001],
   ['-0.0000001', -0.0000001],
 ];
-
 </script>
 
 # Presentation options

@@ -5,7 +5,9 @@ order: 6
 # Transformations <Package name="transform"/>
 
 <script setup>
-import { getLocalizer, transform, loc, date, apply, countryName, upperCase, lowerCase, capitalize, apply as applyFn, usePrimaryLocale } from '@localizer/all';
+import { getLocalizer } from '@localizer/core';
+import { date, countryName } from '@localizer/format';
+import { transform, upperCase, usePrimaryLocale } from '@localizer/transform';
 
 const localizer = getLocalizer('en-US');
 </script>

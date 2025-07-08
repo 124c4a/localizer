@@ -48,7 +48,7 @@ Refer to this documentation for detailed information on components and their fea
 
 ::: info NOTE
 
-The `@localizer/all` package provides all core components of the **@localizer** ecosystem in one package, simplifying setup and ensuring compatibility. For details on included modules and usage, see the [API Reference](../api/index.md).
+The `@localizer/all` package installs all core components of the **@localizer** ecosystem, simplifying setup and ensuring compatibility. For details on included modules and usage, see the [API Reference](../api/index.md).
 
 :::
 

@@ -3,7 +3,7 @@ order: 2
 ---
 
 <script setup>
-import { decimalFormatter, currencyFormatter, unitFormatter } from '@localizer/all';
+import { decimalFormatter, currencyFormatter, unitFormatter } from '@localizer/format-number';
 
 const currencyInputs = () => [
   ['1000, "USD"', 1000, 'USD'],
@@ -15,8 +15,6 @@ const unitInputs = () => [
   ['0.5, "liter"', 0.5, 'liter'],
   ['120, "kilometer-per-hour"', 120, "kilometer-per-hour"],
 ];
-
-
 </script>
 
 # Unit and currency options

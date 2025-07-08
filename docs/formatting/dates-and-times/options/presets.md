@@ -5,7 +5,7 @@ order: 1
 # Presets
 
 <script setup>
-import { dateTimeFormatter } from '@localizer/all';
+import { dateTimeFormatter } from '@localizer/format-datetime';
 
 const dateInputs = (now) => [
   ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")],

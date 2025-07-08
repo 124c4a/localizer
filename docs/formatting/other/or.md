@@ -30,8 +30,7 @@ const result = or(values);
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
-  import { NInputNumber } from 'naive-ui/es/input-number';
+  import { NFormItem } from 'naive-ui/es/form';
   import { loc } from '@localizer/core';
 
   const value = [loc`A`, loc`B`, loc`C`, loc`D`];

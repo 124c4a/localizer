@@ -5,7 +5,7 @@ order: 2
 # Options
 
 <script setup>
-import { displayNameFormatter } from '@localizer/all';
+import { displayNameFormatter } from '@localizer/format-displayname';
 
 function withLabels(inputs) {
   return inputs.map((input) => [input, input]);

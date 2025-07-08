@@ -14,8 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <script setup lang="ts">
-  import { isLocalizable, Localizable } from '@localizer/all';
-  import { computed, onMounted, onUnmounted, ref } from 'vue';
+  import { isLocalizable, Localizable } from '@localizer/core';
 
   const { factory, defaultOptions, inputs, option, values } = defineProps<{
     factory: (options: any & {}) => (...args: unknown[]) => Localizable;

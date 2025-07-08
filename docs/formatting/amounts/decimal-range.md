@@ -28,8 +28,9 @@ const result = decimalRange(1000, 2000);
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NInputNumber } from 'naive-ui/es/input-number';
+  import NumberFormatOptionsForm from './NumberFormatOptionsForm.vue';
 
   const start = ref(1000);
   const end = ref(2000);

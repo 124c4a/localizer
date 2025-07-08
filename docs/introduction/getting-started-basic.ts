@@ -17,7 +17,8 @@ import { ConsoleStub } from '../_console_stub';
 const console = new ConsoleStub();
 
 // #region dictionary
-import { getLocalizer, dictionary } from '@localizer/all';
+import { getLocalizer } from '@localizer/core';
+import { dictionary } from '@localizer/translate';
 
 const translations = dictionary({
   yes: {

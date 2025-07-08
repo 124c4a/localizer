@@ -5,7 +5,7 @@ order: 2
 # Date/time component options
 
 <script setup>
-import { dateTimeFormatter } from '@localizer/all';
+import { dateTimeFormatter } from '@localizer/format-datetime';
 
 const dateInputs = () => [
   ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")],

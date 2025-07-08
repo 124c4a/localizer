@@ -28,8 +28,9 @@ const result = decimal(1234567.89);
 
 <script setup>
   import { ref } from 'vue';
-  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NFormItem } from 'naive-ui/es/form';
   import { NInputNumber } from 'naive-ui/es/input-number';
+  import NumberFormatOptionsForm from './NumberFormatOptionsForm.vue';
 
   const value = ref(1234567.89);
 </script>

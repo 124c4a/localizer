@@ -83,13 +83,13 @@ import { autoFormat } from '@localizer/format';
 const result = autoFormat('Automatic formatting');
 ```
 
-**Examples:**
+## Demo
 
 <table tabindex="0">
   <thead>
     <tr>
       <th>Input value</th>
-      <th>Formatted value</th>
+      <th>Localized value</th>
     </tr>
   </thead>
   <tbody>
