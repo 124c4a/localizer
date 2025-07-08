@@ -17,10 +17,10 @@ import { ConsoleStub } from '../_console_stub';
 const console = new ConsoleStub();
 
 // #region dictionary
-import { getLocalizer, loc } from '@localizer/all';
-import { dictionary, plural } from '@localizer/all';
-import { one, two, few, many, other } from '@localizer/all';
-import { decimal } from '@localizer/all';
+import { getLocalizer, loc } from '@localizer/core';
+import { decimal } from '@localizer/format';
+import { dictionary, plural } from '@localizer/translate';
+import { one, two, few, many, other } from '@localizer/translate';
 
 const translations = dictionary({
   files: (count: number) => ({

@@ -1,4 +1,4 @@
-# `@localizer/all`: A meta-package, that exports core packages of the **@localizer** monorepo
+# `@localizer/all`: A meta-package, that imports core packages of the **@localizer** monorepo
 
 ![NPM Last Update](https://img.shields.io/npm/last-update/%40localizer%2Fcore)
 ![NPM Version](https://img.shields.io/npm/v/%40localizer%2Fcore)

@@ -72,7 +72,7 @@ describe('lookUpFormatter', () => {
       1: loc`One`,
     });
     expect(() => formatter(2).localize('en-US')).toThrowError(
-      'Value 2 is not represented in [1], but no default value is specified'
+      'Value 2 is not represented in [1], but no default value is specified',
     );
   });
 

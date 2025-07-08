@@ -21,7 +21,9 @@ limitations under the License.
 <template>
   <NTooltip trigger="hover">
     <template #trigger>
-      <NTag round type="success" :bordered="false">preview</NTag>
+      <NTag round type="success" :bordered="false" style="vertical-align: text-bottom"
+        >preview</NTag
+      >
     </template>
     This is a preview feature. Although it is considered stable, the API may change in future
     versions. Use it with caution.

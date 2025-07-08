@@ -5,13 +5,11 @@ order: 1
 # Presets
 
 <script setup>
-import DemoValueFormatterOptions from '../../DemoValueFormatterOptions.vue';
-import { dateTimeFormatter } from '@localizer/all';
+import { dateTimeFormatter } from '@localizer/format-datetime';
 
 const dateInputs = (now) => [
-  ['(now)', now], 
-  ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")], 
-  ['2020-10-02 23:59:01', new Date("2020-10-02 23:59:01")], 
+  ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")],
+  ['2020-10-02 23:59:01', new Date("2020-10-02 23:59:01")],
 ];
 </script>
 
@@ -27,7 +25,7 @@ The date formatting style to use. Possible values are `"full"`, `"long"`, `"medi
 
 **Examples:**
 
-<DemoValueFormatterOptions option="dateStyle" :values="['full', 'long', 'medium', 'short']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="dateStyle" :values="['full', 'long', 'medium', 'short']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `timeStyle`
 
@@ -35,7 +33,7 @@ The time formatting style to use. Possible values are `"full"`, `"long"`, `"medi
 
 **Examples:**
 
-<DemoValueFormatterOptions option="timeStyle" :values="['full', 'long', 'medium', 'short']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="timeStyle" :values="['full', 'long', 'medium', 'short']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ---
 

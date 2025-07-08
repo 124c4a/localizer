@@ -5,11 +5,9 @@ order: 3
 # Presentation options
 
 <script setup>
-import DemoValueFormatterOptions from '../../DemoValueFormatterOptions.vue';
-import { dateTimeFormatter } from '@localizer/all';
+import { dateTimeFormatter } from '@localizer/format-datetime';
 
 const dateInputs = (now) => [
-  ['(now)', now],
   ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")],
   ['2020-10-02 23:59:01', new Date("2020-10-02 23:59:01")],
 ];
@@ -37,7 +35,7 @@ Options `hour12` and `hourCycle` cannot be used simultaneously.
 
 :::
 
-<DemoValueFormatterOptions option="hour12" :values="[true, false]" :defaultOptions="{ timeStyle: 'medium' }":factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="hour12" :values="[true, false]" :defaultOptions="{ timeStyle: 'medium' }":factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `hourCycle`
 
@@ -61,7 +59,7 @@ Options `hour12` and `hourCycle` cannot be used simultaneously.
 
 :::
 
-<DemoValueFormatterOptions option="hourCycle" :values="['h11', 'h12', 'h23', 'h24']" :defaultOptions="{ timeStyle: 'medium' }":factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="hourCycle" :values="['h11', 'h12', 'h23', 'h24']" :defaultOptions="{ timeStyle: 'medium' }":factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `parts`
 

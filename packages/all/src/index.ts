@@ -15,19 +15,20 @@
  */
 
 /**
- * Exports core packages of the `@localizer` monorepo.
+ * A meta-package for `@localizer` monorepo. Does not contain any code, but installs all packages as
+ * dependencies.
  *
  * @packageDocumentation
  *
  * @public
  */
-export * from '@localizer/core';
-export * from '@localizer/format';
-export * from '@localizer/format-datetime';
-export * from '@localizer/format-displayname';
-export * from '@localizer/format-list';
-export * from '@localizer/format-lookup';
-export * from '@localizer/format-number';
-export * from '@localizer/format-relativetime';
-export * from '@localizer/transform';
-export * from '@localizer/translate';
+import '@localizer/core';
+import '@localizer/format';
+import '@localizer/format-datetime';
+import '@localizer/format-displayname';
+import '@localizer/format-list';
+import '@localizer/format-lookup';
+import '@localizer/format-number';
+import '@localizer/format-relativetime';
+import '@localizer/transform';
+import '@localizer/translate';

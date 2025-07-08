@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
 
 /**
  * ISO 4217 currency, fund and precious metal codes

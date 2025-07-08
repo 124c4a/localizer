@@ -24,8 +24,7 @@ describe('getLocalizer', () => {
   });
   it('returns a function that localizes dynamic values', () => {
     const localizer = getLocalizer('en');
-    const dynamicLocalizable = (value: string) =>
-      loc(() => `localized ${value}`);
+    const dynamicLocalizable = (value: string) => loc(() => `localized ${value}`);
     const localizedFn = localizer(dynamicLocalizable);
     expect(localizedFn('test')).toBe('localized test');
   });

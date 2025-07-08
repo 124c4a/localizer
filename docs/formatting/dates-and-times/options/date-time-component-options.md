@@ -2,16 +2,14 @@
 order: 2
 ---
 
-# Date/time component options
+# Date/time options
 
 <script setup>
-import DemoValueFormatterOptions from '../../DemoValueFormatterOptions.vue';
-import { dateTimeFormatter } from '@localizer/all';
+import { dateTimeFormatter } from '@localizer/format-datetime';
 
-const dateInputs = (now) => [
-  ['(now)', now], 
-  ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")], 
-  ['2020-10-02 23:59:01', new Date("2020-10-02 23:59:01")], 
+const dateInputs = () => [
+  ['1980-06-19 00:05:31', new Date("1980-06-19 00:05:31")],
+  ['2020-10-02 23:59:01', new Date("2020-10-02 23:59:01")],
 ];
 </script>
 
@@ -37,7 +35,7 @@ Some locales may use the same narrow style for multiple weekdays (e.g., Tuesday 
 
 **Examples:**
 
-<DemoValueFormatterOptions option="weekday" :values="['long', 'short', 'narrow']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="weekday" :values="['long', 'short', 'narrow']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `era`
 
@@ -45,7 +43,7 @@ The representation of the era. Possible values are `"long"`, `"short"`, and `"na
 
 **Examples:**
 
-<DemoValueFormatterOptions option="era" :values="['long', 'short', 'narrow']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="era" :values="['long', 'short', 'narrow']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `year`
 
@@ -53,7 +51,7 @@ The year can be displayed as `"numeric"` (e.g., 2023) or `"2-digit"` (e.g., 23).
 
 **Examples:**
 
-<DemoValueFormatterOptions option="year" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="year" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `month`
 
@@ -73,7 +71,7 @@ Two months may have the same narrow style for some locales (e.g., May's narrow s
 
 **Examples:**
 
-<DemoValueFormatterOptions option="month" :values="['numeric', '2-digit', 'long', 'short', 'narrow']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="month" :values="['numeric', '2-digit', 'long', 'short', 'narrow']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `day`
 
@@ -81,7 +79,7 @@ The day can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
-<DemoValueFormatterOptions option="day" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="day" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `dayPeriod`
 
@@ -105,7 +103,7 @@ This option only applies when using a 12-hour clock (`hourCycle`: `"h12"` or `"h
 
 :::
 
-<DemoValueFormatterOptions option="dayPeriod" :values="['narrow', 'short', 'long']" :defaultOptions="{ hourCycle: 'h12' }" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="dayPeriod" :values="['narrow', 'short', 'long']" :defaultOptions="{ hourCycle: 'h12' }" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `hour`
 
@@ -113,7 +111,7 @@ The hour can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
-<DemoValueFormatterOptions option="hour" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="hour" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `minute`
 
@@ -121,7 +119,7 @@ The minute can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
-<DemoValueFormatterOptions option="minute" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="minute" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `second`
 
@@ -129,7 +127,7 @@ The second can be displayed as `"numeric"` (e.g., 1) or `"2-digit"` (e.g., 01).
 
 **Examples:**
 
-<DemoValueFormatterOptions option="second" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="second" :values="['numeric', '2-digit']" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `fractionalSecondDigits`
 
@@ -137,7 +135,7 @@ The number of fractional second digits to display. Valid values are `1`, `2`, or
 
 **Examples:**
 
-<DemoValueFormatterOptions option="fractionalSecondDigits" :values="[1, 2, 3]" :factory=dateTimeFormatter :inputs=dateInputs />
+<OptionsDemo option="fractionalSecondDigits" :values="[1, 2, 3]" :factory=dateTimeFormatter :inputs=dateInputs />
 
 ## `formatMatcher`
 

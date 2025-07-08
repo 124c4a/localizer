@@ -2,7 +2,7 @@
 order: 99
 ---
 
-# Formatter options
+# Common options
 
 Formatter options let you customize date and time formatting to suit your needs. These options are grouped into categories:
 

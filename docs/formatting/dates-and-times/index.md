@@ -1,13 +1,9 @@
 ---
-title: Dates and times
-order: 1
+order: 2
 ---
 
-# Formatting dates and times
+# Dates and times
 
-The **@localizer** library offers tools for precise and flexible date and time formatting.
+<p></p>
 
-- [Date/time](./date-time.md)
-- [Date/time range](./date-time-range.md)
-
-All formatters support [configuration options](./options/index.md) to customize their behavior for specific use cases.
+<Entities type="date" />
