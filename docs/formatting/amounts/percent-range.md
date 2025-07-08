@@ -4,12 +4,12 @@ entity:
   type: number
   pkg: format
   name: percentRange
-  summary: Generic formatter for percentage ration ranges
+  summary: Percentage amount range
   example: percentRange(0.1, 0.2)
   configurable: false
   maturity: public
   related:
-    - percent
+    - percentRangeFormatter
 ---
 
 # percentRange <Package name="format"/>
@@ -37,7 +37,7 @@ The arguments passed to this formatter represent a ratio in its unscaled form, w
   const end = ref(0.2);
 </script>
 
-<EntityDemo name="percentRange" :args="[start, end]">
+<EntityDemo :args="[start, end]">
   <NFormItem label="Range start">
     <NInputNumber clearable v-model:value="start" :step="0.01" />
   </NFormItem>
@@ -48,4 +48,4 @@ The arguments passed to this formatter represent a ratio in its unscaled form, w
 
 ## See also
 
-<Entities related="percentRange" />
+<Entities />

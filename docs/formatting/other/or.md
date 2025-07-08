@@ -1,0 +1,45 @@
+---
+title: or
+entity:
+  type: other
+  pkg: format
+  name: or
+  summary: List joined with disjunction (or)
+  example: or([loc`A`, loc`B`, loc`C`, loc`D`])
+  configurable: false
+  maturity: public
+  related:
+    - decimalFormatter
+---
+
+# or <Package name="format"/>
+
+This formatter provides formatting for lists using disjunction as a joiner (and).
+
+## Usage
+
+```typescript twoslash
+import { loc } from '@localizer/core';
+import { or } from '@localizer/format';
+
+const values = [loc`A`, loc`B`, loc`C`, loc`D`];
+const result = or(values);
+```
+
+## Demo
+
+<script setup>
+  import { ref } from 'vue';
+  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NInputNumber } from 'naive-ui/es/input-number';
+  import { loc } from '@localizer/core';
+
+  const value = [loc`A`, loc`B`, loc`C`, loc`D`];
+</script>
+
+<EntityDemo :args="[value]">
+</EntityDemo>
+
+## See also
+
+<Entities />

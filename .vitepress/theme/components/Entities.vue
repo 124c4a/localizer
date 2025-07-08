@@ -17,18 +17,22 @@ limitations under the License.
   import { computed, onMounted, onUnmounted, ref } from 'vue';
   import { entities } from '../data/entities';
   import { NSpace } from 'naive-ui/es/space';
+  import { useData } from 'vitepress';
   import Entity from './Entity.vue';
 
-  const { related, pkg, type, configurable } = defineProps<{
-    related?: string;
+  const { pkg, type, configurable } = defineProps<{
     pkg?: string;
     type?: 'number' | 'date' | 'string' | 'other' | 'constant' | 'transformer';
     configurable?: boolean;
   }>();
 
+  const { frontmatter } = useData();
+
   const filteredList = computed(() => {
-    if (related) {
-      const relatedEntities = entities.find((entity) => entity.name === related)?.related ?? [];
+    if (frontmatter && frontmatter.value['entity'] && frontmatter.value['entity']['name']) {
+      const relatedEntities =
+        entities.find((entity) => entity.name === frontmatter.value['entity']['name'])?.related ??
+        [];
       return entities
         .filter((entity) => relatedEntities.includes(entity.name))
         .sort((a, b) => a.name.localeCompare(b.name));

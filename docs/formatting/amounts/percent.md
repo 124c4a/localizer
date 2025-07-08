@@ -4,12 +4,12 @@ entity:
   type: number
   pkg: format
   name: percent
-  summary: Generic formatter for numbers
+  summary: Percentage amount
   example: percent(1.46)
   configurable: false
   maturity: public
   related:
-    - percentRange
+    - percentFormatter
 ---
 
 # percent <Package name="format"/>
@@ -36,12 +36,12 @@ The argument passed to this formatter represents a ratio in its unscaled form, w
   const value = ref(1.46);
 </script>
 
-<EntityDemo name="percent" :args="[value]">
-  <NFormItem label="Value to format">
+<EntityDemo :args="[value]">
+  <NFormItem label="Value">
     <NInputNumber clearable v-model:value="value" :step="0.01"/>
   </NFormItem>
 </EntityDemo>
 
 ## See also
 
-<Entities related="percent" />
+<Entities />

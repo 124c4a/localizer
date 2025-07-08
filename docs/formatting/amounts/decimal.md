@@ -4,12 +4,12 @@ entity:
   type: number
   pkg: format
   name: decimal
-  summary: Generic formatter for numbers
+  summary: Arbitrary unit-less amount
   example: decimal(1234567.89)
   configurable: false
   maturity: public
   related:
-    - decimalRange
+    - decimalFormatter
 ---
 
 # decimal <Package name="format"/>
@@ -34,12 +34,12 @@ const result = decimal(1234567.89);
   const value = ref(1234567.89);
 </script>
 
-<EntityDemo name="decimal" :args="[value]">
-  <NFormItem label="Value to format">
+<EntityDemo :args="[value]">
+  <NFormItem label="Value">
     <NInputNumber clearable v-model:value="value" />
   </NFormItem>
 </EntityDemo>
 
 ## See also
 
-<Entities related="decimal" />
+<Entities />

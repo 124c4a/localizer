@@ -1,17 +1,6 @@
 ---
 order: 3
 title: Formatting
-entity:
-  type: constant
-  pkg: format
-  name: autoFormat
-  summary: Whatever
-  argument: loc`test`
-  example: autoFormat("Arbitrary value")
-  configurable: false
-  maturity: public
-  related:
-    - stringify
 ---
 
 # Formatting
@@ -28,14 +17,10 @@ To learn more about the core concepts and functionality of value formatters, ref
 
 <Entities type="date" />
 
-## Enumerations
+## Strings and enumerations
 
 <Entities type="string" />
 
-## Advanced types
+## Other types
 
 <Entities type="other" />
-
-## Predefined constants
-
-<Entities type="constant" />

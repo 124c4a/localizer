@@ -18,19 +18,21 @@ limitations under the License.
   import { loc, LocaleCode } from '@localizer/core';
   import { entities } from '../data/entities';
   import { Entity } from '../entity';
-  import { NSpace } from 'naive-ui/es/space';
+  import { NFlex } from 'naive-ui/es/flex';
   import { NForm } from 'naive-ui/es/form';
   import { languageName, stringify } from '@localizer/format';
+  import { useData } from 'vitepress';
 
   const locales: LocaleCode[] = ['en-US', 'fr-FR', 'de-DE', 'fi-FI', 'sv-FI', 'ko-KR', 'hi-IN'];
 
-  const { name, args } = defineProps<{
-    name: string;
+  const { args } = defineProps<{
     args: any[];
   }>();
 
+  const { frontmatter } = useData();
+
   const entity = computed(() => {
-    return entities.find((f) => f.name === name) as Entity;
+    return entities.find((f) => f.name === frontmatter.value['entity']['name']) as Entity;
   });
 
   const fn = computed(() => {
@@ -38,6 +40,7 @@ limitations under the License.
       try {
         return entity.value.fn(...args);
       } catch (error) {
+        console.error(error);
         return loc`Invalid arguments: ${stringify(error)}`;
       }
     };
@@ -45,15 +48,15 @@ limitations under the License.
 </script>
 
 <template>
-  <NSpace vertical :singleLine="true">
-    <NForm inline>
+  <NFlex vertical :singleLine="true">
+    <NForm label-placement="left" label-width="200">
       <slot></slot>
     </NForm>
     <table>
       <thead>
         <tr>
           <th>Locale</th>
-          <th style="width: 100%">Formatted value</th>
+          <th style="width: 100%">Localized value</th>
         </tr>
       </thead>
       <tbody>
@@ -68,5 +71,5 @@ limitations under the License.
         </tr>
       </tbody>
     </table>
-  </NSpace>
+  </NFlex>
 </template>

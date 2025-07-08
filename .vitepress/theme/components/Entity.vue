@@ -40,9 +40,9 @@ limitations under the License.
 
   const description = {
     number: 'Formatter for numbers',
-    date: 'Formatter for dates',
-    string: 'Formatter for strings',
-    other: 'Formatter for advanced types',
+    date: 'Formatter for dates and times',
+    string: 'Formatter for strings or enumerations',
+    other: 'Formatter for other types',
     constant: 'Constant value',
     transformer: 'Transformer for localizable values',
   } as const;
@@ -67,7 +67,7 @@ limitations under the License.
           <template #trigger>
             <NIcon :component="SettingsSharp" style="vertical-align: text-bottom" />
           </template>
-          Requires configuration.
+          Configurable
         </NTooltip>
         <NTooltip :trigger="'hover'" :placement="'top'">
           <template #trigger>

@@ -1,0 +1,49 @@
+---
+title: country name
+entity:
+  type: string
+  pkg: format
+  name: countryName
+  summary: Country name
+  example: countryName('US')
+  configurable: false
+  maturity: public
+  related:
+    - decimalFormatter
+---
+
+# countryName <Package name="format"/>
+
+This formatter provides formatting for generic numbers.
+
+## Usage
+
+```typescript twoslash
+import { countryName } from '@localizer/format';
+
+const result = countryName('US');
+```
+
+## Demo
+
+<script setup>
+  import { ref } from 'vue';
+  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NInputNumber } from 'naive-ui/es/input-number';
+  import { NSelect } from 'naive-ui/es/select';
+  import { countryName } from '@localizer/format';
+  import { countries } from './country-name';
+
+  const value = ref('US');
+  const valueOptions = countries.map(it => ({label: `${it} - ${countryName(it).localize('en-US')}`, value: it}));
+</script>
+
+<EntityDemo :args="[value]">
+  <NFormItem label="Value">
+    <NSelect filterable v-model:value="value" :options="valueOptions"/>
+  </NFormItem>
+</EntityDemo>
+
+## See also
+
+<Entities />

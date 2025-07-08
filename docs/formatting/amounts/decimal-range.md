@@ -4,12 +4,12 @@ entity:
   type: number
   pkg: format
   name: decimalRange
-  summary: Generic formatter for number ranges
+  summary: Arbitrary unitless amount range
   example: decimalRange(1000, 2000)
   configurable: false
   maturity: public
   related:
-    - decimal
+    - decimalRangeFormatter
 ---
 
 # decimalRange <Package name="format"/>
@@ -35,7 +35,7 @@ const result = decimalRange(1000, 2000);
   const end = ref(2000);
 </script>
 
-<EntityDemo name="decimalRange" :args="[start, end]">
+<EntityDemo :args="[start, end]">
   <NFormItem label="Range start">
     <NInputNumber clearable v-model:value="start" />
   </NFormItem>
@@ -46,4 +46,4 @@ const result = decimalRange(1000, 2000);
 
 ## See also
 
-<Entities related="decimalRange" />
+<Entities />

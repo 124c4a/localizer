@@ -24,7 +24,7 @@ The library offers several predefined formatter types:
 
 ### [`RelativeValueFormatter<T>`](../api/_localizer/core/RelativeValueFormatter/index.md)
 
-`RelativeValueFormatter<T>` formats relative values using two arguments of type `T`: the value and a reference. It is ideal for representing changes (_+20%_) or time relative to an event (_5 minutes ago_).
+`RelativeValueFormatter<T>` formats relative values using two arguments of type `T`: the reference and a value. It is ideal for representing changes (_+20%_) or time relative to an event (_5 minutes ago_).
 
 ::: info NOTE
 

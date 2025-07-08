@@ -31,6 +31,7 @@ import Entities from './components/Entities.vue';
 import Entity from './components/Entity.vue';
 import EntityDemo from './components/EntityDemo.vue';
 import Experimental from './components/Experimental.vue';
+import OptionsDemo from './components/OptionsDemo.vue';
 import Package from './components/Package.vue';
 import Preview from './components/Preview.vue';
 
@@ -108,6 +109,7 @@ export default {
     app.component('Entity', Entity);
     app.component('EntityDemo', EntityDemo);
     app.component('Entities', Entities);
+    app.component('OptionsDemo', OptionsDemo);
     if (import.meta.env.SSR) {
       const { collect } = setup(app);
       app.provide(Collect, collect);

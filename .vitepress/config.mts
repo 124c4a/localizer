@@ -106,7 +106,7 @@ const configWithSidebar = withSidebar(config, {
   useFolderLinkFromSameNameSubFile: true,
   excludePattern: ['api'],
   hyphenToSpace: true,
-  capitalizeFirst: true,
+  capitalizeFirst: false,
   sortMenusByFrontmatterOrder: true,
 });
 

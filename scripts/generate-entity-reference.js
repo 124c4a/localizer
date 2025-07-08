@@ -36,6 +36,7 @@ const lines = [];
 
 lines.push(`import { Entity } from '../entity';`);
 lines.push(`import { loc } from '@localizer/core';`);
+lines.push(`import { transform } from '@localizer/transform';`);
 
 // Add imports
 entities

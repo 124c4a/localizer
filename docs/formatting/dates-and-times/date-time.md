@@ -1,17 +1,47 @@
 ---
-order: 1
+title: date time
+entity:
+  type: date
+  pkg: format
+  name: dateTime
+  summary: Time
+  example: dateTime(new Date(2025,2,23,11,59,0))
+  configurable: false
+  maturity: public
+  related:
+    - decimalFormatter
 ---
 
-# Date/time <Package name="format-datetime"/>
+# dateTime <Package name="format"/>
 
-> **[dateTimeFormatter](../../api/_localizer/format-datetime/dateTimeFormatter/index.md)**<`T`> ( `options?` ): [ValueFormatter](../index.md#valueformatter-t)<`T`>
->
-> - `T` _extends number | Date_ - The type of value to format. Number values are treated as timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
-> - `options` - Optional [configuration of the formatter](./options/index.md).
->   This formatter provides locale-aware formatting for dates, times, and their combinations.
+This formatter provides formatting for date and time parts.
 
-::: tip
+## Usage
 
-If you prefer to use default settings, consider using a preconfigured [date](../preconfigured-formatters/dates-and-times/date.md), [time](../preconfigured-formatters/dates-and-times/time.md) and [date/time](../preconfigured-formatters/dates-and-times/date-time.md) formatters.
+```typescript twoslash
+import { dateTime } from '@localizer/format';
 
-:::
+const result = dateTime(new Date(2025, 2, 23, 12, 59, 0));
+```
+
+Formatter accepts JavaScript Date objects or numbers, which are treated as timestamps (milliseconds since _January 1, 1970, 00:00:00 UTC_).
+
+## Demo
+
+<script setup>
+  import { ref } from 'vue';
+  import { NForm, NFormItem } from 'naive-ui/es/form';
+  import { NDatePicker } from 'naive-ui/es/date-picker';
+
+  const value = ref(1742723940000);
+</script>
+
+<EntityDemo :args="[value]">
+  <NFormItem label="Value">
+    <NDatePicker v-model:value="value" type="datetime" />
+  </NFormItem>
+</EntityDemo>
+
+## See also
+
+<Entities />
