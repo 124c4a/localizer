@@ -22,3 +22,13 @@
  *
  * @public
  */
+import '@localizer/core';
+import '@localizer/format';
+import '@localizer/format-datetime';
+import '@localizer/format-displayname';
+import '@localizer/format-list';
+import '@localizer/format-lookup';
+import '@localizer/format-number';
+import '@localizer/format-relativetime';
+import '@localizer/transform';
+import '@localizer/translate';
