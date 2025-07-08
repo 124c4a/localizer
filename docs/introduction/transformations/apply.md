@@ -9,8 +9,6 @@ entity:
   fn: (value) => transform(loc(() => value), [apply((str) => `**${str}**`)])
   configurable: true
   maturity: public
-  related:
-    - decimalFormatter
 ---
 
 # apply <Package name="transform"/>
@@ -45,7 +43,3 @@ const result = transform(value, [bold]);
 ```
 
 :::
-
-## See also
-
-<Entities />

@@ -14,7 +14,7 @@ entity:
 
 # currencyFormatter <Package name="format-number"/>
 
-Configurable formatter for monetary amounts with currency.
+A versatile and customizable utility for formatting monetary values with currency. This formatter allows you to define how currency is displayed, including options for symbols, compact notation, and more.
 
 ## Usage
 

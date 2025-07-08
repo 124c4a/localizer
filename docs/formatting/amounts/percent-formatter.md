@@ -10,11 +10,12 @@ entity:
   fn: (options, value) => percentFormatter(options)(value)
   related:
     - percent
+    - percentRangeFormatter
 ---
 
 # percentFormatter <Package name="format-number"/>
 
-Configurable formatter for percentage ratios.
+A customizable formatter designed for percentage ratios, allowing precise control over the number of fractional digits displayed.
 
 ## Usage
 

@@ -9,11 +9,12 @@ entity:
   maturity: public
   related:
     - percentFormatter
+    - percentRange
 ---
 
 # percent <Package name="format"/>
 
-Formats percentage ratios.
+This formatter is used to convert numerical ratios into percentage representations. For example, a value of `1.0` is equivalent to `100%`, making it easy to display ratios in a human-readable percentage format.
 
 ## Usage
 

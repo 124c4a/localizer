@@ -8,12 +8,13 @@ entity:
   maturity: public
   fn: (options, value) => currencyCodeFormatter(options)(value)
   related:
-    - currency
+    - currencySymbol
+    - currencyName
 ---
 
 # currencyCodeFormatter <Package name="format-number"/>
 
-Configurable formatter for currency names or symbols.
+The `currencyCodeFormatter` provides a flexible way to format currency codes into human-readable names or symbols. It supports various configuration options to tailor the output to your specific needs, making it ideal for applications requiring localized or customized currency representations.
 
 ## Usage
 

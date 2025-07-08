@@ -9,12 +9,12 @@ entity:
   maturity: public
   fn: (options, start, end) => relativePercentFormatter(options)(start, end)
   related:
-    - decimalRange
+    - relativePercent
 ---
 
 # relativeDecimalFormatter <Package name="format-number"/>
 
-Configurable formatter for relative changes between two values as a percentage.
+This formatter calculates and formats the percentage change between two numeric values. It is particularly useful for representing relative growth, decline, or variation in a clear and customizable way.
 
 ## Usage
 

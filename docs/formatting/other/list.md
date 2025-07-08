@@ -8,12 +8,14 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - listFormatter
+    - or
+    - and
 ---
 
 # list <Package name="format"/>
 
-Formats lists by joining elements with a locale-specific separator.
+The `list` formats a list of elements by combining them using a separator that adheres to the conventions of the specified locale.
 
 ## Usage
 

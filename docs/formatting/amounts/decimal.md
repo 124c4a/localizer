@@ -9,11 +9,12 @@ entity:
   maturity: public
   related:
     - decimalFormatter
+    - decimalRange
 ---
 
 # decimal <Package name="format"/>
 
-Formats generic numbers.
+The `decimal` is used to format numeric values into a human-readable string representation. It ensures proper formatting for large numbers, including thousands separators and decimal points, making it suitable for displaying monetary values or other numerical data.
 
 ## Usage
 

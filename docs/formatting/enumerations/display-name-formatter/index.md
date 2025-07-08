@@ -9,12 +9,14 @@ entity:
   maturity: public
   fn: (type, options, value) => displayNameFormatter(type, options)(value)
   related:
-    - decimal
+    - countryName
+    - currencyName
+    - languageName
 ---
 
 # displayNameFormatter <Package name="format-displayname"/>
 
-Configurable formatter for country, language, and currency names.
+A versatile formatter designed to customize the display of country, language, and currency names. It provides flexibility to adapt the output style to various use cases, such as narrow, short, or long formats.
 
 ## Usage
 

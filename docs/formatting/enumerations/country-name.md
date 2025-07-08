@@ -8,12 +8,12 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - displayNameFormatter
 ---
 
 # countryName <Package name="format"/>
 
-Formats country names.
+The `countryName` provides a standardized way to format country names based on their ISO 3166-1 alpha-2 codes. It ensures consistency and localization support for displaying country names in various contexts.
 
 ## Usage
 

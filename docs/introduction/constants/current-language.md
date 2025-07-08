@@ -9,7 +9,7 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - languageName
 ---
 
 # CurrentLanguage <Package name="format"/>

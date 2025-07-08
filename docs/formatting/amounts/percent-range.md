@@ -9,11 +9,12 @@ entity:
   maturity: public
   related:
     - percentRangeFormatter
+    - percent
 ---
 
 # percentRange <Package name="format"/>
 
-Formats percentage ratio ranges.
+The `percentRange` formats a range of percentage ratios, converting unscaled numeric values into a human-readable percentage range. For example, given the inputs `0.1` and `0.2`, the output would represent the range `10% - 20%`.
 
 ## Usage
 

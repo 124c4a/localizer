@@ -8,11 +8,12 @@ entity:
   configurable: false
   maturity: public
   related:
+    - relativeDecimalFormatter
 ---
 
 # relativeDecimal <Package name="format"/>
 
-Formats absolute changes in unitless amounts.
+Calculates and formats the relative change between two unitless values, expressed as a percentage or ratio.
 
 ## Usage
 

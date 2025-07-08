@@ -10,7 +10,8 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - lowerCase
+    - capitalize
 ---
 
 # upperCase <Package name="transform"/>

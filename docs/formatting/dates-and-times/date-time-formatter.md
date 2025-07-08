@@ -9,12 +9,14 @@ entity:
   maturity: public
   fn: (options, value) => dateTimeFormatter(options)(value)
   related:
-    - decimal
+    - date
+    - dateTime
+    - time
 ---
 
 # dateTimeFormatter <Package name="format-datetime"/>
 
-Configurable formatter for dates and times.
+The `dateTimeFormatter` provides a flexible and customizable way to format dates and times. It allows you to define specific formatting options, such as the display of weekdays, months, days, hours, and minutes, making it suitable for a wide range of localization and presentation needs.
 
 ## Usage
 

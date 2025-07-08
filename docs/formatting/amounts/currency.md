@@ -8,11 +8,12 @@ entity:
   configurable: false
   maturity: public
   related:
+    - currencyFormatter
 ---
 
 # currency <Package name="format"/>
 
-This formatter provides formatting for monetary amounts with currencies.
+This formatter is designed to format monetary amounts with their respective currencies, ensuring clarity and consistency in financial representations.
 
 ## Usage
 

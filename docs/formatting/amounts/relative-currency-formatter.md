@@ -9,12 +9,12 @@ entity:
   maturity: public
   fn: (options, start, end, unit) => relativeCurrencyFormatter(unit, options)(start, end)
   related:
-    - decimalRange
+    - relativeDecimalFormatter
 ---
 
 # relativeCurrencyFormatter <Package name="format-number"/>
 
-Configurable formatter for absolute monetary changes with a predefined currency.
+A customizable formatter designed to represent absolute monetary changes using a specified currency. It simplifies the comparison between an initial and updated value, making it easier to interpret financial differences.
 
 ## Usage
 

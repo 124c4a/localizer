@@ -8,12 +8,14 @@ entity:
   configurable: false
   maturity: public
   related:
-    - currency
+    - currencyName
+    - currencyCodeFormatter
+    - displayNameFormatter
 ---
 
 # currencySymbol <Package name="format"/>
 
-Formats currency symbols.
+The `currencySymbol` is used to retrieve the symbol associated with a given currency code. It simplifies the process of formatting monetary values by providing the correct symbol for display purposes.
 
 ## Usage
 

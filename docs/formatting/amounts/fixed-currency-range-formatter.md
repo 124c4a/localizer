@@ -9,12 +9,12 @@ entity:
   maturity: public
   fn: (options, start, end, unit) => fixedCurrencyRangeFormatter(unit, options)(start, end)
   related:
-    - currency
+    - fixedCurrencyFormatter
 ---
 
 # fixedCurrencyRangeFormatter <Package name="format-number"/>
 
-Configurable formatter for monetary ranges with a fixed currency.
+A customizable formatter designed for monetary ranges, ensuring a consistent fixed currency display.
 
 ## Usage
 

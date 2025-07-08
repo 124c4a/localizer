@@ -8,12 +8,13 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - dateTimeRangeFormatter
+    - dateTimeRange
 ---
 
 # dateRange <Package name="format"/>
 
-Formats date ranges.
+The `dateRange` is used to format date ranges in a human-readable way. It takes two dates as input and returns a string representation of the range, making it easier to display periods of time in your application.
 
 ## Usage
 

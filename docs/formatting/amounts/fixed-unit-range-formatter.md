@@ -14,7 +14,7 @@ entity:
 
 # fixedUnitRangeFormatter <Package name="format-number"/>
 
-Configurable formatter for measurement value ranges with a predefined unit.
+A customizable formatter designed for representing ranges of measurement values with a fixed, predefined unit.
 
 ## Usage
 

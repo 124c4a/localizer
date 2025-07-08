@@ -8,12 +8,14 @@ entity:
   configurable: false
   maturity: public
   related:
-    - currency
+    - displayNameFormatter
+    - currencySymbol
+    - currencyCodeFormatter
 ---
 
 # currencyName <Package name="format"/>
 
-Formats currency names.
+The `currencyName` provides a user-friendly way to format and display currency names based on their ISO 4217 currency codes. It simplifies working with currency data by converting codes like `GBP` into their corresponding human-readable names.
 
 ## Usage
 

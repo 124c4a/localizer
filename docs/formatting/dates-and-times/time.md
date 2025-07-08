@@ -8,12 +8,13 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - dateTime
+    - dateTimeFormatter
 ---
 
 # time <Package name="format"/>
 
-Formats time.
+The `time` provides a convenient way to format time values.
 
 ## Usage
 

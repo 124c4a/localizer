@@ -15,7 +15,7 @@ entity:
 
 # unitFormatter <Package name="format-number"/>
 
-Configurable formatter for measurement values with units.
+The `unitFormatter` is a versatile utility designed to format measurement values along with their associated units. It provides a flexible configuration to cater to various formatting needs, such as displaying units in long or short forms. This makes it ideal for applications requiring precise and user-friendly representation of measurements.
 
 ## Usage
 

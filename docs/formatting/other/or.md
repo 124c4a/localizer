@@ -8,12 +8,14 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - listFormatter
+    - list
+    - and
 ---
 
 # or <Package name="format"/>
 
-Formats lists by joining elements with "or".
+The `or` formats a list of elements by joining them with the word "or," creating a natural and readable output. It is particularly useful for generating human-friendly text from arrays of localized strings or other elements.
 
 ## Usage
 

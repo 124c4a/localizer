@@ -8,12 +8,12 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - relativeTimeFormatter
 ---
 
 # relativeTime <Package name="format"/>
 
-Formats relative moments in the past or future.
+The `relativeTime` calculates and formats the difference between two moments in time, presenting it as a human-readable relative duration (e.g., "5 minutes ago" or "in 2 hours"). It is useful for displaying time differences in a concise and intuitive manner.
 
 ## Usage
 

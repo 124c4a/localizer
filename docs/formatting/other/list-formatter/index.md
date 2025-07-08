@@ -9,12 +9,14 @@ entity:
   configurable: true
   maturity: public
   related:
-    - decimalFormatter
+    - and
+    - or
+    - list
 ---
 
 # listFormatter <Package name="format-list"/>
 
-Configurable formatter for lists of items.
+The `listFormatter` is a versatile tool designed to format lists of items with customizable options. It allows you to define how list elements are joined together, making it easy to adapt to various localization and formatting requirements.
 
 ## Usage
 

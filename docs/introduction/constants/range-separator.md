@@ -9,7 +9,8 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - DecimalSeparator
+    - ThousandSeparator
 ---
 
 # RangeSeparator <Package name="format"/>

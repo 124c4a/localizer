@@ -10,11 +10,12 @@ entity:
   fn: (options, start, end) => percentRangeFormatter(options)(start, end)
   related:
     - percentRange
+    - percentFormatter
 ---
 
 # percentRangeFormatter <Package name="format-number"/>
 
-Configurable formatter for percentage ratio ranges.
+This formatter is designed to handle percentage ratio ranges, allowing you to format a range of values as percentages with precision and flexibility. It takes unscaled ratio values (e.g., `0.1` for `10%`) and applies the specified formatting options to produce a readable percentage range.
 
 ## Usage
 

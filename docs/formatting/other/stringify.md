@@ -8,7 +8,7 @@ entity:
   configurable: false
   maturity: public
   related:
-    - percentFormatter
+    - autoFormat
 ---
 
 <script setup>

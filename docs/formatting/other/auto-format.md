@@ -8,7 +8,10 @@ entity:
   configurable: false
   maturity: public
   related:
-    - percentFormatter
+    - stringify
+    - date
+    - decimal
+    - list
 ---
 
 <script setup>

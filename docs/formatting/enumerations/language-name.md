@@ -8,12 +8,13 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - displayNameFormatter
+    - CurrentLanguage
 ---
 
 # languageName <Package name="format"/>
 
-Formats language or locale names.
+The `languageName` is used to format language or locale identifiers into human-readable names. It simplifies working with language codes by providing a localized and user-friendly representation.
 
 ## Usage
 

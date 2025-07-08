@@ -9,12 +9,12 @@ entity:
   maturity: public
   fn: (options, start, end) => relativeDecimalFormatter(options)(start, end)
   related:
-    - decimalRange
+    - relativeDecimal
 ---
 
 # relativeDecimalFormatter <Package name="format-number"/>
 
-Configurable formatter for absolute changes in unitless amounts.
+A customizable formatter designed to represent absolute changes between two unitless numeric values.
 
 ## Usage
 

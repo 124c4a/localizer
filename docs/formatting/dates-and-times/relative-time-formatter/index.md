@@ -9,12 +9,12 @@ entity:
   maturity: public
   fn: (options, reference, value) => relativeTimeFormatter(options)(reference, value)
   related:
-    - decimal
+    - relativeTime
 ---
 
 # relativeTimeFormatter <Package name="format-datetime"/>
 
-Configurable formatter for relative moments in the past or the future.
+The `relativeTimeFormatter` provides a flexible way to format relative time expressions, allowing you to describe moments in the past or future with ease. It supports customizable options to tailor the output to your specific needs, such as numeric representation and stop points for granularity.
 
 ## Usage
 

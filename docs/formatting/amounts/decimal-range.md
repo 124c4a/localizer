@@ -9,11 +9,12 @@ entity:
   maturity: public
   related:
     - decimalRangeFormatter
+    - decimal
 ---
 
 # decimalRange <Package name="format"/>
 
-Formats generic number ranges.
+The `decimalRange` is used to format and display a range of numbers, such as a start and end value. It ensures the range is presented in a clear and readable format, making it suitable for various applications like financial data, reports, or user interfaces.
 
 ## Usage
 

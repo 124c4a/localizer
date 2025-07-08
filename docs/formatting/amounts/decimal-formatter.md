@@ -10,11 +10,12 @@ entity:
   fn: (options, value) => decimalFormatter(options)(value)
   related:
     - decimal
+    - decimalRangeFormatter
 ---
 
 # decimalFormatter <Package name="format-number"/>
 
-Configurable formatter for generic numbers.
+The `decimalFormatter` is a versatile and customizable utility designed for formatting numeric values. It supports various configurations, allowing you to tailor the output to meet specific requirements, such as compact notation or localized display formats.
 
 ## Usage
 

@@ -8,11 +8,12 @@ entity:
   configurable: false
   maturity: public
   related:
+    - relativePercentFormatter
 ---
 
 # relativePercent <Package name="format"/>
 
-Calculates the relative change between two values and formats it as a percentage.
+Determines the percentage change between an initial value and a subsequent value, presenting the result in a formatted percentage style.
 
 ## Usage
 

@@ -9,12 +9,13 @@ entity:
   maturity: public
   fn: (options, start, end) => dateTimeRangeFormatter(options)(start, end)
   related:
-    - decimal
+    - dateTimeRange
+    - dateRange
 ---
 
 # dateTimeRangeFormatter <Package name="format-datetime"/>
 
-Configurable formatter for date and time ranges.
+The `dateTimeRangeFormatter` provides a flexible way to format date and time ranges according to your specific requirements. It allows you to define custom formatting options, making it suitable for a variety of use cases where precise control over date and time presentation is needed.
 
 ## Usage
 

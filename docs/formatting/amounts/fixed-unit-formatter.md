@@ -10,11 +10,12 @@ entity:
   fn: (options, value, unit) => fixedUnitFormatter(unit, options)(value)
   related:
     - unitFormatter
+    - fixedUnitRangeFormatter
 ---
 
 # fixedUnitFormatter <Package name="format-number"/>
 
-Configurable formatter for measurement values with a predefined unit.
+The `fixedUnitFormatter` is a versatile utility designed to format measurement values with a predefined unit. It allows you to customize the output using various configuration options, such as unit display style, significant digits, and notation format. This makes it ideal for presenting numerical data in a clear and concise manner, tailored to your specific requirements.
 
 ## Usage
 

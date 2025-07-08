@@ -13,7 +13,7 @@ entity:
 
 # currency <Package name="format"/>
 
-Formats measurement values with units.
+The `unit` is used to format measurement values by appending appropriate units. It supports a wide range of units, including compound units like "kilometer-per-hour," making it versatile for various use cases.
 
 ## Usage
 

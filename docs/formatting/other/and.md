@@ -8,12 +8,14 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
+    - listFormatter
+    - or
+    - list
 ---
 
 # and <Package name="format"/>
 
-Formats lists by joining elements with "and".
+The `and` formats a list of elements by joining them with the word "and," creating a natural and readable output. It is particularly useful for generating human-friendly text from arrays of localized strings or other elements.
 
 ## Usage
 

@@ -9,7 +9,6 @@ entity:
   configurable: false
   maturity: public
   related:
-    - decimalFormatter
 ---
 
 # Empty <Package name="core"/>
@@ -27,7 +26,3 @@ const result = Empty;
 ## Demo
 
 <EntityDemo :args="[]" />
-
-## See also
-
-<Entities />

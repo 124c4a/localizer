@@ -9,12 +9,13 @@ entity:
   maturity: public
   fn: (options, value, unit) => fixedCurrencyFormatter(unit, options)(value)
   related:
-    - currency
+    - currencyFormatter
+    - fixedCurrencyRangeFormatter
 ---
 
 # fixedCurrencyFormatter <Package name="format-number"/>
 
-Configurable formatter for monetary amounts with a fixed currency.
+The `fixedCurrencyFormatter` is a versatile utility designed to format monetary values consistently using a predefined currency. It allows customization of display options, such as currency symbols, compact notation, and more, ensuring clarity and adaptability for various use cases.
 
 ## Usage
 
