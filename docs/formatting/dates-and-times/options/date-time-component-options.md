@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Date/time component options
+# Date/time options
 
 <script setup>
 import { dateTimeFormatter } from '@localizer/format-datetime';

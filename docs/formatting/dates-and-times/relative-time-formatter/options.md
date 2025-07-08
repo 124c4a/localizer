@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Relative time options
+# Options
 
 <script setup>
 import { relativeTimeFormatter } from '@localizer/format-relativetime';
