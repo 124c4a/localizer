@@ -1,10 +1,9 @@
 ---
-title: date range
 entity:
   type: date
   pkg: format
   name: dateRange
-  summary: Date range
+  summary: Formats date ranges.
   example: dateRange(new Date(2022,1,15,4,20,35), new Date(2025,2,23,11,59,0))
   configurable: false
   maturity: public

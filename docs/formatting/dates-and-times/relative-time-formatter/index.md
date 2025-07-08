@@ -1,10 +1,9 @@
 ---
-title: relative time formatter
 entity:
   type: date
   pkg: format-relativetime
   name: relativeTimeFormatter
-  summary: Relative time in past or future (configurable)
+  summary: Configurable formatter for relative moments in the past or the future.
   example: "relativeTimeFormatter({ numeric: 'auto', stops:['day'] })(new Date(2025,2,23,11,59,0), new Date(2025, 2, 23, 11, 40, 35))"
   configurable: true
   maturity: public

@@ -1,10 +1,9 @@
 ---
-title: apply
 entity:
   type: transformer
   pkg: transform
   name: apply
-  summary: Transforms localizable using provided string function
+  summary: Applies provided string function.
   example: transform(loc`Custom function`, [apply((str) => `**${str}**`)])
   argument: loc`Custom function`
   fn: (value) => transform(loc(() => value), [apply((str) => `**${str}**`)])

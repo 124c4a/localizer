@@ -1,10 +1,9 @@
 ---
-title: relative currency formatter
 entity:
   type: number
   pkg: format-number
   name: relativeCurrencyFormatter
-  summary: Absolute change of monetary amount with predefined currency (configurable)
+  summary: Configurable formatter for absolute monetary changes with a predefined currency.
   example: "relativeCurrencyFormatter('EUR', {notation: 'compact',compactDisplay: 'long'})(3500, 5000)"
   configurable: true
   maturity: public

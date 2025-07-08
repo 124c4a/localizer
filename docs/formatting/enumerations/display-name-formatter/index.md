@@ -1,10 +1,9 @@
 ---
-title: display name formatter
 entity:
   type: string
   pkg: format-displayname
   name: displayNameFormatter
-  summary: Country, language and currency names (configurable)
+  summary: Configurable formatter for country, language, and currency names.
   example: "displayNameFormatter('region', {style:'narrow'})('US')"
   configurable: true
   maturity: public

@@ -1,10 +1,9 @@
 ---
-title: unit formatter
 entity:
   type: number
   pkg: format-number
   name: unitFormatter
-  summary: Measurement value with unit (configurable)
+  summary: Configurable formatter for measurement values with units.
   example: "unitFormatter({unitDisplay: 'long'})(120, 'kilometer-per-hour')"
   configurable: true
   maturity: public

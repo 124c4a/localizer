@@ -1,10 +1,9 @@
 ---
-title: decirangemal separator
 entity:
   type: constant
   pkg: format
   name: RangeSeparator
-  summary: Range separator
+  summary: Represents generic range separator.
   example: RangeSeparator
   fn: () => RangeSeparator
   configurable: false
@@ -15,7 +14,7 @@ entity:
 
 # RangeSeparator <Package name="format"/>
 
-Represents range separator.
+Represents generic range separator.
 
 ## Usage
 

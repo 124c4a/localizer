@@ -1,10 +1,9 @@
 ---
-title: or
 entity:
   type: other
   pkg: format
   name: or
-  summary: List joined with disjunction (or)
+  summary: Formats lists by joining elements with "or".
   example: or([loc`A`, loc`B`, loc`C`, loc`D`])
   configurable: false
   maturity: public

@@ -1,10 +1,9 @@
 ---
-title: upper case
 entity:
   type: transformer
   pkg: transform
   name: upperCase
-  summary: Transforms localizable to upper case
+  summary: Converts all letters to uppercase.
   example: transform(loc`lower UPPER`, [upperCase])
   argument: loc`lower UPPER`
   fn: (value) => transform(loc(() => value), [upperCase])

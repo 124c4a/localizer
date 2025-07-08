@@ -3,7 +3,7 @@ entity:
   type: number
   pkg: format
   name: decimal
-  summary: Arbitrary unit-less amount
+  summary: Formats generic numbers.
   example: decimal(1234567.89)
   configurable: false
   maturity: public

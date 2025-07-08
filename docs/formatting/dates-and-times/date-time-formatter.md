@@ -1,10 +1,9 @@
 ---
-title: date time formatter
 entity:
   type: date
   pkg: format-datetime
   name: dateTimeFormatter
-  summary: Date/time (configurable)
+  summary: Configurable formatter for dates and times.
   example: "dateTimeFormatter({ weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'})(new Date(2025,2,23,11,59,0))"
   configurable: true
   maturity: public

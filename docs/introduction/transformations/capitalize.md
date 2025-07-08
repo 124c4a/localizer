@@ -1,10 +1,9 @@
 ---
-title: capitalize
 entity:
   type: transformer
   pkg: transform
   name: capitalize
-  summary: Transforms localizable to title case
+  summary: Converts the first letter of input to uppercase.
   example: transform(loc`lower UPPER`, [capitalize])
   argument: loc`lower UPPER`
   fn: (value) => transform(loc(() => value), [capitalize])

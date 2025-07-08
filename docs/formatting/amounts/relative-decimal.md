@@ -1,10 +1,9 @@
 ---
-title: relative decimal
 entity:
   type: number
   pkg: format
   name: relativeDecimal
-  summary: Absolute change of unitless amount
+  summary: Formats absolute changes in unitless amounts.
   example: relativeDecimal(35, 50)
   configurable: false
   maturity: public

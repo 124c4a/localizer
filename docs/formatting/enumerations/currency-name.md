@@ -1,10 +1,9 @@
 ---
-title: currency name
 entity:
   type: string
   pkg: format
   name: currencyName
-  summary: Currency name
+  summary: Formats currency names.
   example: "currencyName('GBP')"
   configurable: false
   maturity: public

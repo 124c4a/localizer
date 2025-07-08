@@ -1,10 +1,9 @@
 ---
-title: language name
 entity:
   type: string
   pkg: format
   name: languageName
-  summary: Language or locale name
+  summary: Formats language or locale names.
   example: languageName('sv-FI')
   configurable: false
   maturity: public

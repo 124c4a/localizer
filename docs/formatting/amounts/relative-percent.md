@@ -1,10 +1,9 @@
 ---
-title: relative percent
 entity:
   type: number
   pkg: format
   name: relativePercent
-  summary: Relative change of unitless amount
+  summary: Calculates the relative change between two values and formats it as a percentage.
   example: relativePercent(35, 50)
   configurable: false
   maturity: public

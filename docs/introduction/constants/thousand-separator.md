@@ -1,10 +1,9 @@
 ---
-title: thousand separator
 entity:
   type: constant
   pkg: format
   name: ThousandSeparator
-  summary: Thousand separator
+  summary: Represents thousand separator for numeric values.
   example: ThousandSeparator
   fn: () => ThousandSeparator
   configurable: false

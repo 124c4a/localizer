@@ -1,10 +1,9 @@
 ---
-title: stringify
 entity:
   type: other
   pkg: format
   name: stringify
-  summary: Value converted using string coercion
+  summary: Formats values using string coercion.
   example: stringify({})
   configurable: false
   maturity: public

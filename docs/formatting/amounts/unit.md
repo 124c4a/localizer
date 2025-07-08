@@ -1,10 +1,9 @@
 ---
-title: unit
 entity:
   type: number
   pkg: format
   name: unit
-  summary: Measurement value with unit
+  summary: Formats measurement values with units.
   example: unit(120, 'kilometer-per-hour')
   configurable: false
   maturity: public

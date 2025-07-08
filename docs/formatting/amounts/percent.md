@@ -1,10 +1,9 @@
 ---
-title: percent
 entity:
   type: number
   pkg: format
   name: percent
-  summary: Percentage amount
+  summary: Formats percentage ratios.
   example: percent(1.46)
   configurable: false
   maturity: public

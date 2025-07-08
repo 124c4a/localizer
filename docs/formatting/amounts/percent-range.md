@@ -1,10 +1,9 @@
 ---
-title: percent range
 entity:
   type: number
   pkg: format
   name: percentRange
-  summary: Percentage amount range
+  summary: Formats percentage ratio ranges.
   example: percentRange(0.1, 0.2)
   configurable: false
   maturity: public

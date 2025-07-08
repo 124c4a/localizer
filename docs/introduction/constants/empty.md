@@ -1,10 +1,9 @@
 ---
-title: empty
 entity:
   type: constant
   pkg: core
   name: Empty
-  summary: Empty string
+  summary: Represents empty string.
   example: Empty
   fn: () => Empty
   configurable: false

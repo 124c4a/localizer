@@ -1,10 +1,9 @@
 ---
-title: relative decimal formatter
 entity:
   type: number
   pkg: format-number
   name: relativeDecimalFormatter
-  summary: Absolute change of unitless amount (configurable)
+  summary: Configurable formatter for absolute changes in unitless amounts.
   example: "relativeDecimalFormatter({notation: 'compact',compactDisplay: 'long'})(3500, 5000)"
   configurable: true
   maturity: public

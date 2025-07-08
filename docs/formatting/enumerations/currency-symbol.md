@@ -1,10 +1,9 @@
 ---
-title: currency symbol
 entity:
   type: string
   pkg: format
   name: currencySymbol
-  summary: Currency symbol
+  summary: Formats currency symbols.
   example: "currencySymbol('GBP')"
   configurable: false
   maturity: public

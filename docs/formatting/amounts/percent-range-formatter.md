@@ -1,10 +1,9 @@
 ---
-title: percent range formatter
 entity:
   type: number
   pkg: format-number
   name: percentRangeFormatter
-  summary: Percentage ratio amount range (configurable)
+  summary: Configurable formatter for percentage ratio ranges.
   example: 'percentRangeFormatter({minimumFractionDigits: 2,maximumFractionDigits: 2})(0.1, 0.2)'
   configurable: true
   maturity: public

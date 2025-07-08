@@ -1,10 +1,9 @@
 ---
-title: lookup formatter
 entity:
   type: other
   pkg: format-lookup
   name: lookupFormatter
-  summary: Formatting based on look-up table
+  summary: Configurable formatter based on look-up tables.
   example: loc`Lookup formatter`
   configurable: true
   maturity: beta

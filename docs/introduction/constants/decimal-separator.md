@@ -1,10 +1,9 @@
 ---
-title: decimal separator
 entity:
   type: constant
   pkg: format
   name: DecimalSeparator
-  summary: Decimal separator
+  summary: Represents decimal separator for numeric values.
   example: DecimalSeparator
   fn: () => DecimalSeparator
   configurable: false

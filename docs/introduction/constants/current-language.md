@@ -1,10 +1,9 @@
 ---
-title: current language
 entity:
   type: constant
   pkg: format
   name: CurrentLanguage
-  summary: Current language or locale name
+  summary: Represents the current language or locale.
   example: CurrentLanguage
   fn: () => CurrentLanguage
   configurable: false

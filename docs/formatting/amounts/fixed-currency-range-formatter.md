@@ -1,10 +1,9 @@
 ---
-title: fixed currency range formatter
 entity:
   type: number
   pkg: format-number
   name: fixedCurrencyRangeFormatter
-  summary: Monetary amount range with predefined currency (configurable)
+  summary: Configurable formatter for monetary ranges with a fixed currency.
   example: "fixedCurrencyRangeFormatter('EUR', {  currencyDisplay: 'symbol',  notation: 'compact',  compactDisplay: 'short'})(1000, 1500)"
   configurable: true
   maturity: public

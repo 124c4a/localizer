@@ -1,10 +1,9 @@
 ---
-title: date time
 entity:
   type: date
   pkg: format
   name: dateTime
-  summary: Time
+  summary: Formats date/time.
   example: dateTime(new Date(2025,2,23,11,59,0))
   configurable: false
   maturity: public

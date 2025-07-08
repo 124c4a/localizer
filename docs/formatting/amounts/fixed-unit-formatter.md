@@ -1,10 +1,9 @@
 ---
-title: fixed unit formatter
 entity:
   type: number
   pkg: format-number
   name: fixedUnitFormatter
-  summary: Measurement value with predefined unit (configurable)
+  summary: Configurable formatter for measurement values with a predefined unit.
   example: "fixedUnitFormatter('byte', {unitDisplay: 'narrow', maximumSignificantDigits: 2, notation: 'compact'})(1440000)"
   configurable: true
   maturity: public

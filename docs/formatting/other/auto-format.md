@@ -1,10 +1,9 @@
 ---
-title: autoFormat
 entity:
   type: other
   pkg: format
   name: autoFormat
-  summary: Value formatted according to its type
+  summary: Formats values according to their type.
   example: autoFormat("Automatic formatting")
   configurable: false
   maturity: public

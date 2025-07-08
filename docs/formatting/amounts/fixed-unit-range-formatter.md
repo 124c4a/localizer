@@ -1,10 +1,9 @@
 ---
-title: fixed unit range formatter
 entity:
   type: number
   pkg: format-number
   name: fixedUnitRangeFormatter
-  summary: Measurement value range with predefined unit (configurable)
+  summary: Configurable formatter for measurement value ranges with a predefined unit.
   example: "fixedUnitRangeFormatter('byte', {unitDisplay: 'narrow', maximumSignificantDigits: 2, notation: 'compact'})(1200000, 1440000)"
   configurable: true
   maturity: public

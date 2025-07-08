@@ -1,10 +1,9 @@
 ---
-title: date time range formatter
 entity:
   type: date
   pkg: format-datetime
   name: dateTimeRangeFormatter
-  summary: Date/time range (configurable)
+  summary: Configurable formatter for date and time ranges.
   example: "dateTimeRangeFormatter({ month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', year: 'numeric'})(new Date(2025, 2, 23, 11, 40, 35), new Date(2025,2,23,11,59,0))"
   configurable: true
   maturity: public

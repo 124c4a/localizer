@@ -1,10 +1,9 @@
 ---
-title: relative time
 entity:
   type: date
   pkg: format
   name: relativeTime
-  summary: Relative time in past or future
+  summary: Formats relative moments in the past or future.
   example: relativeTime(new Date(2025,2,23,11,59,0), new Date(2025, 2, 23, 11, 40, 35))
   configurable: false
   maturity: public

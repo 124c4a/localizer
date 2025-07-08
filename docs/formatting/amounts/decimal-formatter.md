@@ -3,7 +3,7 @@ entity:
   type: number
   pkg: format-number
   name: decimalFormatter
-  summary: Configurable formatter for arbitrary numbers.
+  summary: Configurable formatter for generic numbers.
   example: "decimalFormatter({notation: 'compact',compactDisplay: 'long'})(1234567.89)"
   configurable: true
   maturity: public

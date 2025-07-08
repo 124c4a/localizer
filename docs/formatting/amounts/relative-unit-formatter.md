@@ -1,10 +1,9 @@
 ---
-title: relative unit formatter
 entity:
   type: number
   pkg: format-number
   name: relativeUnitFormatter
-  summary: Absolute change of measurement value with predefined unit (configurable)
+  summary: Configurable formatter for absolute changes in measurement values with a predefined unit.
   example: "relativeUnitFormatter('gram', { unitDisplay: 'narrow', maximumSignificantDigits: 2, notation: 'compact' })(3500, 5000)"
   configurable: true
   maturity: public

@@ -3,7 +3,7 @@ entity:
   type: number
   pkg: format-number
   name: fixedCurrencyFormatter
-  summary: Monetary amount with predefined currency (configurable)
+  summary: Configurable formatter for monetary amounts with a fixed currency.
   example: "fixedCurrencyFormatter('EUR', {  currencyDisplay: 'symbol',  notation: 'compact',  compactDisplay: 'short'})(21436587)"
   configurable: true
   maturity: public

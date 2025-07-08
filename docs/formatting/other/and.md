@@ -1,10 +1,9 @@
 ---
-title: and
 entity:
   type: other
   pkg: format
   name: and
-  summary: List joined with conjunction (and)
+  summary: Formats lists by joining elements with "and".
   example: and([loc`A`, loc`B`, loc`C`, loc`D`])
   configurable: false
   maturity: public

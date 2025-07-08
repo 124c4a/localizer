@@ -1,10 +1,9 @@
 ---
-title: relative percent formatter
 entity:
   type: number
   pkg: format-number
   name: relativePercentFormatter
-  summary: Relative change of unitless amount (configurable)
+  summary: Configurable formatter for relative changes between two values as a percentage.
   example: 'relativePercentFormatter({minimumFractionDigits: 2,maximumFractionDigits: 2})(3500, 5000)'
   configurable: true
   maturity: public

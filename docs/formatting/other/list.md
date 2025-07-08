@@ -1,10 +1,9 @@
 ---
-title: list
 entity:
   type: other
   pkg: format
   name: list
-  summary: List joined with a locale-specific separator
+  summary: Formats lists by joining elements with a locale-specific separator.
   example: list([loc`A`, loc`B`, loc`C`, loc`D`])
   configurable: false
   maturity: public

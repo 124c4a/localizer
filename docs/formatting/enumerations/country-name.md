@@ -1,10 +1,9 @@
 ---
-title: country name
 entity:
   type: string
   pkg: format
   name: countryName
-  summary: Country name
+  summary: Formats country names.
   example: countryName('US')
   configurable: false
   maturity: public

@@ -1,10 +1,9 @@
 ---
-title: list formatter
 entity:
   type: other
   pkg: format-list
   name: listFormatter
-  summary: List joined with a configurable separator
+  summary: Configurable formatter for lists of items.
   example: 'listFormatter({delimiter: loc` :: `})([loc`A`, loc`B`, loc`C`, loc`D`])'
   fn: (options, value) => listFormatter(options)(value)
   configurable: true
@@ -15,7 +14,7 @@ entity:
 
 # listFormatter <Package name="format-list"/>
 
-Configurable formatter for lists of itens.
+Configurable formatter for lists of items.
 
 ## Usage
 

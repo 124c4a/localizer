@@ -1,10 +1,9 @@
 ---
-title: date
 entity:
   type: date
   pkg: format
   name: date
-  summary: Date
+  summary: Formats date.
   example: date(new Date(2025,2,23,11,59,0))
   configurable: false
   maturity: public
