@@ -6,6 +6,7 @@ entity:
   summary: Configurable formatter for currency names or symbols.
   configurable: true
   maturity: public
+  example: "currencyCodeFormatter({currencyDisplay: 'name'})('GBP')"
   fn: (options, value) => currencyCodeFormatter(options)(value)
   related:
     - currencySymbol
