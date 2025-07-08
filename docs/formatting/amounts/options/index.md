@@ -2,7 +2,7 @@
 order: 99
 ---
 
-# Number options
+# Common options
 
 Formatter options let you customize number formatting to suit your needs. They include:
 

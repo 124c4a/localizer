@@ -12,7 +12,7 @@ const localizer = getLocalizer('en-US');
 
 Sometimes, you may need to perform additional processing on the results of formatting or translation. Common use cases include altering the character case. Since character case transformations can depend on locale-specific rules, the library offers a suite of transformation utilities that seamlessly integrate with its core functionality.
 
-The primary method for applying transformations is the [`transform()`](../api/_localizer/transform/transform/index.md) function. This utility allows you to modify the output of a `Localizable` object by applying a sequence of transformations. Each transformation is applied in the order specified, enabling flexible and powerful customization of localized content.
+The primary method for applying transformations is the [`transform()`](../../api/_localizer/transform/transform/index.md) function. This utility allows you to modify the output of a `Localizable` object by applying a sequence of transformations. Each transformation is applied in the order specified, enabling flexible and powerful customization of localized content.
 
 ```typescript
 import { getLocalizer } from '@localizer/core';
@@ -47,7 +47,7 @@ console.log(localizer(transformedValueFormatter('FI')));
 {{localizer(transform(countryName, [upperCase])('FI'))}}
 ```
 
-The second argument of `transform()` method is an array of [transformers](../api/_localizer/transform/Transformer/index.md). These transformers are applied sequentially to modify the result, offering a flexible way to customize localized content.
+The second argument of `transform()` method is an array of [transformers](../../api/_localizer/transform/Transformer/index.md). These transformers are applied sequentially to modify the result, offering a flexible way to customize localized content.
 
 ## String transformations
 
@@ -59,7 +59,7 @@ Unlike [string transformations](#string-transformations), locale transformations
 
 ### Using primary locale <Preview/>
 
-This transformer enables the use of the [primary language for a country](../introduction/helpers.md#getting-primary-locale) instead of the provided locale. This can be particularly useful in scenarios where consistent data formatting is preferred, regardless of the selected spoken language.
+This transformer enables the use of the [primary language for a country](../../introduction/helpers.md#getting-primary-locale) instead of the provided locale. This can be particularly useful in scenarios where consistent data formatting is preferred, regardless of the selected spoken language.
 
 ```typescript
 const fiFI = getLocalizer('fi-FI');
@@ -76,7 +76,7 @@ console.log(svFI(localizedDate));
 {{ date(new Date()).localize('sv-FI') }}
 ```
 
-In Finland, the standard localization for the Swedish language may lead to unexpected results for some users. The [`usePrimaryLocale`](../api/_localizer/transform/usePrimaryLocale/index.md) transformer helps ensure consistency by applying the primary locale for the region, making the localized output more intuitive and contextually appropriate.
+In Finland, the standard localization for the Swedish language may lead to unexpected results for some users. The [`usePrimaryLocale`](../../api/_localizer/transform/usePrimaryLocale/index.md) transformer helps ensure consistency by applying the primary locale for the region, making the localized output more intuitive and contextually appropriate.
 
 ```typescript
 const fiFI = getLocalizer('fi-FI');

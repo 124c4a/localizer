@@ -41,15 +41,15 @@ entity:
 
 This formatter transforms any value into a locale-aware `Localizable` by leveraging [preconfigured formatters](../index.md). By default, it applies the following formatter based on the value's type:
 
-| Type                                                  | Default Formatter                                                               |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `number`, `bigint`, `Number`                          | [Decimal formatter](../amounts/decimal.md)                                      |
-| `Date`                                                | [Date formatter](../dates-and-times/date.md)                                    |
-| Array                                                 | [List formatter](../lists-of-items/list.md), applies `autoFormat` to each entry |
-| [`Localizable`](../../../introduction/localizable.md) | Returned as-is                                                                  |
-| `undefined`, `null`                                   | Empty value                                                                     |
-| `string`, `boolean`                                   | [Stringification formatter](./stringify.md)                                     |
-| Other                                                 | [Stringification formatter](./stringify.md)                                     |
+| Type                                               | Default Formatter                                                      |
+| -------------------------------------------------- | ---------------------------------------------------------------------- |
+| `number`, `bigint`, `Number`                       | [Decimal formatter](../amounts/decimal.md)                             |
+| `Date`                                             | [Date formatter](../dates-and-times/date.md)                           |
+| Array                                              | [List formatter](../other/list.md), applies `autoFormat` to each entry |
+| [`Localizable`](../../introduction/localizable.md) | Returned as-is                                                         |
+| `undefined`, `null`                                | Empty value                                                            |
+| `string`, `boolean`                                | [Stringification formatter](./stringify.md)                            |
+| Other                                              | [Stringification formatter](./stringify.md)                            |
 
 You can customize the behavior of `autoFormat` by configuring the [`DefaultFormatters`](../../introduction/configuration.md#defaultformatters) settings. This allows you to specify which formatters should be applied to different value types.
 

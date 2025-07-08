@@ -27,6 +27,8 @@ const formatter = displayNameFormatter('region', { style: 'narrow' });
 const result = formatter('US');
 ```
 
+See [formatter options](./options.md) for formatter configuration details.
+
 ## Demo
 
 <script setup>

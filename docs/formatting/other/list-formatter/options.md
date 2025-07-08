@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Formatter options
+# Options
 
 <script setup>
 import { listFormatter, loc } from '@localizer/all';
@@ -52,7 +52,7 @@ This option is incompatible with `delimiter`.
 
 ## `delimiter`
 
-Defines a custom delimiter for the list. Accepts any [Localizable](../../introduction/localizable.md) value.
+Defines a custom delimiter for the list. Accepts any [Localizable](../../../introduction/localizable.md) value.
 
 ::: warning
 

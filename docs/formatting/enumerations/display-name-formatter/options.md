@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# Formatter options
+# Options
 
 <script setup>
 import { displayNameFormatter } from '@localizer/all';

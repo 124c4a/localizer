@@ -29,6 +29,8 @@ const values = [loc`A`, loc`B`, loc`C`, loc`D`];
 const result = formatter(values);
 ```
 
+See [formatter options](./options.md) for formatter configuration details.
+
 ## Demo
 
 <script setup>

@@ -31,16 +31,7 @@ const result = formatter(0.1, 0.2);
 
 The argument passed to this formatter represents a ratio in its unscaled form, where a value of `1.0` corresponds to `100%`.
 
-Formatter options let you customize number formatting to suit your needs. They include:
-
-- [Presentation options](./options/presentation-options.md): Adjust visual formatting.
-- [Digit options](./options/digit-options.md): Control precision and rounding.
-
-::: info NOTE
-
-Most of these options are derived from the [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat) API, which provides a robust way to format numbers in JavaScript based on locale and formatting preferences.
-
-:::
+See [formatter options](./options/index.md) for formatter configuration details.
 
 ## Demo
 

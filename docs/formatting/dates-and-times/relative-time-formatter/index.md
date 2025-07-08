@@ -29,6 +29,8 @@ const value = new Date(2025, 2, 23, 11, 40, 35);
 const result = formatter(reference, value);
 ```
 
+See [formatter options](./options.md) for formatter configuration details.
+
 ## Demo
 
 <script setup>

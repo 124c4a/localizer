@@ -89,7 +89,7 @@ setActiveLocale('en');
 
 ## [DefaultFormatters](../api/_localizer/format/DefaultFormattersOptions/index.md) <Package name="format"/>
 
-This configuration allows to change the default behavior of [`autoFormat`](../formatting/preconfigured-formatters/universal/auto-format.md) formatter:
+This configuration allows to change the default behavior of [`autoFormat`](../formatting/other/auto-format.md) formatter:
 
 ```typescript
 configure(
