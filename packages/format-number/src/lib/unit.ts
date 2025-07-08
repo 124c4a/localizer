@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/* THIS FILE IS AUTO-GENERATED USING "scripts/generate-enums.js". DO NOT EDIT! */
 
 /**
  * A subset of the CLDR units explicitly sanctioned by the ECMA-402 specification

@@ -202,6 +202,10 @@ function convertNominatimData(ctx) {
 const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 const languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
 
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 /**
  * Writes the locale TypeScript file based on the context data.
  *
@@ -220,20 +224,22 @@ async function writeLocaleTs(ctx) {
  * IETF BCP 47 language tag
  *
  * @public
+ *
  * @see https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
  */
 
 export type LanguageCode =
-${ctx.languages.map((it) => `  /** ${languageNames.of(it)} */\n  | '${it}'`).join('\n')};
+${ctx.languages.map((it) => `  /** ${capitalizeFirstLetter(languageNames.of(it))} */\n  | '${it}'`).join('\n\n')};
 
 /**
  * ISO 3166-1 alpha-2 country codes
  *
  * @public
+ *
  * @see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  */
 export type CountryCode =
-${ctx.countries.map((it) => `  /** ${regionNames.of(it)} */\n  | '${it}'`).join('\n')};
+${ctx.countries.map((it) => `  /** ${regionNames.of(it)} */\n  | '${it}'`).join('\n\n')};
 
 /**
  * Supported locale codes
@@ -246,16 +252,33 @@ export type LocaleCode = LanguageCode | \`\${LanguageCode}-\${CountryCode}\`;
  * Primary locales for each country
  *
  * @public
+ *
  * @see https://github.com/osm-search/Nominatim/blob/master/settings/country_settings.yaml
  */
 export const primaryLocales: Record<CountryCode, LocaleCode> = {
 ${Object.entries(ctx.primaryLocales)
-  .map(([country, locale]) => `  '${country}': '${locale}-${country}',`)
+  .map(([country, locale]) => `  ${country}: '${locale}-${country}',`)
   .join('\n')}
 } as const;
 `;
 
   await writeFile(targetFile, content);
+
+  const languages = `${header}
+export const languages = [
+${ctx.languages.map((it) => `  '${it}',`).join('\n')}
+];
+`;
+
+  await writeFile(`${cwd}/docs/formatting/enumerations/language-name.ts`, languages);
+
+  const countries = `${header}
+export const countries = [
+${ctx.countries.map((it) => `  '${it}',`).join('\n')}
+];
+`;
+
+  await writeFile(`${cwd}/docs/formatting/enumerations/country-name.ts`, countries);
 }
 
 //---
@@ -351,6 +374,7 @@ async function writeCurrencyTs(ctx) {
  * ISO 4217 currency, fund and precious metal codes
  *
  * @public
+ *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Active_codes_(list_one)
  */
 
@@ -361,6 +385,7 @@ ${ctx.actual.map((it) => `  | '${it}'`).join('\n')};
  * ISO 4217 codes for historic denominations of currencies and funds
  *
  * @public
+ *
  * @see https://en.wikipedia.org/wiki/ISO_4217#Historical_codes
  */
 export type HistoricCurrencyCode =
@@ -400,6 +425,7 @@ async function writeUnitTs() {
  * A subset of the CLDR units explicitly sanctioned by the ECMA-402 specification
  *
  * @public
+ *
  * @see https://tc39.es/ecma402/#table-sanctioned-single-unit-identifiers
  */
 
