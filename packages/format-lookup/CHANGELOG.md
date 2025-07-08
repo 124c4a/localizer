@@ -1,3 +1,9 @@
+## 1.0.2 (2025-07-08)
+
+### 🧱 Updated Dependencies
+
+- Updated @localizer/core to 1.1.0
+
 ## 1.0.1 (2025-07-01)
 
 ### 🧱 Updated Dependencies

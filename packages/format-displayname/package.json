@@ -1,6 +1,6 @@
 {
   "name": "@localizer/format-displayname",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting country, language and currency names in a locale-aware manner.",
   "keywords": [
     "localization",
@@ -44,7 +44,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "1.0.1"
+    "@localizer/core": "1.1.0"
   },
   "nx": {
     "targets": {
