@@ -15,7 +15,7 @@ entity:
 
 # Empty <Package name="core"/>
 
-This constant renders empty string.
+Represents empty string.
 
 ## Usage
 

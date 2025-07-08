@@ -14,7 +14,7 @@ entity:
 
 # languageName <Package name="format"/>
 
-This formatter provides formatting for language or locale names.
+Formats language or locale names.
 
 ## Usage
 

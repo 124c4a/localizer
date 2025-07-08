@@ -16,7 +16,7 @@ entity:
 
 # lowerCase <Package name="transform"/>
 
-This transformer changes all letters to lower case.
+Converts all letters to lowercase.
 
 ## Usage
 

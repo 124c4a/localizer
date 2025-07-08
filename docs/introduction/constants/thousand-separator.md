@@ -15,7 +15,7 @@ entity:
 
 # ThousandSeparator <Package name="format"/>
 
-This constant renders thousand separator for numeric values.
+Represents thousand separator for numeric values.
 
 ## Usage
 

@@ -15,7 +15,7 @@ entity:
 
 # fixedCurrencyRangeFormatter <Package name="format-number"/>
 
-This formatter provides a configurable formatting for monetary amounts with a predefined currency.
+Configurable formatter for monetary ranges with a fixed currency.
 
 ## Usage
 
@@ -30,7 +30,7 @@ const formatter = fixedCurrencyRangeFormatter('EUR', {
 const result = formatter(1000, 1500);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

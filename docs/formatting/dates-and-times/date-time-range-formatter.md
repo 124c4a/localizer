@@ -15,7 +15,7 @@ entity:
 
 # dateTimeRangeFormatter <Package name="format-datetime"/>
 
-This formatter provides configurable formatting for date and time ranges.
+Configurable formatter for date and time ranges.
 
 ## Usage
 
@@ -35,7 +35,7 @@ const rangeEnd = new Date(2025, 2, 23, 12, 59, 0);
 const result = formatter(rangeStart, rangeEnd);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

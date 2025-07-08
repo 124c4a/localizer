@@ -1,5 +1,4 @@
 ---
-title: decimal
 entity:
   type: number
   pkg: format
@@ -14,7 +13,7 @@ entity:
 
 # decimal <Package name="format"/>
 
-This formatter provides formatting for generic numbers.
+Formats generic numbers.
 
 ## Usage
 

@@ -16,7 +16,7 @@ entity:
 
 # upperCase <Package name="transform"/>
 
-This transformer changes all letters to upper case.
+Converts all letters to uppercase.
 
 ## Usage
 

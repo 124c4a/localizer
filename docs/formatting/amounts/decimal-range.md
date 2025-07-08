@@ -1,10 +1,9 @@
 ---
-title: decimal range
 entity:
   type: number
   pkg: format
   name: decimalRange
-  summary: Arbitrary unitless amount range
+  summary: Formats generic number ranges.
   example: decimalRange(1000, 2000)
   configurable: false
   maturity: public
@@ -14,7 +13,7 @@ entity:
 
 # decimalRange <Package name="format"/>
 
-This formatter provides formatting for generic number ranges.
+Formats generic number ranges.
 
 ## Usage
 

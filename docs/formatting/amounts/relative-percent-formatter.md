@@ -15,7 +15,7 @@ entity:
 
 # relativeDecimalFormatter <Package name="format-number"/>
 
-This formatter calculates and formats the relative change between two unitless amounts, expressing the result as a percentage.
+Configurable formatter for relative changes between two values as a percentage.
 
 ## Usage
 
@@ -29,7 +29,9 @@ const formatter = relativePercentFormatter({
 const result = formatter(3500, 5000);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+Represents the change from an initial reference value (first argument) to an updated value (second argument).
+
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

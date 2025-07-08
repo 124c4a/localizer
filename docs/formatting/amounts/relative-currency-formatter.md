@@ -15,7 +15,7 @@ entity:
 
 # relativeCurrencyFormatter <Package name="format-number"/>
 
-This formatter provides configurable formatting for absolute changes of monetary amounts with predefined currency.
+Configurable formatter for absolute monetary changes with a predefined currency.
 
 ## Usage
 
@@ -29,7 +29,9 @@ const formatter = relativeCurrencyFormatter('EUR', {
 const result = formatter(3500, 5000);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+Represents the change from an initial reference value (first argument) to an updated value (second argument).
+
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

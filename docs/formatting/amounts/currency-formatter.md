@@ -1,10 +1,9 @@
 ---
-title: currency formatter
 entity:
   type: number
   pkg: format-number
   name: currencyFormatter
-  summary: Monetary amount with currency (configurable)
+  summary: Configurable formatter for monetary amounts with currency.
   example: "currencyFormatter({  currencyDisplay: 'symbol',  notation: 'compact',  compactDisplay: 'short'})(21436587, 'EUR')"
   configurable: true
   maturity: public
@@ -15,7 +14,7 @@ entity:
 
 # currencyFormatter <Package name="format-number"/>
 
-This formatter provides a configurable formatting for monetary amounts with currencies.
+Configurable formatter for monetary amounts with currency.
 
 ## Usage
 
@@ -30,7 +29,7 @@ const formatter = currencyFormatter({
 const result = formatter(21436587, 'EUR');
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

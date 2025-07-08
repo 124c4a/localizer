@@ -15,7 +15,7 @@ entity:
 
 # CurrentLanguage <Package name="format"/>
 
-This constant renders current language or locale.
+Represents the current language or locale.
 
 ## Usage
 

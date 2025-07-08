@@ -16,7 +16,7 @@ entity:
 
 # unitFormatter <Package name="format-number"/>
 
-This formatter provides configurable formatting for measurement values with units.
+Configurable formatter for measurement values with units.
 
 ## Usage
 
@@ -29,7 +29,7 @@ const formatter = unitFormatter({
 const result = formatter(120, 'kilometer-per-hour');
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

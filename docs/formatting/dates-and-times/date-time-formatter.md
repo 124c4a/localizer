@@ -15,7 +15,7 @@ entity:
 
 # dateTimeFormatter <Package name="format-datetime"/>
 
-This formatter provides configurable formatting for dates and times.
+Configurable formatter for dates and times.
 
 ## Usage
 
@@ -32,7 +32,7 @@ const formatter = dateTimeFormatter({
 const result = formatter(new Date(2025, 2, 23, 11, 59, 0));
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

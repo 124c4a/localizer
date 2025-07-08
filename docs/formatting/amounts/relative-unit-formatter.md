@@ -15,7 +15,7 @@ entity:
 
 # relativeUnitFormatter <Package name="format-number"/>
 
-This formatter provides configurable formatting for absolute changes of measurement values with predefined unit.
+Configurable formatter for absolute changes in measurement values with a predefined unit.
 
 ## Usage
 
@@ -30,7 +30,9 @@ const formatter = relativeUnitFormatter('gram', {
 const result = formatter(3500, 5000);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+Represents the change from an initial reference value (first argument) to an updated value (second argument).
+
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

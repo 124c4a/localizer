@@ -13,7 +13,7 @@ entity:
 
 # relativePercent <Package name="format"/>
 
-This formatter calculates and formats the relative change between two unitless amounts, expressing the result as a percentage.
+Calculates the relative change between two values and formats it as a percentage.
 
 ## Usage
 

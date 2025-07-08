@@ -14,7 +14,7 @@ entity:
 
 # currency <Package name="format"/>
 
-This formatter provides formatting for measurement values with units.
+Formats measurement values with units.
 
 ## Usage
 

@@ -14,7 +14,7 @@ entity:
 
 # percentRange <Package name="format"/>
 
-This formatter provides formatting for percentage ratio ranges.
+Formats percentage ratio ranges.
 
 ## Usage
 

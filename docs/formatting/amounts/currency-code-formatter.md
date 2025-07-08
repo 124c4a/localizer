@@ -1,11 +1,9 @@
 ---
-title: currency code formatter
 entity:
   type: string
   pkg: format-number
   name: currencyCodeFormatter
-  summary: Currency name or symbol (configurable)
-  example: "currencyCodeFormatter({ currencyDisplay: 'name'})('GBP')"
+  summary: Configurable formatter for currency names or symbols.
   configurable: true
   maturity: public
   fn: (options, value) => currencyCodeFormatter(options)(value)
@@ -15,7 +13,7 @@ entity:
 
 # currencyCodeFormatter <Package name="format-number"/>
 
-This formatter provides a configurable formatting for currency names or symbols.
+Configurable formatter for currency names or symbols.
 
 ## Usage
 
@@ -28,7 +26,7 @@ const formatter = currencyCodeFormatter({
 const result = formatter('GBP');
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

@@ -14,7 +14,7 @@ entity:
 
 # relativeTime <Package name="format"/>
 
-This formatter provides formatting for relative moments of time in the past of future.
+Formats relative moments in the past or future.
 
 ## Usage
 

@@ -15,7 +15,7 @@ entity:
 
 # RangeSeparator <Package name="format"/>
 
-This constant renders range separator.
+Represents range separator.
 
 ## Usage
 

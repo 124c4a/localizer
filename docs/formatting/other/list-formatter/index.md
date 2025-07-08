@@ -15,7 +15,7 @@ entity:
 
 # listFormatter <Package name="format-list"/>
 
-This formatter provides configurable formatting for lists.
+Configurable formatter for lists of itens.
 
 ## Usage
 
@@ -29,7 +29,7 @@ const values = [loc`A`, loc`B`, loc`C`, loc`D`];
 const result = formatter(values);
 ```
 
-See [formatter options](./options.md) for formatter configuration details.
+See [formatter options](./options.md) for configuration details.
 
 ## Demo
 

@@ -16,7 +16,7 @@ entity:
 
 # capitalize <Package name="transform"/>
 
-This transformer changes first letter to upper case.
+Converts the first letter of input to uppercase.
 
 ## Usage
 

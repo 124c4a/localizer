@@ -14,7 +14,7 @@ entity:
 
 # list <Package name="format"/>
 
-This formatter provides formatting for lists using a locale-specific separator as a joiner.
+Formats lists by joining elements with a locale-specific separator.
 
 ## Usage
 

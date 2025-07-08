@@ -13,7 +13,7 @@ entity:
 
 # relativeDecimal <Package name="format"/>
 
-This formatter provides formatting for absolute changes of unitless amounts.
+Formats absolute changes in unitless amounts.
 
 ## Usage
 
@@ -23,7 +23,7 @@ import { relativeDecimal } from '@localizer/format';
 const result = relativeDecimal(35, 50);
 ```
 
-The first argument specifies the initial reference value, representing the state before the change. The second argument defines the updated value, representing the state after the change.
+Represents the change from an initial reference value (first argument) to an updated value (second argument).
 
 ## Demo
 

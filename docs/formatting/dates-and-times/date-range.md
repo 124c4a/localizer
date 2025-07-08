@@ -14,7 +14,7 @@ entity:
 
 # dateRange <Package name="format"/>
 
-This formatter provides formatting for date ranges.
+Formats date ranges.
 
 ## Usage
 

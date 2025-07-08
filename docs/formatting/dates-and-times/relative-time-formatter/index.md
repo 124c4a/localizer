@@ -15,7 +15,7 @@ entity:
 
 # relativeTimeFormatter <Package name="format-datetime"/>
 
-This formatter provides configurable formatting for relative moments of time in the past of future.
+Configurable formatter for relative moments in the past or the future.
 
 ## Usage
 
@@ -29,7 +29,7 @@ const value = new Date(2025, 2, 23, 11, 40, 35);
 const result = formatter(reference, value);
 ```
 
-See [formatter options](./options.md) for formatter configuration details.
+See [formatter options](./options.md) for configuration details.
 
 ## Demo
 

@@ -14,7 +14,7 @@ entity:
 
 # dateTime <Package name="format"/>
 
-This formatter provides formatting for date and time parts.
+Formats date/time.
 
 ## Usage
 

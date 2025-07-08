@@ -1,10 +1,9 @@
 ---
-title: decimal formatter
 entity:
   type: number
   pkg: format-number
   name: decimalFormatter
-  summary: Arbitrary unit-less amount (configurable)
+  summary: Configurable formatter for arbitrary numbers.
   example: "decimalFormatter({notation: 'compact',compactDisplay: 'long'})(1234567.89)"
   configurable: true
   maturity: public
@@ -15,7 +14,7 @@ entity:
 
 # decimalFormatter <Package name="format-number"/>
 
-This formatter provides configurable formatting for generic numbers.
+Configurable formatter for generic numbers.
 
 ## Usage
 
@@ -29,7 +28,7 @@ const formatter = decimalFormatter({
 const result = formatter(1234567.89);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

@@ -15,7 +15,7 @@ entity:
 
 # percentRangeFormatter <Package name="format-number"/>
 
-This formatter provides configurable formatting for generic percentage ratio ranges.
+Configurable formatter for percentage ratio ranges.
 
 ## Usage
 
@@ -31,7 +31,7 @@ const result = formatter(0.1, 0.2);
 
 The argument passed to this formatter represents a ratio in its unscaled form, where a value of `1.0` corresponds to `100%`.
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

@@ -1,10 +1,9 @@
 ---
-title: currency
 entity:
   type: number
   pkg: format
   name: currency
-  summary: Monetary amount with currency
+  summary: Formats monetary amounts with a specified currency.
   example: currency(1005, 'EUR')
   configurable: false
   maturity: public

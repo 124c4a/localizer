@@ -15,7 +15,7 @@ entity:
 
 # DecimalSeparator <Package name="format"/>
 
-This constant renders decimal separator for numeric values.
+Represents decimal separator for numeric values.
 
 ## Usage
 

@@ -15,7 +15,7 @@ entity:
 
 # fixedUnitRangeFormatter <Package name="format-number"/>
 
-This formatter provides configurable formatting for measurement value ranges with predefined unit.
+Configurable formatter for measurement value ranges with a predefined unit.
 
 ## Usage
 
@@ -30,7 +30,7 @@ const formatter = fixedUnitRangeFormatter('byte', {
 const result = formatter(1200000, 1440000);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

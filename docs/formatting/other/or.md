@@ -14,7 +14,7 @@ entity:
 
 # or <Package name="format"/>
 
-This formatter provides formatting for lists using disjunction as a joiner (and).
+Formats lists by joining elements with "or".
 
 ## Usage
 

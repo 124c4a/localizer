@@ -1,10 +1,9 @@
 ---
-title: decimal range formatter
 entity:
   type: number
   pkg: format-number
   name: decimalRangeFormatter
-  summary: Arbitrary unit-less amount range (configurable)
+  summary: Configurable formatter for generic number ranges.
   example: "decimalRangeFormatter({notation: 'compact',compactDisplay: 'long'})(1000, 2000)"
   configurable: true
   maturity: public
@@ -15,7 +14,7 @@ entity:
 
 # decimalFormatter <Package name="format-number"/>
 
-This formatter provides configurable formatting for generic number ranges.
+Configurable formatter for generic number ranges.
 
 ## Usage
 
@@ -29,7 +28,7 @@ const formatter = decimalRangeFormatter({
 const result = formatter(1000, 2000);
 ```
 
-See [formatter options](./options/index.md) for formatter configuration details.
+See [formatter options](./options/index.md) for configuration details.
 
 ## Demo
 

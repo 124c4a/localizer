@@ -14,7 +14,7 @@ entity:
 
 # currencyName <Package name="format"/>
 
-This formatter provides formatting for currency names.
+Formats currency names.
 
 ## Usage
 

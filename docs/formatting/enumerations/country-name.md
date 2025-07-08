@@ -14,7 +14,7 @@ entity:
 
 # countryName <Package name="format"/>
 
-This formatter provides formatting for generic numbers.
+Formats country names.
 
 ## Usage
 

@@ -15,7 +15,7 @@ entity:
 
 # displayNameFormatter <Package name="format-displayname"/>
 
-This formatter provides configurable formatting for country, language and currency names.
+Configurable formatter for country, language, and currency names.
 
 ## Usage
 
@@ -27,7 +27,7 @@ const formatter = displayNameFormatter('region', { style: 'narrow' });
 const result = formatter('US');
 ```
 
-See [formatter options](./options.md) for formatter configuration details.
+See [formatter options](./options.md) for configuration details.
 
 ## Demo
 

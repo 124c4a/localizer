@@ -14,7 +14,7 @@ entity:
 
 # and <Package name="format"/>
 
-This formatter provides formatting for lists using conjunction as a joiner (and).
+Formats lists by joining elements with "and".
 
 ## Usage
 
