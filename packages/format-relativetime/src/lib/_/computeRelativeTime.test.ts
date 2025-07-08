@@ -17,20 +17,18 @@ import { _computeRelativeTime } from './computeRelativeTime.js';
 
 describe('_computeRelativeTime', () => {
   it('returns the correct value and stop for a positive time difference', () => {
-    const result = _computeRelativeTime(
-      new Date('2023-01-02'),
-      new Date('2023-01-01'),
-      ['day', 'hour'],
-    );
+    const result = _computeRelativeTime(new Date('2023-01-02'), new Date('2023-01-01'), [
+      'day',
+      'hour',
+    ]);
     expect(result).toEqual({ value: 1, stop: 'day' });
   });
 
   it('returns the correct value and stop for a negative time difference', () => {
-    const result = _computeRelativeTime(
-      new Date('2023-01-01'),
-      new Date('2023-01-02'),
-      ['day', 'hour'],
-    );
+    const result = _computeRelativeTime(new Date('2023-01-01'), new Date('2023-01-02'), [
+      'day',
+      'hour',
+    ]);
     expect(result).toEqual({ value: -1, stop: 'day' });
   });
 
@@ -44,20 +42,12 @@ describe('_computeRelativeTime', () => {
   });
 
   it('skips stops not included in the provided list', () => {
-    const result = _computeRelativeTime(
-      new Date('2023-01-02'),
-      new Date('2023-01-01'),
-      ['hour'],
-    );
+    const result = _computeRelativeTime(new Date('2023-01-02'), new Date('2023-01-01'), ['hour']);
     expect(result).toEqual({ value: 24, stop: 'hour' });
   });
 
   it('handles an empty stops array by returning the default stop', () => {
-    const result = _computeRelativeTime(
-      new Date('2023-01-02'),
-      new Date('2023-01-01'),
-      [],
-    );
+    const result = _computeRelativeTime(new Date('2023-01-02'), new Date('2023-01-01'), []);
     expect(result).toEqual({ value: 0, stop: 'second' });
   });
 

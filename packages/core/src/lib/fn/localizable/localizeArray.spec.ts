@@ -21,10 +21,7 @@ describe('localizeArray', () => {
       { localize: (locale: string) => `value1 for ${locale}` },
       { localize: (locale: string) => `value2 for ${locale}` },
     ];
-    expect(localizeArray(values, 'en-US')).toEqual([
-      'value1 for en-US',
-      'value2 for en-US',
-    ]);
+    expect(localizeArray(values, 'en-US')).toEqual(['value1 for en-US', 'value2 for en-US']);
   });
 
   it('returns original values for non-localizable objects', () => {
@@ -33,16 +30,8 @@ describe('localizeArray', () => {
   });
 
   it('handles mixed arrays of localizable and non-localizable objects', () => {
-    const values = [
-      { localize: (locale: string) => `value1 for ${locale}` },
-      42,
-      'string',
-    ];
-    expect(localizeArray(values, 'en-US')).toEqual([
-      'value1 for en-US',
-      42,
-      'string',
-    ]);
+    const values = [{ localize: (locale: string) => `value1 for ${locale}` }, 42, 'string'];
+    expect(localizeArray(values, 'en-US')).toEqual(['value1 for en-US', 42, 'string']);
   });
 
   it('returns an empty array when input is an empty array', () => {
@@ -50,21 +39,12 @@ describe('localizeArray', () => {
   });
 
   it('handles null values in the array gracefully', () => {
-    const values = [
-      null,
-      { localize: (locale: string) => `value for ${locale}` },
-    ];
+    const values = [null, { localize: (locale: string) => `value for ${locale}` }];
     expect(localizeArray(values, 'en-US')).toEqual([null, 'value for en-US']);
   });
 
   it('handles undefined values in the array gracefully', () => {
-    const values = [
-      undefined,
-      { localize: (locale: string) => `value for ${locale}` },
-    ];
-    expect(localizeArray(values, 'en-US')).toEqual([
-      undefined,
-      'value for en-US',
-    ]);
+    const values = [undefined, { localize: (locale: string) => `value for ${locale}` }];
+    expect(localizeArray(values, 'en-US')).toEqual([undefined, 'value for en-US']);
   });
 });

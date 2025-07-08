@@ -32,9 +32,7 @@ describe('Unlocalizable', () => {
   });
 
   it('uses Symbol.toPrimitive to return the primitive value', () => {
-    expect(`${new UnlocalizableValue('primitive value')}`).toBe(
-      'primitive value',
-    );
+    expect(`${new UnlocalizableValue('primitive value')}`).toBe('primitive value');
     expect(`${new UnlocalizableValue(12n)}`).toBe('12');
     expect(`${new UnlocalizableValue(12)}`).toBe('12');
     expect(`${new UnlocalizableValue(false)}`).toBe('false');

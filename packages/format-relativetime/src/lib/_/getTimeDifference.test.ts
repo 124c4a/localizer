@@ -85,18 +85,12 @@ describe('_getTimeDifference', () => {
   });
 
   it('calculates the correct week difference for dates spanning multiple weeks', () => {
-    const result = _getTimeDifference(
-      new Date('2023-01-15'),
-      new Date('2023-01-01'),
-    );
+    const result = _getTimeDifference(new Date('2023-01-15'), new Date('2023-01-01'));
     expect(result.week).toBe(2);
   });
 
   it('handles leap years correctly', () => {
-    const result = _getTimeDifference(
-      new Date('2024-02-29'),
-      new Date('2023-02-28'),
-    );
+    const result = _getTimeDifference(new Date('2024-02-29'), new Date('2023-02-28'));
     expect(result).toEqual({
       year: 1,
       quarter: 4,

@@ -33,9 +33,7 @@ describe('apply', () => {
 
   it('applies the function correctly for different locales', () => {
     const value = loc((locale) => `value for ${locale}`);
-    const result = transform(value, [
-      apply((v) => v.replace('value', 'transformed')),
-    ]);
+    const result = transform(value, [apply((v) => v.replace('value', 'transformed'))]);
     expect(result.localize('en')).toBe('transformed for en');
     expect(result.localize('fi')).toBe('transformed for fi');
   });
