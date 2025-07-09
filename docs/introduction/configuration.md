@@ -32,7 +32,7 @@ configure(Core, { fallbackLocales: ['fi', 'en'] });
 
 ::: warning
 
-Configurations are globally managed as singleton objects stored in `globalThis.$Localizer`. To ensure consistent behavior, initialize configurations as early as possible in the application lifecycle. Avoid modifying configuration properties at runtime unless explicitly supported and documented, as doing so may result in unpredictable behavior.
+Configurations are globally managed as singleton objects stored in `globalThis.__LOCALIZER__`. To ensure consistent behavior, initialize configurations as early as possible in the application lifecycle. Avoid modifying configuration properties at runtime unless explicitly supported and documented, as doing so may result in unpredictable behavior.
 
 :::
 
