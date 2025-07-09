@@ -16,7 +16,7 @@
 import { Configurer } from '../types/configuration.js';
 
 declare global {
-  var $Localizer: Map<string, unknown>;
+  var __LOCALIZER__: Map<string, unknown>;
 }
 
 /**
@@ -35,15 +35,15 @@ export function declareConfiguration<T extends object>(
   id: string,
   initialConfig: T,
 ): [T, Configurer<T>] {
-  globalThis.$Localizer ??= new Map<string, unknown>();
-  if (!globalThis.$Localizer.has(id)) {
+  globalThis.__LOCALIZER__ ??= new Map<string, unknown>();
+  if (!globalThis.__LOCALIZER__.has(id)) {
     // If the configuration with the given id does not exist, initialize it
-    globalThis.$Localizer.set(id, initialConfig);
+    globalThis.__LOCALIZER__.set(id, initialConfig);
   }
   return [
-    globalThis.$Localizer.get(id) as T,
+    globalThis.__LOCALIZER__.get(id) as T,
     (config: Partial<T>) => {
-      Object.assign(globalThis.$Localizer.get(id) as T, config);
+      Object.assign(globalThis.__LOCALIZER__.get(id) as T, config);
     },
   ];
 }

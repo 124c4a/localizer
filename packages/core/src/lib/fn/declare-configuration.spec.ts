@@ -17,16 +17,16 @@ import { declareConfiguration } from './declare-configuration.js';
 
 describe('declareConfiguration', () => {
   beforeEach(() => {
-    // Reset the global $Localizer object before each test
-    delete (globalThis as { $Localizer?: unknown }).$Localizer;
+    // Reset the global __LOCALIZER__ object before each test
+    delete (globalThis as { __LOCALIZER__?: unknown }).__LOCALIZER__;
   });
 
-  it('should initialize a $Localizer if it does not exist', () => {
-    assert(globalThis.$Localizer === undefined, 'Expected $Localizer to be undefined');
+  it('should initialize a __LOCALIZER__ if it does not exist', () => {
+    assert(globalThis.__LOCALIZER__ === undefined, 'Expected __LOCALIZER__ to be undefined');
 
     declareConfiguration('testId', {});
 
-    expect(globalThis.$Localizer).toBeDefined();
+    expect(globalThis.__LOCALIZER__).toBeDefined();
   });
 
   it('should initialize a configuration with the given id and initialConfig', () => {
@@ -34,7 +34,7 @@ describe('declareConfiguration', () => {
     const [config] = declareConfiguration('testId', initialConfig);
 
     expect(config).toEqual(initialConfig);
-    expect(globalThis.$Localizer.get('testId')).toEqual(initialConfig);
+    expect(globalThis.__LOCALIZER__.get('testId')).toEqual(initialConfig);
   });
 
   it('should return a configurer function that updates the configuration', () => {
@@ -43,7 +43,7 @@ describe('declareConfiguration', () => {
 
     configure({ key: 'newValue' });
     expect(config.key).toBe('newValue');
-    expect(globalThis.$Localizer.get('testId')).toEqual({ key: 'newValue' });
+    expect(globalThis.__LOCALIZER__.get('testId')).toEqual({ key: 'newValue' });
   });
 
   it('should not overwrite existing configuration if the same id is used', () => {
@@ -54,7 +54,7 @@ describe('declareConfiguration', () => {
     const [config] = declareConfiguration('testId', initialConfig2);
 
     expect(config).toEqual(initialConfig1);
-    expect(globalThis.$Localizer.get('testId')).toEqual(initialConfig1);
+    expect(globalThis.__LOCALIZER__.get('testId')).toEqual(initialConfig1);
   });
 
   it('should allow partial updates to the configuration', () => {
@@ -63,6 +63,6 @@ describe('declareConfiguration', () => {
 
     configure({ key1: 'newValue1' });
     expect(config).toEqual({ key1: 'newValue1', key2: 'value2' });
-    expect(globalThis.$Localizer.get('testId')).toEqual({ key1: 'newValue1', key2: 'value2' });
+    expect(globalThis.__LOCALIZER__.get('testId')).toEqual({ key1: 'newValue1', key2: 'value2' });
   });
 });
