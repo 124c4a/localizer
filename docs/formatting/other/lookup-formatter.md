@@ -7,8 +7,6 @@ entity:
   example: loc`Lookup formatter`
   configurable: true
   maturity: beta
-  related:
-    - percentFormatter
 ---
 
 # lookupFormatter <Preview /> <Package name="format-lookup"/>
@@ -41,7 +39,3 @@ const formatter = lookupFormatter<number | null | undefined>(lookupTable);
 
 const result = formatter(1);
 ```
-
-## See also
-
-<Entities />
