@@ -37,6 +37,7 @@ See [formatter options](./options/index.md) for configuration details.
   import { ref } from 'vue';
   import { NFormItem } from 'naive-ui/es/form';
   import { NSelect } from 'naive-ui/es/select';
+  import { NInputNumber } from 'naive-ui/es/input-number';
   import { NDivider } from 'naive-ui/es/divider';
   import NumberFormatOptionsForm from './NumberFormatOptionsForm.vue';
   import { currencyName } from '@localizer/format';

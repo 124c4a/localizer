@@ -73,20 +73,35 @@
     { immediate: true },
   );
 
-  const opts = (arr) => arr.map((item) => ({ label: String(item), value: item }));
+  const opts = (arr, notClearable = false) =>
+    notClearable
+      ? arr.map((item) => ({ label: String(item), value: item }))
+      : [
+          { label: '─── unset ───', value: null },
+          ...arr.map((item) => ({ label: String(item), value: item })),
+        ];
 </script>
 
 <template>
   <NFormItem label="style"
-    ><NSelect clearable v-model:value="options.style" :options="opts(['long', 'short', 'narrow'])"
+    ><NSelect
+      clearable
+      v-model:value="options.style"
+      placeholder="─── unset ───"
+      :options="opts(['long', 'short', 'narrow'])"
   /></NFormItem>
   <NFormItem label="fallback"
-    ><NSelect clearable v-model:value="options.fallback" :options="opts(['code', 'none'])"
+    ><NSelect
+      clearable
+      v-model:value="options.fallback"
+      placeholder="─── unset ───"
+      :options="opts(['code', 'none'])"
   /></NFormItem>
   <NFormItem label="languageDisplay"
     ><NSelect
       clearable
       v-model:value="options.languageDisplay"
+      placeholder="─── unset ───"
       :options="opts(['dialect', 'standard'])"
   /></NFormItem>
 </template>

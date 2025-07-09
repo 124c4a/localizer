@@ -3,8 +3,10 @@ name: Publish documentation site
 on:
   workflow_dispatch:
   push:
-    tags:
-      - '@localizer/**'
+    branches:
+      - main
+    paths:
+      - '**/CHANGELOG.md'
 
 permissions: read-all
 

@@ -92,7 +92,13 @@
     { immediate: true },
   );
 
-  const opts = (arr) => arr.map((item) => ({ label: String(item), value: item }));
+  const opts = (arr, notClearable = false) =>
+    notClearable
+      ? arr.map((item) => ({ label: String(item), value: item }))
+      : [
+          { label: '─── unset ───', value: null },
+          ...arr.map((item) => ({ label: String(item), value: item })),
+        ];
 </script>
 
 <template>
@@ -102,21 +108,28 @@
     ><NSelect
       clearable
       v-model:value="options.notation"
+      placeholder="─── unset ───"
       :options="opts(['standard', 'scientific', 'engineering', 'compact'])"
   /></NFormItem>
   <NFormItem label="compactDisplay"
-    ><NSelect clearable v-model:value="options.compactDisplay" :options="opts(['short', 'long'])"
+    ><NSelect
+      clearable
+      v-model:value="options.compactDisplay"
+      placeholder="─── unset ───"
+      :options="opts(['short', 'long'])"
   /></NFormItem>
   <NFormItem label="useGrouping"
     ><NSelect
       clearable
       v-model:value="options.useGrouping"
+      placeholder="─── unset ───"
       :options="opts(['always', 'auto', 'min2', true, false])"
   /></NFormItem>
   <NFormItem label="signDisplay"
     ><NSelect
       clearable
       v-model:value="options.signDisplay"
+      placeholder="─── unset ───"
       :options="opts(['auto', 'always', 'exceptZero', 'negative', 'never'])"
   /></NFormItem>
   <NFormItem label="parts"
@@ -124,26 +137,30 @@
       clearable
       multiple
       v-model:value="options.parts"
+      placeholder="─── unset ───"
       :options="
-        opts([
-          'literal',
-          'integer',
-          'group',
-          'decimal',
-          'fraction',
-          'compact',
-          'exponentSeparator',
-          'exponentMinusSign',
-          'exponentInteger',
-          'nan',
-          'infinity',
-          'plusSign',
-          'minusSign',
-          'percentSign',
-          'unit',
-          'currency',
-          'unknown',
-        ])
+        opts(
+          [
+            'literal',
+            'integer',
+            'group',
+            'decimal',
+            'fraction',
+            'compact',
+            'exponentSeparator',
+            'exponentMinusSign',
+            'exponentInteger',
+            'nan',
+            'infinity',
+            'plusSign',
+            'minusSign',
+            'percentSign',
+            'unit',
+            'currency',
+            'unknown',
+          ],
+          true,
+        )
       "
   /></NFormItem>
 
@@ -154,6 +171,7 @@
       ><NSelect
         clearable
         v-model:value="options.unitDisplay"
+        placeholder="─── unset ───"
         :options="opts(['short', 'narrow', 'long'])"
     /></NFormItem>
   </template>
@@ -165,6 +183,7 @@
       ><NSelect
         clearable
         v-model:value="options.currencyDisplay"
+        placeholder="─── unset ───"
         :options="opts(['code', 'symbol', 'narrowSymbol', 'name'])"
     /></NFormItem>
 
@@ -172,45 +191,55 @@
       ><NSelect
         clearable
         v-model:value="options.currencySign"
+        placeholder="─── unset ───"
         :options="opts(['standard', 'accounting'])"
     /></NFormItem>
   </template>
 
   <NDivider title-placement="left">Digit options</NDivider>
 
-  <NFormItem label="minimumIntegerDigits"
-    ><NInputNumber clearable :min="1" :max="21" v-model:value="options.minimumIntegerDigits"
+  <NFormItem label="min.IntegerDigits"
+    ><NInputNumber
+      clearable
+      :min="1"
+      :max="21"
+      placeholder="─── unset ───"
+      v-model:value="options.minimumIntegerDigits"
   /></NFormItem>
-  <NFormItem label="minimumFractionDigits"
+  <NFormItem label="min.FractionDigits"
     ><NInputNumber
       clearable
       :min="0"
       :max="options.maximumFractionDigits ?? 100"
       v-model:value="options.minimumFractionDigits"
+      placeholder="─── unset ───"
       :disabled="!!options.roundingIncrement"
   /></NFormItem>
-  <NFormItem label="maximumFractionDigits"
+  <NFormItem label="max.FractionDigits"
     ><NInputNumber
       clearable
       :min="options.minimumFractionDigits ?? 0"
       :max="100"
       v-model:value="options.maximumFractionDigits"
+      placeholder="─── unset ───"
       :disabled="!!options.roundingIncrement"
   /></NFormItem>
-  <NFormItem label="minimumSignificantDigits"
+  <NFormItem label="min.SignificantDigits"
     ><NInputNumber
       clearable
       :min="1"
       :max="options.maximumSignificantDigits ?? 21"
       v-model:value="options.minimumSignificantDigits"
+      placeholder="─── unset ───"
       :disabled="!!options.roundingIncrement"
   /></NFormItem>
-  <NFormItem label="maximumSignificantDigits"
+  <NFormItem label="max.SignificantDigits"
     ><NInputNumber
       clearable
       :min="options.minimumSignificantDigits ?? 1"
       :max="21"
       v-model:value="options.maximumSignificantDigits"
+      placeholder="─── unset ───"
       :disabled="!!options.roundingIncrement"
   /></NFormItem>
   <NFormItem label="roundingPriority"
@@ -218,18 +247,21 @@
       clearable
       v-model:value="options.roundingPriority"
       :options="opts(['auto', 'morePrecision', 'lessPrecision'])"
+      placeholder="─── unset ───"
       :disabled="!!options.roundingIncrement"
   /></NFormItem>
   <NFormItem label="roundingIncrement"
     ><NSelect
       clearable
       v-model:value="options.roundingIncrement"
+      placeholder="─── unset ───"
       :options="opts([1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 2500, 5000])"
   /></NFormItem>
   <NFormItem label="roundingMode"
     ><NSelect
       clearable
       v-model:value="options.roundingMode"
+      placeholder="─── unset ───"
       :options="
         opts([
           'ceil',
@@ -248,6 +280,7 @@
     ><NSelect
       clearable
       v-model:value="options.trailingZeroDisplay"
+      placeholder="─── unset ───"
       :options="opts(['auto', 'stripIfInteger'])"
   /></NFormItem>
 </template>

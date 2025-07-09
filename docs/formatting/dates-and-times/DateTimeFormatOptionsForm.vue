@@ -2,6 +2,7 @@
   import { ref, computed, watch } from 'vue';
   import { NFormItem } from 'naive-ui/es/form';
   import { NSelect } from 'naive-ui/es/select';
+  import { NSpace } from 'naive-ui/es/space';
   import { NDivider } from 'naive-ui/es/divider';
   import { DateTimeFormatOptions } from '@localizer/format-datetime';
 
@@ -90,7 +91,13 @@
     { immediate: true },
   );
 
-  const opts = (arr) => arr.map((item) => ({ label: String(item), value: item }));
+  const opts = (arr, notClearable = false) =>
+    notClearable
+      ? arr.map((item) => ({ label: String(item), value: item }))
+      : [
+          { label: '─── unset ───', value: null },
+          ...arr.map((item) => ({ label: String(item), value: item })),
+        ];
   const hasPreset = computed(() => {
     return options.value.dateStyle || options.value.timeStyle;
   });
@@ -103,12 +110,14 @@
     ><NSelect
       clearable
       v-model:value="options.dateStyle"
+      placeholder="─── unset ───"
       :options="opts(['full', 'long', 'medium', 'short'])"
   /></NFormItem>
   <NFormItem label="timeStyle"
     ><NSelect
       clearable
       v-model:value="options.timeStyle"
+      placeholder="─── unset ───"
       :options="opts(['full', 'long', 'medium', 'short'])"
   /></NFormItem>
 
@@ -119,6 +128,7 @@
       clearable
       v-model:value="options.weekday"
       :options="opts(['long', 'short', 'narrow'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="era"
@@ -126,6 +136,7 @@
       clearable
       v-model:value="options.era"
       :options="opts(['long', 'short', 'narrow'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="year"
@@ -133,6 +144,7 @@
       clearable
       v-model:value="options.year"
       :options="opts(['numeric', '2-digit'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="month"
@@ -140,6 +152,7 @@
       clearable
       v-model:value="options.month"
       :options="opts(['numeric', '2-digit', 'long', 'short', 'narrow'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="day"
@@ -147,6 +160,7 @@
       clearable
       v-model:value="options.day"
       :options="opts(['numeric', '2-digit'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="dayPeriod"
@@ -154,6 +168,7 @@
       clearable
       v-model:value="options.dayPeriod"
       :options="opts(['narrow', 'short', 'long'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="hour"
@@ -161,6 +176,7 @@
       clearable
       v-model:value="options.hour"
       :options="opts(['numeric', '2-digit'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="minute"
@@ -168,6 +184,7 @@
       clearable
       v-model:value="options.minute"
       :options="opts(['numeric', '2-digit'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="second"
@@ -175,13 +192,15 @@
       clearable
       v-model:value="options.second"
       :options="opts(['numeric', '2-digit'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
-  <NFormItem label="fractionalSecondDigits"
+  <NFormItem label="fract.SecondDigits"
     ><NSelect
       clearable
       v-model:value="options.fractionalSecondDigits"
       :options="opts([1, 2, 3])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
   <NFormItem label="formatMatcher"
@@ -189,6 +208,7 @@
       clearable
       v-model:value="options.formatMatcher"
       :options="opts(['basic', 'best fit'])"
+      placeholder="─── unset ───"
       :disabled="hasPreset"
   /></NFormItem>
 
@@ -199,6 +219,7 @@
       clearable
       v-model:value="options.hour12"
       :options="opts([true, false])"
+      placeholder="─── unset ───"
       :disabled="options.hourCycle != undefined"
   /></NFormItem>
   <NFormItem label="hourCycle"
@@ -206,6 +227,7 @@
       clearable
       v-model:value="options.hourCycle"
       :options="opts(['h11', 'h12', 'h23', 'h24'])"
+      placeholder="─── unset ───"
       :disabled="options.hour12 != undefined"
   /></NFormItem>
   <NFormItem label="parts"
@@ -213,24 +235,28 @@
       clearable
       multiple
       v-model:value="options.parts"
+      placeholder="─── unset ───"
       :options="
-        opts([
-          'weekday',
-          'era',
-          'year',
-          'month',
-          'day',
-          'dayPeriod',
-          'hour',
-          'minute',
-          'second',
-          'fractionalSecond',
-          'timeZoneName',
-          'literal',
-          'relatedYear',
-          'yearName',
-          'unknown',
-        ])
+        opts(
+          [
+            'weekday',
+            'era',
+            'year',
+            'month',
+            'day',
+            'dayPeriod',
+            'hour',
+            'minute',
+            'second',
+            'fractionalSecond',
+            'timeZoneName',
+            'literal',
+            'relatedYear',
+            'yearName',
+            'unknown',
+          ],
+          true,
+        )
       "
   /></NFormItem>
 </template>

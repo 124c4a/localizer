@@ -33,14 +33,15 @@ packageMetas.forEach((name) => {
     : [];
 
   if (changelog.length > 2) {
-    const featureMatches = changelog[1].match(/#{2,3} 🚀 Features(.*)[\r\n]#/s);
-    const fixMatches = changelog[1].match(/#{2,3} 🩹 Fixes(.*)[\r\n]#/s);
+    const featureMatches = extractSection(changelog[1], '🚀 Features');
+    const fixMatches = extractSection(changelog[1], '🩹 Fixes');
 
     if (featureMatches) {
       features.push(
-        ...featureMatches[1]
+        ...featureMatches
           .trim()
           .split('\n')
+          .map((line) => line.trim())
           .map((line) => {
             if (line.includes('(experimental)')) {
               return line.replace('(experimental)', '').trim() + ' <Experimental />';
@@ -59,9 +60,10 @@ packageMetas.forEach((name) => {
 
     if (fixMatches) {
       fixes.push(
-        ...fixMatches[1]
+        ...fixMatches
           .trim()
           .split('\n')
+          .map((line) => line.trim())
           .map((line) => {
             if (line.includes('(experimental)')) {
               return line.replace('(experimental)', '').trim() + ' <Experimental />';
@@ -111,18 +113,20 @@ function deduplicateLines(lines) {
   const seen = new Set();
   const packageRest = {};
 
-  lines.forEach((line) => {
-    const lineParts = line.split('<Package name="');
-    if (lineParts.length > 1) {
-      const rest = lineParts[1];
-      if (!packageRest[lineParts[0]]) {
-        packageRest[lineParts[0]] = [];
+  lines
+    .filter((line) => !!line)
+    .forEach((line) => {
+      const lineParts = line.split('<Package name="');
+      if (lineParts.length > 1) {
+        const rest = lineParts[1];
+        if (!packageRest[lineParts[0]]) {
+          packageRest[lineParts[0]] = [];
+        }
+        packageRest[lineParts[0]].push(rest);
       }
-      packageRest[lineParts[0]].push(rest);
-    }
 
-    seen.add(lineParts[0]);
-  });
+      seen.add(lineParts[0]);
+    });
 
   return Array.from(seen)
     .sort((a, b) => a.localeCompare(b))
@@ -132,4 +136,9 @@ function deduplicateLines(lines) {
       }
       return line;
     });
+}
+
+function extractSection(changelog, section) {
+  const matches = changelog.match(new RegExp(`#{2,3} ${section}(.*?)(?=#{2,3}|$)`, 's'));
+  return matches ? matches[1].trim() : '';
 }

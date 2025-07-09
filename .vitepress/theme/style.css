@@ -132,3 +132,9 @@
 * {
   transition: none !important;
 }
+
+@media (max-width: 640px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}

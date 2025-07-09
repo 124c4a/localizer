@@ -13,7 +13,7 @@ entity:
     - decimalFormatter
 ---
 
-# decimalFormatter <Package name="format-number"/>
+# decimalRangeFormatter <Package name="format-number"/>
 
 The `decimalRangeFormatter` provides a flexible and customizable way to format numeric ranges. It is particularly useful for scenarios where you need to display a range of numbers with specific formatting options, such as compact notation or localized styles.
 
