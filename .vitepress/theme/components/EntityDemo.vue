@@ -19,6 +19,7 @@ limitations under the License.
   import { entities } from '../data/entities';
   import { Entity } from '../entity';
   import { NFlex } from 'naive-ui/es/flex';
+  import { NSpace } from 'naive-ui/es/space';
   import { NForm } from 'naive-ui/es/form';
   import { languageName, stringify } from '@localizer/format';
   import { useData } from 'vitepress';
@@ -49,8 +50,10 @@ limitations under the License.
 
 <template>
   <NFlex vertical :singleLine="true">
-    <NForm label-placement="left" label-width="200">
-      <slot></slot>
+    <NForm label-placement="left" label-width="150" :show-feedback="false">
+      <NFlex vertical>
+        <slot></slot>
+      </NFlex>
     </NForm>
     <table>
       <thead>
@@ -63,7 +66,7 @@ limitations under the License.
         <tr v-for="(locale, index) in locales" :key="index">
           <td style="white-space: nowrap">
             <code> {{ locale }} </code>
-            {{ languageName(locale).localize('en-US') }}
+            <span class="hide-on-mobile"> &nbsp;{{ languageName(locale).localize('en-US') }} </span>
           </td>
           <td>
             {{ fn(...args).localize(locale) }}

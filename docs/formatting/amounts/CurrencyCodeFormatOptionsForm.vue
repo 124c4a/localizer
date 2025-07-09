@@ -57,7 +57,13 @@
     { immediate: true },
   );
 
-  const opts = (arr) => arr.map((item) => ({ label: String(item), value: item }));
+  const opts = (arr, notClearable = false) =>
+    notClearable
+      ? arr.map((item) => ({ label: String(item), value: item }))
+      : [
+          { label: '──── unset ────', value: null },
+          ...arr.map((item) => ({ label: String(item), value: item })),
+        ];
 </script>
 
 <template>
@@ -66,6 +72,7 @@
   <NFormItem label="currencyDisplay"
     ><NSelect
       clearable
+      placeholder="──── unset ────"
       v-model:value="options.currencyDisplay"
       :options="opts(['code', 'symbol', 'narrowSymbol', 'name'])"
   /></NFormItem>

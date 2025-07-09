@@ -73,21 +73,38 @@
     { immediate: true },
   );
 
-  const opts = (arr) => arr.map((item) => ({ label: String(item), value: item }));
+  const opts = (arr, notClearable = false) =>
+    notClearable
+      ? arr.map((item) => ({ label: String(item), value: item }))
+      : [
+          { label: '─── unset ───', value: null },
+          ...arr.map((item) => ({ label: String(item), value: item })),
+        ];
 </script>
 
 <template>
   <NFormItem label="style"
-    ><NSelect clearable v-model:value="options.style" :options="opts(['long', 'short', 'narrow'])"
+    ><NSelect
+      clearable
+      v-model:value="options.style"
+      placeholder="─── unset ───"
+      :options="opts(['long', 'short', 'narrow'])"
   /></NFormItem>
   <NFormItem label="numeric"
-    ><NSelect clearable v-model:value="options.numeric" :options="opts(['always', 'auto'])"
+    ><NSelect
+      clearable
+      v-model:value="options.numeric"
+      placeholder="─── unset ───"
+      :options="opts(['always', 'auto'])"
   /></NFormItem>
   <NFormItem label="stops"
     ><NSelect
       clearable
       multiple
       v-model:value="options.stops"
-      :options="opts(['second', 'minute', 'hour', 'day', 'week', 'month', 'quarter', 'year'])"
+      placeholder="─── unset ───"
+      :options="
+        opts(['second', 'minute', 'hour', 'day', 'week', 'month', 'quarter', 'year'], true)
+      "
   /></NFormItem>
 </template>

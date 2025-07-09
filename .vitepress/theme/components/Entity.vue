@@ -69,21 +69,15 @@ limitations under the License.
           </template>
           Configurable
         </NTooltip>
-        <NTooltip :trigger="'hover'" :placement="'top'">
-          <template #trigger>
-            <NTag round>
-              <NText depth="3">{{ entity.type }}</NText>
-            </NTag>
-          </template>
-          {{ description[entity.type] }}
-        </NTooltip>
       </NSpace>
     </template>
     <template #header-extra>
       <NSpace size="small">
         <Experimental v-if="entity.maturity === 'alpha'" />
         <Preview v-if="entity.maturity === 'beta'" />
-        <Package :name="entity.pkg" />
+        <span class="hide-on-mobile">
+          <Package :name="entity.pkg" />
+        </span>
       </NSpace>
     </template>
     <NH1>

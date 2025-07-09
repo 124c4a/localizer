@@ -83,7 +83,13 @@
     { immediate: true },
   );
 
-  const opts = (arr) => arr.map((item) => ({ label: String(item), value: item }));
+  const opts = (arr, notClearable = false) =>
+    notClearable
+      ? arr.map((item) => ({ label: String(item), value: item }))
+      : [
+          { label: '─── unset ───', value: null },
+          ...arr.map((item) => ({ label: String(item), value: item })),
+        ];
 </script>
 
 <template>
@@ -92,6 +98,7 @@
       clearable
       v-model:value="options.type"
       :options="opts(['conjunction', 'disjunction', 'unit'])"
+      placeholder="─── unset ───"
       :disabled="!!options.delimiter"
   /></NFormItem>
   <NFormItem label="style"
@@ -99,9 +106,10 @@
       clearable
       v-model:value="options.style"
       :options="opts(['long', 'short', 'narrow'])"
+      placeholder="─── unset ───"
       :disabled="!!options.delimiter"
   /></NFormItem>
   <NFormItem label="delimiter"
-    ><NInput clearable v-model:value="options.delimiter" type="text"
+    ><NInput clearable v-model:value="options.delimiter" type="text" placeholder="─── unset ───"
   /></NFormItem>
 </template>
