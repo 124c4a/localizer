@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 import { LocaleCode, Localizable, Localized } from '@localizer/core';
+
+/**
+ * Interface representing a localizer instance in Vue applications. This interface provides methods
+ * for localizing values, arrays, and objects, as well as a property for the active locale.
+ *
+ * @alpha
+ */
 export interface LocalizerInstance {
   /**
    * Returns the localized value for the given input.
@@ -52,8 +59,6 @@ export interface LocalizerInstance {
    * @returns        Localized array.
    *
    * @alpha
-   *
-   * @see {@link Localizable}
    */
   localizeArray<T extends unknown[]>(values: T): Localized<T>;
 
@@ -66,9 +71,7 @@ export interface LocalizerInstance {
    *
    * @returns        A new object with `Localizable` properties replaced by localized values.
    *
-   * @public
-   *
-   * @see {@link Localizable}
+   * @alpha
    */
   localizeObject<T extends Record<string, unknown>>(values: T): Localized<T>;
 

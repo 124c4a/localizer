@@ -96,7 +96,7 @@ For more details on how to use the localization functionality, refer to the [`us
 
 ### `useLocalizer`
 
-`useLocalizer` is a main tool, that provides components with localization functions and allows to change current language (locale). This function can be called from functional component bodies and `setup()`
+`useLocalizer` is the primary API for accessing localization features within your components. It provides utilities for translating content, formatting data, and dynamically switching the active locale. Similar to other lifecycle-related APIs, `useLocalizer()` must be invoked synchronously within the `setup()` function of a Vue component to ensure proper initialization.
 
 ## Components
 
