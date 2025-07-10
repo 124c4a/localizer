@@ -22,6 +22,10 @@ vi.mock('@localizer/core', () => ({
 }));
 
 describe('_getInitialLocale', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('should return the first valid locale from the locale chain', () => {
     vi.mocked(getLocaleChain).mockReturnValue(['und', 'fr', 'en'] as LocaleCode[]);
     const result = _getInitialLocale();

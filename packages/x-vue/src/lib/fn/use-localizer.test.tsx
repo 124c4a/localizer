@@ -23,6 +23,10 @@ import { VueIntegration } from '../options.js';
 import { _localizationContextSymbol } from './_/context.js';
 
 describe('useLocalize', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('uses localizer from context', () => {
     const contextLocalizer = getLocalizer('en-US');
     const mockSetActiveLocale = vi.fn();

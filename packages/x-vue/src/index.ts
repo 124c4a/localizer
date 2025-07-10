@@ -31,6 +31,7 @@ export {
 } from './lib/components/localization-context.js';
 export { Localized, type LocalizedProps } from './lib/components/localized.js';
 
+export { type LocalizerInstance } from './lib/localizer-instance.js';
 export { useLocalizer } from './lib/fn/use-localizer.js';
 
 export { localizerPlugin, LocalizerPluginOptions };

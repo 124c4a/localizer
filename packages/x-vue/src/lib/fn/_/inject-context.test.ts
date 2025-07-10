@@ -25,6 +25,10 @@ vi.mock('vue', () => ({
 }));
 
 describe('_injectContext', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('should return the injected localization context if available', () => {
     const mockContext: LocalizationContext = {
       localizer: getLocalizer('en'),

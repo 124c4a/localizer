@@ -25,6 +25,10 @@ describe('LocalizerWrapper', () => {
   const mockSetActiveLocale = vi.fn();
   const wrapper = new LocalizerWrapper({ localizer, setActiveLocale: mockSetActiveLocale });
 
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('should return localized value using localize method', () => {
     const result = wrapper.localize(CurrentLanguage);
     expect(result).toBe('American English');

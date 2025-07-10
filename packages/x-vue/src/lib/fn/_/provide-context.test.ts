@@ -24,6 +24,10 @@ vi.mock('vue', () => ({
 }));
 
 describe('_provideContext', () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
   it('should provide the correct context', () => {
     const context = _provideContext('fr');
     expect(provide).toHaveBeenCalledWith(expect.anything(), context);

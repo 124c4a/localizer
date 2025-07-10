@@ -42,7 +42,7 @@ export type LocalizationContextEmits = {
   /**
    * This event is emitted when the locale changes.
    *
-   * @param   locale The new locale to set for the localizer.
+   * @param   locale - The new locale to set for the localizer.
    *
    * @returns
    */

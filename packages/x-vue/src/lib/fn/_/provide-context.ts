@@ -24,10 +24,10 @@ import { _getInitialLocale } from './get-initial-locale.js';
  * localizer based on the provided locale code or automatically determines the initial locale if not
  * specified.
  *
- * @param   initialLocale The initial locale code to use for the context. If not provided, the
+ * @param   initialLocale - The initial locale code to use for the context. If not provided, the
  *   initial locale will be determined automatically.
- * @param   consumer      An optional consumer function that will be called with the created context
- *   instead of using `provide`.
+ * @param   consumer      - An optional consumer function that will be called with the created
+ *   context instead of using `provide`.
  *
  * @returns               The created localization context.
  */
