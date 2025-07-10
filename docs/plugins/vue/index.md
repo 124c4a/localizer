@@ -54,12 +54,13 @@ const app = createApp({
 app.use(localizerPlugin, { initialLocale: 'en-US' }); //[!code ++]
 ```
 
-Plugin registration is an optional step that glopbally registers custom components ([`x‑localization‑context`](#localizationcontext) and [`x‑localized`](#localized)) and sets up global localization context using supplied initial locale.
-See [plugin options](#plugin-options) for more details.
+Plugin registration is an optional step that globally sets up the localization context with the provided initial locale. Additionally, it registers custom components like [`x-localization-context`](#localizationcontext) and [`x-localized`](#localized), making them available throughout your application for seamless integration.
+
+For additional configuration options and advanced usage, refer to the [Plugin Options](#plugin-options) section. This section provides detailed information on customizing the plugin to suit your application's specific localization needs.
 
 ### 3. Usage
 
-Once localization context is available, you can start using all localization functionality that the library provides.
+With the localization context set up, you can now leverage the full range of localization features provided by the library. These features enable you to seamlessly translate content, format dates, numbers, and currencies, and manage dynamic locale changes within your Vue.js application.
 
 ::: code-group
 
@@ -87,11 +88,15 @@ export default defineComponent(() => {
 });
 ```
 
+For more details on how to use the localization functionality, refer to the [`useLocalizer`](#uselocalizer) section. This section provides an in-depth explanation of its API and practical examples to help you integrate it effectively into your Vue.js components.
+
 :::
 
 ## Functions
 
 ### `useLocalizer`
+
+`useLocalizer` is a main tool, that provides components with localization functions and allows to change current language (locale). This function can be called from functional component bodies and `setup()`
 
 ## Components
 

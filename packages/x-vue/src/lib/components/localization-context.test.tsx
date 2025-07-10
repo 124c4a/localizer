@@ -33,6 +33,12 @@ describe('LocalizationContext', () => {
     expect(wrapper.html()).toContain('American English');
   });
 
+  it('renders without children', () => {
+    const wrapper = mount(<LocalizationContext initialLocale="en-US" />);
+
+    expect(wrapper.html()).toBe('');
+  });
+
   it('renders with default locale if not specified', () => {
     const wrapper = mount(
       <LocalizationContext>
