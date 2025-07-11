@@ -1,6 +1,6 @@
 {
   "name": "@localizer/format-number",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting numbers in a locale-aware manner.",
   "keywords": [
     "localization",
@@ -41,7 +41,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "1.1.0"
+    "@localizer/core": "1.1.1"
   },
   "nx": {
     "targets": {

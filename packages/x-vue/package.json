@@ -1,6 +1,6 @@
 {
   "name": "@localizer/x-vue",
-  "version": "1.0.0-prerelease",
+  "version": "1.0.0",
   "description": "Type-safe localization, formatting and translation library. Localization support for Vue.js.",
   "keywords": [
     "localization",
@@ -43,10 +43,10 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "1.1.0"
+    "@localizer/core": "1.1.1"
   },
   "devDependencies": {
-    "@localizer/format": "1.1.0",
+    "@localizer/format": "1.1.1",
     "@vitejs/plugin-vue-jsx": "^5.0.1"
   },
   "peerDependencies": {
