@@ -5,11 +5,11 @@ order: 6
 # Transformations <Package name="transform"/>
 
 <script setup>
-import { getLocalizer } from '@localizer/core';
+import { useLocalizer } from '@localizer/x-vue';
 import { date, countryName } from '@localizer/format';
 import { transform, upperCase, usePrimaryLocale } from '@localizer/transform';
 
-const localizer = getLocalizer('en-US');
+const { localize } = useLocalizer();
 </script>
 
 Sometimes, you may need to perform additional processing on the results of formatting or translation. Common use cases include altering the character case. Since character case transformations can depend on locale-specific rules, the library offers a suite of transformation utilities that seamlessly integrate with its core functionality.
@@ -29,7 +29,7 @@ console.log(localizer(transformed));
 ```
 
 ```console-vue
-{{localizer(transform(countryName('FI'), [upperCase]))}}
+{{localize(transform(countryName('FI'), [upperCase]))}}
 ```
 
 You can also apply `transform()` directly to a value formatter. This creates a new value formatter that automatically applies the specified transformations to its output:
@@ -46,7 +46,7 @@ console.log(localizer(transformedValueFormatter('FI')));
 ```
 
 ```console-vue
-{{localizer(transform(countryName, [upperCase])('FI'))}}
+{{localize(transform(countryName, [upperCase])('FI'))}}
 ```
 
 The second argument of `transform()` method is an array of [transformers](../../api/_localizer/transform/Transformer/index.md). These transformers are applied sequentially to modify the result, offering a flexible way to customize localized content.

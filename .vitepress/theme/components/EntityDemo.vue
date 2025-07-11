@@ -19,7 +19,6 @@ limitations under the License.
   import { entities } from '../data/entities';
   import { Entity } from '../entity';
   import { NFlex } from 'naive-ui/es/flex';
-  import { NSpace } from 'naive-ui/es/space';
   import { NForm } from 'naive-ui/es/form';
   import { languageName, stringify } from '@localizer/format';
   import { useData } from 'vitepress';

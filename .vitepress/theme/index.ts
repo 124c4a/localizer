@@ -17,13 +17,14 @@
 import type { Theme } from 'vitepress';
 
 import { setup } from '@css-render/vue3-ssr';
+import localizerPlugin from '@localizer/x-vue';
 import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
 import { GlobalThemeOverrides, NConfigProvider } from 'naive-ui/es/config-provider';
 import { darkTheme } from 'naive-ui/es/themes/dark';
 import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
-import { defineComponent, h, inject, InjectionKey, onMounted, ref, watch } from 'vue';
 import '@shikijs/vitepress-twoslash/style.css';
+import { defineComponent, h, inject, InjectionKey, onMounted, ref, watch } from 'vue';
 
 import './style.css';
 import Card from './components/Card.vue';
@@ -104,6 +105,7 @@ export default {
   Layout: NaiveUIProvider,
   enhanceApp: ({ app }) => {
     app.use(TwoslashFloatingVue);
+    app.use(localizerPlugin, { initialLocale: 'en-US' });
     app.component('Package', Package);
     app.component('Experimental', Experimental);
     app.component('Preview', Preview);

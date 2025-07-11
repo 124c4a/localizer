@@ -15,9 +15,7 @@ limitations under the License.
 -->
 <script setup lang="ts">
   import { computed } from 'vue';
-  import { getLocalizer, loc } from '@localizer/core';
   import { NCard } from 'naive-ui/es/card';
-  import { NTag } from 'naive-ui/es/tag';
   import { NTooltip } from 'naive-ui/es/tooltip';
   import { NIcon } from 'naive-ui/es/icon';
   import { NSpace } from 'naive-ui/es/space';
@@ -26,8 +24,9 @@ limitations under the License.
   import { SettingsSharp } from '@vicons/ionicons5';
   import { entities } from '../data/entities';
   import { Entity } from '../entity';
+  import { useLocalizer } from '@localizer/x-vue';
 
-  const localizer = getLocalizer('en-US');
+  const { localize } = useLocalizer();
 
   const types = {
     number: 'info',
@@ -84,10 +83,10 @@ limitations under the License.
       <NSpace :size="entity.type === 'constant' ? 0 : 'small'">
         <NText depth="3" v-if="entity.type === 'constant'">`</NText>
         <NText v-if="entity.type === 'transformer' && entity.argument">{{
-          localizer(entity.argument)
+          localize(entity.argument)
         }}</NText>
         <NText depth="3" v-if="entity.type === 'transformer' && entity.argument">→</NText>
-        <NText :type="types[entity.type]">{{ localizer(entity.example) }}</NText>
+        <NText :type="types[entity.type]">{{ localize(entity.example) }}</NText>
         <NText depth="3" v-if="entity.type === 'constant'">`</NText>
       </NSpace>
     </NH1>

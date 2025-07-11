@@ -14,7 +14,7 @@ The library provides low-effort integration with Vue.js UI framework.
 
 ::: tip REQUIREMENTS
 
-- [Vue.js](https://vuejs.org/) **^3.5.0**
+- [Vue.js](https://vuejs.org/) **^3.4.0**
 
 :::
 
