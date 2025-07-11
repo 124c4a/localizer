@@ -133,6 +133,25 @@ describe('LocalizationContext', () => {
     expect(wrapper.emitted('update:locale')).toBeUndefined();
   });
 
+  it('does not change locale when property updated to undefined', async () => {
+    const useLocalizer: [instance?: LocalizerContext] = [];
+    const wrapper = mount(
+      <LocalizationContext>
+        <Localized content={CurrentLanguage} />
+        <SpyOnUseLocalizer useLocalizer={useLocalizer} />
+      </LocalizationContext>,
+    );
+    expect(wrapper.html()).toContain('English');
+
+    await wrapper.setProps({ locale: 'fr-FR' });
+    expect(wrapper.html()).toContain('français (France)');
+
+    await wrapper.setProps({ locale: undefined });
+    expect(wrapper.html()).toContain('français (France)');
+
+    expect(wrapper.emitted('update:locale')).toBeUndefined();
+  });
+
   it('can be nested', async () => {
     const useLocalizerOuter: [instance?: LocalizerContext] = [];
     const useLocalizerInner: [instance?: LocalizerContext] = [];
