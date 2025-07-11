@@ -123,7 +123,9 @@ async function collectScopes() {
     const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
     const moduleName = packageJson.name.replace('@localizer/', 'scope:');
 
-    const finalModuleName = moduleName.split('-')[0];
+    const moduleParts = moduleName.split('-');
+    const finalModuleName =
+      moduleParts[0] === 'x' ? `${moduleParts[0]}-${moduleParts[1]}` : moduleParts[0];
 
     if (!data.includes(finalModuleName)) {
       data.push(finalModuleName);

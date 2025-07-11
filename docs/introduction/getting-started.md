@@ -8,9 +8,19 @@ order: 1
   import basicUsage from './getting-started-basic';
   import advancedUsage from './getting-started-advanced';
   import valueFormatting from './getting-started-value-formatting';
+  import { VPFeatures } from 'vitepress/theme';
 </script>
 
 This guide provides essential information to get started quickly. From installation to basic usage, you'll learn how to integrate the tool into your workflow and utilize its features effectively. Begin with the installation instructions below, and explore advanced topics and API documentation as needed.
+
+## Choose technology
+
+<Cards>
+    <Card :icon="{ src: '/typescript.svg', wrap: true }"
+            title="Vanilla TypeScript"
+            link="#installation"
+        />
+</Cards>
 
 ## Installation
 

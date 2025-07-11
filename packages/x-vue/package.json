@@ -1,0 +1,70 @@
+{
+  "name": "@localizer/x-vue",
+  "version": "1.0.0-prerelease",
+  "description": "Type-safe localization, formatting and translation library. Localization support for Vue.js.",
+  "keywords": [
+    "localization",
+    "globalization",
+    "i18n",
+    "l10n",
+    "internationalization",
+    "localizer",
+    "formatting",
+    "translation",
+    "vue",
+    "vue3"
+  ],
+  "license": "Apache-2.0",
+  "author": "Artem Godin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/124c4a/localizer.git",
+    "directory": "packages/x-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/124c4a/localizer/issues"
+  },
+  "homepage": "https://124c4a.github.io/localizer",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {
+    "@localizer/core": "1.1.0"
+  },
+  "devDependencies": {
+    "@localizer/format": "1.1.0",
+    "@vitejs/plugin-vue-jsx": "^5.0.1"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "nx": {
+    "targets": {
+      "api": {
+        "executor": "nx:run-commands",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "commands": [
+            "node ./scripts/analyze-api.js -p {projectRoot}"
+          ]
+        }
+      }
+    }
+  }
+}

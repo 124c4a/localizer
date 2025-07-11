@@ -307,7 +307,14 @@ export async function writeChangelevel(ctx) {
   const modules = Array.from(
     new Set(
       collectModules(ctx.changes).map(
-        (module) => module.replace(/@localizer\//g, '').split('-')[0],
+        (module) => {
+          const moduleParts = module.replace(/@localizer\//g, '').split('-');
+          if (moduleParts[0] === 'x') {
+            return `${moduleParts[0]}-${moduleParts[1]}`;
+          } else {
+            return moduleParts[0];
+          }
+        }
       ),
     ),
   ).sort((a, b) => a.localeCompare(b));
