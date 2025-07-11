@@ -75,7 +75,7 @@ describe('localizerPlugin', () => {
     const templatedComponent = defineComponent({
       setup: () => ({ CurrentLanguage }),
       template:
-        '<x-localization-context initial-locale="fi-FI"><x-localized :content="CurrentLanguage" /></x-localization-context>',
+        '<x-localization-context locale="fi-FI"><x-localized :content="CurrentLanguage" /></x-localization-context>',
     });
 
     const wrapper = mount(templatedComponent, {
