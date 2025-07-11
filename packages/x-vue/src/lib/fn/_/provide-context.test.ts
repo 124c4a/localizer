@@ -15,7 +15,7 @@
  */
 import { provide, shallowRef } from 'vue';
 
-import { _localizationContextSymbol } from './context.js';
+import { _localizationContextSymbol } from './internal-context.js';
 import { _provideContext } from './provide-context.js';
 
 vi.mock('vue', () => ({

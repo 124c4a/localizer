@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted, ref } from 'vue';
+  import { computed } from 'vue';
   import { entities } from '../data/entities';
   import { NSpace } from 'naive-ui/es/space';
   import { useData } from 'vitepress';

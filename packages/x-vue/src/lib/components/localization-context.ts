@@ -25,12 +25,12 @@ import { _provideContext } from '../fn/_/provide-context.js';
  */
 export type LocalizationContextProps = {
   /**
-   * The initial locale to set for the localizer. This is optional and will default to the
-   * configured fallback language if not provided.
+   * The locale to set for the localizer. This is optional and will default to the configured
+   * fallback language if not provided.
    *
    * @alpha
    */
-  readonly initialLocale?: LocaleCode;
+  locale?: LocaleCode;
 };
 
 /**
@@ -40,13 +40,13 @@ export type LocalizationContextProps = {
  */
 export type LocalizationContextEmits = {
   /**
-   * This event is emitted when the locale changes.
+   * This event is emitted when the locale is changed via properties or context.
    *
    * @param   locale - The new locale to set for the localizer.
    *
    * @returns
    */
-  updateLocale: (locale: LocaleCode) => void;
+  'update:locale': (locale: LocaleCode) => void;
 };
 
 /**
@@ -61,18 +61,33 @@ export const LocalizationContext = /*#__PURE__*/ defineComponent<
   LocalizationContextEmits
 >(
   (props, { slots, emit }) => {
-    const context = _provideContext(props.initialLocale);
+    const context = _provideContext(props.locale);
+
+    watch(
+      () => props.locale,
+      (newLocale) => {
+        if (newLocale === undefined || newLocale === context.localizer.locale) {
+          return;
+        }
+        context.setActiveLocale(newLocale);
+      },
+    );
 
     watch(
       () => context.localizer.locale,
-      (newLocale) => emit('updateLocale', newLocale),
+      (newLocale) => {
+        if (newLocale === props.locale) {
+          return;
+        }
+        emit('update:locale', newLocale);
+      },
     );
 
-    return () => (slots.default ? slots.default() : null);
+    return () => slots.default?.();
   },
   {
     name: 'x-localization-context',
-    props: ['initialLocale'],
-    emits: ['updateLocale'],
+    props: ['locale'],
+    emits: { 'update:locale': (locale: LocaleCode) => typeof locale === 'string' },
   },
 );

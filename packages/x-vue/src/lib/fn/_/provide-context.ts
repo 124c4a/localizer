@@ -16,8 +16,8 @@
 import { getLocalizer, LocaleCode, Localizer } from '@localizer/core';
 import { provide, shallowRef } from 'vue';
 
-import { LocalizationContext, _localizationContextSymbol } from './context.js';
 import { _getInitialLocale } from './get-initial-locale.js';
+import { InternalContext, _localizationContextSymbol } from './internal-context.js';
 
 /**
  * Creates a localization context for the specified initial locale. This function initializes a
@@ -34,7 +34,7 @@ import { _getInitialLocale } from './get-initial-locale.js';
 export function _provideContext(
   initialLocale?: LocaleCode,
   consumer?: typeof provide,
-): LocalizationContext {
+): InternalContext {
   const initialLocaleCode = initialLocale ?? _getInitialLocale();
 
   const innerLocalizer = shallowRef(getLocalizer(initialLocaleCode));
@@ -49,7 +49,7 @@ export function _provideContext(
     },
   });
 
-  const context: LocalizationContext = {
+  const context: InternalContext = {
     localizer: fn as Localizer,
     setActiveLocale: (locale: LocaleCode) => {
       innerLocalizer.value = getLocalizer(locale);

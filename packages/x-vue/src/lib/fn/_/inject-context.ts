@@ -16,7 +16,7 @@
 import { inject } from 'vue';
 
 import { _vueIntegrationOptions } from '../../options.js';
-import { _localizationContextSymbol, LocalizationContext } from './context.js';
+import { _localizationContextSymbol, InternalContext } from './internal-context.js';
 
 /**
  * This function provides a fallback context when no localization context is available.
@@ -25,7 +25,7 @@ import { _localizationContextSymbol, LocalizationContext } from './context.js';
  *
  * @internal
  */
-function _getDefaultContext(): Readonly<LocalizationContext> {
+function _getDefaultContext(): Readonly<InternalContext> {
   return {
     localizer: _vueIntegrationOptions.defaultLocalizer,
     setActiveLocale: () => {
@@ -43,6 +43,6 @@ function _getDefaultContext(): Readonly<LocalizationContext> {
  *
  * @internal
  */
-export function _injectContext(): Readonly<LocalizationContext> {
+export function _injectContext(): Readonly<InternalContext> {
   return inject(_localizationContextSymbol, _getDefaultContext, true);
 }

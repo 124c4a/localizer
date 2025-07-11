@@ -21,7 +21,7 @@ import { InjectionKey } from 'vue';
  *
  * @internal
  */
-export type LocalizationContext = {
+export type InternalContext = {
   /** The localizer instance used for localization. */
   localizer: Localizer;
   /**
@@ -39,4 +39,4 @@ export type LocalizationContext = {
  *
  * @internal
  */
-export const _localizationContextSymbol = Symbol() as InjectionKey<LocalizationContext>;
+export const _localizationContextSymbol = Symbol() as InjectionKey<InternalContext>;

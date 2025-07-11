@@ -15,6 +15,7 @@
  */
 /* eslint-disable sonarjs/publicly-writable-directories */
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash';
+import { createFileSystemTypesCache } from '@shikijs/vitepress-twoslash/cache-fs';
 import { readFileSync } from 'node:fs';
 import { defineConfig, UserConfig } from 'vitepress';
 import { withSidebar } from 'vitepress-sidebar';
@@ -52,7 +53,7 @@ const config: UserConfig = {
   },
   markdown: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    codeTransformers: [transformerTwoslash() as any],
+    codeTransformers: [transformerTwoslash({ typesCache: createFileSystemTypesCache() }) as any],
   },
   title: '@localizer',
   description: 'Type-safe localization, formatting and translation library',

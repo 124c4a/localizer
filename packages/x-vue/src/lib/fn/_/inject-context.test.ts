@@ -17,8 +17,8 @@ import { getLocalizer } from '@localizer/core';
 import { inject } from 'vue';
 
 import { _vueIntegrationOptions } from '../../options.js';
-import { _localizationContextSymbol, LocalizationContext } from './context.js';
 import { _injectContext } from './inject-context.js';
+import { _localizationContextSymbol, InternalContext } from './internal-context.js';
 
 vi.mock('vue', () => ({
   inject: vi.fn(),
@@ -30,7 +30,7 @@ describe('_injectContext', () => {
   });
 
   it('should return the injected localization context if available', () => {
-    const mockContext: LocalizationContext = {
+    const mockContext: InternalContext = {
       localizer: getLocalizer('en'),
       setActiveLocale: vi.fn(),
     };
@@ -45,7 +45,7 @@ describe('_injectContext', () => {
   it('should return the default context if no context is injected', () => {
     vi.mocked(inject).mockImplementation(((
       key: unknown,
-      defaultValue: () => Readonly<LocalizationContext>,
+      defaultValue: () => Readonly<InternalContext>,
     ) => defaultValue()) as never);
 
     const result = _injectContext();

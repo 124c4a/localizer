@@ -16,7 +16,7 @@
 import { defineComponent } from 'vue';
 
 import { useLocalizer } from '../../fn/use-localizer.js';
-import { LocalizerInstance } from '../../localizer-instance.js';
+import { LocalizerContext } from '../../localizer-context.js';
 
 /**
  * Component to spy on the `useLocalizer` function. This component is used to inject the localizer
@@ -24,7 +24,7 @@ import { LocalizerInstance } from '../../localizer-instance.js';
  *
  * @internal
  */
-export const SpyOnUseLocalizer = defineComponent<{ useLocalizer: [instance?: LocalizerInstance] }>(
+export const SpyOnUseLocalizer = defineComponent<{ useLocalizer: [instance?: LocalizerContext] }>(
   (props) => {
     props.useLocalizer[0] = useLocalizer();
     return () => null;

@@ -108,6 +108,7 @@
           "commands": [
             "node scripts/generate-package-reference.js",
             "node scripts/generate-entity-reference.js",
+            "node scripts/generate-card-reference.js",
             "node scripts/generate-recent-changes.js",
             "vitepress build"
           ]
@@ -122,6 +123,7 @@
           "commands": [
             "node scripts/generate-package-reference.js",
             "node scripts/generate-entity-reference.js",
+            "node scripts/generate-card-reference.js",
             "node scripts/generate-recent-changes.js",
             "vitepress dev"
           ]

@@ -16,12 +16,13 @@
 import { LocaleCode, Localizable, Localized } from '@localizer/core';
 
 /**
- * Interface representing a localizer instance in Vue applications. This interface provides methods
- * for localizing values, arrays, and objects, as well as a property for the active locale.
+ * Type representing a localizer context in Vue.js applications returned by `useLocalizer()` call.
+ * This type provides methods for localizing values, arrays, and objects, as well as a property for
+ * the active locale.
  *
  * @alpha
  */
-export interface LocalizerInstance {
+export type LocalizerContext = {
   /**
    * Returns the localized value for the given input.
    *
@@ -76,4 +77,4 @@ export interface LocalizerInstance {
   localizeObject<T extends Record<string, unknown>>(values: T): Localized<T>;
 
   activeLocale: LocaleCode;
-}
+};

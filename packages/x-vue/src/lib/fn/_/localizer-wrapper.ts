@@ -15,8 +15,8 @@
  */
 import { Localized, LocaleCode, Localizer, localizeArray, localizeObject } from '@localizer/core';
 
-import { LocalizerInstance } from '../../localizer-instance.js';
-import { LocalizationContext } from './context.js';
+import { LocalizerContext } from '../../localizer-context.js';
+import { InternalContext } from './internal-context.js';
 
 /**
  * Wrapper class for the reactive Localizer instance used in Vue.js applications. This class
@@ -24,11 +24,11 @@ import { LocalizationContext } from './context.js';
  *
  * @internal
  */
-export class LocalizerWrapper implements LocalizerInstance {
+export class LocalizerWrapper implements LocalizerContext {
   readonly localize: Localizer;
   private readonly _setActiveLocale: (locale: LocaleCode) => void;
 
-  constructor(context: LocalizationContext) {
+  constructor(context: InternalContext) {
     this.localize = context.localizer;
     this._setActiveLocale = context.setActiveLocale;
   }

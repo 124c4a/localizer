@@ -13,17 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { LocalizerContext } from '../localizer-context.js';
-import { _injectContext } from './_/inject-context.js';
-import { LocalizerWrapper } from './_/localizer-wrapper.js';
-
-/**
- * Retrieves the current localizer instance.
- *
- * @returns The current localizer instance.
- *
- * @alpha
- */
-export function useLocalizer(): LocalizerContext {
-  return new LocalizerWrapper(_injectContext());
-}
+export type Card = {
+  id: string;
+  title: string;
+  link: string;
+  icon?: string;
+  kind: string[];
+  related?: string[];
+};

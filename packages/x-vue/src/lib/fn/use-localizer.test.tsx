@@ -18,9 +18,9 @@ import { CurrentLanguage } from '@localizer/format';
 import { mount } from '@vue/test-utils';
 
 import { SpyOnUseLocalizer } from '../components/__test__/spy-on-use-localizer.jsx';
-import { LocalizerInstance } from '../localizer-instance.js';
+import { LocalizerContext } from '../localizer-context.js';
 import { VueIntegration } from '../options.js';
-import { _localizationContextSymbol } from './_/context.js';
+import { _localizationContextSymbol } from './_/internal-context.js';
 
 describe('useLocalize', () => {
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe('useLocalize', () => {
     const contextLocalizer = getLocalizer('en-US');
     const mockSetActiveLocale = vi.fn();
 
-    const useLocalizer: [instance?: LocalizerInstance] = [];
+    const useLocalizer: [instance?: LocalizerContext] = [];
     mount(<SpyOnUseLocalizer useLocalizer={useLocalizer} />, {
       global: {
         provide: {
@@ -57,7 +57,7 @@ describe('useLocalize', () => {
   });
 
   it('uses configured default localizer', () => {
-    const useLocalizer: [instance?: LocalizerInstance] = [];
+    const useLocalizer: [instance?: LocalizerContext] = [];
 
     //--- use TestLocalizer
     configure(VueIntegration, {

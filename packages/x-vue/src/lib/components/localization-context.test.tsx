@@ -17,7 +17,7 @@ import { CurrentLanguage } from '@localizer/format';
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
-import { LocalizerInstance } from '../localizer-instance.js';
+import { LocalizerContext } from '../localizer-context.js';
 import { SpyOnUseLocalizer } from './__test__/spy-on-use-localizer.jsx';
 import { LocalizationContext } from './localization-context.js';
 import { Localized } from './localized.js';
@@ -25,7 +25,7 @@ import { Localized } from './localized.js';
 describe('LocalizationContext', () => {
   it('renders with initial locale', () => {
     const wrapper = mount(
-      <LocalizationContext initialLocale="en-US">
+      <LocalizationContext locale="en-US">
         <Localized content={CurrentLanguage} />
       </LocalizationContext>,
     );
@@ -34,7 +34,7 @@ describe('LocalizationContext', () => {
   });
 
   it('renders without children', () => {
-    const wrapper = mount(<LocalizationContext initialLocale="en-US" />);
+    const wrapper = mount(<LocalizationContext locale="en-US" />);
 
     expect(wrapper.html()).toBe('');
   });
@@ -50,7 +50,7 @@ describe('LocalizationContext', () => {
   });
 
   it('reacts to locale change', async () => {
-    const useLocalizer: [instance?: LocalizerInstance] = [];
+    const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext>
         <Localized content={CurrentLanguage} />
@@ -68,8 +68,24 @@ describe('LocalizationContext', () => {
     expect(wrapper.html()).toContain('français (France)');
   });
 
-  it('emits updateLocale when locale changes', async () => {
-    const useLocalizer: [instance?: LocalizerInstance] = [];
+  it('reacts to locale change via property', async () => {
+    const useLocalizer: [instance?: LocalizerContext] = [];
+    const wrapper = mount(
+      <LocalizationContext>
+        <Localized content={CurrentLanguage} />
+        <SpyOnUseLocalizer useLocalizer={useLocalizer} />
+      </LocalizationContext>,
+    );
+
+    expect(wrapper.html()).toContain('English');
+
+    await wrapper.setProps({ locale: 'fr-FR' });
+
+    expect(wrapper.html()).toContain('français (France)');
+  });
+
+  it('emits update:locale when locale changes', async () => {
+    const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext>
         <Localized content={CurrentLanguage} />
@@ -82,19 +98,50 @@ describe('LocalizationContext', () => {
     }
     await nextTick();
 
-    expect(wrapper.emitted('updateLocale')).toBeTruthy();
-    expect(wrapper.emitted('updateLocale')).toEqual([['fr-FR']]);
+    expect(wrapper.emitted('update:locale')).toBeTruthy();
+    expect(wrapper.emitted('update:locale')).toEqual([['fr-FR']]);
+  });
+
+  it('does not emit update:locale when locale does not change', async () => {
+    const useLocalizer: [instance?: LocalizerContext] = [];
+    const wrapper = mount(
+      <LocalizationContext locale="fr-FR">
+        <Localized content={CurrentLanguage} />
+        <SpyOnUseLocalizer useLocalizer={useLocalizer} />
+      </LocalizationContext>,
+    );
+
+    if (useLocalizer[0]) {
+      useLocalizer[0].activeLocale = 'fr-FR';
+    }
+    await nextTick();
+
+    expect(wrapper.emitted('update:locale')).toBeUndefined();
+  });
+
+  it('does not emit update:locale when locale is changed via property', async () => {
+    const useLocalizer: [instance?: LocalizerContext] = [];
+    const wrapper = mount(
+      <LocalizationContext>
+        <Localized content={CurrentLanguage} />
+        <SpyOnUseLocalizer useLocalizer={useLocalizer} />
+      </LocalizationContext>,
+    );
+
+    await wrapper.setProps({ locale: 'fr-FR' });
+
+    expect(wrapper.emitted('update:locale')).toBeUndefined();
   });
 
   it('can be nested', async () => {
-    const useLocalizerOuter: [instance?: LocalizerInstance] = [];
-    const useLocalizerInner: [instance?: LocalizerInstance] = [];
+    const useLocalizerOuter: [instance?: LocalizerContext] = [];
+    const useLocalizerInner: [instance?: LocalizerContext] = [];
 
     const wrapper = mount(
-      <LocalizationContext initialLocale="en-US">
+      <LocalizationContext locale="en-US">
         <SpyOnUseLocalizer useLocalizer={useLocalizerOuter} />
         <Localized content={CurrentLanguage} />
-        <LocalizationContext initialLocale="fr-FR">
+        <LocalizationContext locale="fr-FR">
           <SpyOnUseLocalizer useLocalizer={useLocalizerInner} />
           <Localized content={CurrentLanguage} />
         </LocalizationContext>

@@ -17,7 +17,7 @@ import { configure, getLocalizer, TestLocalizer, UninitializedLocalizer } from '
 import { CurrentLanguage } from '@localizer/format';
 import { mount } from '@vue/test-utils';
 
-import { _localizationContextSymbol } from '../fn/_/context.js';
+import { _localizationContextSymbol } from '../fn/_/internal-context.js';
 import { VueIntegration } from '../options.js';
 import { Localized } from './localized.js';
 
@@ -37,6 +37,23 @@ describe('Localized', () => {
     });
 
     expect(wrapper.html()).toContain('American English');
+  });
+
+  it('uses Empty if content is not provided', () => {
+    const wrapper = mount(<Localized />, {
+      global: {
+        provide: {
+          [_localizationContextSymbol]: {
+            localizer: getLocalizer('en-US'),
+            setLocale: () => {
+              return;
+            },
+          },
+        },
+      },
+    });
+
+    expect(wrapper.html()).toBe('');
   });
 
   it('uses configured default localizer', () => {

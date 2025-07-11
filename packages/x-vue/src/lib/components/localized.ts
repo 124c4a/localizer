@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable } from '@localizer/core';
+import { Empty, Localizable } from '@localizer/core';
 import { defineComponent } from 'vue';
 
 import { useLocalizer } from '../fn/use-localizer.js';
@@ -29,7 +29,7 @@ export type LocalizedProps = {
    *
    * @alpha
    */
-  content: Localizable;
+  content?: Localizable;
 };
 
 /**
@@ -41,7 +41,7 @@ export const Localized = /*#__PURE__*/ defineComponent<LocalizedProps>(
   (props) => {
     const { localize } = useLocalizer();
     return () => {
-      return [localize(props.content)];
+      return [localize(props.content ?? Empty)];
     };
   },
   {

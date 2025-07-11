@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { LocaleCode } from '@localizer/core';
-import { Plugin } from 'vue';
+import { ObjectPlugin } from 'vue';
 
 import { LocalizationContext } from './components/localization-context.js';
 import { Localized } from './components/localized.js';
@@ -37,7 +37,7 @@ export interface LocalizerPluginOptions {
   /**
    * If true, the plugin will use the global context for localization. This is useful for
    * applications that want to provide a global localization context. If not set, the context must
-   * be provided manually using {@link LocalizationContext}.
+   * be provided manually using `<LocalizationContext>`.
    *
    * @defaultValue true
    *
@@ -51,7 +51,7 @@ export interface LocalizerPluginOptions {
  *
  * @alpha
  */
-export const localizerPlugin: Plugin<LocalizerPluginOptions> = {
+export const localizerPlugin: ObjectPlugin<[LocalizerPluginOptions?]> = {
   install(app, options) {
     if (options?.useGlobalContext ?? true) {
       // If the global context is used, we provide it to the app.

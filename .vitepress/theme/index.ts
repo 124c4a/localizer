@@ -26,6 +26,8 @@ import { defineComponent, h, inject, InjectionKey, onMounted, ref, watch } from 
 import '@shikijs/vitepress-twoslash/style.css';
 
 import './style.css';
+import Card from './components/Card.vue';
+import Cards from './components/Cards.vue';
 import Deprecated from './components/Deprecated.vue';
 import Entities from './components/Entities.vue';
 import Entity from './components/Entity.vue';
@@ -110,6 +112,8 @@ export default {
     app.component('EntityDemo', EntityDemo);
     app.component('Entities', Entities);
     app.component('OptionsDemo', OptionsDemo);
+    app.component('Card', Card);
+    app.component('Cards', Cards);
     if (import.meta.env.SSR) {
       const { collect } = setup(app);
       app.provide(Collect, collect);
