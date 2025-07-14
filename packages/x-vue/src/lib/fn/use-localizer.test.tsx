@@ -13,14 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { configure, getLocalizer, TestLocalizer, UninitializedLocalizer } from '@localizer/core';
-import { CurrentLanguage } from '@localizer/format';
+import {
+  configure,
+  getLocalizer,
+  loc,
+  TestLocalizer,
+  UninitializedLocalizer,
+} from '@localizer/core';
 import { mount } from '@vue/test-utils';
 
 import { SpyOnUseLocalizer } from '../components/__test__/spy-on-use-localizer.jsx';
 import { LocalizerContext } from '../localizer-context.js';
 import { VueIntegration } from '../options.js';
 import { _localizationContextSymbol } from './_/internal-context.js';
+
+const currentLocale = loc((locale) => `${locale}`);
 
 describe('useLocalize', () => {
   beforeEach(() => {
@@ -43,15 +50,13 @@ describe('useLocalize', () => {
       },
     });
 
-    if (useLocalizer[0]) {
-      useLocalizer[0].activeLocale = 'fr-FR';
-    }
+    useLocalizer[0]?.setActiveLocale('fr-FR');
 
     expect(useLocalizer[0]?.localize).toBe(contextLocalizer);
-    expect(useLocalizer[0]?.localize(CurrentLanguage)).toEqual('American English');
-    expect(useLocalizer[0]?.localizeArray([CurrentLanguage])).toEqual(['American English']);
-    expect(useLocalizer[0]?.localizeObject({ CurrentLanguage })).toEqual({
-      CurrentLanguage: 'American English',
+    expect(useLocalizer[0]?.localize(currentLocale)).toEqual('en-US');
+    expect(useLocalizer[0]?.localizeArray([currentLocale])).toEqual(['en-US']);
+    expect(useLocalizer[0]?.localizeObject({ currentLocale })).toEqual({
+      currentLocale: 'en-US',
     });
     expect(mockSetActiveLocale).toHaveBeenCalledWith('fr-FR');
   });
@@ -66,17 +71,13 @@ describe('useLocalize', () => {
     mount(<SpyOnUseLocalizer useLocalizer={useLocalizer} />);
 
     expect(useLocalizer[0]?.localize).toBe(TestLocalizer);
-    expect(useLocalizer[0]?.localize(CurrentLanguage)).toEqual('[CurrentLanguage]');
-    expect(useLocalizer[0]?.localizeArray([CurrentLanguage])).toEqual(['[CurrentLanguage]']);
-    expect(useLocalizer[0]?.localizeObject({ CurrentLanguage })).toEqual({
-      CurrentLanguage: '[CurrentLanguage]',
+    expect(useLocalizer[0]?.localize(currentLocale)).toEqual('null');
+    expect(useLocalizer[0]?.localizeArray([currentLocale])).toEqual(['null']);
+    expect(useLocalizer[0]?.localizeObject({ currentLocale })).toEqual({
+      currentLocale: 'null',
     });
     expect(useLocalizer[0]?.activeLocale).toBeNull();
-    expect(() => {
-      if (useLocalizer[0]) {
-        useLocalizer[0].activeLocale = 'fr-FR';
-      }
-    }).toThrowError(
+    expect(() => useLocalizer[0]?.setActiveLocale('fr-FR')).toThrowError(
       'Attempt to set locale without a localizer. Did you use `localizerPlugin` or `LocalizationContext`?',
     );
 
@@ -86,21 +87,17 @@ describe('useLocalize', () => {
     });
     mount(<SpyOnUseLocalizer useLocalizer={useLocalizer} />);
     expect(useLocalizer[0]?.localize).toBe(UninitializedLocalizer);
+    expect(() => useLocalizer[0]?.localize(currentLocale)).toThrowError(
+      'Attempt to use Localizer before locale was set',
+    );
     expect(() => {
-      useLocalizer[0]?.localize(CurrentLanguage);
+      useLocalizer[0]?.localizeArray([currentLocale]);
     }).toThrowError('Attempt to use Localizer before locale was set');
     expect(() => {
-      useLocalizer[0]?.localizeArray([CurrentLanguage]);
-    }).toThrowError('Attempt to use Localizer before locale was set');
-    expect(() => {
-      useLocalizer[0]?.localizeObject({ CurrentLanguage });
+      useLocalizer[0]?.localizeObject({ currentLocale });
     }).toThrowError('Attempt to use Localizer before locale was set');
     expect(useLocalizer[0]?.activeLocale).toBeUndefined();
-    expect(() => {
-      if (useLocalizer[0]) {
-        useLocalizer[0].activeLocale = 'fr-FR';
-      }
-    }).toThrowError(
+    expect(() => useLocalizer[0]?.setActiveLocale('fr-FR')).toThrowError(
       'Attempt to set locale without a localizer. Did you use `localizerPlugin` or `LocalizationContext`?',
     );
   });

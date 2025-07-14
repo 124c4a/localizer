@@ -32,3 +32,7 @@ This page contains an overview of library packages and their versions.
 ## Translation
 
 - <code>{{ packages.translate.name }}</code>: [{{ packages.translate.version }}](./translate.md)
+
+## Plugins
+
+- <code>{{ packages['x-vue'].name }}</code>: [{{ packages['x-vue'].version }}](./x-vue.md)

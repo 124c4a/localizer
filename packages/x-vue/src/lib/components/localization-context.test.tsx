@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { CurrentLanguage } from '@localizer/format';
+import { loc } from '@localizer/core';
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
@@ -22,15 +22,17 @@ import { SpyOnUseLocalizer } from './__test__/spy-on-use-localizer.jsx';
 import { LocalizationContext } from './localization-context.js';
 import { Localized } from './localized.js';
 
+const currentLocale = loc((locale) => `${locale}`);
+
 describe('LocalizationContext', () => {
   it('renders with initial locale', () => {
     const wrapper = mount(
       <LocalizationContext locale="en-US">
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
       </LocalizationContext>,
     );
 
-    expect(wrapper.html()).toContain('American English');
+    expect(wrapper.html()).toContain('en-US');
   });
 
   it('renders without children', () => {
@@ -42,60 +44,56 @@ describe('LocalizationContext', () => {
   it('renders with default locale if not specified', () => {
     const wrapper = mount(
       <LocalizationContext>
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
       </LocalizationContext>,
     );
 
-    expect(wrapper.html()).toContain('English');
+    expect(wrapper.html()).toContain('en');
   });
 
   it('reacts to locale change', async () => {
     const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext>
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
         <SpyOnUseLocalizer useLocalizer={useLocalizer} />
       </LocalizationContext>,
     );
 
-    expect(wrapper.html()).toContain('English');
+    expect(wrapper.html()).toContain('en');
 
-    if (useLocalizer[0]) {
-      useLocalizer[0].activeLocale = 'fr-FR';
-    }
+    useLocalizer[0]?.setActiveLocale('fr-FR');
     await nextTick();
 
-    expect(wrapper.html()).toContain('français (France)');
+    expect(wrapper.html()).toContain('fr-FR');
   });
 
   it('reacts to locale change via property', async () => {
     const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext>
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
         <SpyOnUseLocalizer useLocalizer={useLocalizer} />
       </LocalizationContext>,
     );
 
-    expect(wrapper.html()).toContain('English');
+    expect(wrapper.html()).toContain('en');
 
     await wrapper.setProps({ locale: 'fr-FR' });
 
-    expect(wrapper.html()).toContain('français (France)');
+    expect(wrapper.html()).toContain('fr-FR');
   });
 
   it('emits update:locale when locale changes', async () => {
     const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext>
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
         <SpyOnUseLocalizer useLocalizer={useLocalizer} />
       </LocalizationContext>,
     );
 
-    if (useLocalizer[0]) {
-      useLocalizer[0].activeLocale = 'fr-FR';
-    }
+    useLocalizer[0]?.setActiveLocale('fr-FR');
     await nextTick();
 
     expect(wrapper.emitted('update:locale')).toBeTruthy();
@@ -106,14 +104,12 @@ describe('LocalizationContext', () => {
     const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext locale="fr-FR">
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
         <SpyOnUseLocalizer useLocalizer={useLocalizer} />
       </LocalizationContext>,
     );
 
-    if (useLocalizer[0]) {
-      useLocalizer[0].activeLocale = 'fr-FR';
-    }
+    useLocalizer[0]?.setActiveLocale('fr-FR');
     await nextTick();
 
     expect(wrapper.emitted('update:locale')).toBeUndefined();
@@ -123,7 +119,7 @@ describe('LocalizationContext', () => {
     const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext>
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
         <SpyOnUseLocalizer useLocalizer={useLocalizer} />
       </LocalizationContext>,
     );
@@ -137,17 +133,17 @@ describe('LocalizationContext', () => {
     const useLocalizer: [instance?: LocalizerContext] = [];
     const wrapper = mount(
       <LocalizationContext>
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
         <SpyOnUseLocalizer useLocalizer={useLocalizer} />
       </LocalizationContext>,
     );
-    expect(wrapper.html()).toContain('English');
+    expect(wrapper.html()).toContain('en');
 
     await wrapper.setProps({ locale: 'fr-FR' });
-    expect(wrapper.html()).toContain('français (France)');
+    expect(wrapper.html()).toContain('fr-FR');
 
     await wrapper.setProps({ locale: undefined });
-    expect(wrapper.html()).toContain('français (France)');
+    expect(wrapper.html()).toContain('fr-FR');
 
     expect(wrapper.emitted('update:locale')).toBeUndefined();
   });
@@ -159,31 +155,27 @@ describe('LocalizationContext', () => {
     const wrapper = mount(
       <LocalizationContext locale="en-US">
         <SpyOnUseLocalizer useLocalizer={useLocalizerOuter} />
-        <Localized content={CurrentLanguage} />
+        <Localized content={currentLocale} />
         <LocalizationContext locale="fr-FR">
           <SpyOnUseLocalizer useLocalizer={useLocalizerInner} />
-          <Localized content={CurrentLanguage} />
+          <Localized content={currentLocale} />
         </LocalizationContext>
       </LocalizationContext>,
     );
 
-    expect(wrapper.html()).toContain('American English');
-    expect(wrapper.html()).toContain('français (France)');
+    expect(wrapper.html()).toContain('en-US');
+    expect(wrapper.html()).toContain('fr-FR');
 
-    if (useLocalizerOuter[0]) {
-      useLocalizerOuter[0].activeLocale = 'fi-FI';
-    }
+    useLocalizerOuter[0]?.setActiveLocale('fi-FI');
     await nextTick();
 
-    expect(wrapper.html()).toContain('suomi (Suomi)');
-    expect(wrapper.html()).toContain('français (France)');
+    expect(wrapper.html()).toContain('fi-FI');
+    expect(wrapper.html()).toContain('fr-FR');
 
-    if (useLocalizerInner[0]) {
-      useLocalizerInner[0].activeLocale = 'sv-FI';
-    }
+    useLocalizerInner[0]?.setActiveLocale('sv-FI');
     await nextTick();
 
-    expect(wrapper.html()).toContain('suomi (Suomi)');
-    expect(wrapper.html()).toContain('svenska (Finland)');
+    expect(wrapper.html()).toContain('fi-FI');
+    expect(wrapper.html()).toContain('sv-FI');
   });
 });

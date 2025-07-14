@@ -13,17 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { configure, getLocalizer, TestLocalizer, UninitializedLocalizer } from '@localizer/core';
-import { CurrentLanguage } from '@localizer/format';
+import {
+  configure,
+  getLocalizer,
+  TestLocalizer,
+  UninitializedLocalizer,
+  loc,
+} from '@localizer/core';
 import { mount } from '@vue/test-utils';
 
 import { _localizationContextSymbol } from '../fn/_/internal-context.js';
 import { VueIntegration } from '../options.js';
 import { Localized } from './localized.js';
 
+const currentLocale = loc((locale) => `${locale}`);
+
 describe('Localized', () => {
   it('uses localizer from context', () => {
-    const wrapper = mount(<Localized content={CurrentLanguage} />, {
+    const wrapper = mount(<Localized content={currentLocale} />, {
       global: {
         provide: {
           [_localizationContextSymbol]: {
@@ -36,7 +43,7 @@ describe('Localized', () => {
       },
     });
 
-    expect(wrapper.html()).toContain('American English');
+    expect(wrapper.html()).toContain('en-US');
   });
 
   it('uses Empty if content is not provided', () => {
@@ -61,14 +68,14 @@ describe('Localized', () => {
     configure(VueIntegration, {
       defaultLocalizer: TestLocalizer,
     });
-    const wrapper = mount(<Localized content={CurrentLanguage} />);
-    expect(wrapper.html()).toContain('[CurrentLanguage]');
+    const wrapper = mount(<Localized content={currentLocale} />);
+    expect(wrapper.html()).toContain('null');
 
     //--- use UninitializedLocalizer
     configure(VueIntegration, {
       defaultLocalizer: UninitializedLocalizer,
     });
-    expect(() => mount(<Localized content={CurrentLanguage} />)).toThrowError(
+    expect(() => mount(<Localized content={currentLocale} />)).toThrowError(
       'Attempt to use Localizer before locale was set',
     );
   });

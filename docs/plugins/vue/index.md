@@ -106,7 +106,7 @@ For more details on how to use the localization functionality, refer to the [`us
 
 ::: danger
 
-By default, global localizer will throw an Error on localization attempts. Make sure to set [global configuration](#global-configuration) to use localization features without localization contexts.
+If there is no global context defined via plugin or `<LocalizationContext>`, retrieved localizer will throw an Error on localization attempts. Make sure to set `defaultLocalizer` in [global configuration](#global-configuration) to use localization features without localization contexts.
 
 :::
 
@@ -136,14 +136,14 @@ The function offers the following core features:
   }
   ```
 
-- **Updating the active locale**: Modifying the `activeLocale` property dynamically updates the active locale for the current context. This can be either the global context (set up during [plugin registration](#_2-registration)) or a local context created using [`<LocalizationContext>`](#localizationcontext).
+- **Updating the active locale**: Calling the asynchronous `setActiveLocale` method dynamically updates the active locale for the current context. This can be either the global context (set up during [plugin registration](#_2-registration)) or a local context created using [`<LocalizationContext>`](#localizationcontext).
 
   ```typescript twoslash
   import { useLocalizer } from '@localizer/x-vue';
 
   function setup() {
-    const localizerContext = useLocalizer();
-    localizerContext.activeLocale = 'en-US';
+    const { setActiveLocale } = useLocalizer();
+    setActiveLocale('en-US');
 
     // ...
   }
@@ -155,9 +155,9 @@ This component can be used to create a local localization context and allow chan
 
 Component provides the following properties:
 
-| Property   | Type         | Default value                                                                                             | Description                                                                                                                                                                                           |
-| ---------- | ------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[locale]` | `LocaleCode` | First fallback locale, set in [global configuration](../../introduction/configuration.md#fallbacklocales) | Active locale for current localization context. If not specified, it will use the fallback locale value. Changing this property will automatically update all child components that use localization. |
+| Property  | Type         | Default value                                                                                             | Description                                                                                                                                                                                           |
+| --------- | ------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `locale?` | `LocaleCode` | First fallback locale, set in [global configuration](../../introduction/configuration.md#fallbacklocales) | Active locale for current localization context. If not specified, it will use the fallback locale value. Changing this property will automatically update all child components that use localization. |
 
 Component emits the following events:
 
@@ -216,9 +216,9 @@ When [plugin registration](#_2-registration) is done, the component is also glob
 
 This component serves as a simpler alternative to [`useLocalizer()`](#uselocalizer) for localizing values. It offers the following properties:
 
-| Property    | Type                                               | Default value                                    | Description                                                                        |
-| ----------- | -------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| `[content]` | [`Localizable`](../../introduction/localizable.md) | [`Empty`](../../introduction/constants/empty.md) | The value to localize. If the value is `undefined`, empty string will be rendered. |
+| Property   | Type                                               | Default value                                    | Description                                                                        |
+| ---------- | -------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| `content?` | [`Localizable`](../../introduction/localizable.md) | [`Empty`](../../introduction/constants/empty.md) | The value to localize. If the value is `undefined`, empty string will be rendered. |
 
 **Example use:**
 

@@ -8,7 +8,7 @@
 
 ### 🚀 Features
 
-- Vue.js integration ([#146](https://github.com/124c4a/localizer/pull/146), [#130](https://github.com/124c4a/localizer/issues/130))
+- Vue.js integration (experimental) ([#146](https://github.com/124c4a/localizer/pull/146), [#130](https://github.com/124c4a/localizer/issues/130))
 
 ### 🧱 Updated Dependencies
 

@@ -13,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { configure, TestLocalizer, UninitializedLocalizer } from '@localizer/core';
-import { CurrentLanguage } from '@localizer/format';
+import { configure, loc, TestLocalizer, UninitializedLocalizer } from '@localizer/core';
 import { mount } from '@vue/test-utils';
 import { defineComponent } from 'vue';
 
@@ -22,35 +21,37 @@ import { Localized } from './components/localized.js';
 import { localizerPlugin } from './localizer-plugin.js';
 import { VueIntegration } from './options.js';
 
+const currentLocale = loc((locale) => `${locale}`);
+
 describe('localizerPlugin', () => {
   it('can be used with initialLocale option', () => {
-    const wrapper = mount(<Localized content={CurrentLanguage} />, {
+    const wrapper = mount(<Localized content={currentLocale} />, {
       global: {
         plugins: [[localizerPlugin, { initialLocale: 'en-US' }]],
       },
     });
 
-    expect(wrapper.html()).toContain('American English');
+    expect(wrapper.html()).toContain('en-US');
   });
 
   it('can be used with empty options', () => {
-    const wrapper = mount(<Localized content={CurrentLanguage} />, {
+    const wrapper = mount(<Localized content={currentLocale} />, {
       global: {
         plugins: [[localizerPlugin, {}]],
       },
     });
 
-    expect(wrapper.html()).toContain('English');
+    expect(wrapper.html()).toContain('en');
   });
 
   it('can be used without options', () => {
-    const wrapper = mount(<Localized content={CurrentLanguage} />, {
+    const wrapper = mount(<Localized content={currentLocale} />, {
       global: {
         plugins: [localizerPlugin],
       },
     });
 
-    expect(wrapper.html()).toContain('English');
+    expect(wrapper.html()).toContain('en');
   });
 
   it('can be used without global context', () => {
@@ -58,13 +59,13 @@ describe('localizerPlugin', () => {
       defaultLocalizer: TestLocalizer,
     });
 
-    const wrapper = mount(<Localized content={CurrentLanguage} />, {
+    const wrapper = mount(<Localized content={currentLocale} />, {
       global: {
         plugins: [[localizerPlugin, { initialLocale: 'en-US', useGlobalContext: false }]],
       },
     });
 
-    expect(wrapper.html()).toContain('[CurrentLanguage]');
+    expect(wrapper.html()).toContain('null');
 
     configure(VueIntegration, {
       defaultLocalizer: UninitializedLocalizer,
@@ -73,9 +74,9 @@ describe('localizerPlugin', () => {
 
   it('registers components globally', () => {
     const templatedComponent = defineComponent({
-      setup: () => ({ CurrentLanguage }),
+      setup: () => ({ currentLocale }),
       template:
-        '<x-localization-context locale="fi-FI"><x-localized :content="CurrentLanguage" /></x-localization-context>',
+        '<x-localization-context locale="fi-FI"><x-localized :content="currentLocale" /></x-localization-context>',
     });
 
     const wrapper = mount(templatedComponent, {
@@ -84,7 +85,7 @@ describe('localizerPlugin', () => {
       },
     });
 
-    expect(wrapper.html()).toContain('suomi (Suomi)');
+    expect(wrapper.html()).toContain('fi-FI');
     expect(wrapper.findComponent({ name: 'x-localized' }).exists()).toBe(true);
     expect(wrapper.findComponent({ name: 'x-localization-context' }).exists()).toBe(true);
   });

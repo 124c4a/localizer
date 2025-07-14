@@ -36,6 +36,7 @@ import EntityDemo from './components/EntityDemo.vue';
 import Experimental from './components/Experimental.vue';
 import OptionsDemo from './components/OptionsDemo.vue';
 import Package from './components/Package.vue';
+import Packages from './components/Packages.vue';
 import Preview from './components/Preview.vue';
 
 const { Layout } = DefaultTheme;
@@ -107,6 +108,7 @@ export default {
     app.use(TwoslashFloatingVue);
     app.use(localizerPlugin, { initialLocale: 'en-US' });
     app.component('Package', Package);
+    app.component('Packages', Packages);
     app.component('Experimental', Experimental);
     app.component('Preview', Preview);
     app.component('Deprecated', Deprecated);
