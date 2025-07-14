@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "src/**/*.json", "src/lib/localizer-plugin.test.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.json"],
   "references": [
     {
       "path": "../core/tsconfig.lib.json"
