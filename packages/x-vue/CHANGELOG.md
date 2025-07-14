@@ -1,3 +1,9 @@
+## 1.0.1 (2025-07-14)
+
+### 🧱 Updated Dependencies
+
+- Updated @localizer/format to 1.1.1
+
 # 1.0.0 (2025-07-11)
 
 ### 🚀 Features
