@@ -35,4 +35,5 @@ This page contains an overview of library packages and their versions.
 
 ## Plugins
 
+- <code>{{ packages['x-react'].name }}</code>: [{{ packages['x-react'].version }}](./x-react.md)
 - <code>{{ packages['x-vue'].name }}</code>: [{{ packages['x-vue'].version }}](./x-vue.md)

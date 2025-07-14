@@ -9,4 +9,6 @@ Localization libraries are rarely used in isolation. They are typically integrat
 
 ## UI frameworks and libraries
 
+### [React](./react/index.md) <Experimental />
+
 ### [Vue.js](./vue/index.md) <Experimental />
