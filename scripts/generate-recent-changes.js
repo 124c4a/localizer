@@ -26,58 +26,68 @@ const packageMetas = packageDirs
 const features = [];
 const fixes = [];
 
+const now = new Date();
+
 packageMetas.forEach((name) => {
   const changelogPath = path.join('./packages', name, 'CHANGELOG.md');
   const changelog = existsSync(changelogPath)
-    ? readFileSync(changelogPath, 'utf-8').split(/^#{1,3} \d+\.\d\.\d.*$/gm)
+    ? readFileSync(changelogPath, 'utf-8').split(/^#{1,3} \d+\.\d\.\d /gm)
     : [];
 
-  if (changelog.length > 2) {
-    const featureMatches = extractSection(changelog[1], '🚀 Features');
-    const fixMatches = extractSection(changelog[1], '🩹 Fixes');
+  for (let i = 1; i < changelog.length; i++) {
+    // Extract date in format of (YYYY-MM-DD)
+    const dateMatch = changelog[i].match(/\((\d{4}-\d{2}-\d{2})\)/);
+    if (dateMatch) {
+      const date = new Date(dateMatch[1]);
+      if (date.getTime() > now.getTime() - 30 * 24 * 60 * 60 * 1000) {
+        // If the date is within the last 30 days, process the changelog
+        const featureMatches = extractSection(changelog[i], '🚀 Features');
+        const fixMatches = extractSection(changelog[i], '🩹 Fixes');
 
-    if (featureMatches) {
-      features.push(
-        ...featureMatches
-          .trim()
-          .split('\n')
-          .map((line) => line.trim())
-          .map((line) => {
-            if (line.includes('(experimental)')) {
-              return line.replace('(experimental)', '').trim() + ' <Experimental />';
-            }
-            return line;
-          })
-          .map((line) => {
-            if (line.includes('(preview)')) {
-              return line.replace('(preview)', '').trim() + ' <Preview />';
-            }
-            return line;
-          })
-          .map((line) => line + ' <Package name="' + name + '" />'),
-      );
-    }
+        if (featureMatches) {
+          features.push(
+            ...featureMatches
+              .trim()
+              .split('\n')
+              .map((line) => line.trim())
+              .map((line) => {
+                if (line.includes('(experimental)')) {
+                  return line.replace('(experimental)', '').trim() + ' <Experimental />';
+                }
+                return line;
+              })
+              .map((line) => {
+                if (line.includes('(preview)')) {
+                  return line.replace('(preview)', '').trim() + ' <Preview />';
+                }
+                return line;
+              })
+              .map((line) => line + ' <Package name="' + name + '" />'),
+          );
+        }
 
-    if (fixMatches) {
-      fixes.push(
-        ...fixMatches
-          .trim()
-          .split('\n')
-          .map((line) => line.trim())
-          .map((line) => {
-            if (line.includes('(experimental)')) {
-              return line.replace('(experimental)', '').trim() + ' <Experimental />';
-            }
-            return line;
-          })
-          .map((line) => {
-            if (line.includes('(preview)')) {
-              return line.replace('(preview)', '').trim() + ' <Preview />';
-            }
-            return line;
-          })
-          .map((line) => line + ' <Package name="' + name + '" />'),
-      );
+        if (fixMatches) {
+          fixes.push(
+            ...fixMatches
+              .trim()
+              .split('\n')
+              .map((line) => line.trim())
+              .map((line) => {
+                if (line.includes('(experimental)')) {
+                  return line.replace('(experimental)', '').trim() + ' <Experimental />';
+                }
+                return line;
+              })
+              .map((line) => {
+                if (line.includes('(preview)')) {
+                  return line.replace('(preview)', '').trim() + ' <Preview />';
+                }
+                return line;
+              })
+              .map((line) => line + ' <Package name="' + name + '" />'),
+          );
+        }
+      }
     }
   }
 });
@@ -132,7 +142,12 @@ function deduplicateLines(lines) {
     .sort((a, b) => a.localeCompare(b))
     .map((line) => {
       if (packageRest[line]) {
-        return [line, ...packageRest[line]].join(' <Package name="');
+        return (
+          line +
+          ' <Packages :names="[\'' +
+          packageRest[line].map((it) => it.split('"')[0]).join("', '") +
+          '\']" />'
+        );
       }
       return line;
     });

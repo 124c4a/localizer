@@ -40,7 +40,7 @@ export type LocalizationContextProps = {
  */
 export type LocalizationContextEmits = {
   /**
-   * This event is emitted when the locale is changed via properties or context.
+   * This event is emitted when the locale is changed via context.
    *
    * @param   locale - The new locale to set for the localizer.
    *

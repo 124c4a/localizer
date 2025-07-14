@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { LocaleCode, getLocalizer } from '@localizer/core';
-import { CurrentLanguage } from '@localizer/format';
+import { getLocalizer, loc } from '@localizer/core';
 import { describe, it, expect, vi } from 'vitest';
 
 import { LocalizerWrapper } from './localizer-wrapper.js';
+
+const currentLocale = loc((locale) => `${locale}`);
 
 describe('LocalizerWrapper', () => {
   const localizer = getLocalizer('en-US');
@@ -30,28 +31,28 @@ describe('LocalizerWrapper', () => {
   });
 
   it('should return localized value using localize method', () => {
-    const result = wrapper.localize(CurrentLanguage);
-    expect(result).toBe('American English');
+    const result = wrapper.localize(currentLocale);
+    expect(result).toBe('en-US');
   });
 
   it('should return localized array using localizeArray method', () => {
-    const values = [CurrentLanguage, CurrentLanguage];
+    const values = [currentLocale, currentLocale];
     const result = wrapper.localizeArray(values);
-    expect(result).toEqual(['American English', 'American English']);
+    expect(result).toEqual(['en-US', 'en-US']);
   });
 
   it('should return localized object using localizeObject method', () => {
-    const values = { key1: CurrentLanguage, key2: CurrentLanguage };
+    const values = { key1: currentLocale, key2: currentLocale };
     const result = wrapper.localizeObject(values);
-    expect(result).toEqual({ key1: 'American English', key2: 'American English' });
+    expect(result).toEqual({ key1: 'en-US', key2: 'en-US' });
   });
 
   it('should get the active locale', () => {
     expect(wrapper.activeLocale).toBe('en-US');
   });
 
-  it('should set the active locale', () => {
-    wrapper.activeLocale = 'fr-FR' as LocaleCode;
+  it('should set the active locale', async () => {
+    await wrapper.setActiveLocale('fr-FR');
     expect(mockSetActiveLocale).toHaveBeenCalledWith('fr-FR');
   });
 });

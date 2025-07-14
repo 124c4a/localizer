@@ -76,5 +76,15 @@ export type LocalizerContext = {
    */
   localizeObject<T extends Record<string, unknown>>(values: T): Localized<T>;
 
-  activeLocale: LocaleCode;
+  /** The currently active locale code used for localization. */
+  readonly activeLocale: LocaleCode;
+
+  /**
+   * Sets the active locale for localization.
+   *
+   * @param locale - The locale code to set as active.
+   *
+   * @alpha
+   */
+  setActiveLocale(locale: LocaleCode): void;
 };

@@ -50,7 +50,7 @@ export class LocalizerWrapper implements LocalizerContext {
     return this.localize.locale;
   }
 
-  set activeLocale(locale: LocaleCode) {
+  setActiveLocale(locale: LocaleCode) {
     this._setActiveLocale(locale);
   }
 }
