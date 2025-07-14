@@ -38,6 +38,9 @@
     },
     {
       "path": "./packages/x-vue"
+    },
+    {
+      "path": "./packages/x-react"
     }
   ]
 }
