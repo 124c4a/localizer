@@ -47,7 +47,7 @@
     "execa": "9.6.0",
     "gray-matter": "4.0.3",
     "jiti": "2.4.2",
-    "jsdom": "22.1.0",
+    "jsdom": "26.1.0",
     "jsonc-eslint-parser": "2.4.0",
     "listr2": "8.3.3",
     "naive-ui": "2.42.0",
