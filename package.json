@@ -31,7 +31,7 @@
     "@types/react-dom": "19.1.6",
     "@vicons/ionicons5": "0.13.0",
     "@vitejs/plugin-react": "4.6.0",
-    "@vitejs/plugin-vue": "5.2.4",
+    "@vitejs/plugin-vue": "6.0.0",
     "@vitest/coverage-v8": "3.2.4",
     "@vitest/ui": "3.2.4",
     "@vue/test-utils": "2.4.6",
