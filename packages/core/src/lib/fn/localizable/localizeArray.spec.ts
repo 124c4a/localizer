@@ -47,4 +47,10 @@ describe('localizeArray', () => {
     const values = [undefined, { localize: (locale: string) => `value for ${locale}` }];
     expect(localizeArray(values, 'en-US')).toEqual([undefined, 'value for en-US']);
   });
+
+  it('throws an error if the input is not an array', () => {
+    expect(() => localizeArray({} as unknown as [], 'en-US')).toThrow(
+      new TypeError('Expected an array of values to localize, got object'),
+    );
+  });
 });

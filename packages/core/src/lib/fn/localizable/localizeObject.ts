@@ -35,6 +35,12 @@ export function localizeObject<T extends Record<string, unknown>>(
   values: T,
   locale: LocaleCode | null,
 ): Localized<T> {
+  if (typeof values !== 'object' || values === null || Array.isArray(values)) {
+    throw new TypeError(
+      'Expected an object with properties to localize, got ' +
+        (Array.isArray(values) ? 'array' : typeof values),
+    );
+  }
   const result: Partial<Record<string, unknown>> = { ...values };
   Object.entries(result).forEach(([key, value]) => {
     if (isLocalizable(value)) {

@@ -35,9 +35,13 @@ export function getLocalizer(locale: LocaleCode): Localizer {
   ): T | ((...args: A) => T) => {
     if (isLocalizable(localizable)) {
       return localizable.localize(locale) as T;
-    } else {
+    } else if (typeof localizable === 'function') {
       return (...args: A) =>
         (localizable as (...args: A) => Localizable<T>)(...args).localize(locale);
+    } else {
+      throw new TypeError(
+        `Expected a Localizable value or a function returning a Localizable value, got ${typeof localizable}`,
+      );
     }
   };
 

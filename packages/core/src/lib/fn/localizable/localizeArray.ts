@@ -35,6 +35,9 @@ export function localizeArray<T extends unknown[]>(
   values: T,
   locale: LocaleCode | null,
 ): Localized<T> {
+  if (Array.isArray(values) === false) {
+    throw new TypeError('Expected an array of values to localize, got ' + typeof values);
+  }
   return values.map((value) =>
     isLocalizable(value) ? value.localize(locale) : value,
   ) as Localized<T>;

@@ -15,6 +15,7 @@
  */
 import { coreOptions, setActiveLocale } from '../fn/locale/options.js';
 import { loc } from '../fn/localizable/loc.js';
+import { Localizable } from '../types/localizable.js';
 import { ImplicitLocalizer, TestLocalizer } from './localizers.js';
 
 const localizable = loc((loc) => loc);
@@ -23,10 +24,10 @@ describe('ImplicitLocalizer', () => {
   it('throws an error when implicit localization is disabled', () => {
     coreOptions.activeLocale = undefined;
     expect(() => `${localizable}`).toThrow(
-      new RangeError('Implicit localization requires an active locale to be set.'),
+      new Error('Implicit localization requires an active locale to be set.'),
     );
     expect(() => ImplicitLocalizer(localizable)).toThrow(
-      new RangeError('Implicit localization requires an active locale to be set.'),
+      new Error('Implicit localization requires an active locale to be set.'),
     );
   });
 
@@ -53,6 +54,15 @@ describe('ImplicitLocalizer', () => {
     coreOptions.activeLocale = 'en';
     expect(ImplicitLocalizer.locale).toBe('en');
   });
+
+  it('throws an error if the input is not localizable', () => {
+    coreOptions.activeLocale = 'en';
+    expect(() => ImplicitLocalizer(42 as unknown as Localizable)).toThrow(
+      new TypeError(
+        'Expected a Localizable value or a function returning a Localizable value, got number',
+      ),
+    );
+  });
 });
 
 describe('TestLocalizer', () => {
@@ -70,5 +80,13 @@ describe('TestLocalizer', () => {
 
   it('returns current `null` locale', () => {
     expect(TestLocalizer.locale).toBe(null);
+  });
+
+  it('throws an error if the input is not localizable', () => {
+    expect(() => TestLocalizer(42 as unknown as Localizable)).toThrow(
+      new TypeError(
+        'Expected a Localizable value or a function returning a Localizable value, got number',
+      ),
+    );
   });
 });

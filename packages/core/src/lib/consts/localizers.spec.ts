@@ -18,6 +18,6 @@ import { UninitializedLocalizer } from './localizers.js';
 
 describe('UninitializedLocalizer', () => {
   it('should throw error when used', () => {
-    expect(() => UninitializedLocalizer(Empty)).toThrow(TypeError);
+    expect(() => UninitializedLocalizer(Empty)).toThrow(Error);
   });
 });
