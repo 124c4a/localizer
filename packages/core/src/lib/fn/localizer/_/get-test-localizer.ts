@@ -30,9 +30,13 @@ export function _getTestLocalizer(): Localizer {
   ): T | ((...args: A) => T) => {
     if (isLocalizable(localizable)) {
       return localizable.localize(null) as T;
-    } else {
+    } else if (typeof localizable === 'function') {
       return (...args: A) =>
         (localizable as (...args: A) => Localizable<T>)(...args).localize(null);
+    } else {
+      throw new TypeError(
+        `Expected a Localizable value or a function returning a Localizable value, got ${typeof localizable}`,
+      );
     }
   };
 

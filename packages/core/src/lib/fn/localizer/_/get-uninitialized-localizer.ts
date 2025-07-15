@@ -16,7 +16,7 @@
 import { Localizer } from '../../../types/localizer.js';
 
 const _uninitializedLocalizer = ((): never => {
-  throw new TypeError('Attempt to use Localizer before locale was set');
+  throw new Error('Attempt to use Localizer before locale was set');
 }) as unknown as Localizer;
 
 /**

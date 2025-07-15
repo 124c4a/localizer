@@ -27,7 +27,7 @@ import { coreOptions } from '../../locale/options.js';
  */
 export function _ensureImplicitLocalization(): LocaleCode {
   if (coreOptions.activeLocale === undefined) {
-    throw new RangeError('Implicit localization requires an active locale to be set.');
+    throw new Error('Implicit localization requires an active locale to be set.');
   } else {
     return coreOptions.activeLocale;
   }

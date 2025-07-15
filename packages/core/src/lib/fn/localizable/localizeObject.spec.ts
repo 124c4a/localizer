@@ -89,4 +89,13 @@ describe('localizeObject', () => {
       key2: 'value for en-US',
     });
   });
+
+  it('throws an error if the input is not an object', () => {
+    expect(() => localizeObject([] as unknown as Record<string, unknown>, 'en-US')).toThrow(
+      new TypeError('Expected an object with properties to localize, got array'),
+    );
+    expect(() => localizeObject('' as unknown as Record<string, unknown>, 'en-US')).toThrow(
+      new TypeError('Expected an object with properties to localize, got string'),
+    );
+  });
 });

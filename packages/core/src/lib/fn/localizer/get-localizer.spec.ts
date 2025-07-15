@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { Localizable } from '../../types/localizable.js';
 import { loc } from '../localizable/loc.js';
 import { getLocalizer } from './get-localizer.js';
 
@@ -32,5 +33,14 @@ describe('getLocalizer', () => {
   it('returns the locale when accessing the locale property', () => {
     const localizer = getLocalizer('en');
     expect(localizer.locale).toBe('en');
+  });
+
+  it('throws an error if the input is not localizable', () => {
+    const localizer = getLocalizer('en');
+    expect(() => localizer(42 as unknown as Localizable)).toThrow(
+      new TypeError(
+        'Expected a Localizable value or a function returning a Localizable value, got number',
+      ),
+    );
   });
 });
