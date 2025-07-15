@@ -72,7 +72,7 @@
     "vitepress-sidebar": "1.32.1",
     "vitest": "3.2.4",
     "vue": "3.5.17",
-    "vue-tsc": "2.2.12",
+    "vue-tsc": "3.0.1",
     "xlsx": "file:scripts/vendor/xlsx-0.20.3.tgz",
     "yaml": "2.8.0"
   },
