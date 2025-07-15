@@ -8,7 +8,8 @@
     ":automergeRequireAllStatusChecks",
     "schedule:daily",
     ":widenPeerDependencies",
-    "helpers:pinGitHubActionDigests"
+    "helpers:pinGitHubActionDigests",
+    "security:openssf-scorecard"
   ],
   "internalChecksFilter": "strict",
   "rebaseWhen": "conflicted",
@@ -25,7 +26,7 @@
     },
     {
       "matchManagers": ["npm"],
-      "minimumReleaseAge": "14 days"
+      "minimumReleaseAge": "3 days"
     }
   ],
   "labels": ["dependencies"]
