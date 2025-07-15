@@ -76,6 +76,13 @@
     "xlsx": "file:scripts/vendor/xlsx-0.20.3.tgz",
     "yaml": "2.8.0"
   },
+  "overrides": {
+    "@docsearch/css": "npm:dont-install",
+    "@docsearch/js": "npm:dont-install",
+    "react": {
+      "@docsearch/react": "npm:dont-install"
+    }
+  },
   "workspaces": [
     "packages/*",
     "scripts/*"
