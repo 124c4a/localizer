@@ -11,6 +11,7 @@
     "helpers:pinGitHubActionDigests"
   ],
   "internalChecksFilter": "strict",
+  "rebaseWhen": "conflicted",
   "packageRules": [
     {
       "matchManagers": ["npm"],
