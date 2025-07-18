@@ -20,7 +20,7 @@
     "@nx/vue": "21.2.3",
     "@nx/web": "21.2.3",
     "@nx/workspace": "21.2.3",
-    "@shikijs/vitepress-twoslash": "3.7.0",
+    "@shikijs/vitepress-twoslash": "3.8.0",
     "@swc-node/register": "1.10.10",
     "@swc/core": "1.12.14",
     "@swc/helpers": "0.5.17",
