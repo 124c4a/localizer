@@ -67,7 +67,7 @@
     "typescript-eslint": "8.37.0",
     "undici": "7.11.0",
     "verdaccio": "6.1.5",
-    "vite": "6.3.5",
+    "vite": "7.0.5",
     "vitepress": "1.6.3",
     "vitepress-sidebar": "1.32.1",
     "vitest": "3.2.4",
