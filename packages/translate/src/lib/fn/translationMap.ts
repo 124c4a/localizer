@@ -45,17 +45,13 @@ export type TranslationMap = {
  *
  * @typeParam V - The type of the input value.
  *
- * @param   map            - A function that generates a translation map for the given value.
- * @param   translationKey - An optional key used as a fallback translation.
+ * @param   map - A function that generates a translation map for the given value.
  *
- * @returns                A function that formats the input value into a localized string.
+ * @returns     A function that formats the input value into a localized string.
  *
  * @alpha
  */
-export function translate<V>(
-  map: (value: V) => TranslationMap,
-  translationKey?: string,
-): ValueFormatter<V>;
+export function translationMap<V>(map: (value: V) => TranslationMap): ValueFormatter<V>;
 
 /**
  * Translation function for static maps.
@@ -63,51 +59,45 @@ export function translate<V>(
  * Resolves the appropriate translation for the current locale based on the provided translation
  * map.
  *
- * @param   map            - A static translation map containing locale codes and their
- *   translations.
- * @param   translationKey - An optional key used as a fallback translation.
+ * @param   map - A static translation map containing locale codes and their translations.
  *
- * @returns                A localized string based on the current locale.
+ * @returns     A localized string based on the current locale.
  *
  * @alpha
  */
-export function translate(map: TranslationMap, translationKey?: string): Localizable;
+export function translationMap(map: TranslationMap): Localizable;
 
-export function translate<V = TranslationMap>(
+export function translationMap<V = TranslationMap>(
   map: TranslationMap | ((value: V) => TranslationMap),
-  translationKey?: string,
 ): Localizable | ValueFormatter<V> {
   if (typeof map === 'function') {
     return (value: V) =>
       loc((locale) => {
         if (locale === null) {
-          const prefix = translationKey ?? '[anonymous translation]';
           switch (true) {
             case isLocalizable(value):
-              return `${prefix}(${JSON.stringify(value.localize(null))})`;
+              return `(${JSON.stringify(value.localize(null))})`;
             case Array.isArray(value):
-              return `${prefix}(${JSON.stringify(localizeArray(value, null))})`;
+              return `(${JSON.stringify(localizeArray(value, null))})`;
             case typeof value === 'object':
-              return `${prefix}(${JSON.stringify(localizeObject(value as Record<string, unknown>, null))})`;
+              return `(${JSON.stringify(localizeObject(value as Record<string, unknown>, null))})`;
             default:
-              return `${prefix}(${JSON.stringify(value)})`;
+              return `(${JSON.stringify(value)})`;
           }
         } else {
-          return translate(map(value), translationKey).localize(locale);
+          return translationMap(map(value)).localize(locale);
         }
       });
   } else {
     return loc((locale) => {
       if (!locale) {
-        return translationKey ?? '[anonymous translation]';
+        return '[translationMap]';
       }
 
       const translation =
         getLocaleChain(locale)
           .map((it) => map[it])
-          .find((it) => it !== undefined) ??
-        translationKey ??
-        '[anonymous translation]';
+          .find((it) => it !== undefined) ?? '[translationMap]';
 
       if (isLocalizable(translation)) {
         return translation.localize(locale);
@@ -117,13 +107,3 @@ export function translate<V = TranslationMap>(
     });
   }
 }
-
-/**
- * A translation function that returns a localized string based on the provided translation map.
- *
- * This function can be used to create localized strings for various locales, falling back to a
- * default translation if the specific locale is not available.
- *
- * @alpha
- */
-export const translation: ValueFormatter<TranslationMap> = translate<TranslationMap>((map) => map);

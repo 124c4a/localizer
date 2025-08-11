@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { asyncDictionary, dictionary } from './dictionary.js';
+import { MessageFormatDictionary } from './message-format-dictionary.js';
 
 type Resolvable<T> = Promise<T> & {
   resolve: (t: T) => void;
@@ -33,17 +33,17 @@ const resolvablePromise = <T = void>(): Resolvable<T> => {
   return promise;
 };
 
-describe('dictionary', () => {
+describe('MessageFormatDictionary', () => {
   it('should initialize with static data', () => {
     const data = {
       en: { greeting: 'Hello' },
       fr: { greeting: 'Bonjour' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(dict).toBeDefined();
-    expect(dict.key('greeting').localize('en')).toBe('Hello');
-    expect(dict.key('greeting').localize('fr')).toBe('Bonjour');
+    expect(dictionary).toBeDefined();
+    expect(dictionary.key('greeting').localize('en')).toBe('Hello');
+    expect(dictionary.key('greeting').localize('fr')).toBe('Bonjour');
   });
 
   it('should ignore undegined in dictionary data', () => {
@@ -52,20 +52,40 @@ describe('dictionary', () => {
       fi: undefined,
       fr: { greeting: 'Bonjour' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(dict).toBeDefined();
-    expect(dict.key('greeting').localize('en')).toBe('Hello');
-    expect(dict.key('greeting').localize('fr')).toBe('Bonjour');
+    expect(dictionary).toBeDefined();
+    expect(dictionary.key('greeting').localize('en')).toBe('Hello');
+    expect(dictionary.key('greeting').localize('fr')).toBe('Bonjour');
+  });
+
+  it('should initialize with promise-based data', async () => {
+    const enData = resolvablePromise<{ greeting: string }>();
+
+    const data = {
+      en: enData,
+    };
+    const dictionary = new MessageFormatDictionary('test', data);
+    const awaited = dictionary.loadLocale('en');
+
+    expect(() => dictionary.key('greeting').localize('en')).toThrowError(
+      'Key "greeting" not found for locale "en" or any of it\'s fallback locales. Please ensure the dictionary is loaded correctly.',
+    );
+
+    enData.resolve({ greeting: 'Hello' });
+    await awaited;
+
+    expect(dictionary.key('greeting').localize('en')).toBe('Hello');
+    expect(dictionary.key('greeting').localize('fr')).toBe('Hello');
   });
 
   it('should throw an error if key is not found', () => {
     const data = {
       en: { greeting: 'Hello' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(() => dict.key('nonexistent').localize('en')).toThrowError(
+    expect(() => dictionary.key('nonexistent').localize('en')).toThrowError(
       'Key "nonexistent" not found for locale "en" or any of it\'s fallback locales. Please ensure the dictionary is loaded correctly.',
     );
   });
@@ -74,29 +94,29 @@ describe('dictionary', () => {
     const data = {
       en: { greeting: 'Hello' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(dict.key('greeting').localize('en')).toBe('Hello');
+    expect(dictionary.key('greeting').localize('en')).toBe('Hello');
   });
 
   it('should format a key with parameters', () => {
     const data = {
       en: { greeting: 'Hello, {$name}!' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(dict.key<{ name: string }>('greeting', true)({ name: 'John' }).localize('en')).toBe(
-      'Hello, \u2068John\u2069!',
-    );
+    expect(
+      dictionary.key<{ name: string }>('greeting', true)({ name: 'John' }).localize('en'),
+    ).toBe('Hello, \u2068John\u2069!');
   });
 
   it('should format a key with typed parameters', () => {
     const data = {
       en: { greeting: 'Hello, {$name :number}!' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(dict.key<{ name: number }>('greeting', true)({ name: 123 }).localize('en')).toBe(
+    expect(dictionary.key<{ name: number }>('greeting', true)({ name: 123 }).localize('en')).toBe(
       'Hello, 123!',
     );
   });
@@ -107,8 +127,8 @@ describe('dictionary', () => {
       'en-US': { greeting: 'Hello, {$value}!' },
       'en-GB': { greeting: 'Hello, {$value}!' },
     };
-    const dict = dictionary('test', data);
-    const translation = dict.key<{ value: Date }>(
+    const dictionary = new MessageFormatDictionary('test', data);
+    const translation = dictionary.key<{ value: Date }>(
       'greeting',
       true,
     )({
@@ -129,8 +149,8 @@ describe('dictionary', () => {
       'en-US': { greeting: 'Hello, {$value :date}!' },
       'en-GB': { greeting: 'Hello, {$value :date}!' },
     };
-    const dict = dictionary('test', data);
-    const translation = dict.key<{ value: Date }>(
+    const dictionary = new MessageFormatDictionary('test', data);
+    const translation = dictionary.key<{ value: Date }>(
       'greeting',
       true,
     )({
@@ -149,53 +169,19 @@ describe('dictionary', () => {
     const data = {
       en: { greeting: 'Hello' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(dict.key('greeting').localize(null)).toBe('test.greeting');
+    expect(dictionary.key('greeting').localize(null)).toBe('test.greeting');
   });
 
   it('should return id for a key with parameters', () => {
     const data = {
       en: { greeting: 'Hello, {$name}!' },
     };
-    const dict = dictionary('test', data);
+    const dictionary = new MessageFormatDictionary('test', data);
 
-    expect(dict.key<{ name: string }>('greeting', true)({ name: 'John' }).localize(null)).toBe(
-      'test.greeting',
-    );
-  });
-});
-
-describe('asyncDictionary', () => {
-  it('should initialize with static data', async () => {
-    const data = {
-      en: { greeting: 'Hello' },
-      fr: { greeting: 'Bonjour' },
-    };
-    const dict = await asyncDictionary('test', data);
-
-    expect(dict).toBeDefined();
-    expect(dict.key('greeting').localize('en')).toBe('Hello');
-    expect(dict.key('greeting').localize('fr')).toBe('Bonjour');
-  });
-
-  it('should initialize with promise-based data', async () => {
-    const enData = resolvablePromise<{ greeting: string }>();
-
-    const data = {
-      en: enData,
-    };
-    const dict = await asyncDictionary('test', data);
-    const awaited = dict.loadLocale('en');
-
-    expect(() => dict.key('greeting').localize('en')).toThrowError(
-      'Key "greeting" not found for locale "en" or any of it\'s fallback locales. Please ensure the dictionary is loaded correctly.',
-    );
-
-    enData.resolve({ greeting: 'Hello' });
-    await awaited;
-
-    expect(dict.key('greeting').localize('en')).toBe('Hello');
-    expect(dict.key('greeting').localize('fr')).toBe('Hello');
+    expect(
+      dictionary.key<{ name: string }>('greeting', true)({ name: 'John' }).localize(null),
+    ).toBe('test.greeting');
   });
 });

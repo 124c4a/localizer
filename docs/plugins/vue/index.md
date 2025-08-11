@@ -169,7 +169,7 @@ Component emits the following events:
 
 ::: code-group
 
-```vue twoslash [App.vue]
+```vue [App.vue]
 <script setup lang="ts">
   import { LocaleCode } from '@localizer/core';
   import { LocalizationContext } from '@localizer/x-vue';
@@ -224,7 +224,7 @@ This component serves as a simpler alternative to [`useLocalizer()`](#uselocaliz
 
 ::: code-group
 
-```vue twoslash [Component.vue]
+```vue [Component.vue]
 <script setup lang="ts">
   import { CurrentLanguage } from '@localizer/format';
   import { Localized } from '@localizer/x-vue';
