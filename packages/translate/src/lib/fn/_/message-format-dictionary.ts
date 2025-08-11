@@ -24,15 +24,17 @@ import {
 import { MessageFormat } from 'messageformat';
 import { DraftFunctions } from 'messageformat/functions';
 
-import { FlatStructure, LoadableDictionary, SplitStructure } from '../../types/dictionary.js';
+import { LoadableDictionary, SplitStructure } from '../../types/dictionary.js';
 import { Dictionary } from '../../types/dictionary.js';
 import { _getMessageValueProxy } from './get-message-value-proxy.js';
 import { _isPromise } from './is-promise.js';
 
 export class MessageFormatDictionary implements Dictionary<string> {
   private readonly _loadedData: SplitStructure<string, string> = {};
-  private readonly _compiled: FlatStructure<string, [LocaleCode, MessageFormat<string, string>]> =
-    {};
+  private readonly _compiled: Map<
+    string,
+    Map<LocaleCode, [LocaleCode, MessageFormat<string, string>]>
+  > = new Map();
   private readonly _loaders: {
     [locale in LocaleCode]?: Promise<void>;
   } = {};
@@ -94,11 +96,13 @@ export class MessageFormatDictionary implements Dictionary<string> {
     key: string,
     locale: LocaleCode,
   ): [LocaleCode, MessageFormat<string, string>] {
-    if (!this._compiled[key]) {
-      this._compiled[key] = {};
+    if (!this._compiled.has(key)) {
+      this._compiled.set(key, new Map());
     }
 
-    if (!this._compiled[key][locale]) {
+    const localeMap = this._compiled.get(key);
+
+    if (!localeMap.has(locale)) {
       let data = undefined;
       let foundLocale: LocaleCode | undefined = undefined;
       for (const l of getLocaleChain(locale)) {
@@ -120,12 +124,12 @@ export class MessageFormatDictionary implements Dictionary<string> {
         ? `${foundLanguage}-${originalCountry}`
         : foundLocale;
 
-      this._compiled[key][locale] = [
+      localeMap.set(locale, [
         actualLocale,
         new MessageFormat<string, string>(actualLocale, data, { functions: DraftFunctions }),
-      ];
+      ]);
     }
 
-    return this._compiled[key][locale];
+    return localeMap.get(locale);
   }
 }
