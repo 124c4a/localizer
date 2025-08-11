@@ -1,3 +1,9 @@
+## 1.2.0 (2025-07-18)
+
+### 🚀 Features
+
+- Throw error if invalid value is passed to `Localizer` ([#175](https://github.com/124c4a/localizer/pull/175), [#107](https://github.com/124c4a/localizer/issues/107))
+
 ## 1.1.1 (2025-07-11)
 
 This was a version bump only for @localizer/core to align it with other projects, there were no code changes.

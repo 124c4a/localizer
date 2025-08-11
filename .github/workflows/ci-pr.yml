@@ -31,7 +31,7 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Compute affected projects
-        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
 
       - name: Check TypeScript configuration
         run: npx nx sync:check
@@ -52,7 +52,7 @@ jobs:
           fi
 
       - name: Upload ESLint results
-        uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b # v3.29.2
+        uses: github/codeql-action/upload-sarif@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.8
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: ./tmp/eslint-merged.sarif
@@ -77,7 +77,7 @@ jobs:
           fi
 
       - name: Upload API results
-        uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b # v3.29.2
+        uses: github/codeql-action/upload-sarif@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.8
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: ./tmp/api-merged.sarif
@@ -102,14 +102,14 @@ jobs:
           echo "COVERAGESTATUS=$(cat tmp/COVERAGESTATUS)" >> $GITHUB_OUTPUT
 
       - name: Create changelog comment
-        uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2.9.4
         if: steps.coverage.outputs.COVERAGESTATUS == 0
         with:
           path: tmp/CHANGESET.md
           recreate: true
 
       - name: Create coverage report comment
-        uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
+        uses: marocchino/sticky-pull-request-comment@773744901bac0e8cbb5a0dc842800d45e9b2b405 # v2.9.4
         if: steps.coverage.outputs.COVERAGESTATUS == 1
         with:
           path: tmp/COVERAGEREPORT.md

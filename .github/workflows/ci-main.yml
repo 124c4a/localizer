@@ -46,7 +46,7 @@ jobs:
           fi
 
       - name: Upload ESLint results
-        uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b # v3.29.2
+        uses: github/codeql-action/upload-sarif@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.8
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: ./tmp/eslint-merged.sarif
@@ -71,7 +71,7 @@ jobs:
           fi
 
       - name: Upload API results
-        uses: github/codeql-action/upload-sarif@181d5eefc20863364f96762470ba6f862bdef56b # v3.29.2
+        uses: github/codeql-action/upload-sarif@76621b61decf072c1cee8dd1ce2d2a82d33c17ed # v3.29.8
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: ./tmp/api-merged.sarif
