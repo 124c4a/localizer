@@ -1,6 +1,6 @@
 {
   "name": "@localizer/all",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Type-safe localization, formatting and translation library. All @localizer components packaged together.",
   "keywords": [
     "localization",
@@ -41,15 +41,15 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "1.2.0",
-    "@localizer/format": "1.1.2",
-    "@localizer/format-datetime": "1.1.2",
-    "@localizer/format-displayname": "1.1.2",
-    "@localizer/format-list": "1.1.2",
-    "@localizer/format-lookup": "1.0.4",
-    "@localizer/format-number": "1.1.2",
-    "@localizer/format-relativetime": "1.1.2",
-    "@localizer/transform": "1.1.2",
-    "@localizer/translate": "1.1.2"
+    "@localizer/core": "1.2.1",
+    "@localizer/format": "1.1.3",
+    "@localizer/format-datetime": "1.1.3",
+    "@localizer/format-displayname": "1.1.3",
+    "@localizer/format-list": "1.1.3",
+    "@localizer/format-lookup": "1.0.5",
+    "@localizer/format-number": "1.1.3",
+    "@localizer/format-relativetime": "1.1.3",
+    "@localizer/transform": "1.1.3",
+    "@localizer/translate": "1.2.0"
   }
 }

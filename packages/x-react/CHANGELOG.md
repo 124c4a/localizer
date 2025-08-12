@@ -1,3 +1,9 @@
+## 1.0.3 (2025-08-12)
+
+### 🧱 Updated Dependencies
+
+- Updated @localizer/core to 1.2.1
+
 ## 1.0.2 (2025-07-28)
 
 This was a version bump only for @localizer/x-react to align it with other projects, there were no code changes.

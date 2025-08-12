@@ -1,6 +1,6 @@
 {
   "name": "@localizer/format",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Type-safe localization, formatting and translation library. Provides utilities for formatting dates, numbers, lists, and display names in a locale-aware manner.",
   "keywords": [
     "localization",
@@ -42,13 +42,13 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "1.2.0",
-    "@localizer/transform": "1.1.2",
-    "@localizer/format-number": "1.1.2",
-    "@localizer/format-displayname": "1.1.2",
-    "@localizer/format-datetime": "1.1.2",
-    "@localizer/format-relativetime": "1.1.2",
-    "@localizer/format-list": "1.1.2"
+    "@localizer/core": "1.2.1",
+    "@localizer/transform": "1.1.3",
+    "@localizer/format-number": "1.1.3",
+    "@localizer/format-displayname": "1.1.3",
+    "@localizer/format-datetime": "1.1.3",
+    "@localizer/format-relativetime": "1.1.3",
+    "@localizer/format-list": "1.1.3"
   },
   "nx": {
     "targets": {

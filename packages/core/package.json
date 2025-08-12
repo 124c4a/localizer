@@ -1,6 +1,6 @@
 {
   "name": "@localizer/core",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Type-safe localization, formatting and translation library. The foundation of the library, providing essential utilities for localization.",
   "keywords": [
     "localization",

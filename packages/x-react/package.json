@@ -1,6 +1,6 @@
 {
   "name": "@localizer/x-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Type-safe localization, formatting and translation library. Localization support for React.",
   "keywords": [
     "localization",
@@ -42,7 +42,7 @@
     "!**/*.tsbuildinfo"
   ],
   "dependencies": {
-    "@localizer/core": "1.2.0"
+    "@localizer/core": "1.2.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.7.0"

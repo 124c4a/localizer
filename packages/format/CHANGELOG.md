@@ -1,3 +1,15 @@
+## 1.1.3 (2025-08-12)
+
+### 🧱 Updated Dependencies
+
+- Updated @localizer/format-relativetime to 1.1.3
+- Updated @localizer/format-displayname to 1.1.3
+- Updated @localizer/format-datetime to 1.1.3
+- Updated @localizer/format-number to 1.1.3
+- Updated @localizer/format-list to 1.1.3
+- Updated @localizer/transform to 1.1.3
+- Updated @localizer/core to 1.2.1
+
 ## 1.1.2 (2025-07-18)
 
 ### 🧱 Updated Dependencies
