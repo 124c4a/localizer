@@ -60,6 +60,8 @@ Translation maps do not support value placeholders or variable interpolation. If
 
 :::
 
+## Basic value formatting
+
 You can also use `translationMap` as a formatter for values that represent translations, which is especially useful when translations are dynamically provided by a backend or external source.
 
 ```typescript twoslash
@@ -80,6 +82,8 @@ console.log(localizer(translationMap(invoiceStatus)));
 ```console-vue
 {{ translationMap(status).localize('en-US') }}
 ```
+
+## Advanced value formatting
 
 If the value received from the backend does not directly match the `Record<LocaleCode, string>` shape, you can provide a mapping function to transform the data into the expected format:
 
