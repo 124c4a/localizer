@@ -26,7 +26,7 @@ export interface Registry {
   /**
    * Registers a new translation dictionary and load previously loaded locales.
    *
-   * @template T - The type of the dictionary keys.
+   * @typeParam T - The type of the dictionary keys.
    *
    * @param   dictionary - The dictionary to register.
    *
@@ -45,10 +45,24 @@ export interface Registry {
   loadLocale(locale: LocaleCode): Promise<void>;
 }
 
+/**
+ * Global registry for managing localization dictionaries and loaded locales.
+ *
+ * @internal
+ */
 export class GlobalRegistry implements Registry {
   private dictionaries: Set<Dictionary<unknown>> = new Set();
   private loadedLocales: LocaleCode[] = [];
 
+  /**
+   * Registers a new translation dictionary.
+   *
+   * @param   dictionary - The dictionary to register.
+   *
+   * @returns            The registered dictionary.
+   *
+   * @internal
+   */
   async registerDictionary<T>(dictionary: Dictionary<T>): Promise<Dictionary<T>> {
     this.dictionaries.add(dictionary);
 
@@ -59,6 +73,13 @@ export class GlobalRegistry implements Registry {
     return dictionary;
   }
 
+  /**
+   * Loads a specific locale.
+   *
+   * @param locale - The locale to load.
+   *
+   * @internal
+   */
   async loadLocale(locale: LocaleCode): Promise<void> {
     await Promise.all(
       Array.from(this.dictionaries).map((dictionary) => dictionary.loadLocale(locale)),

@@ -24,4 +24,4 @@
 export * from './lib/types/dictionary.js';
 export * from './lib/fn/translationMap.js';
 export * from './lib/fn/dictionary.js';
-export * from './lib/fn/registry.js';
+export { type Registry, globalRegistry } from './lib/fn/registry.js';

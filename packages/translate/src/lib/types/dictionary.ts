@@ -18,7 +18,7 @@ import { LocaleCode, Localizable, ValueFormatter } from '@localizer/core';
 /**
  * Represents a dictionary that provides localization functionality for a specific set of keys.
  *
- * @template K - The type of keys used in the dictionary.
+ * @typeParam K - The type of keys used in the dictionary.
  *
  * @alpha
  */
@@ -64,8 +64,8 @@ export interface Dictionary<K> {
  * codes (`LocaleCode`) to values of type `V`. The value for a specific locale can be undefined if
  * no value is provided for that locale.
  *
- * @template K - A string type representing the keys of the structure.
- * @template V - The type of the values associated with each locale.
+ * @typeParam K - A string type representing the keys of the structure.
+ * @typeParam V - The type of the values associated with each locale.
  *
  * @alpha
  */
@@ -80,16 +80,16 @@ export type FlatStructure<K extends string, V> = {
  * is a utility that creates a partial mapping of keys to values, allowing some or all keys to be
  * omitted.
  *
- * @template K - A string literal type representing the keys of the structure.
- * @template V - The type of the values associated with the keys.
+ * @typeParam K - A string literal type representing the keys of the structure.
+ * @typeParam V - The type of the values associated with the keys.
  */
 export type SplitStructurePartial<K extends string, V> = Partial<Record<K, V>>;
 
 /**
  * Represents a structure for organizing translations or data split by locale.
  *
- * @template K - The type of the keys used in the structure.
- * @template V - The type of the values associated with the keys.
+ * @typeParam K - The type of the keys used in the structure.
+ * @typeParam V - The type of the values associated with the keys.
  *
  * @alpha
  */
@@ -100,12 +100,14 @@ export type SplitStructure<K extends string, V> = {
 /**
  * Represents a dictionary structure that can be loaded asynchronously or synchronously.
  *
- * @template K - A string type representing the keys of the dictionary.
- * @template V - The type of the values associated with the keys in the dictionary.
+ * @typeParam K - A string type representing the keys of the dictionary.
+ * @typeParam V - The type of the values associated with the keys in the dictionary.
  *
  * @property [locale] - An optional property where the key is a `LocaleCode` and the value can
- *   either be a `SplitStructurePartial<K, V>` or a `Promise` resolving to `SplitStructurePartial<K,
- *   V>`.
+ *   either be a `SplitStructurePartial<K, V>` or a `Promise` resolving to
+ *   `SplitStructurePartial<K,V>`.
+ *
+ * @alpha
  */
 export type LoadableDictionary<K extends string, V> = {
   [locale in LocaleCode]?: SplitStructurePartial<K, V> | Promise<SplitStructurePartial<K, V>>;
