@@ -108,6 +108,12 @@ To use these dynamic translations in your application, you can pass the result t
 
 <<< ./getting-started-advanced.ts#localizer{ts}
 
+::: tip
+
+The library uses [Unicode MessageFormat 2.0](https://messageformat.unicode.org/docs/quick-start/) for message formatting.
+
+:::
+
 This will produce the following output in the console:
 
 ```console-vue

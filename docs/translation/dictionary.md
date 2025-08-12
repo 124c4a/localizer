@@ -9,7 +9,7 @@ const dict = dictionary('Dictionary', {
     yes: 'Yes',
     no: 'No',
     hello: 'Hello {$name}!',
-    price: 'Price: {$value}'
+    price: 'Price: {$value}',
   },
   fi: {
     yes: 'Kyllä',

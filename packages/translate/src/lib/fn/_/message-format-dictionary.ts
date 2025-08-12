@@ -100,7 +100,10 @@ export class MessageFormatDictionary implements Dictionary<string> {
       this._compiled.set(key, new Map());
     }
 
-    const localeMap = this._compiled.get(key);
+    const localeMap = this._compiled.get(key) as Map<
+      LocaleCode,
+      [LocaleCode, MessageFormat<string, string>]
+    >;
 
     if (!localeMap.has(locale)) {
       let data = undefined;
@@ -130,6 +133,6 @@ export class MessageFormatDictionary implements Dictionary<string> {
       ]);
     }
 
-    return localeMap.get(locale);
+    return localeMap.get(locale) as [LocaleCode, MessageFormat<string, string>];
   }
 }
