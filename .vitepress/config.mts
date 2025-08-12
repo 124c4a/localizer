@@ -57,7 +57,7 @@ const config: UserConfig = {
   },
   title: '@localizer',
   description: 'Type-safe localization, formatting and translation library',
-  base: '/localizer/',
+  base: '/',
   srcDir: 'docs',
   lastUpdated: true,
   themeConfig: {
