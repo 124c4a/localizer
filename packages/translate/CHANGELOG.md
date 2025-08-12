@@ -2,7 +2,7 @@
 
 ### 🚀 Features
 
-- **translate:** Unicode MessageFormat2 support for translation dictionaries ([#238](https://github.com/124c4a/localizer/pull/238), [#33](https://github.com/124c4a/localizer/issues/33))
+- Unicode MessageFormat2 support for translation dictionaries (experimental) ([#238](https://github.com/124c4a/localizer/pull/238), [#33](https://github.com/124c4a/localizer/issues/33))
 
 ### 🧱 Updated Dependencies
 
