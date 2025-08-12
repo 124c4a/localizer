@@ -82,6 +82,8 @@ export type FlatStructure<K extends string, V> = {
  *
  * @typeParam K - A string literal type representing the keys of the structure.
  * @typeParam V - The type of the values associated with the keys.
+ *
+ * @alpha
  */
 export type SplitStructurePartial<K extends string, V> = Partial<Record<K, V>>;
 
@@ -102,10 +104,6 @@ export type SplitStructure<K extends string, V> = {
  *
  * @typeParam K - A string type representing the keys of the dictionary.
  * @typeParam V - The type of the values associated with the keys in the dictionary.
- *
- * @property [locale] - An optional property where the key is a `LocaleCode` and the value can
- *   either be a `SplitStructurePartial<K, V>` or a `Promise` resolving to
- *   `SplitStructurePartial<K,V>`.
  *
  * @alpha
  */
