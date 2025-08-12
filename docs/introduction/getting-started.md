@@ -72,7 +72,7 @@ Here’s how you can define a basic dictionary:
 
 <<< ./getting-started-basic.ts#dictionary{ts}
 
-The [`dictionary()`](../api/_localizer/translate/dictionary/index.md) function creates a strongly-typed object, ensuring translation keys are validated at compile time to prevent errors from missing or incorrect keys.
+The [`dictionary()`](../translation/dictionary.md) initializes a translation dictionary with specified locales. Call `key(<translation key>)` method to get a reference to a specific translated message.
 
 To use the translations in your application, you can simply pass the keys to [`Localizer`](./localizer.md):
 
@@ -102,11 +102,17 @@ Here’s an example of how you can define a dictionary with dynamic translations
 
 <<< ./getting-started-advanced.ts#dictionary{ts}
 
-The [`dictionary()`](../api/_localizer/translate/dictionary/index.md) function creates a strongly-typed object where values are functions that accept arguments and return formatted strings. This enables seamless injection of dynamic content into translations.
+The [`dictionary()`](../translation/dictionary.md) initializes a translation dictionary with specified locales. Call `key(<translation key>, true)` method to get a reference to a specific dynamic translated message as a value formatter.
 
 To use these dynamic translations in your application, you can pass the result to the [`Localizer`](./localizer.md):
 
 <<< ./getting-started-advanced.ts#localizer{ts}
+
+::: tip
+
+The library uses [Unicode MessageFormat 2.0](https://messageformat.unicode.org/docs/quick-start/) for message formatting.
+
+:::
 
 This will produce the following output in the console:
 

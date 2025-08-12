@@ -42,7 +42,8 @@
   ],
   "dependencies": {
     "@localizer/core": "1.2.0",
-    "@localizer/format": "1.1.2"
+    "@localizer/format": "1.1.2",
+    "messageformat": "^4.0.0-12"
   },
   "nx": {
     "targets": {

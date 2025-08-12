@@ -20,34 +20,35 @@ const console = new ConsoleStub();
 import { getLocalizer } from '@localizer/core';
 import { dictionary } from '@localizer/translate';
 
-const translations = dictionary({
-  yes: {
-    en: 'Yes',
-    fr: 'Oui',
-    es: 'Sí',
-    de: 'Ja',
+const translations = dictionary('translations', {
+  en: {
+    yes: 'Yes',
+    no: 'No',
   },
-  no: {
-    en: 'No',
-    fr: 'Non',
-    es: 'No',
-    de: 'Nein',
+  fr: {
+    yes: 'Oui',
+    no: 'Non',
+  },
+  es: {
+    yes: 'Sí',
+    no: 'No',
+  },
+  de: {
+    yes: 'Ja',
+    no: 'Nein',
   },
 });
 
-// Type of translations is:
-// {
-//   yes: Localizable;
-//   no: Localizable;
-// }
+const yes = translations.key('yes');
+const no = translations.key('no');
 // #endregion dictionary
 
 // #region localizer
 const englishLocalizer = getLocalizer('en-US');
 const frenchLocalizer = getLocalizer('fr-FR');
 
-console.log(englishLocalizer(translations.yes));
-console.log(frenchLocalizer(translations.yes));
+console.log(englishLocalizer(yes));
+console.log(frenchLocalizer(no));
 // #endregion localizer
 
 export default console.asRef();

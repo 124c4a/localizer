@@ -13,40 +13,45 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Localizable, ValueFormatter } from '@localizer/core';
-
-import { translate, TranslationMap } from './translate.js';
+import { Dictionary, LoadableDictionary } from '../types/dictionary.js';
+import { SplitStructure } from '../types/dictionary.js';
+import { MessageFormatDictionary } from './_/message-format-dictionary.js';
+import { globalRegistry } from './registry.js';
 
 /**
- * Creates a dictionary of localized values or value formatters.
+ * Creates a new dictionary instance using the provided identifier and loadable dictionary.
  *
- * This function takes a dictionary object (`dict`) where each key maps to either a static
- * translation map or a function that generates a dynamic translation map. It returns a new
- * dictionary where each key maps to either a `Localizable` value or a `ValueFormatter`, depending
- * on the type of the input value.
+ * @param   id         - A unique identifier for the dictionary.
+ * @param   dictionary - A loadable dictionary containing key-value pairs defining translations for
+ *   different locales.
  *
- * @typeParam T - The type of the input dictionary.
- *
- * @param   dict - The input dictionary containing static or dynamic translation maps.
- *
- * @returns      A dictionary where each key maps to a localized value or a value formatter.
+ * @returns            A promise that resolves to a `Dictionary<string>` instance initialized with
+ *   the provided data and previously loaded locales.
  *
  * @alpha
  */
-export function dictionary<T>(dict: T): {
-  readonly [P in keyof T]: T[P] extends (value: infer V) => TranslationMap
-    ? ValueFormatter<V>
-    : Localizable;
-} {
-  const result: Record<string, unknown> = {};
+export async function asyncDictionary(
+  id: string,
+  dictionary: LoadableDictionary<string, string>,
+): Promise<Dictionary<string>> {
+  return globalRegistry.registerDictionary(new MessageFormatDictionary(id, dictionary));
+}
 
-  for (const key in dict) {
-    result[key] = translate(dict[key] as TranslationMap, key);
-  }
-
-  return result as {
-    readonly [P in keyof T]: T[P] extends (value: infer V) => TranslationMap
-      ? ValueFormatter<V>
-      : Localizable;
-  };
+/**
+ * Creates a new dictionary instance using the provided identifier and statically defined
+ * dictionary.
+ *
+ * @param   id         - A unique identifier for the dictionary.
+ * @param   dictionary - A statically defined dictionary containing key-value pairs defining
+ *   translations for different locales.
+ *
+ * @returns            An instance of `Dictionary<string>` initialized with the provided data.
+ *
+ * @alpha
+ */
+export function dictionary(
+  id: string,
+  dictionary: SplitStructure<string, string>,
+): Dictionary<string> {
+  return new MessageFormatDictionary(id, dictionary);
 }
