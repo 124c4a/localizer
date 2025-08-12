@@ -44,6 +44,18 @@ describe('_getMessageValueProxy', () => {
     expect(foo.valueOf?.()).toBe(1234567);
   });
 
+  it('should convert nested objects to proxies', () => {
+    const value = { foo: { bar: 1234567 } };
+    const proxy = _getMessageValueProxy(value, 'en-US');
+
+    const bar = proxy.foo.bar as MessageValue<'autoformat'>;
+
+    expect(bar.type).toBe('autoformat');
+    expect(bar.source).toBe('$foo.bar');
+    expect(bar.toString?.()).toBe('1,234,567');
+    expect(bar.valueOf?.()).toBe(1234567);
+  });
+
   it('should convert Date properties to MessageValue', () => {
     const value = { foo: new Date('2023-01-01T00:00:00Z') };
     const proxy = _getMessageValueProxy(value, 'en-US');
