@@ -85,7 +85,7 @@ import { getLocalizer } from '@localizer/core';
 import { asyncDictionary, globalRegistry } from '@localizer/translate';
 
 // Indicate that translations for english language should be preloaded
-globalRegistry.loadLocale('en-US');
+await globalRegistry.loadLocale('en-US');
 
 const dict = await asyncDictionary('Dictionary', {
   en: import('./en.js'),
