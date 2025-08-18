@@ -1,6 +1,6 @@
 {
   "name": "@localizer/translate",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Type-safe localization, formatting and translation library. Provides utilities for TypeScript-first translation dictionaries.",
   "keywords": [
     "localization",
