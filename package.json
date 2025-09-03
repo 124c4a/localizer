@@ -43,7 +43,7 @@
     "eslint-plugin-perfectionist": "4.15.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "5.2.0",
-    "eslint-plugin-sonarjs": "3.0.4",
+    "eslint-plugin-sonarjs": "3.0.5",
     "execa": "9.6.0",
     "gray-matter": "4.0.3",
     "jiti": "2.5.1",
