@@ -1,3 +1,7 @@
+## 1.1.2 (2025-09-15)
+
+This was a version bump only for @localizer/x-vue to align it with other projects, there were no code changes.
+
 ## 1.1.1 (2025-08-12)
 
 ### 🧱 Updated Dependencies
