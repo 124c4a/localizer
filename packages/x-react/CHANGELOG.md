@@ -1,3 +1,7 @@
+## 1.0.8 (2025-10-06)
+
+This was a version bump only for @localizer/x-react to align it with other projects, there were no code changes.
+
 ## 1.0.7 (2025-09-29)
 
 This was a version bump only for @localizer/x-react to align it with other projects, there were no code changes.
