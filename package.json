@@ -46,7 +46,7 @@
     "eslint-plugin-sonarjs": "3.0.5",
     "execa": "9.6.0",
     "gray-matter": "4.0.3",
-    "jiti": "2.6.0",
+    "jiti": "2.6.1",
     "jsdom": "26.1.0",
     "jsonc-eslint-parser": "2.4.1",
     "listr2": "9.0.4",
