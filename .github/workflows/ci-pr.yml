@@ -116,7 +116,7 @@ jobs:
           recreate: true
 
       - name: Run the action
-        uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
+        uses: guibranco/github-status-action-v2@631f55ea0251f0fb284525ad86c30e9f7a8dd284 # v1.1.14
         if: steps.coverage.outputs.COVERAGESTATUS == 0
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
@@ -126,7 +126,7 @@ jobs:
           sha: ${{github.event.pull_request.head.sha || github.sha}}
 
       - name: Run the action
-        uses: guibranco/github-status-action-v2@0849440ec82c5fa69b2377725b9b7852a3977e76 # v1.1.13
+        uses: guibranco/github-status-action-v2@631f55ea0251f0fb284525ad86c30e9f7a8dd284 # v1.1.14
         if: steps.coverage.outputs.COVERAGESTATUS == 1
         with:
           authToken: ${{secrets.GITHUB_TOKEN}}
