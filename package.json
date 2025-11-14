@@ -9,7 +9,7 @@
     "@babel/preset-react": "7.28.5",
     "@css-render/vue3-ssr": "0.15.14",
     "@eslint/js": "9.38.0",
-    "@microsoft/api-extractor": "7.53.3",
+    "@microsoft/api-extractor": "7.54.0",
     "@microsoft/eslint-formatter-sarif": "3.1.0",
     "@microsoft/sarif-multitool": "4.6.0",
     "@nx/eslint": "21.6.8",
