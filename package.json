@@ -50,7 +50,7 @@
     "jsdom": "26.1.0",
     "jsonc-eslint-parser": "2.4.1",
     "listr2": "9.0.5",
-    "naive-ui": "2.43.1",
+    "naive-ui": "2.43.2",
     "node-sarif-builder": "3.2.0",
     "nx": "21.6.8",
     "prettier": "3.6.2",
