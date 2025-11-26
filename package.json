@@ -15,7 +15,7 @@
     "@nx/eslint": "21.6.9",
     "@nx/eslint-plugin": "21.6.9",
     "@nx/js": "21.6.9",
-    "@nx/react": "21.6.9",
+    "@nx/react": "22.1.2",
     "@nx/vite": "21.6.9",
     "@nx/vue": "21.6.9",
     "@nx/web": "21.6.9",
