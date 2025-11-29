@@ -46,7 +46,7 @@
     "@localizer/core": "1.2.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue-jsx": "5.1.1"
+    "@vitejs/plugin-vue-jsx": "5.1.2"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
