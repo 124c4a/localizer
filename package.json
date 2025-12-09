@@ -74,7 +74,7 @@
     "vue": "3.5.25",
     "vue-tsc": "3.1.5",
     "xlsx": "file:scripts/vendor/xlsx-0.20.3.tgz",
-    "yaml": "2.8.1"
+    "yaml": "2.8.2"
   },
   "overrides": {
     "@docsearch/css": "npm:dont-install",
