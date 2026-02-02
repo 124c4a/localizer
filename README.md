@@ -103,7 +103,7 @@ git checkout -b feature/your-feature-name
 5. **Run Tests**: Verify your changes:
 
 ```bash
-npx nx test <module>
+npx nx test @localizer/core
 ```
 
 6. **Commit Changes**: Use a clear commit message:

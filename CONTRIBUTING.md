@@ -14,7 +14,7 @@ If you find a bug or error, please [submit an issue](https://github.com/124c4a/l
 ## Technologies
 
 - **TypeScript**: Language for @localizer packages.
-- **Nx**: Monorepo toolchain.
+- **Nx 22.x**: Monorepo toolchain for this workspace.
 
 ## Building the Project
 
@@ -27,7 +27,7 @@ npm install
 Build all packages with:
 
 ```bash
-npx nx run-many --target=build
+npx nx run-many --target=build --all
 ```
 
 ### Running Unit Tests
@@ -35,13 +35,13 @@ npx nx run-many --target=build
 To ensure your changes pass all unit tests, use:
 
 ```bash
-npx nx affected --target=test
+npx nx run-many --target=test --all
 ```
 
-To test a specific package, such as `format-number`, run:
+To test a specific package, such as `@localizer/format-number`, run:
 
 ```bash
-npx nx test format-number
+npx nx test @localizer/format-number
 ```
 
 ## Submission Guidelines
@@ -61,10 +61,10 @@ Please ensure the following before submitting your PR:
   - Use `*.test.ts` files for preview/internal functionality (`@alpha`, `@beta`, or `@internal` TSDoc directives).
   - Use `*.spec.ts` files for public functionality (`@public` TSDoc directive).
 - Verify all unit tests pass:
-  - Run all tests: `npx nx affected --target=test`.
-  - Run tests for a specific project: `npx nx run [project-name]:test` (e.g., `npx nx run format-number:test`).
+  - Run all tests: `npx nx run-many --target=test --all`.
+  - Run tests for a specific project: `npx nx test [project-name]` (e.g., `npx nx test @localizer/format-number`).
   - Run a specific test file: `npx vitest [file-path]` (e.g., `npx vitest packages/format-number/src/lib/currencyFormatter.spec.ts`).
-- Format your code using `nx format`.
+- Format your code using `npx nx format`.
 - Ensure your PR adheres to the [PR Title Guidelines](#pr-title-guidelines).
 - Include a clear description and reference related issues in the PR body.
 
