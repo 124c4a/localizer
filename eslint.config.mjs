@@ -98,7 +98,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.`,
           variables: {
-            year: String(new Date().getFullYear()),
+            year: '2025',
             author: 'Artem Godin',
           },
         },
