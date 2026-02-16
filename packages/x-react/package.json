@@ -1,6 +1,6 @@
 {
   "name": "@localizer/x-react",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Type-safe localization, formatting and translation library. Localization support for React.",
   "keywords": [
     "localization",
