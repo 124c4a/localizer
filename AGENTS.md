@@ -76,9 +76,10 @@ CI order: **lint → build → api (API Extractor) → test**
 - **Vitest** with jsdom, globals enabled, V8 coverage
 - Shared config: `vitest.config.json` (root) — a raw JSON file read by each package's `vite.config.ts` via `readFileSync`
 - Tests colocated in `src/` next to source files
-- **File naming convention matters**:
-  - `*.spec.ts` — public API tests (`@public` TSDoc tag)
-  - `*.test.ts` — preview/internal tests (`@alpha`, `@beta`, `@internal` tags)
+- **File naming convention matters** — it mirrors the TSDoc release tag of the symbol under test:
+  - `*.spec.ts` — tests for public API (`@public` TSDoc directive). These test the stable, documented surface that consumers rely on.
+  - `*.test.ts` — tests for preview/internal functionality (`@alpha`, `@beta`, or `@internal` TSDoc directives). These cover unstable or internal symbols that are excluded from the generated API reference (`excludeInternal: true` in typedoc).
+  - Choosing the wrong suffix misrepresents the stability of the feature. Match the test file suffix to the release tag on the exported symbol.
 - Tests depend on upstream builds (`^build` in Nx target defaults)
 
 ## Code Conventions
@@ -151,5 +152,7 @@ type: Subject of change
 ```
 
 Types: `feat`, `fix`, `cleanup`, `chore`
+
+For breaking changes, include a `BREAKING CHANGE:` section in the commit/PR body explaining impact and migration steps. Reference related issues with `Closes #<issue-number>`.
 
 Nx release uses independent versioning per package with conventional commits for changelog generation.
