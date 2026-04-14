@@ -71,6 +71,17 @@ npx nx run-many -t typecheck
 
 CI order: **lint → build → api (API Extractor) → test**
 
+## CI Quality Gates
+
+PR CI (`.github/workflows/ci-pr.yml`) enforces these gates on every pull request:
+
+1. **TypeScript sync check** — `npx nx sync:check` verifies project references are in sync. Fails if you add/remove a package without updating tsconfig references.
+2. **Lint** — ESLint results are uploaded as SARIF to GitHub Code Scanning, not just console output.
+3. **Build** — affected packages must compile.
+4. **API Extractor** — checks TSDoc release tags and export completeness (see Code Conventions). Results also uploaded as SARIF.
+5. **Test with coverage** — `npx nx affected -t test --coverage`. After tests pass, `scripts/analyze-coverage.js` checks coverage and **sets a failure status on the PR** if branches or functions are not covered. Uncovered code will block merge.
+6. **Auto-generated PR comment** — CI posts a changelog summary and coverage report as sticky PR comments, and auto-labels the PR via `scripts/update-pr.js`.
+
 ## Testing
 
 - **Vitest** with jsdom, globals enabled, V8 coverage
