@@ -11,7 +11,7 @@
     "@eslint/js": "9.39.4",
     "@microsoft/api-extractor": "7.58.13",
     "@microsoft/eslint-formatter-sarif": "3.1.0",
-    "@microsoft/sarif-multitool": "4.6.0",
+    "@microsoft/sarif-multitool": "4.6.5",
     "@nx/eslint": "21.6.10",
     "@nx/eslint-plugin": "21.6.10",
     "@nx/js": "21.6.10",
