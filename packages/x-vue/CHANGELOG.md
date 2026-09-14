@@ -1,3 +1,7 @@
+## 1.1.6 (2026-09-14)
+
+This was a version bump only for @localizer/x-vue to align it with other projects, there were no code changes.
+
 ## 1.1.5 (2026-03-23)
 
 This was a version bump only for @localizer/x-vue to align it with other projects, there were no code changes.
